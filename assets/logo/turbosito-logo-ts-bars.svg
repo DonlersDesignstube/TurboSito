@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="64" viewBox="0 0 520 64" role="img" aria-label="TurboSito Logo">
+  <style>
+    .type { font: 800 30px/1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; fill: currentColor; letter-spacing:.2px; }
+  </style>
+  <!-- TS Badge (links) -->
+  <rect x="0" y="10" width="48" height="48" rx="12" fill="#111827"></rect>
+  <text x="11" y="43" fill="#FFFFFF" style="font:800 26px/1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">TS</text>
+
+  <!-- Wordmark -->
+  <text x="64" y="36" class="type">Turbo</text>
+  <text x="184" y="36" class="type" fill="#F97316">Sito</text>
+
+  <!-- Drei Speed-Striche (Underline unter dem Wordmark) -->
+  <rect x="66" y="46" width="220" height="4" rx="2" fill="#F97316"></rect>
+  <rect x="66" y="52" width="160" height="3" rx="1.5" fill="#F97316" opacity=".8"></rect>
+  <rect x="66" y="57" width="100" height="2" rx="1" fill="#F97316" opacity=".6"></rect>
+</svg>

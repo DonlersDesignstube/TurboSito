@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website in 48h – Dein neues Web‑Angebot</title>
+    <link rel="preload" as="image" href="../assets/img/landing-hero.jpg">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <meta name="description" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
+    <meta property="og:title" content="Website in 48h">
+    <meta property="og:description" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
+    <meta property="og:image" content="../assets/img/landing-hero.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{URL}}/landing/">
+    <style>
+        [data-lang] { display: none; }
+        :root[data-language="de"] [data-lang="de"] { display: block; }
+        :root[data-language="it"] [data-lang="it"] { display: block; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+        <a href="/" class="flex items-center gap-3">
+            <!-- Großes Logo -->
+            <img src="../assets/logo/turbosito-logo-ts-bars.svg" alt="TurboSito" class="h-7 w-auto">
+          </a>
+          <link rel="icon" type="image/svg+xml" href="../assets/logo/turbosito-favicon-ts.svg">          
+        <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+            <div class="flex items-center space-x-2">
+                <span class="text-lg font-bold" data-lang="de">Website&nbsp;in&nbsp;48h</span>
+                <span class="text-lg font-bold" data-lang="it">Sito&nbsp;in&nbsp;48h</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="langDeL" class="text-sm font-medium hover:underline" onclick="setLang('de')" aria-label="Deutsch">DE</button>
+                <button id="langItL" class="text-sm font-medium hover:underline" onclick="setLang('it')" aria-label="Italiano">IT</button>
+                <button id="themeToggleL" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Theme Toggle">
+                    <svg id="themeIconL" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path id="themeSunL" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m8.66-8.66h-2m-12 0H3m15.364-5.364l-1.414 1.414m-10.95 10.95l-1.414 1.414m12.728 0l1.414 1.414m-12.728-12.728L5.636 4.636M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        <path id="themeMoonL" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 7 7 0 0020.354 15.354z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative">
+            <img src="../assets/img/landing-hero.jpg" alt="Laptop und Telefon" class="w-full h-64 sm:h-96 object-cover" width="1920" height="1080">
+            <div class="absolute inset-0 bg-black/30"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 py-12">
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.</h1>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Sito web in 48 ore. Prezzo fisso. Più richieste – senza telefonate.</h1>
+                <p class="text-lg sm:text-xl text-white mb-6 max-w-screen-md" data-lang="de">Lass dir deine professionelle Website ohne langwierige Abstimmungen erstellen. Wir liefern in 48&nbsp;Stunden.</p>
+                <p class="text-lg sm:text-xl text-white mb-6 max-w-screen-md" data-lang="it">Ottieni il tuo sito professionale senza lunghe chiamate. Consegniamo in 48&nbsp;ore.</p>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#intake" class="px-8 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="de">Jetzt starten</a>
+                    <a href="#intake" class="px-8 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="it">Inizia ora</a>
+                    <a href="#pricing" class="px-8 py-3 border border-white text-white font-semibold rounded hover:bg-white hover:text-black" data-lang="de">Preise ansehen</a>
+                    <a href="#pricing" class="px-8 py-3 border border-white text-white font-semibold rounded hover:bg-white hover:text-black" data-lang="it">Guarda i prezzi</a>
+                </div>
+            </div>
+        </section>
+        <!-- Ablauf / Process -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800" id="process">
+            <div class="max-w-screen-lg mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-8" data-lang="de">So funktioniert’s</h2>
+                <h2 class="text-3xl font-bold mb-8" data-lang="it">Come funziona</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="p-6 bg-white dark:bg-gray-900 rounded shadow flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center text-xl font-bold mb-4">1</div>
+                        <h3 class="font-semibold mb-2" data-lang="de">Intake ausfüllen</h3>
+                        <h3 class="font-semibold mb-2" data-lang="it">Compila il modulo</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Sag uns, was du brauchst: Branche, Inhalte, Farben und Ziele.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Dicci di cosa hai bisogno: settore, contenuti, colori e obiettivi.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-gray-900 rounded shadow flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center text-xl font-bold mb-4">2</div>
+                        <h3 class="font-semibold mb-2" data-lang="de">48h&nbsp;Umsetzung</h3>
+                        <h3 class="font-semibold mb-2" data-lang="it">Realizzazione in 48h</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Wir bauen deine Website, optimieren für Mobilgeräte, SEO und Local‑Search.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Costruiamo il tuo sito, ottimizzato per mobile, SEO e ricerca locale.</p>
+                    </div>
+                    <div class="p-6 bg-white dark:bg-gray-900 rounded shadow flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center text-xl font-bold mb-4">3</div>
+                        <h3 class="font-semibold mb-2" data-lang="de">Go‑Live &amp; Wachstum</h3>
+                        <h3 class="font-semibold mb-2" data-lang="it">Messa online &amp; crescita</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Nach deiner Freigabe veröffentlichen wir und du erhältst mehr Anfragen.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Dopo la tua approvazione mettiamo online e riceverai più richieste.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Pricing -->
+        <section class="py-16" id="pricing">
+            <div class="max-w-screen-lg mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-8" data-lang="de">Pakete &amp; Preise</h2>
+                <h2 class="text-3xl font-bold mb-8" data-lang="it">Pacchetti &amp; prezzi</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <!-- Basic -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded shadow flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2" data-lang="de">Basic</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-lang="it">Basic</h3>
+                        <p class="text-4xl font-bold mb-4">€490</p>
+                        <ul class="mb-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li data-lang="de">One‑Pager (bis 1 Seite)</li>
+                            <li data-lang="it">One‑pager (1 pagina)</li>
+                            <li data-lang="de">Mobile‑optimiert</li>
+                            <li data-lang="it">Ottimizzato per mobile</li>
+                            <li data-lang="de">1 Änderungsrunde</li>
+                            <li data-lang="it">1 revisione</li>
+                            <li data-lang="de">Go‑Live in 48h</li>
+                            <li data-lang="it">Online in 48h</li>
+                        </ul>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="de">Buchen</a>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="it">Prenota</a>
+                    </div>
+                    <!-- Standard -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded shadow flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2" data-lang="de">Standard</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-lang="it">Standard</h3>
+                        <p class="text-4xl font-bold mb-4">€890</p>
+                        <ul class="mb-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li data-lang="de">Bis 4 Seiten</li>
+                            <li data-lang="it">Fino a 4 pagine</li>
+                            <li data-lang="de">Mehrsprachig (DE/IT/EN)</li>
+                            <li data-lang="it">Multilingue (DE/IT/EN)</li>
+                            <li data-lang="de">2 Änderungsrunden</li>
+                            <li data-lang="it">2 revisioni</li>
+                            <li data-lang="de">SEO‑Optimierung</li>
+                            <li data-lang="it">Ottimizzazione SEO</li>
+                        </ul>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="de">Buchen</a>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="it">Prenota</a>
+                    </div>
+                    <!-- Premium -->
+                    <div class="p-6 bg-gray-50 dark:bg-gray-800 rounded shadow flex flex-col">
+                        <h3 class="text-xl font-semibold mb-2" data-lang="de">Premium</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-lang="it">Premium</h3>
+                        <p class="text-4xl font-bold mb-4">€1.490</p>
+                        <ul class="mb-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                            <li data-lang="de">5–7 Seiten</li>
+                            <li data-lang="it">5–7 pagine</li>
+                            <li data-lang="de">Zweisprachig</li>
+                            <li data-lang="it">Bilingue</li>
+                            <li data-lang="de">3 Änderungsrunden</li>
+                            <li data-lang="it">3 revisioni</li>
+                            <li data-lang="de">Individuelles Design</li>
+                            <li data-lang="it">Design su misura</li>
+                        </ul>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="de">Buchen</a>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="it">Prenota</a>
+                    </div>
+                </div>
+                <p class="mt-8 text-sm text-gray-600 dark:text-gray-400" data-lang="de">Retainer für Wartung &amp; Support ab €59/Monat.</p>
+                <p class="mt-8 text-sm text-gray-600 dark:text-gray-400" data-lang="it">Manutenzione &amp; supporto a partire da €59/mese.</p>
+            </div>
+        </section>
+        <!-- Social Proof / Beispiele -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800" id="examples">
+            <div class="max-w-screen-lg mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-8" data-lang="de">Beispiele</h2>
+                <h2 class="text-3xl font-bold mb-8" data-lang="it">Esempi</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="group relative">
+                        <a href="../demos/restaurant/" class="block overflow-hidden rounded shadow-lg">
+                            <img src="../assets/img/restaurant-hero.jpg" alt="Restaurant Demo" class="w-full h-40 object-cover transition-transform group-hover:scale-105" loading="lazy" width="600" height="400">
+                        </a>
+                        <h3 class="mt-2 font-semibold" data-lang="de">Restaurant&nbsp;Demo</h3>
+                        <h3 class="mt-2 font-semibold" data-lang="it">Demo&nbsp;Ristorante</h3>
+                    </div>
+                    <div class="group relative">
+                        <a href="../demos/barber/" class="block overflow-hidden rounded shadow-lg">
+                            <img src="../assets/img/barber-hero.jpg" alt="Barber Demo" class="w-full h-40 object-cover transition-transform group-hover:scale-105" loading="lazy" width="600" height="400">
+                        </a>
+                        <h3 class="mt-2 font-semibold" data-lang="de">Friseur&nbsp;Demo</h3>
+                        <h3 class="mt-2 font-semibold" data-lang="it">Demo&nbsp;Barber</h3>
+                    </div>
+                    <div class="group relative">
+                        <a href="../demos/apartment/" class="block overflow-hidden rounded shadow-lg">
+                            <img src="../assets/img/apartment-hero.jpg" alt="Apartment Demo" class="w-full h-40 object-cover transition-transform group-hover:scale-105" loading="lazy" width="600" height="400">
+                        </a>
+                        <h3 class="mt-2 font-semibold" data-lang="de">Ferienwohnung&nbsp;Demo</h3>
+                        <h3 class="mt-2 font-semibold" data-lang="it">Demo&nbsp;Appartamento</h3>
+                    </div>
+                </div>
+                <p class="mt-6 text-sm text-gray-600 dark:text-gray-400" data-lang="de">Klicke auf ein Beispiel, um die Live‑Demo zu sehen.</p>
+                <p class="mt-6 text-sm text-gray-600 dark:text-gray-400" data-lang="it">Clicca su un esempio per vedere la demo live.</p>
+            </div>
+        </section>
+        <!-- FAQs -->
+        <section class="py-16" id="faq">
+            <div class="max-w-screen-lg mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-lang="de">Häufige Fragen</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center" data-lang="it">Domande frequenti</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Was beinhaltet die Lieferung?</h3>
+                        <h3 class="font-semibold" data-lang="it">Cosa include la consegna?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Eine fertige Website, optimiert für Mobilgeräte und SEO.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Un sito web completo, ottimizzato per mobile e SEO.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Wie viele Änderungsrunden sind inklusive?</h3>
+                        <h3 class="font-semibold" data-lang="it">Quanti cicli di modifica sono inclusi?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Je nach Paket 1–3 Runden.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">A seconda del pacchetto 1–3 revisioni.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Muss ich Hosting/Domain bereitstellen?</h3>
+                        <h3 class="font-semibold" data-lang="it">Devo fornire hosting/dominio?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Gern helfen wir bei der Einrichtung von Domain &amp; Hosting (z.&nbsp;B. Netlify).</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Ti aiutiamo a configurare dominio e hosting (es. Netlify).</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Wann ist die Bezahlung fällig?</h3>
+                        <h3 class="font-semibold" data-lang="it">Quando si paga?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">40 % Anzahlung bei Auftrag, Rest bei Übergabe.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">40 % di acconto all'ordine, saldo alla consegna.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Sind mehrsprachige Seiten möglich?</h3>
+                        <h3 class="font-semibold" data-lang="it">È possibile avere il sito multilingue?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Ja, ab dem Standard‑Paket unterstützen wir DE/IT oder EN.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Sì, dal pacchetto Standard supportiamo DE/IT o EN.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Wie läuft das rechtlich mit DSGVO?</h3>
+                        <h3 class="font-semibold" data-lang="it">Come gestite la privacy e il GDPR?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Wir stellen Impressum &amp; Datenschutzvorlagen bereit, Cookies nur bei externen Ressourcen.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Forniamo modelli di Impressum e privacy, cookie solo quando servono risorse esterne.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section / Intake -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800" id="intake">
+            <div class="max-w-screen-md mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-4" data-lang="de">Bereit für deine Website?</h2>
+                <h2 class="text-3xl font-bold mb-4" data-lang="it">Pronto per il tuo sito?</h2>
+                <p class="mb-6" data-lang="de">Fülle unser kurzes Intake‑Formular aus und leiste eine Anzahlung – der Rest wird erledigt!</p>
+                <p class="mb-6" data-lang="it">Compila il nostro breve modulo e versa un acconto – al resto pensiamo noi!</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="INTAKE_FORM_URL" class="px-8 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="de">Intake starten</a>
+                    <a href="INTAKE_FORM_URL" class="px-8 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" data-lang="it">Avvia il modulo</a>
+                    <a href="STRIPE_PAYMENT_LINK" class="px-8 py-3 border border-green-600 text-green-600 font-semibold rounded hover:bg-green-600 hover:text-white" data-lang="de">Anzahlung leisten</a>
+                    <a href="STRIPE_PAYMENT_LINK" class="px-8 py-3 border border-green-600 text-green-600 font-semibold rounded hover:bg-green-600 hover:text-white" data-lang="it">Versa l'acconto</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-100 dark:bg-gray-800 py-6">
+        <div class="max-w-screen-lg mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
+            <div class="flex space-x-4 mb-4 sm:mb-0">
+                <a href="../legal/impressum.html" class="underline" data-lang="de">Impressum</a>
+                <a href="../legal/privacy.html" class="underline" data-lang="de">Datenschutz</a>
+                <a href="../legal/impressum.html" class="underline" data-lang="it">Note legali</a>
+                <a href="../legal/privacy.html" class="underline" data-lang="it">Privacy</a>
+            </div>
+            <div>
+                <small class="text-gray-500" data-lang="de">&copy; 2025 Website‑in‑48h Demo</small>
+                <small class="text-gray-500" data-lang="it">&copy; 2025 Sito‑in‑48h Demo</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Script for language/theme toggle -->
+    <script>
+        function setLang(lang) {
+            document.documentElement.dataset.language = lang;
+            localStorage.setItem('lang', lang);
+        }
+        function setTheme(theme) {
+            const sun = document.getElementById('themeSunL');
+            const moon = document.getElementById('themeMoonL');
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                sun.classList.add('hidden');
+                moon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                sun.classList.remove('hidden');
+                moon.classList.add('hidden');
+            }
+            localStorage.setItem('theme', theme);
+        }
+        document.getElementById('themeToggleL').addEventListener('click', function() {
+            const isDark = document.documentElement.classList.contains('dark');
+            setTheme(isDark ? 'light' : 'dark');
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('lang') || 'de';
+            setLang(savedLang);
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            setTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>

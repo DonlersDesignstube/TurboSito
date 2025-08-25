@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" role="img" aria-label="TS">
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="#111827"></rect>
+  <text x="10" y="32" fill="#FFFFFF" style="font:800 20px/1 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif">TS</text>
+  <!-- Mini-Speed-Striche (dezent) -->
+  <rect x="10" y="34" width="28" height="3" rx="1.5" fill="#F97316"></rect>
+  <rect x="10" y="39" width="20" height="2" rx="1" fill="#F97316" opacity=".8"></rect>
+  <rect x="10" y="43" width="12" height="2" rx="1" fill="#F97316" opacity=".6"></rect>
+</svg>
