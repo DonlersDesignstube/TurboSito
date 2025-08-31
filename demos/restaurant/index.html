@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" class="">
+<html lang="de" data-language="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -227,8 +227,8 @@
             document.documentElement.dataset.language = lang;
             document.documentElement.lang = lang;
             localStorage.setItem('lang', lang);
-            document.getElementById('langDe').setAttribute('aria-pressed', lang === 'de');
-            document.getElementById('langIt').setAttribute('aria-pressed', lang === 'it');
+            document.getElementById('langDe').setAttribute('aria-pressed', lang === 'de' ? 'true' : 'false');
+            document.getElementById('langIt').setAttribute('aria-pressed', lang === 'it' ? 'true' : 'false');
             document.querySelectorAll('.wa-link').forEach(el => {
                 el.href = el.dataset["href" + (lang === 'de' ? 'De' : 'It')];
             });

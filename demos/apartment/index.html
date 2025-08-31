@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" class="">
+<html lang="de" data-language="de">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,6 @@
     <meta name="description" content="Demo Ferienwohnung: Wohnen nah am Zentrum. Alloggio vicino al centro.">
     <meta property="og:title" content="Ferienwohnung Demo – Website in 48h">
     <meta property="og:description" content="Wohnen nah am Zentrum. Alloggio vicino al centro.">
-    <meta property="og:image" content="../../assets/img/apartment-hero.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{URL}}/demos/apartment/">
     <style>
@@ -281,8 +280,8 @@
             document.documentElement.dataset.language = lang;
             document.documentElement.lang = lang;
             localStorage.setItem('lang', lang);
-            document.getElementById('langDeA').setAttribute('aria-pressed', lang === 'de');
-            document.getElementById('langItA').setAttribute('aria-pressed', lang === 'it');
+            document.getElementById('langDeA').setAttribute('aria-pressed', lang === 'de' ? 'true' : 'false');
+            document.getElementById('langItA').setAttribute('aria-pressed', lang === 'it' ? 'true' : 'false');
             document.querySelectorAll('.wa-link').forEach(el => {
                 el.href = el.dataset["href" + (lang === 'de' ? 'De' : 'It')];
             });
