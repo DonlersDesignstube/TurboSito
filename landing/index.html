@@ -166,8 +166,8 @@
         <h2 class="text-3xl font-bold mb-4" data-i18n="intake_heading">Bereit für deine Website?</h2>
         <p class="mb-6" data-i18n="intake_copy">Fülle unser kurzes Intake‑Formular aus und leiste eine Anzahlung – der Rest wird erledigt!</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="INTAKE_FORM_URL" class="btn-primary flex-1 sm:flex-none" data-evt="cta_start" data-i18n="cta_intake">Intake starten</a>
-          <a href="STRIPE_PAYMENT_LINK" class="btn-secondary flex-1 sm:flex-none" data-evt="cta_deposit" data-i18n="cta_deposit">Anzahlung leisten</a>
+          <a href="INTAKE_FORM_URL" class="btn-primary w-full sm:w-auto" data-evt="cta_start" data-i18n="cta_intake">Intake starten</a>
+          <a href="STRIPE_PAYMENT_LINK" class="btn-secondary w-full sm:w-auto" data-evt="cta_deposit" data-i18n="cta_deposit">Anzahlung leisten</a>
         </div>
         <p class="mt-4 text-xs text-gray-500" data-i18n="gdpr_note">Kein Tracking, keine Cookies – DSGVO‑konform.</p>
       </div>
@@ -314,7 +314,14 @@
       lang=lang==='it'?'it':'de';
       document.documentElement.lang=lang;
       localStorage.setItem('lang',lang);
-      langBtns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.langBtn===lang));
+      langBtns.forEach(b=>{
+        const active=b.dataset.langBtn===lang;
+        b.setAttribute('aria-pressed',active);
+        b.classList.toggle('bg-indigo-600',active);
+        b.classList.toggle('text-white',active);
+        b.classList.toggle('bg-white',!active);
+        b.classList.toggle('text-gray-700',!active);
+      });
       applyI18n(lang);
     }
     langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.langBtn)));
