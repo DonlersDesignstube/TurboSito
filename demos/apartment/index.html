@@ -39,11 +39,11 @@
                 <span class="text-lg font-bold" data-lang="it">Demo Appartamento</span>
             </div>
             <div class="flex items-center space-x-4">
-                <button id="langDeA" class="text-sm font-medium hover:underline" onclick="setLang('de')"
-                    aria-label="Deutsch">DE</button>
-                <button id="langItA" class="text-sm font-medium hover:underline" onclick="setLang('it')"
-                    aria-label="Italiano">IT</button>
-                <button id="themeToggleA" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                <button id="langDeA" type="button" class="text-sm font-medium hover:underline" onclick="setLang('de')"
+                    aria-label="Deutsch" aria-pressed="true">DE</button>
+                <button id="langItA" type="button" class="text-sm font-medium hover:underline" onclick="setLang('it')"
+                    aria-label="Italiano" aria-pressed="false">IT</button>
+                <button id="themeToggleA" type="button" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
                     aria-label="Theme Toggle">
                     <svg id="themeIconA" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
@@ -70,9 +70,9 @@
                    alt="Moderne Apartment-Fassade mit Balkonen vor blauem Himmel"
                    class="w-full aspect-[16/9] object-cover">
             </picture>
-          
+
             <div class="absolute inset-0 bg-black/30"></div>
-          
+
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
               <h1 class="text-3xl sm:text-5xl font-extrabold text-white" data-lang="de">Wohnen nah am Zentrum.</h1>
               <h1 class="text-3xl sm:text-5xl font-extrabold text-white" data-lang="it">Alloggio vicino al centro.</h1>
@@ -80,7 +80,7 @@
               <p class="mt-4 text-lg sm:text-xl text-white" data-lang="it">Accogliente appartamento per la tua vacanza in città.</p>
             </div>
           </section>
-          
+
         <!-- Highlights / Ausstattung -->
         <section class="py-12 bg-gray-50 dark:bg-gray-800">
             <div class="max-w-screen-md mx-auto px-4">
@@ -223,12 +223,13 @@
                 <h2 class="text-2xl font-bold mb-4" data-lang="it">Contatto</h2>
                 <p class="mb-4" data-lang="de">Stellen Sie Ihre Anfrage oder buchen Sie direkt via WhatsApp.</p>
                 <p class="mb-4" data-lang="it">Invia la tua richiesta o prenota direttamente via WhatsApp.</p>
-                <a href="https://wa.me/PHONE?text=Ich%20habe%20eine%20Frage%20zum%20Apartment"
-                    class="inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700"
-                    target="_blank" rel="noopener" data-lang="de">WhatsApp schreiben</a>
-                <a href="https://wa.me/PHONE?text=Ho%20una%20domanda%20sull'appartamento"
-                    class="inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700"
-                    target="_blank" rel="noopener" data-lang="it">Scrivici su WhatsApp</a>
+                <a id="waA" class="wa-link inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700"
+                    href="https://wa.me/PHONE?text=Ich%20habe%20eine%20Frage%20zum%20Apartment"
+                    data-href-de="https://wa.me/PHONE?text=Ich%20habe%20eine%20Frage%20zum%20Apartment"
+                    data-href-it="https://wa.me/PHONE?text=Ho%20una%20domanda%20sull%27appartamento" target="_blank" rel="noopener">
+                    <span data-lang="de">WhatsApp schreiben</span>
+                    <span data-lang="it">Scrivici su WhatsApp</span>
+                </a>
             </div>
         </section>
     </main>
@@ -276,8 +277,15 @@
     <!-- Script for language/theme toggle -->
     <script>
         function setLang(lang) {
+            lang = lang === 'it' ? 'it' : 'de';
             document.documentElement.dataset.language = lang;
+            document.documentElement.lang = lang;
             localStorage.setItem('lang', lang);
+            document.getElementById('langDeA').setAttribute('aria-pressed', lang === 'de');
+            document.getElementById('langItA').setAttribute('aria-pressed', lang === 'it');
+            document.querySelectorAll('.wa-link').forEach(el => {
+                el.href = el.dataset["href" + (lang === 'de' ? 'De' : 'It')];
+            });
         }
         function setTheme(theme) {
             if (theme === 'dark') {
