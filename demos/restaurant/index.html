@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Demo – Website in 48h</title>
-    <!-- Preload hero image to improve LCP -->
-    <link rel="preload" as="image" href="../../assets/img/restaurant-hero.jpg">
+    <!-- Title updated to reflect the TurboSito brand -->
+    <title>Restaurant&nbsp;Demo – TurboSito</title>
+    <!-- Preload the hero image for better LCP and set high priority -->
+    <link rel="preload" as="image" href="../../assets/img/restaurant-hero-1920.jpg" fetchpriority="high">
     <!-- Tailwind via CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
     <meta name="description" content="Demo‑Restaurant: Frische Küche, schnelle Reservierung. Cucina fresca, prenota in un attimo.">
-    <meta property="og:title" content="Restaurant Demo – Website in 48h">
+    <meta property="og:title" content="Restaurant&nbsp;Demo – TurboSito">
     <meta property="og:description" content="Demo‑Restaurant: Frische Küche. Schnelle Reservierung. Cucina fresca. Prenota in un attimo.">
-    <meta property="og:image" content="../../assets/img/restaurant-hero.jpg">
+    <meta property="og:image" content="../../assets/img/restaurant-hero-1920.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{URL}}/demos/restaurant/">
     <style>
@@ -19,15 +20,22 @@
         [data-lang] { display: none; }
         :root[data-language="de"] [data-lang="de"] { display: block; }
         :root[data-language="it"] [data-lang="it"] { display: block; }
+        /* Scroll reveal animation */
+        /* Use a gentler scroll reveal for smoother section appearance */
+        .scroll-reveal { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-[#111827] transition-colors duration-300">
     <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-            <div class="flex items-center space-x-2">
-                <span class="text-lg font-bold" data-lang="de">Restaurant Demo</span>
-                <span class="text-lg font-bold" data-lang="it">Demo Ristorante</span>
-            </div>
+            <!-- Logo with page name: link back to landing page -->
+            <a href="../../landing/" class="flex items-center gap-3">
+                <img src="../../assets/logo/turbosito-logo-ts-bars.svg" alt="TurboSito" class="h-7 w-auto">
+                <!-- Page name in both languages -->
+                <span class="text-lg font-bold" data-lang="de">Restaurant&nbsp;Demo</span>
+                <span class="text-lg font-bold" data-lang="it">Demo&nbsp;Ristorante</span>
+            </a>
             <div class="flex items-center space-x-4">
                 <!-- Language toggle -->
                 <button id="langDe" class="text-sm font-medium hover:underline" onclick="setLang('de')" aria-label="Deutsch">DE</button>
@@ -44,20 +52,33 @@
     </header>
     <main>
         <!-- Hero Section -->
-        <section class="relative">
-            <img src="../../assets/img/restaurant-hero.jpg" alt="Restaurant Hero" class="w-full h-64 sm:h-96 object-cover" width="1920" height="1080">
-            <div class="absolute inset-0 bg-black/30"></div>
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white" data-lang="de">Frische Küche. Schnelle Reservierung.</h1>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white" data-lang="it">Cucina fresca. Prenota in un attimo.</h1>
-                <p class="mt-4 text-lg sm:text-xl text-white" data-lang="de">Genießen Sie regionale Spezialitäten und reservieren Sie bequem per WhatsApp.</p>
-                <p class="mt-4 text-lg sm:text-xl text-white" data-lang="it">Goditi le specialità locali e prenota comodamente via WhatsApp.</p>
-                <a href="https://wa.me/PHONE?text=Ich%20h%C3%A4tte%20gern%20einen%20Tisch%20reserviert" class="mt-6 inline-block px-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" target="_blank" rel="noopener" data-lang="de">WhatsApp anfragen</a>
-                <a href="https://wa.me/PHONE?text=Vorrei%20prenotare%20un%20tavolo" class="mt-6 inline-block px-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" target="_blank" rel="noopener" data-lang="it">Scrivici su WhatsApp</a>
+        <!-- Hero section: give more breathing room on mobile devices -->
+        <!-- Taller hero for improved mobile spacing -->
+        <section class="relative overflow-hidden" style="min-height:90vh;">
+            <!-- Responsive restaurant hero image using <picture> with WebP and JPEG sources -->
+            <picture>
+                <source type="image/webp" srcset="../../assets/img/restaurant-hero-1280.webp 1280w, ../../assets/img/restaurant-hero-1920.webp 1920w" sizes="100vw">
+            <img src="../../assets/img/restaurant-hero-1920.jpg" srcset="../../assets/img/restaurant-hero-1280.jpg 1280w, ../../assets/img/restaurant-hero-1920.jpg 1920w" sizes="100vw" width="1920" height="1080" class="absolute inset-0 w-full h-full object-cover" alt="Gemütlicher Restaurant‑ und Barbereich">
+            </picture>
+            <!-- Slightly darker overlay for improved text legibility -->
+            <!-- Use a lighter overlay for readability while keeping the photo visible -->
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-24 sm:py-32">
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Frische Küche. Schnelle Reservierung.</h1>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Cucina fresca. Prenota in un attimo.</h1>
+                <p class="text-lg sm:text-xl text-white mb-8" data-lang="de">Genießen Sie regionale Spezialitäten und reservieren Sie bequem per WhatsApp.</p>
+                <p class="text-lg sm:text-xl text-white mb-8" data-lang="it">Goditi le specialità locali e prenota comodamente via WhatsApp.</p>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <a href="https://wa.me/PHONE?text=Ich%20h%C3%A4tte%20gern%20einen%20Tisch%20reserviert" class="px-6 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" target="_blank" rel="noopener" data-lang="de">WhatsApp anfragen</a>
+                    <a href="https://wa.me/PHONE?text=Vorrei%20prenotare%20un%20tavolo" class="px-6 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" target="_blank" rel="noopener" data-lang="it">Scrivici su WhatsApp</a>
+                </div>
+                <!-- WhatsApp disclaimer -->
+                <p class="mt-2 text-xs text-white" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
+                <p class="mt-2 text-xs text-white" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
             </div>
         </section>
         <!-- Speisekarte / Menu -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800">
+        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Speisekarte</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Menu</h2>
@@ -90,7 +111,7 @@
             </div>
         </section>
         <!-- Galerie -->
-        <section class="py-12">
+        <section class="py-12 scroll-reveal">
             <div class="max-w-screen-lg mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Galerie</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Galleria</h2>
@@ -106,7 +127,7 @@
             </div>
         </section>
         <!-- Öffnungszeiten / Opening hours -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800">
+        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
             <div class="max-w-screen-sm mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Öffnungszeiten</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Orari di apertura</h2>
@@ -123,7 +144,7 @@
             </div>
         </section>
         <!-- Standort / Location -->
-        <section class="py-12">
+        <section class="py-12 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Standort</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Posizione</h2>
@@ -134,7 +155,7 @@
             </div>
         </section>
         <!-- Bewertungen / Reviews -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800">
+        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Bewertungen</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Recensioni</h2>
@@ -158,14 +179,17 @@
             </div>
         </section>
         <!-- Kontakt -->
-        <section class="py-12">
+        <section class="py-12 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4 text-center">
                 <h2 class="text-2xl font-bold mb-4" data-lang="de">Kontakt</h2>
                 <h2 class="text-2xl font-bold mb-4" data-lang="it">Contatto</h2>
                 <p class="mb-4" data-lang="de">Sie erreichen uns jederzeit per WhatsApp.</p>
                 <p class="mb-4" data-lang="it">Puoi contattarci in qualsiasi momento su WhatsApp.</p>
-                <a href="https://wa.me/PHONE?text=Ich%20habe%20eine%20Frage" class="inline-block px-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" target="_blank" rel="noopener" data-lang="de">WhatsApp schreiben</a>
-                <a href="https://wa.me/PHONE?text=Ho%20una%20domanda" class="inline-block px-6 py-3 bg-green-600 text-white font-semibold rounded hover:bg-green-700" target="_blank" rel="noopener" data-lang="it">Scrivici su WhatsApp</a>
+                <a href="https://wa.me/PHONE?text=Ich%20habe%20eine%20Frage" class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" target="_blank" rel="noopener" data-lang="de">WhatsApp schreiben</a>
+                <a href="https://wa.me/PHONE?text=Ho%20una%20domanda" class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" target="_blank" rel="noopener" data-lang="it">Scrivici su WhatsApp</a>
+                <!-- WhatsApp disclaimer -->
+                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
+                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
             </div>
         </section>
     </main>
@@ -178,8 +202,8 @@
                 <a href="../../legal/privacy.html" class="underline" data-lang="it">Privacy</a>
             </div>
             <div>
-                <small class="text-gray-500" data-lang="de">&copy; 2025 Demo‑Restaurant</small>
-                <small class="text-gray-500" data-lang="it">&copy; 2025 Demo Ristorante</small>
+                <small class="text-gray-500" data-lang="de">&copy; 2025 TurboSito – Restaurant Demo</small>
+                <small class="text-gray-500" data-lang="it">&copy; 2025 TurboSito – Demo Ristorante</small>
             </div>
         </div>
     </footer>
@@ -238,6 +262,22 @@
             setLang(savedLang);
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
+        });
+    </script>
+    <!-- Scroll reveal script: reveals elements when they enter the viewport -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>

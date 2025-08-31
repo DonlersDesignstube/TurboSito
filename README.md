@@ -1,6 +1,6 @@
-# Website in 48h – Projekt‑Dossier
+# TurboSito – Projekt‑Dossier
 
-Dieses Repository enthält alle Assets für das „Website in 48 h“‑Angebot.  Es liefert drei Branchen‑Demos (Restaurant, Friseur/Barber, Ferienwohnung), eine Verkaufs‑Landingpage, rechtliche Seiten, Dankes‑/Abbruchseiten sowie Begleitdokumentation.  Die Seiten sind komplett statisch, verwenden Tailwind CSS via CDN und benötigen keine Build‑Tools.  Alle Seiten sind zweisprachig (Deutsch / Italienisch) und mobil‑optimiert.
+Dieses Repository enthält alle Assets für das „TurboSito“‑Angebot.  Es liefert drei Branchen‑Demos (Restaurant, Friseur/Barber, Ferienwohnung), eine Verkaufs‑Landingpage, rechtliche Seiten, Dankes‑/Abbruchseiten sowie eine vollständige Begleitdokumentation.  Die Seiten sind komplett statisch, verwenden Tailwind CSS via CDN und benötigen keine Build‑Tools.  Alle Seiten sind zweisprachig (Deutsch / Italienisch) und mobil‑optimiert.  Das Branding wurde konsolidiert: Orange `#F97316` wird als Akzentfarbe genutzt und der Dark‑Mode basiert auf `#111827`.
 
 ## Ordnerstruktur
 
@@ -21,6 +21,8 @@ Dieses Repository enthält alle Assets für das „Website in 48 h“‑Angebo
 │   └── privacy.html         # Platzhalter für Datenschutzerklärung/Informativa sulla privacy
 ├── thanks.html              # Erfolgs‑Seite nach Bezahlung (Stripe)
 ├── cancel.html              # Abbruch‑Seite für Payment
+├── sitemap.xml              # XML‑Sitemap für Suchmaschinen
+├── robots.txt               # robots.txt zum Verweis auf die Sitemap
 └── README.md                # Dieses Dossier mit Erläuterungen und Checklisten
 ```
 
@@ -28,7 +30,7 @@ Dieses Repository enthält alle Assets für das „Website in 48 h“‑Angebo
 
 1. **Repository kopieren**: Forken oder herunterladen und in ein eigenes Git‑Repository einchecken.
 2. **Assets anpassen**: Ersetze die Platzhalterbilder in `assets/img/` durch passende Fotos (Achtung: Dateinamen beibehalten oder in den HTML‑Dateien anpassen).  Aktualisiere außerdem die Platzhalterwerte (siehe Variablenliste).
-3. **Form & Payment Links**: Ergänze die `INTAKE_FORM_URL` und `STRIPE_PAYMENT_LINK` im Landing‑Page‑HTML mit echten URLs aus deinem Formular‑ bzw. Stripe‑Setup.
+3. **Form & Payment Links**: Ersetze die Platzhalter `INTAKE_FORM_URL` und `STRIPE_PAYMENT_LINK` im Landing‑Page‑HTML durch echte URLs aus deinem Formular‑ bzw. Stripe‑Setup.
 4. **Netlify einrichten**:
    - Neues Projekt in [Netlify](https://www.netlify.com/) anlegen und dein Git‑Repository verbinden.
    - Build‑Command leer lassen (es ist ein reines HTML‑Projekt).  Als Publish‑Ordner den Root‑Ordner (`/`) wählen.
@@ -38,19 +40,20 @@ Dieses Repository enthält alle Assets für das „Website in 48 h“‑Angebo
 
 ## Variablenliste
 
-Die HTML‑Dateien enthalten mehrere Platzhalter, die vor dem Launch ersetzt werden müssen:
+Die HTML‑Dateien enthalten mehrere Platzhalter, die vor dem Launch ersetzt werden müssen.  Die nachstehende Tabelle fasst alle Variablen zusammen:
 
-| Platzhalter            | Beschreibung                                                          |
-|------------------------|-----------------------------------------------------------------------|
-| `PHONE`               | Telefonnummer inkl. Ländervorwahl für WhatsApp‑Links (`wa.me/…`).      |
-| `ADDRESS`             | Straße und Hausnummer des Unternehmens.                                |
-| `CITY`, `REGION`, `ZIP` | Ort, Region und Postleitzahl für Schema.org und Kontakt.              |
-| `SOCIAL_INSTAGRAM`    | Link zum Instagram‑Profil (oder andere soziale Kanäle).                |
-| `SOCIAL_FACEBOOK`     | Link zur Facebook‑Seite.                                               |
-| `PRIMARY_COLOR`/`SECONDARY_COLOR` | Hex‑Farben für die individuelle Farbgestaltung.            |
-| `LOGO_URL`            | URL oder Pfad zum Logo (optional).                                     |
-| `INTAKE_FORM_URL`     | URL zum eingebetteten Intake‑Formular (Tally/Typeform).                |
-| `STRIPE_PAYMENT_LINK` | Stripe‑Payment‑Link für die Anzahlung im Test‑ oder Live‑Modus.       |
+| Platzhalter             | Beschreibung |
+|-------------------------|-------------|
+| `PHONE`                 | Telefonnummer inkl. Ländervorwahl für WhatsApp‑Links (`wa.me/…`). |
+| `ADDRESS`               | Straße und Hausnummer des Unternehmens. |
+| `CITY` / `REGION` / `ZIP` | Ort, Region und Postleitzahl für Schema.org und Kontakt. |
+| `SOCIAL_INSTAGRAM`      | Link zum Instagram‑Profil (oder andere soziale Kanäle). |
+| `SOCIAL_FACEBOOK`       | Link zur Facebook‑Seite. |
+| `LOGO_URL`              | Optionaler Pfad oder externe URL zum Firmenlogo. |
+| `INTAKE_FORM_URL`       | URL zum eingebetteten Intake‑Formular (Tally/Typeform). |
+| `STRIPE_PAYMENT_LINK`   | Stripe‑Payment‑Link für die Anzahlung (40 %). |
+
+Bei Bedarf können weitere Farben angepasst werden, aber standardmäßig wird die Akzentfarbe Orange (`#F97316`) verwendet.  Der Dark‑Mode basiert auf der Farbe `#111827`.
 
 ## Intake‑Formular
 
@@ -113,9 +116,11 @@ Blende das Formular in deine Seite ein, indem du den folgenden Code verwendest (
 Die Seiten sind bewusst schlank aufgebaut.  Um die Core Web Vitals einzuhalten, sollten folgende Best‑Practices beachtet werden:
 
 * **Largest Contentful Paint (LCP)**: Lade das größte Element (meist das Hero‑Bild) schnell.  Bilder werden daher als `<link rel="preload">` vorab geladen.  Laut Google gilt ein LCP unter 2,5 Sekunden als gut【857787954025474†L171-L176】.
+* **Largest Contentful Paint (LCP)**: Lade das größte Element (meist das Hero‑Bild) schnell.  Alle Heldenbilder nutzen jetzt das `<picture>`‑Element mit WebP und JPEG sowie ein Preload mit `fetchpriority="high"`.  Laut Google gilt ein LCP unter 2,5 Sekunden als gut【857787954025474†L171-L176】.
 * **Cumulative Layout Shift (CLS)**: Alle Bilder besitzen feste `width`/`height`‑Attribute, damit der Platz reserviert wird und es nicht zu Layout‑Verschiebungen kommt.  Ein CLS‑Wert unter 0,1 wird empfohlen【52268135763575†L139-L144】.
 * **Lazy Loading**: Galerie‑Bilder nutzen das Attribut `loading="lazy"`, um erst beim Scrollen geladen zu werden.
 * **Dark Mode & Theme**: Über eine kleine JavaScript‑Funktion wird das `class="dark"`‑Attribut am `<html>`‑Element gesetzt.  Der Nutzer kann den Modus per Button wechseln; die Wahl wird in `localStorage` gespeichert.
+* **Branding & Farben**: Alle CTAs und Key‑Elemente nutzen die Markenfarbe Orange (`#F97316`), und der Dark‑Mode verwendet einen dunklen Basiston (`#111827`).
 * **SEO & Schema.org**: Jede Demo enthält ein JSON‑LD‑Snippet (Restaurant, HairSalon oder LodgingBusiness) mit Name, Adresse, Öffnungszeiten und Social‑Links.  Dies verbessert das Local‑SEO‑Ranking.  Außerdem sind `meta description` und `og:title/description` gesetzt.
 * **Sprachumschaltung**: Die Texte sind per `data-lang`‑Attribut hinterlegt.  Eine kleine Funktion setzt `data-language` im `<html>`‑Tag und blendet die passende Sprache ein.  Dadurch ist kein Reload nötig.
 * **Dateigröße**: Da Tailwind per CDN eingebunden ist und keine Build‑Tools nötig sind, bleiben die Seiten schlank.  Die CSS‑Datei wird auf mobile Geräte zugeschnitten.  Zusätzlich sollten unnötige Klassen entfernt werden, falls eigenständige CSS‑Anpassungen vorgenommen werden.

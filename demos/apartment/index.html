@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferienwohnung Demo – Website in 48h</title>
+    <!-- Title updated to TurboSito brand -->
+    <title>Ferienwohnung Demo – TurboSito</title>
     <link rel="preload" as="image" href="../../assets/img/apartment-hero-1920.jpg" fetchpriority="high">
     <meta property="og:image" content="../../assets/img/apartment-hero-1920.jpg">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
@@ -26,18 +27,25 @@
         :root[data-language="it"] [data-lang="it"] {
             display: block;
         }
+
+        /* Scroll reveal animation */
+        /* Adjust scroll reveal values for a subtler fade-in */
+        .scroll-reveal { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
     </style>
 
 </head>
 
-<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 transition-colors duration-300">
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-[#111827] transition-colors duration-300">
     <header
         class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-            <div class="flex items-center space-x-2">
-                <span class="text-lg font-bold" data-lang="de">Ferienwohnung Demo</span>
-                <span class="text-lg font-bold" data-lang="it">Demo Appartamento</span>
-            </div>
+            <!-- Logo with page name linking to the landing page -->
+            <a href="../../landing/" class="flex items-center gap-3">
+                <img src="../../assets/logo/turbosito-logo-ts-bars.svg" alt="TurboSito" class="h-7 w-auto">
+                <span class="text-lg font-bold" data-lang="de">Ferienwohnung&nbsp;Demo</span>
+                <span class="text-lg font-bold" data-lang="it">Demo&nbsp;Appartamento</span>
+            </a>
             <div class="flex items-center space-x-4">
                 <button id="langDeA" class="text-sm font-medium hover:underline" onclick="setLang('de')"
                     aria-label="Deutsch">DE</button>
@@ -57,7 +65,9 @@
         </div>
     </header>
     <main>
-        <section class="relative">
+        <!-- Hero: increased minimum height for mobile and tablets -->
+        <!-- Increase hero height for mobile to avoid cramped text -->
+        <section class="relative overflow-hidden" style="min-height:90vh;">
             <picture>
               <source type="image/webp"
                       srcset="../../assets/img/apartment-hero-1280.webp 1280w,
@@ -67,22 +77,22 @@
                    srcset="../../assets/img/apartment-hero-1280.jpg 1280w,
                            ../../assets/img/apartment-hero-1920.jpg 1920w"
                    sizes="100vw" width="1920" height="1080"
-                   alt="Moderne Apartment-Fassade mit Balkonen vor blauem Himmel"
-                   class="w-full aspect-[16/9] object-cover">
+                   alt="Gemütliches Wohn‑Esszimmer mit Kamin und Pflanzen"
+                   class="absolute inset-0 w-full h-full object-cover">
             </picture>
-          
-            <div class="absolute inset-0 bg-black/30"></div>
-          
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <h1 class="text-3xl sm:text-5xl font-extrabold text-white" data-lang="de">Wohnen nah am Zentrum.</h1>
-              <h1 class="text-3xl sm:text-5xl font-extrabold text-white" data-lang="it">Alloggio vicino al centro.</h1>
-              <p class="mt-4 text-lg sm:text-xl text-white" data-lang="de">Gemütliches Apartment für Ihren Urlaub in der Stadt.</p>
-              <p class="mt-4 text-lg sm:text-xl text-white" data-lang="it">Accogliente appartamento per la tua vacanza in città.</p>
+            <!-- Darker overlay to enhance text contrast against the bright apartment interior -->
+            <!-- Lighter overlay improves readability and lets the image shine -->
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-24 sm:py-32">
+              <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Wohnen nah am Zentrum.</h1>
+              <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Alloggio vicino al centro.</h1>
+              <p class="text-lg sm:text-xl text-white mb-8" data-lang="de">Gemütliches Apartment für Ihren Urlaub in der Stadt.</p>
+              <p class="text-lg sm:text-xl text-white mb-8" data-lang="it">Accogliente appartamento per la tua vacanza in città.</p>
             </div>
           </section>
           
         <!-- Highlights / Ausstattung -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800">
+        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Ausstattung</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Dotazioni</h2>
@@ -103,7 +113,7 @@
             </div>
         </section>
         <!-- Verfügbarkeit Widget Placeholder -->
-        <section class="py-12">
+        <section class="py-12 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Verfügbarkeit</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Disponibilità</h2>
@@ -139,7 +149,7 @@
             </div>
         </section>
         <!-- Galerie -->
-        <section class="py-12">
+        <section class="py-12 scroll-reveal">
             <div class="max-w-screen-lg mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Galerie</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Galleria</h2>
@@ -170,7 +180,7 @@
             </div>
         </section>
         <!-- Lage / Anreise -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800">
+        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Lage &amp; Anreise</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Posizione &amp; Arrivo</h2>
@@ -185,7 +195,7 @@
             </div>
         </section>
         <!-- Hausregeln / FAQ -->
-        <section class="py-12">
+        <section class="py-12 scroll-reveal">
             <div class="max-w-screen-md mx-auto px-4">
                 <h2 class="text-2xl font-bold mb-6" data-lang="de">Hausregeln &amp; FAQ</h2>
                 <h2 class="text-2xl font-bold mb-6" data-lang="it">Regole della casa &amp; FAQ</h2>
@@ -224,11 +234,14 @@
                 <p class="mb-4" data-lang="de">Stellen Sie Ihre Anfrage oder buchen Sie direkt via WhatsApp.</p>
                 <p class="mb-4" data-lang="it">Invia la tua richiesta o prenota direttamente via WhatsApp.</p>
                 <a href="https://wa.me/PHONE?text=Ich%20habe%20eine%20Frage%20zum%20Apartment"
-                    class="inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700"
+                    class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
                     target="_blank" rel="noopener" data-lang="de">WhatsApp schreiben</a>
                 <a href="https://wa.me/PHONE?text=Ho%20una%20domanda%20sull'appartamento"
-                    class="inline-block px-6 py-3 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700"
+                    class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
                     target="_blank" rel="noopener" data-lang="it">Scrivici su WhatsApp</a>
+                <!-- WhatsApp disclaimer -->
+                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
+                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
             </div>
         </section>
     </main>
@@ -241,8 +254,8 @@
                 <a href="../../legal/privacy.html" class="underline" data-lang="it">Privacy</a>
             </div>
             <div>
-                <small class="text-gray-500" data-lang="de">&copy; 2025 Demo‑Ferienwohnung</small>
-                <small class="text-gray-500" data-lang="it">&copy; 2025 Demo Appartamento</small>
+                <small class="text-gray-500" data-lang="de">&copy; 2025 TurboSito – Demo&nbsp;Ferienwohnung</small>
+                <small class="text-gray-500" data-lang="it">&copy; 2025 TurboSito – Demo&nbsp;Appartamento</small>
             </div>
         </div>
     </footer>
@@ -300,6 +313,22 @@
             setLang(savedLang);
             const savedTheme = localStorage.getItem('theme') || 'light';
             setTheme(savedTheme);
+        });
+    </script>
+    <!-- Scroll reveal script: reveals sections on scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
