@@ -1,49 +1,46 @@
 <!DOCTYPE html>
-<html lang="de" data-language="de">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Website in 48h – TurboSito</title>
-  <meta name="description" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
-  <meta property="og:title" content="Website in 48h – TurboSito">
-  <meta property="og:description" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
+  <title data-i18n="meta_title">Website in 48h – TurboSito</title>
+  <meta name="description" data-i18n-attr="content:meta_desc" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
+  <meta property="og:title" data-i18n-attr="content:meta_title" content="Website in 48h – TurboSito">
+  <meta property="og:description" data-i18n-attr="content:meta_desc" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="../assets/img/turbosito_assets/img/landing-hero.jpg">
   <meta property="og:url" content="{{URL}}/landing/">
-  <link rel="preload" as="image" href="../assets/img/turbosito_assets/img/landing-hero.jpg">
+  <link rel="preload" as="image" href="../assets/img/turbosito_assets/img/landing-hero.jpg" fetchpriority="high">
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
   <style type="text/tailwindcss">
-    [data-lang]{@apply hidden}
-    :root[data-language="de"] [data-lang="de"],
-    :root[data-language="it"] [data-lang="it"]{@apply block}
-    body::before{content:"";@apply fixed inset-0 -z-10;
-      background:radial-gradient(circle at 20% 20%,rgba(99,102,241,.25),transparent 60%),
-                 radial-gradient(circle at 80% 80%,rgba(236,72,153,.25),transparent 60%);
-    }
+    :root{--brand:#4f46e5;--brand-2:#7c3aed;--brand-3:#06b6d4;--bg-1:#0b1220;--text:#0f172a;--radius:14px;--shadow:0 10px 24px rgba(0,0,0,.18)}
+    body::before{content:"";@apply fixed inset-0 -z-10; background:radial-gradient(circle at 20% 20%,rgba(99,102,241,.25),transparent 60%),radial-gradient(circle at 80% 80%,rgba(236,72,153,.25),transparent 60%);}
     .chip{@apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-white/60 border border-indigo-200 backdrop-blur}
     .logo-row svg{@apply h-6 w-auto text-gray-500}
     .btn-primary{@apply inline-flex items-center justify-center px-5 py-3 rounded-md font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500}
     .btn-secondary{@apply inline-flex items-center justify-center px-5 py-3 rounded-md font-semibold text-indigo-600 border border-indigo-600 hover:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500}
     .ghost-card{@apply relative rounded-lg p-4 bg-white/60 border-2 border-dashed border-indigo-200 backdrop-blur-sm shadow-lg transition-opacity}
     .ghost-card::before{content:"";position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(0,0,0,.05) 25%,transparent 25%,transparent 50%,rgba(0,0,0,.05) 50%,rgba(0,0,0,.05) 75%,transparent 75%,transparent);background-size:8px 8px;border-radius:inherit;mix-blend-mode:overlay;pointer-events:none}
-    .ghost-card::after{content:"VORSCHAU";@apply absolute top-1 right-1 text-[10px] tracking-wide bg-indigo-600 text-white px-1 py-0.5 rounded}
+    .preview-badge{@apply absolute top-1 right-1 text-[10px] tracking-wide bg-indigo-600 text-white px-1 py-0.5 rounded}
     .float{animation:float 6s ease-in-out infinite}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
     @media (prefers-reduced-motion:reduce){.float{animation:none}}
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
     .reveal-visible{opacity:1;transform:none}
     #mobile-cta{transition:opacity .3s}
+    .skip-link{@apply sr-only focus:not-sr-only}
   </style>
 </head>
 <body class="font-sans text-gray-800 bg-white">
+  <a href="#hero" class="skip-link" data-i18n="skip">Zum Inhalt springen</a>
   <header id="site-header" class="sticky top-0 z-50 bg-white/80 backdrop-blur">
     <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
       <a href="/" class="flex items-center gap-2">
         <img src="../assets/logo/turbosito-wordmark-mono.svg" alt="TurboSito" class="h-7 w-auto">
       </a>
       <div class="inline-flex rounded-md border overflow-hidden" role="group">
-        <button id="langDe" data-lang-btn="de" aria-pressed="true" class="px-3 py-1 text-sm font-medium bg-indigo-600 text-white" type="button">DE</button>
-        <button id="langIt" data-lang-btn="it" aria-pressed="false" class="px-3 py-1 text-sm font-medium bg-white text-gray-700" type="button">IT</button>
+        <button data-lang-btn="de" aria-pressed="true" class="px-3 py-1 text-sm font-medium bg-indigo-600 text-white" type="button">DE</button>
+        <button data-lang-btn="it" aria-pressed="false" class="px-3 py-1 text-sm font-medium bg-white text-gray-700" type="button">IT</button>
       </div>
     </div>
   </header>
@@ -51,27 +48,19 @@
     <section id="hero" class="relative py-24 overflow-hidden">
       <div class="max-w-screen-xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4">
         <div>
-          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6" data-lang="de">Website in <span class="bg-gradient-to-r from-indigo-500 to-fuchsia-500 bg-clip-text text-transparent">48 Stunden</span>. Fixpreis. Mehr Anfragen – ohne Telefonat.</h1>
-          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6" data-lang="it">Sito web in <span class="bg-gradient-to-r from-indigo-500 to-fuchsia-500 bg-clip-text text-transparent">48 ore</span>. Prezzo fisso. Più richieste – senza telefonate.</h1>
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6" data-i18n="hero_h1">Website in <span class="bg-gradient-to-r from-indigo-500 to-fuchsia-500 bg-clip-text text-transparent">48 Stunden</span>. Fixpreis. Mehr Anfragen – ohne Telefonat.</h1>
           <div class="flex flex-wrap gap-2 mb-6">
-            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"/></svg><span data-lang="de">48h live</span><span data-lang="it">Online in 48h</span></span>
-            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg><span data-lang="de">Fixpreis</span><span data-lang="it">Prezzo fisso</span></span>
-            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg><span data-lang="de">DSGVO-safe</span><span data-lang="it">GDPR-safe</span></span>
+            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"/></svg><span data-i18n="chip_48h">48h live</span></span>
+            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z"/></svg><span data-i18n="chip_fix">Fixpreis</span></span>
+            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/></svg><span data-i18n="chip_dsgvo">DSGVO-safe</span></span>
           </div>
           <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">
-            <a href="#intake" class="btn-primary" data-evt="cta_start">
-              <span data-lang="de">Jetzt starten</span>
-              <span data-lang="it">Inizia ora</span>
-            </a>
-            <a href="#pricing" class="btn-secondary" data-evt="cta_pricing">
-              <span data-lang="de">Preise</span>
-              <span data-lang="it">Prezzi</span>
-            </a>
+            <a href="#intake" class="btn-primary" data-evt="cta_start"><span data-i18n="cta_start">Jetzt starten</span></a>
+            <a href="#pricing" class="btn-secondary" data-evt="cta_pricing"><span data-i18n="cta_prices">Preise</span></a>
           </div>
           <div class="mb-10">
             <a href="#examples" class="inline-flex items-center text-sm text-indigo-600 hover:translate-x-1 transition-transform" data-evt="demo_click">
-              <span data-lang="de">3 Demos ansehen</span>
-              <span data-lang="it">Guarda 3 demo</span>
+              <span data-i18n="demo_link">3 Demos ansehen</span>
               <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd"/></svg>
             </a>
           </div>
@@ -84,56 +73,37 @@
           </div>
         </div>
         <div class="pointer-events-none" aria-hidden="true">
-          <div class="ghost-card float mb-6">
-            <p class="text-sm font-medium">★★★★★</p>
-            <p class="text-xs text-gray-600">„Schnell und sauber umgesetzt!“</p>
-          </div>
-          <div class="ghost-card float mb-6">
-            <p class="text-sm font-medium">WhatsApp</p>
-            <p class="text-xs text-gray-600">Kunde: „Ciao, wir brauchen eine Website...“</p>
-          </div>
-          <div class="ghost-card float">
-            <p class="text-sm font-medium">Lead‑Vorschau</p>
-            <p class="text-xs text-gray-600">mario@example.com</p>
-          </div>
+          <div class="ghost-card float mb-6"><span class="preview-badge" data-i18n="badge_preview">VORSCHAU</span><p class="text-sm font-medium" data-i18n="ghost_review_title">★★★★★</p><p class="text-xs text-gray-600" data-i18n="ghost_review_body">„Schnell und sauber umgesetzt!“</p></div>
+          <div class="ghost-card float mb-6"><span class="preview-badge" data-i18n="badge_preview">VORSCHAU</span><p class="text-sm font-medium" data-i18n="ghost_whatsapp_title">WhatsApp</p><p class="text-xs text-gray-600" data-i18n="ghost_whatsapp_body">Kunde: „Ciao, wir brauchen eine Website...“</p></div>
+          <div class="ghost-card float"><span class="preview-badge" data-i18n="badge_preview">VORSCHAU</span><p class="text-sm font-medium" data-i18n="ghost_lead_title">Lead‑Vorschau</p><p class="text-xs text-gray-600" data-i18n="ghost_lead_body">mario@example.com</p></div>
         </div>
       </div>
     </section>
     <section id="pricing" class="py-16" data-reveal>
       <div class="max-w-screen-xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12" data-lang="de">Pakete</h2>
-        <h2 class="text-3xl font-bold text-center mb-12" data-lang="it">Pacchetti</h2>
+        <h2 class="text-3xl font-bold text-center mb-12" data-i18n="pricing_title">Pakete</h2>
         <div class="grid md:grid-cols-2 gap-8">
           <div class="relative p-6 border rounded-lg shadow-lg scale-105 bg-white">
-            <span class="absolute -top-3 right-3 bg-indigo-600 text-white text-xs px-2 py-0.5 rounded" data-lang="de">Top Seller</span>
-            <span class="absolute -top-3 right-3 bg-indigo-600 text-white text-xs px-2 py-0.5 rounded" data-lang="it">Più scelto</span>
-            <h3 class="text-xl font-semibold mb-4" data-lang="de">Standard</h3>
-            <h3 class="text-xl font-semibold mb-4" data-lang="it">Standard</h3>
+            <span class="absolute -top-3 right-3 bg-indigo-600 text-white text-xs px-2 py-0.5 rounded" data-i18n="standard_badge">Top Seller</span>
+            <h3 class="text-xl font-semibold mb-4" data-i18n="package_standard">Standard</h3>
             <ul class="space-y-2">
-              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-lang="de">1 Seite, DE/IT</span><span data-lang="it">1 pagina, DE/IT</span></li>
-              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-lang="de">1 Änderungsrunde</span><span data-lang="it">1 revisione</span></li>
-              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-lang="de">Hosting‑Setup</span><span data-lang="it">Setup hosting</span></li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="standard_feat1">1 Seite, DE/IT</span></li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="standard_feat2">1 Änderungsrunde</span></li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="standard_feat3">Hosting‑Setup</span></li>
             </ul>
             <div class="mt-6 flex flex-col gap-3">
-              <a href="#intake" class="btn-primary w-full" data-evt="cta_start">
-                <span data-lang="de">Jetzt starten</span>
-                <span data-lang="it">Inizia ora</span>
-              </a>
+              <a href="#intake" class="btn-primary w-full" data-evt="cta_start"><span data-i18n="cta_start">Jetzt starten</span></a>
             </div>
           </div>
           <div class="p-6 border rounded-lg">
-            <h3 class="text-xl font-semibold mb-4" data-lang="de">Pro</h3>
-            <h3 class="text-xl font-semibold mb-4" data-lang="it">Pro</h3>
+            <h3 class="text-xl font-semibold mb-4" data-i18n="package_pro">Pro</h3>
             <ul class="space-y-2">
-              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-lang="de">Bis 5 Seiten</span><span data-lang="it">Fino a 5 pagine</span></li>
-              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-lang="de">3 Änderungsrunden</span><span data-lang="it">3 revisioni</span></li>
-              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-lang="de">Mehrsprachig</span><span data-lang="it">Multilingua</span></li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="pro_feat1">Bis 5 Seiten</span></li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="pro_feat2">3 Änderungsrunden</span></li>
+              <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="pro_feat3">Mehrsprachig</span></li>
             </ul>
             <div class="mt-6 flex flex-col gap-3">
-              <a href="#intake" class="btn-secondary w-full" data-evt="cta_pricing">
-                <span data-lang="de">Anfrage senden</span>
-                <span data-lang="it">Invia richiesta</span>
-              </a>
+              <a href="#intake" class="btn-secondary w-full" data-evt="cta_pricing"><span data-i18n="cta_inquiry">Anfrage senden</span></a>
             </div>
           </div>
         </div>
@@ -141,170 +111,88 @@
     </section>
     <section id="examples" class="py-16 bg-gray-50" data-reveal>
       <div class="max-w-screen-xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12" data-lang="de">Beispiele</h2>
-        <h2 class="text-3xl font-bold text-center mb-12" data-lang="it">Esempi</h2>
+        <h2 class="text-3xl font-bold text-center mb-12" data-i18n="examples_title">Beispiele</h2>
         <div class="grid md:grid-cols-3 gap-8">
           <a href="../demos/apartment/" class="block rounded-lg overflow-hidden shadow transition-transform hover:-translate-y-1 hover:shadow-lg">
-            <img src="../assets/img/turbosito_assets/img/apartment-hero.jpg" alt="Ferienwohnung Demo" width="600" height="400" loading="lazy" decoding="async" class="w-full h-40 object-cover">
-            <div class="p-4">
-              <h3 class="font-semibold" data-lang="de">Ferienwohnung</h3>
-              <h3 class="font-semibold" data-lang="it">Appartamento</h3>
-            </div>
+            <img src="../assets/img/turbosito_assets/img/apartment-hero.jpg" width="600" height="400" loading="lazy" decoding="async" class="w-full h-40 object-cover" alt="Ferienwohnung Demo" data-i18n-attr="alt:alt_apartment">
+            <div class="p-4"><h3 class="font-semibold" data-i18n="example_apartment">Ferienwohnung</h3></div>
           </a>
           <a href="../demos/barber/" class="block rounded-lg overflow-hidden shadow transition-transform hover:-translate-y-1 hover:shadow-lg">
-            <img src="../assets/img/turbosito_assets/img/barber-hero.jpg" alt="Barbershop Demo" width="600" height="400" loading="lazy" decoding="async" class="w-full h-40 object-cover">
-            <div class="p-4">
-              <h3 class="font-semibold" data-lang="de">Barbershop</h3>
-              <h3 class="font-semibold" data-lang="it">Barbiere</h3>
-            </div>
+            <img src="../assets/img/turbosito_assets/img/barber-hero.jpg" width="600" height="400" loading="lazy" decoding="async" class="w-full h-40 object-cover" alt="Barbershop Demo" data-i18n-attr="alt:alt_barber">
+            <div class="p-4"><h3 class="font-semibold" data-i18n="example_barber">Barbershop</h3></div>
           </a>
           <a href="../demos/restaurant/" class="block rounded-lg overflow-hidden shadow transition-transform hover:-translate-y-1 hover:shadow-lg">
-            <img src="../assets/img/turbosito_assets/img/restaurant-hero.jpg" alt="Restaurant Demo" width="600" height="400" loading="lazy" decoding="async" class="w-full h-40 object-cover">
-            <div class="p-4">
-              <h3 class="font-semibold" data-lang="de">Restaurant</h3>
-              <h3 class="font-semibold" data-lang="it">Ristorante</h3>
-            </div>
+            <img src="../assets/img/turbosito_assets/img/restaurant-hero.jpg" width="600" height="400" loading="lazy" decoding="async" class="w-full h-40 object-cover" alt="Restaurant Demo" data-i18n-attr="alt:alt_restaurant">
+            <div class="p-4"><h3 class="font-semibold" data-i18n="example_restaurant">Restaurant</h3></div>
           </a>
         </div>
-        <p class="mt-6 text-sm text-gray-600" data-lang="de">Klicke auf ein Beispiel, um die Live‑Demo zu sehen.</p>
-        <p class="mt-6 text-sm text-gray-600" data-lang="it">Clicca su un esempio per vedere la demo live.</p>
+        <p class="mt-6 text-sm text-gray-600" data-i18n="examples_hint">Klicke auf ein Beispiel, um die Live‑Demo zu sehen.</p>
       </div>
     </section>
     <section id="faq" class="py-16" data-reveal>
       <div class="max-w-screen-lg mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-8" data-lang="de">Häufige Fragen</h2>
-        <h2 class="text-3xl font-bold text-center mb-8" data-lang="it">Domande frequenti</h2>
+        <h2 class="text-3xl font-bold text-center mb-8" data-i18n="faq_title">Häufige Fragen</h2>
         <div class="space-y-4">
           <details class="border rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold flex justify-between items-center">
-              <span data-lang="de">Was beinhaltet die Lieferung?</span>
-              <span data-lang="it">Cosa include la consegna?</span>
-            </summary>
-            <p class="mt-2 text-sm text-gray-600" data-lang="de">Eine fertige Website, optimiert für Mobilgeräte und SEO.</p>
-            <p class="mt-2 text-sm text-gray-600" data-lang="it">Un sito completo, ottimizzato per mobile e SEO.</p>
+            <summary class="cursor-pointer font-semibold flex justify-between items-center" data-i18n="faq_q1">Was beinhaltet die Lieferung?</summary>
+            <p class="mt-2 text-sm text-gray-600" data-i18n="faq_a1">Eine fertige Website, optimiert für Mobilgeräte und SEO.</p>
           </details>
           <details class="border rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold flex justify-between items-center">
-              <span data-lang="de">Wie viele Änderungsrunden sind inklusive?</span>
-              <span data-lang="it">Quante revisioni sono incluse?</span>
-            </summary>
-            <p class="mt-2 text-sm text-gray-600" data-lang="de">Je nach Paket 1–3 Runden.</p>
-            <p class="mt-2 text-sm text-gray-600" data-lang="it">A seconda del pacchetto 1–3 revisioni.</p>
+            <summary class="cursor-pointer font-semibold flex justify-between items-center" data-i18n="faq_q2">Wie viele Änderungsrunden sind inklusive?</summary>
+            <p class="mt-2 text-sm text-gray-600" data-i18n="faq_a2">Je nach Paket 1–3 Runden.</p>
           </details>
           <details class="border rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold flex justify-between items-center">
-              <span data-lang="de">Muss ich Hosting bereitstellen?</span>
-              <span data-lang="it">Devo fornire l'hosting?</span>
-            </summary>
-            <p class="mt-2 text-sm text-gray-600" data-lang="de">Wir helfen bei Domain &amp; Hosting (z. B. Netlify).</p>
-            <p class="mt-2 text-sm text-gray-600" data-lang="it">Ti aiutiamo con dominio e hosting (es. Netlify).</p>
+            <summary class="cursor-pointer font-semibold flex justify-between items-center" data-i18n="faq_q3">Muss ich Hosting bereitstellen?</summary>
+            <p class="mt-2 text-sm text-gray-600" data-i18n="faq_a3">Wir helfen bei Domain &amp; Hosting (z. B. Netlify).</p>
           </details>
           <details class="border rounded-lg p-4">
-            <summary class="cursor-pointer font-semibold flex justify-between items-center">
-              <span data-lang="de">Wann ist die Bezahlung fällig?</span>
-              <span data-lang="it">Quando si paga?</span>
-            </summary>
-            <p class="mt-2 text-sm text-gray-600" data-lang="de">40 % Anzahlung bei Auftrag, Rest bei Übergabe.</p>
-            <p class="mt-2 text-sm text-gray-600" data-lang="it">40 % di acconto all'ordine, saldo alla consegna.</p>
+            <summary class="cursor-pointer font-semibold flex justify-between items-center" data-i18n="faq_q4">Wann ist die Bezahlung fällig?</summary>
+            <p class="mt-2 text-sm text-gray-600" data-i18n="faq_a4">40 % Anzahlung bei Auftrag, Rest bei Übergabe.</p>
           </details>
         </div>
       </div>
     </section>
     <section id="intake" class="py-16 bg-gray-50" data-reveal>
       <div class="max-w-screen-md mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4" data-lang="de">Bereit für deine Website?</h2>
-        <h2 class="text-3xl font-bold mb-4" data-lang="it">Pronto per il tuo sito?</h2>
-        <p class="mb-6" data-lang="de">Fülle unser kurzes Intake‑Formular aus und leiste eine Anzahlung – der Rest wird erledigt!</p>
-        <p class="mb-6" data-lang="it">Compila il nostro breve modulo e versa un acconto – al resto pensiamo noi!</p>
+        <h2 class="text-3xl font-bold mb-4" data-i18n="intake_title">Bereit für deine Website?</h2>
+        <p class="mb-6" data-i18n="intake_copy">Fülle unser kurzes Intake‑Formular aus und leiste eine Anzahlung – der Rest wird erledigt!</p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="INTAKE_FORM_URL" class="btn-primary" data-evt="cta_start">
-            <span data-lang="de">Intake starten</span>
-            <span data-lang="it">Avvia il modulo</span>
-          </a>
-          <a href="STRIPE_PAYMENT_LINK" class="btn-secondary" data-evt="cta_deposit">
-            <span data-lang="de">Anzahlung leisten</span>
-            <span data-lang="it">Versa l'acconto</span>
-          </a>
+          <a href="INTAKE_FORM_URL" class="btn-primary" data-evt="cta_start"><span data-i18n="cta_intake">Intake starten</span></a>
+          <a href="STRIPE_PAYMENT_LINK" class="btn-secondary" data-evt="cta_deposit"><span data-i18n="cta_deposit">Anzahlung leisten</span></a>
         </div>
-        <p class="mt-4 text-xs text-gray-500" data-lang="de">Kein Tracking, keine Cookies – DSGVO‑konform.</p>
-        <p class="mt-4 text-xs text-gray-500" data-lang="it">Nessun tracking, nessun cookie – conforme GDPR.</p>
+        <p class="mt-4 text-xs text-gray-500" data-i18n="gdpr_note">Kein Tracking, keine Cookies – DSGVO‑konform.</p>
       </div>
     </section>
   </main>
   <footer class="py-8 text-center text-sm bg-white" data-reveal>
     <div class="flex justify-center gap-6 mb-4">
-      <a href="../legal/impressum.html" class="underline" data-lang="de">Impressum</a>
-      <a href="../legal/privacy.html" class="underline" data-lang="de">Datenschutz</a>
-      <a href="../legal/impressum.html" class="underline" data-lang="it">Note legali</a>
-      <a href="../legal/privacy.html" class="underline" data-lang="it">Privacy</a>
+      <a href="../legal/impressum.html" class="underline" data-i18n="footer_imprint">Impressum</a>
+      <a href="../legal/privacy.html" class="underline" data-i18n="footer_privacy">Datenschutz</a>
     </div>
-    <div>
-      <span data-lang="de">&copy; 2025 TurboSito</span>
-      <span data-lang="it">&copy; 2025 TurboSito</span>
-    </div>
+    <div><span data-i18n="footer_copy">&copy; 2025 TurboSito</span></div>
   </footer>
   <div id="mobile-cta" class="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur shadow-lg flex gap-3 md:hidden opacity-0 pointer-events-none">
-    <a href="#intake" class="btn-primary flex-1" data-evt="cta_start">
-      <span data-lang="de">Jetzt starten</span>
-      <span data-lang="it">Inizia ora</span>
-    </a>
-    <a href="#pricing" class="btn-secondary flex-1" data-evt="cta_pricing">
-      <span data-lang="de">Preise</span>
-      <span data-lang="it">Prezzi</span>
-    </a>
+    <a href="#intake" class="btn-primary flex-1" data-evt="cta_start"><span data-i18n="cta_start">Jetzt starten</span></a>
+    <a href="#pricing" class="btn-secondary flex-1" data-evt="cta_pricing"><span data-i18n="cta_prices">Preise</span></a>
   </div>
   <script>
+    const I18N={de:{meta_title:"Website in 48h – TurboSito",meta_desc:"Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.",skip:"Zum Inhalt springen",hero_h1:"Website in <span class=\"bg-gradient-to-r from-indigo-500 to-fuchsia-500 bg-clip-text text-transparent\">48 Stunden</span>. Fixpreis. Mehr Anfragen – ohne Telefonat.",chip_48h:"48h live",chip_fix:"Fixpreis",chip_dsgvo:"DSGVO-safe",cta_start:"Jetzt starten",cta_prices:"Preise",demo_link:"3 Demos ansehen",badge_preview:"VORSCHAU",ghost_review_title:"★★★★★",ghost_review_body:"\u201eSchnell und sauber umgesetzt!\u201c",ghost_whatsapp_title:"WhatsApp",ghost_whatsapp_body:"Kunde: \u201eCiao, wir brauchen eine Website...\u201c",ghost_lead_title:"Lead\u2011Vorschau",ghost_lead_body:"mario@example.com",pricing_title:"Pakete",standard_badge:"Top Seller",package_standard:"Standard",standard_feat1:"1 Seite, DE/IT",standard_feat2:"1 Änderungsrunde",standard_feat3:"Hosting\u2011Setup",package_pro:"Pro",pro_feat1:"Bis 5 Seiten",pro_feat2:"3 Änderungsrunden",pro_feat3:"Mehrsprachig",cta_inquiry:"Anfrage senden",examples_title:"Beispiele",example_apartment:"Ferienwohnung",example_barber:"Barbershop",example_restaurant:"Restaurant",alt_apartment:"Ferienwohnung Demo",alt_barber:"Barbershop Demo",alt_restaurant:"Restaurant Demo",examples_hint:"Klicke auf ein Beispiel, um die Live\u2011Demo zu sehen.",faq_title:"Häufige Fragen",faq_q1:"Was beinhaltet die Lieferung?",faq_a1:"Eine fertige Website, optimiert für Mobilgeräte und SEO.",faq_q2:"Wie viele Änderungsrunden sind inklusive?",faq_a2:"Je nach Paket 1\u20133 Runden.",faq_q3:"Muss ich Hosting bereitstellen?",faq_a3:"Wir helfen bei Domain &amp; Hosting (z. B. Netlify).",faq_q4:"Wann ist die Bezahlung fällig?",faq_a4:"40\u202f% Anzahlung bei Auftrag, Rest bei Übergabe.",intake_title:"Bereit für deine Website?",intake_copy:"Fülle unser kurzes Intake\u2011Formular aus und leiste eine Anzahlung \u2013 der Rest wird erledigt!",cta_intake:"Intake starten",cta_deposit:"Anzahlung leisten",gdpr_note:"Kein Tracking, keine Cookies \u2013 DSGVO\u2011konform.",footer_imprint:"Impressum",footer_privacy:"Datenschutz",footer_copy:"&copy; 2025 TurboSito"},it:{meta_title:"Sito web in 48h \u2013 TurboSito",meta_desc:"Sito web in 48 ore. Prezzo fisso. Pi\u00f9 richieste \u2013 senza telefonate.",skip:"Vai al contenuto",hero_h1:"Sito web in <span class=\"bg-gradient-to-r from-indigo-500 to-fuchsia-500 bg-clip-text text-transparent\">48 ore</span>. Prezzo fisso. Pi\u00f9 richieste \u2013 senza telefonate.",chip_48h:"Online in 48h",chip_fix:"Prezzo fisso",chip_dsgvo:"GDPR-safe",cta_start:"Inizia ora",cta_prices:"Prezzi",demo_link:"Guarda 3 demo",badge_preview:"ANTEPRIMA",ghost_review_title:"★★★★★",ghost_review_body:"\u201cVeloce e pulito!\u201d",ghost_whatsapp_title:"WhatsApp",ghost_whatsapp_body:"Cliente: \u201cCiao, ci serve un sito\u2026\u201d",ghost_lead_title:"Anteprima lead",ghost_lead_body:"mario@example.com",pricing_title:"Pacchetti",standard_badge:"Pi\u00f9 scelto",package_standard:"Standard",standard_feat1:"1 pagina, DE/IT",standard_feat2:"1 revisione",standard_feat3:"Setup hosting",package_pro:"Pro",pro_feat1:"Fino a 5 pagine",pro_feat2:"3 revisioni",pro_feat3:"Multilingua",cta_inquiry:"Invia richiesta",examples_title:"Esempi",example_apartment:"Appartamento",example_barber:"Barbiere",example_restaurant:"Ristorante",alt_apartment:"Demo appartamento",alt_barber:"Demo barbiere",alt_restaurant:"Demo ristorante",examples_hint:"Clicca su un esempio per vedere la demo live.",faq_title:"Domande frequenti",faq_q1:"Cosa include la consegna?",faq_a1:"Un sito completo, ottimizzato per mobile e SEO.",faq_q2:"Quante revisioni sono incluse?",faq_a2:"A seconda del pacchetto 1\u20133 revisioni.",faq_q3:"Devo fornire l'hosting?",faq_a3:"Ti aiutiamo con dominio e hosting (es. Netlify).",faq_q4:"Quando si paga?",faq_a4:"40\u202f% di acconto all'ordine, saldo alla consegna.",intake_title:"Pronto per il tuo sito?",intake_copy:"Compila il nostro breve modulo e versa un acconto \u2013 al resto pensiamo noi!",cta_intake:"Avvia il modulo",cta_deposit:"Versa l'acconto",gdpr_note:"Nessun tracking, nessun cookie \u2013 conforme GDPR.",footer_imprint:"Note legali",footer_privacy:"Privacy",footer_copy:"&copy; 2025 TurboSito"}};
     const root=document.documentElement;
     const langBtns=document.querySelectorAll('[data-lang-btn]');
-    function setLang(lang){
-      lang=lang==='it'?'it':'de';
-      root.dataset.language=lang;
-      localStorage.setItem('lang',lang);
-      langBtns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.langBtn===lang));
-    }
-    langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.langBtn)));
-    setLang(localStorage.getItem('lang'));
-
+    function applyI18n(lang){document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n; if(I18N[lang]&&I18N[lang][k]!==undefined) el.innerHTML=I18N[lang][k];});document.querySelectorAll('[data-i18n-attr]').forEach(el=>{el.dataset.i18nAttr.split(';').forEach(p=>{const[a,k]=p.split(':');if(I18N[lang][k]!==undefined) el.setAttribute(a,I18N[lang][k]);});});}
+    function setLang(lang){lang=lang==='it'?'it':'de';root.lang=lang;localStorage.setItem('lang',lang);langBtns.forEach(b=>b.setAttribute('aria-pressed',b.dataset.langBtn===lang));applyI18n(lang);}langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.langBtn)));setLang(localStorage.getItem('lang'));
     document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');const t=document.querySelector(id);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}},false));
-
-    const header=document.getElementById('site-header');
-    window.addEventListener('scroll',()=>{header.classList.toggle('shadow',window.scrollY>0);},{passive:true});
-
-    const revealObserver=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('reveal-visible');revealObserver.unobserve(en.target);}})},{threshold:0.1});
-    document.querySelectorAll('[data-reveal]').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el);});
-
-    const hero=document.getElementById('hero');
-    const intake=document.getElementById('intake');
-    const footer=document.querySelector('footer');
-    const mobileCta=document.getElementById('mobile-cta');
-    const ghostCards=document.querySelectorAll('.ghost-card');
-    let heroIn=true,intakeIn=false,footerIn=false;
-    function updateMobile(){const show=!heroIn && !intakeIn && !footerIn;mobileCta.classList.toggle('opacity-100',show);mobileCta.classList.toggle('pointer-events-none',!show);}
-    const io=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.target===hero){heroIn=en.isIntersecting;ghostCards.forEach(c=>c.classList.toggle('opacity-0',!heroIn));}if(en.target===intake){intakeIn=en.isIntersecting;}if(en.target===footer){footerIn=en.isIntersecting;}});updateMobile();});
-    io.observe(hero);io.observe(intake);io.observe(footer);
-
+    const header=document.getElementById('site-header');window.addEventListener('scroll',()=>{header.classList.toggle('shadow',window.scrollY>0);},{passive:true});
+    const revealObserver=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('reveal-visible');revealObserver.unobserve(en.target);}})},{threshold:0.1});document.querySelectorAll('[data-reveal]').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el);});
+    const hero=document.getElementById('hero');const intake=document.getElementById('intake');const footer=document.querySelector('footer');const mobileCta=document.getElementById('mobile-cta');const ghostCards=document.querySelectorAll('.ghost-card');let heroIn=true,intakeIn=false,footerIn=false;function updateMobile(){const show=!heroIn&&!intakeIn&&!footerIn;mobileCta.classList.toggle('opacity-100',show);mobileCta.classList.toggle('pointer-events-none',!show);}const io=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.target===hero){heroIn=en.isIntersecting;ghostCards.forEach(c=>c.classList.toggle('opacity-0',!heroIn));}if(en.target===intake){intakeIn=en.isIntersecting;}if(en.target===footer){footerIn=en.isIntersecting;}});updateMobile();});io.observe(hero);io.observe(intake);io.observe(footer);
     document.querySelectorAll('[data-evt]').forEach(el=>el.addEventListener('click',()=>console.log('evt',el.dataset.evt)));
+    const allKeys=Object.keys(I18N.de);const nodes=document.querySelectorAll('[data-i18n],[data-i18n-attr]');console.table({nodes:nodes.length,keys:allKeys.length});
   </script>
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"TurboSito",
-    "url":"{{URL}}/landing/",
-    "logo":"{{URL}}/assets/logo/turbosito-wordmark-mono.svg"
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"TurboSito","url":"{{URL}}/landing/","logo":"{{URL}}/assets/logo/turbosito-wordmark-mono.svg"}
   </script>
   <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Was beinhaltet die Lieferung?","acceptedAnswer":{"@type":"Answer","text":"Eine fertige Website, optimiert für Mobilgeräte und SEO."}},
-      {"@type":"Question","name":"Wie viele Änderungsrunden sind inklusive?","acceptedAnswer":{"@type":"Answer","text":"Je nach Paket 1–3 Runden."}},
-      {"@type":"Question","name":"Muss ich Hosting bereitstellen?","acceptedAnswer":{"@type":"Answer","text":"Wir helfen bei Domain & Hosting (z. B. Netlify)."}},
-      {"@type":"Question","name":"Wann ist die Bezahlung fällig?","acceptedAnswer":{"@type":"Answer","text":"40 % Anzahlung bei Auftrag, Rest bei Übergabe."}}
-    ]
-  }
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Was beinhaltet die Lieferung?","acceptedAnswer":{"@type":"Answer","text":"Eine fertige Website, optimiert für Mobilgeräte und SEO."}},{"@type":"Question","name":"Wie viele Änderungsrunden sind inklusive?","acceptedAnswer":{"@type":"Answer","text":"Je nach Paket 1–3 Runden."}},{"@type":"Question","name":"Muss ich Hosting bereitstellen?","acceptedAnswer":{"@type":"Answer","text":"Wir helfen bei Domain & Hosting (z. B. Netlify)."}},{"@type":"Question","name":"Wann ist die Bezahlung fällig?","acceptedAnswer":{"@type":"Answer","text":"40 % Anzahlung bei Auftrag, Rest bei Übergabe."}}]}
   </script>
 </body>
 </html>
