@@ -1,5 +1,6 @@
+<!-- BEGIN PART 1/3 -->
 <!DOCTYPE html>
-<html data-language="de" lang="de" class="scroll-smooth">
+<html data-language="de" lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +10,7 @@
         fetchpriority="high">
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
   <meta name="description"
-        content="Ferienwohnung Beispiel mit hochwertiger Ausstattung">
+        content="Exklusive Ferienwohnung in zentraler Lage">
   <meta property="og:title"
         content="Ferienwohnung Demo – TurboSito">
   <meta property="og:description"
@@ -19,239 +20,508 @@
   <meta property="og:type" content="website">
   <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Apartment",
-  "name": "Ferienwohnung Demo",
-  "image": "https://example.com/assets/img/apartment-hero-1920.jpg",
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "EUR"
-  },
-  "areaServed": ["DE", "IT"],
-  "availableLanguage": ["German", "Italian"]
+  "@context":"https://schema.org",
+  "@type":"Apartment",
+  "name":"Ferienwohnung Demo",
+  "image":"https://example.com/assets/img/apartment-hero-1920.jpg",
+  "address":{"@type":"PostalAddress","addressLocality":"Musterstadt"},
+  "offers":{"@type":"Offer","priceCurrency":"EUR"},
+  "areaServed":["DE","IT"],
+  "availableLanguage":["German","Italian"],
+  "contactPoint":{"@type":"ContactPoint","telephone":"+49123456",
+                  "contactType":"customer service"}
 }
   </script>
   <style>
-    [data-lang]{
-      display:none
-    }
-    :root[data-language="de"] [data-lang="de"],
-    :root[data-language="it"] [data-lang="it"]{
-      display:block
-    }
+    [data-lang]{display:none}
+    :root[data-language="de"] [data-lang="de"]{display:block}
+    :root[data-language="it"] [data-lang="it"]{display:block}
     .aurora{
       background:
-        radial-gradient(at 40% 20%,
-                        rgba(91,92,225,0.15),
-                        transparent 70%),
-        radial-gradient(at 80% 0%,
-                        rgba(6,182,212,0.2),
-                        transparent 60%)
+        radial-gradient(at 20% 20%,rgba(91,92,225,.15),transparent 60%),
+        radial-gradient(at 80% 0%,rgba(6,182,212,.15),transparent 50%)
     }
-    .glass{
-      backdrop-filter:blur(12px)
-    }
+    .glass{backdrop-filter:blur(12px)}
     @media (prefers-reduced-motion:no-preference){
-      .reveal{
-        opacity:0;
-        transform:translateY(1rem);
-        transition:opacity .4s,transform .4s
-      }
-      .reveal.show{
-        opacity:1;
-        transform:none
-      }
+      .scroll-reveal{opacity:0;transform:translateY(.75rem);
+        transition:opacity .6s,transform .6s}
+      .scroll-reveal.show{opacity:1;transform:none}
     }
+    #stickyBar{transition:transform .4s}
+    #stickyBar.hide{transform:translateY(100%)}
   </style>
 </head>
 <body class="font-sans text-gray-900 bg-white">
-  <header class="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur shadow">
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
     <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
       <a href="/" class="text-xl font-semibold">TurboSito</a>
-      <div class="flex gap-2" role="group" aria-label="Language Switch">
-        <button id="langDe"
-                class="px-3 py-1 rounded-full border" aria-pressed="true"
-                data-set-lang="de">DE</button>
-        <button id="langIt"
-                class="px-3 py-1 rounded-full border" aria-pressed="false"
-                data-set-lang="it">IT</button>
+      <div class="flex rounded-full border overflow-hidden"
+           role="group" aria-label="Language switch">
+        <button id="langDe" class="px-3 py-1 text-sm"
+                aria-pressed="true" data-set-lang="de">DE</button>
+        <button id="langIt" class="px-3 py-1 text-sm"
+                aria-pressed="false" data-set-lang="it">IT</button>
       </div>
     </div>
+    <nav aria-label="Breadcrumb"
+         class="max-w-6xl mx-auto px-4 pb-2 text-sm text-gray-600">
+      <ol class="flex gap-2">
+        <li><a href="/" class="underline">Start</a></li>
+        <li>/</li>
+        <li><a href="/demos" class="underline">Beispiele</a></li>
+        <li>/</li>
+        <li>Ferienwohnung</li>
+      </ol>
+    </nav>
   </header>
-  <main class="mt-20">
+  <main>
     <section class="relative">
       <picture>
         <source type="image/webp"
-                srcset="../../assets/img/apartment-hero-1920.webp">
+                srcset="../../assets/img/apartment-hero-1280.webp 1280w,
+                        ../../assets/img/apartment-hero-1920.webp 1920w"
+                sizes="100vw">
         <img src="../../assets/img/apartment-hero-1920.jpg"
-             alt="Fassade des Apartments"
-             class="w-full h-[60vh] object-cover">
+             width="1920" height="1080"
+             alt="Moderne Ferienwohnung Fassade"
+             class="w-full h-[70vh] object-cover"
+             decoding="async">
       </picture>
       <div class="absolute inset-0 bg-gradient-to-t
-                  from-black/60 to-transparent"></div>
+                  from-black/70 to-transparent"></div>
       <div class="absolute inset-0 flex flex-col justify-center
                   max-w-3xl mx-auto p-6 text-white">
-        <h1 class="text-4xl font-bold mb-4" data-lang="de">
-          Stilvolle Ferienwohnung im Zentrum
+        <h1 class="text-4xl font-bold mb-4 leading-tight md:text-5xl"
+            data-lang="de">
+          Luxuriöse Ferienwohnung im Herzen der Stadt
         </h1>
-        <h1 class="text-4xl font-bold mb-4" data-lang="it">
-          Elegante appartamento in centro
+        <h1 class="text-4xl font-bold mb-4 leading-tight md:text-5xl"
+            data-lang="it">
+          Appartamento di lusso nel cuore della città
         </h1>
-        <p class="mb-6 text-lg" data-lang="de">
-          Zwei Schlafzimmer, Balkon und Parkplatz – perfekt für Ihren Urlaub
-        </p>
-        <p class="mb-6 text-lg" data-lang="it">
-          Due camere, balcone e parcheggio – perfetto per la tua vacanza
-        </p>
         <ul class="flex flex-wrap gap-2 mb-6">
-          <li class="px-3 py-1 rounded-full bg-white/20 text-sm">2 Beds</li>
-          <li class="px-3 py-1 rounded-full bg-white/20 text-sm">Balkon</li>
-          <li class="px-3 py-1 rounded-full bg-white/20 text-sm">WLAN</li>
+          <li class="flex items-center gap-1 px-3 py-1 bg-white/20
+                     rounded-full text-sm">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" class="w-4 h-4">
+              <path d="M3 7h18v10H3z"></path>
+              <path d="M3 7l9 6 9-6"></path>
+            </svg>
+            <span data-lang="de">2 Schlafzimmer</span>
+            <span data-lang="it">2 camere da letto</span>
+          </li>
+          <li class="flex items-center gap-1 px-3 py-1 bg-white/20
+                     rounded-full text-sm">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" class="w-4 h-4">
+              <path d="M4 10h16v10H4z"></path>
+              <path d="M4 10V6h16v4"></path>
+            </svg>
+            <span data-lang="de">Balkon</span>
+            <span data-lang="it">Balcone</span>
+          </li>
+          <li class="flex items-center gap-1 px-3 py-1 bg-white/20
+                     rounded-full text-sm">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" class="w-4 h-4">
+              <path d="M2 9h20v11H2z"></path>
+              <path d="M6 9V5h12v4"></path>
+            </svg>
+            <span data-lang="de">Parkplatz</span>
+            <span data-lang="it">Parcheggio</span>
+          </li>
+          <li class="flex items-center gap-1 px-3 py-1 bg-white/20
+                     rounded-full text-sm">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" class="w-4 h-4">
+              <path d="M2 8h20"></path>
+              <path d="M5 12h14"></path>
+              <path d="M8 16h8"></path>
+            </svg>
+            <span data-lang="de">WLAN</span>
+            <span data-lang="it">Wi‑Fi</span>
+          </li>
+          <li class="flex items-center gap-1 px-3 py-1 bg-white/20
+                     rounded-full text-sm">
+            <svg viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" class="w-4 h-4">
+              <path d="M5 5h14v14H5z"></path>
+              <path d="M9 9h6v6H9z"></path>
+            </svg>
+            <span data-lang="de">Haustiere?</span>
+            <span data-lang="it">Animali?</span>
+          </li>
         </ul>
         <div class="flex gap-4">
-          <a href="#cta" class="px-5 py-3 rounded-2xl bg-indigo-600
-                               hover:bg-indigo-500">Anfrage senden</a>
-          <a href="#map" class="px-5 py-3 rounded-2xl bg-white/20
-                             hover:bg-white/30">Lage ansehen</a>
+          <a href="#cta"
+             class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500
+                    focus-visible:ring">
+            <span data-lang="de">Anfrage senden</span>
+            <span data-lang="it">Invia richiesta</span>
+          </a>
+          <a href="#map"
+             class="px-5 py-3 rounded-2xl bg-white/20 hover:bg-white/30
+                    focus-visible:ring">
+            <span data-lang="de">Lage ansehen</span>
+            <span data-lang="it">Vedi posizione</span>
+          </a>
         </div>
       </div>
-      <div class="absolute top-6 right-6 glass bg-white/70 rounded-2xl p-4
-                  shadow-lg max-w-xs text-gray-900">
-        <p class="text-yellow-400 text-lg">★★★★★</p>
-        <p class="text-sm" data-lang="de">Ausgezeichnete Lage und
-          Einrichtung</p>
-        <p class="text-sm" data-lang="it">Posizione e arredo eccellenti</p>
-      </div>
-    </section>
-    <section class="aurora py-12">
-      <div class="max-w-5xl mx-auto grid gap-6 md:grid-cols-3 px-4">
-        <div class="glass bg-white/80 rounded-2xl p-6 shadow reveal">
-          <h2 class="font-semibold mb-2" data-lang="de">Top Lage</h2>
-          <h2 class="font-semibold mb-2" data-lang="it">Posizione ideale</h2>
-          <p data-lang="de">Altstadt und Strand fußläufig erreichbar</p>
-          <p data-lang="it">Centro storico e spiaggia a piedi</p>
-        </div>
-        <div class="glass bg-white/80 rounded-2xl p-6 shadow reveal">
-          <h2 class="font-semibold mb-2" data-lang="de">Premium Ausstattung</h2>
-          <h2 class="font-semibold mb-2" data-lang="it">Dotazioni premium</h2>
-          <p data-lang="de">Hochwertige Küche und Möbel</p>
-          <p data-lang="it">Cucina e arredi di alta qualità</p>
-        </div>
-        <div class="glass bg-white/80 rounded-2xl p-6 shadow reveal">
-          <h2 class="font-semibold mb-2" data-lang="de">Selbst Check‑in</h2>
-          <h2 class="font-semibold mb-2" data-lang="it">Self check‑in</h2>
-          <p data-lang="de">Anreise rund um die Uhr möglich</p>
-          <p data-lang="it">Arrivo a qualsiasi ora</p>
-        </div>
+      <div class="absolute top-6 right-6 glass bg-white/80 rounded-2xl p-4
+                  shadow text-gray-900 max-w-xs">
+        <p class="text-yellow-500 text-lg mb-1">★★★★★</p>
+        <p class="text-sm mb-1" data-lang="de">Fantastische Unterkunft!</p>
+        <p class="text-sm mb-1" data-lang="it">Alloggio fantastico!</p>
+        <span class="text-xs px-2 py-1 bg-indigo-600 text-white rounded-full"
+              data-lang="de">VORSCHAU</span>
+        <span class="text-xs px-2 py-1 bg-indigo-600 text-white rounded-full"
+              data-lang="it">ANTEPRIMA</span>
       </div>
     </section>
-    <section class="py-12" id="amenities">
-      <div class="max-w-5xl mx-auto px-4 grid gap-6 md:grid-cols-2">
+    <div id="stickyBar"
+         class="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/90 border-t
+                p-2 flex gap-2">
+      <a href="#availability"
+         class="flex-1 px-4 py-3 rounded-xl bg-indigo-600 text-white text-center
+                focus-visible:ring">
+        <span data-lang="de">Verfügbarkeit prüfen</span>
+        <span data-lang="it">Verifica disponibilità</span>
+      </a>
+      <a href="https://wa.me/123456"
+         class="flex-1 px-4 py-3 rounded-xl bg-green-500 text-white text-center
+                focus-visible:ring">
+        <span data-lang="de">WhatsApp schreiben</span>
+        <span data-lang="it">Scrivi su WhatsApp</span>
+      </a>
+    </div>
+    <section class="py-16 aurora scroll-reveal" id="highlights">
+      <div class="max-w-6xl mx-auto px-4 grid gap-6 md:grid-cols-2
+                  xl:grid-cols-4">
+        <div class="glass bg-white/80 rounded-2xl p-6 shadow">
+          <div class="mb-2">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                 class="w-6 h-6">
+              <path d="M12 2l7 7-7 7-7-7z"></path>
+            </svg>
+          </div>
+          <h2 class="font-semibold mb-1" data-lang="de">Top Lage</h2>
+          <h2 class="font-semibold mb-1" data-lang="it">Posizione top</h2>
+          <p class="text-sm" data-lang="de">Altstadt und Strand zu Fuß</p>
+          <p class="text-sm" data-lang="it">Centro e spiaggia a piedi</p>
+        </div>
+        <div class="glass bg-white/80 rounded-2xl p-6 shadow">
+          <div class="mb-2">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                 class="w-6 h-6">
+              <path d="M3 3h18v18H3z"></path>
+            </svg>
+          </div>
+          <h2 class="font-semibold mb-1" data-lang="de">Premium Ausstattung</h2>
+          <h2 class="font-semibold mb-1" data-lang="it">Dotazioni premium</h2>
+          <p class="text-sm" data-lang="de">Designmöbel und Küche</p>
+          <p class="text-sm" data-lang="it">Arredi di design e cucina</p>
+        </div>
+        <div class="glass bg-white/80 rounded-2xl p-6 shadow">
+          <div class="mb-2">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                 class="w-6 h-6">
+              <path d="M9 3h6v4H9z"></path>
+              <path d="M5 7h14v14H5z"></path>
+            </svg>
+          </div>
+          <h2 class="font-semibold mb-1" data-lang="de">Selbst Check‑in</h2>
+          <h2 class="font-semibold mb-1" data-lang="it">Self check‑in</h2>
+          <p class="text-sm" data-lang="de">Anreise rund um die Uhr</p>
+          <p class="text-sm" data-lang="it">Arrivo a ogni ora</p>
+        </div>
+        <div class="glass bg-white/80 rounded-2xl p-6 shadow">
+          <div class="mb-2">
+            <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                 class="w-6 h-6">
+              <path d="M2 12h20"></path>
+              <path d="M6 16h12"></path>
+            </svg>
+          </div>
+          <h2 class="font-semibold mb-1" data-lang="de">Schnelles WLAN</h2>
+          <h2 class="font-semibold mb-1" data-lang="it">Wi‑Fi veloce</h2>
+          <p class="text-sm" data-lang="de">Streaming ohne Limits</p>
+          <p class="text-sm" data-lang="it">Streaming senza limiti</p>
+        </div>
+      </div>
+    </section>
+<!-- END PART 1/3 -->
+<!-- BEGIN PART 2/3 -->
+    <section class="py-16 scroll-reveal" id="amenities">
+      <div class="max-w-6xl mx-auto px-4 grid gap-6 md:grid-cols-2
+                  lg:grid-cols-3">
         <ul class="space-y-2">
-          <li data-lang="de">Voll ausgestattete Küche</li>
-          <li data-lang="it">Cucina completamente attrezzata</li>
-          <li data-lang="de">Badezimmer mit Dusche</li>
-          <li data-lang="it">Bagno con doccia</li>
-          <li data-lang="de">WLAN & TV</li>
-          <li data-lang="it">Wi‑Fi e TV</li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span data-lang="de">Voll ausgestattete Küche</span>
+            <span data-lang="it">Cucina completamente attrezzata</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M4 4h16v16H4z"></path>
+            </svg>
+            <span data-lang="de">Badezimmer mit Dusche</span>
+            <span data-lang="it">Bagno con doccia</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M2 8h20"></path>
+              <path d="M5 12h14"></path>
+              <path d="M8 16h8"></path>
+            </svg>
+            <span data-lang="de">WLAN & TV</span>
+            <span data-lang="it">Wi‑Fi e TV</span>
+          </li>
         </ul>
         <ul class="space-y-2">
-          <li data-lang="de">Haustiere auf Anfrage</li>
-          <li data-lang="it">Animali su richiesta</li>
-          <li data-lang="de">Privater Parkplatz</li>
-          <li data-lang="it">Parcheggio privato</li>
-          <li data-lang="de">Balkon mit Aussicht</li>
-          <li data-lang="it">Balcone con vista</li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M5 5h14v14H5z"></path>
+              <path d="M9 9h6v6H9z"></path>
+            </svg>
+            <span data-lang="de">Haustiere auf Anfrage</span>
+            <span data-lang="it">Animali su richiesta</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M2 9h20v11H2z"></path>
+              <path d="M6 9V5h12v4"></path>
+            </svg>
+            <span data-lang="de">Privater Parkplatz</span>
+            <span data-lang="it">Parcheggio privato</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M4 10h16v10H4z"></path>
+              <path d="M4 10V6h16v4"></path>
+            </svg>
+            <span data-lang="de">Balkon mit Aussicht</span>
+            <span data-lang="it">Balcone con vista</span>
+          </li>
+        </ul>
+        <ul class="space-y-2 hidden lg:block">
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M3 3h18v18H3z"></path>
+            </svg>
+            <span data-lang="de">Waschmaschine</span>
+            <span data-lang="it">Lavatrice</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M2 2h20v20H2z"></path>
+            </svg>
+            <span data-lang="de">Kaffeemaschine</span>
+            <span data-lang="it">Macchina del caffè</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 class="w-5 h-5 mt-1">
+              <path d="M6 6h12v12H6z"></path>
+            </svg>
+            <span data-lang="de">Bügelset</span>
+            <span data-lang="it">Ferro da stiro</span>
+          </li>
         </ul>
       </div>
     </section>
-    <section class="py-12 aurora" id="gallery">
-      <div class="max-w-5xl mx-auto px-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        <img src="../../assets/img/apartment1-800.jpg"
-             srcset="../../assets/img/apartment1-800.jpg 800w,
-                     ../../assets/img/apartment1-1200.jpg 1200w"
-             loading="lazy" decoding="async"
-             alt="Wohnzimmer" class="rounded-2xl cursor-pointer lightbox-img">
-        <img src="../../assets/img/apartment2-800.jpg"
-             srcset="../../assets/img/apartment2-800.jpg 800w,
-                     ../../assets/img/apartment2-1200.jpg 1200w"
-             loading="lazy" decoding="async"
-             alt="Schlafzimmer" class="rounded-2xl cursor-pointer lightbox-img">
-        <img src="../../assets/img/apartment3-800.jpg"
-             srcset="../../assets/img/apartment3-800.jpg 800w,
-                     ../../assets/img/apartment3-1200.jpg 1200w"
-             loading="lazy" decoding="async"
-             alt="Küche" class="rounded-2xl cursor-pointer lightbox-img">
+    <section class="py-16 aurora scroll-reveal" id="gallery">
+      <div class="max-w-6xl mx-auto px-4 grid gap-4 md:grid-cols-2
+                  xl:grid-cols-3">
+        <figure class="aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer">
+          <picture>
+            <source type="image/webp"
+                    srcset="../../assets/img/apartment1-800.webp 800w,
+                            ../../assets/img/apartment1-1200.webp 1200w"
+                    sizes="(min-width:768px) 50vw, 100vw">
+            <img src="../../assets/img/apartment1-800.jpg"
+                 width="800" height="600"
+                 loading="lazy" decoding="async"
+                 alt="Wohnzimmer mit Sofa"
+                 class="object-cover w-full h-full lightbox-img">
+          </picture>
+        </figure>
+        <figure class="aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer">
+          <picture>
+            <source type="image/webp"
+                    srcset="../../assets/img/apartment2-800.webp 800w,
+                            ../../assets/img/apartment2-1200.webp 1200w"
+                    sizes="(min-width:768px) 50vw, 100vw">
+            <img src="../../assets/img/apartment2-800.jpg"
+                 width="800" height="600"
+                 loading="lazy" decoding="async"
+                 alt="Schlafzimmer mit Doppelbett"
+                 class="object-cover w-full h-full lightbox-img">
+          </picture>
+        </figure>
+        <figure class="aspect-[4/3] overflow-hidden rounded-2xl cursor-pointer">
+          <picture>
+            <source type="image/webp"
+                    srcset="../../assets/img/apartment3.jpg 800w"
+                    sizes="(min-width:768px) 50vw, 100vw">
+            <img src="../../assets/img/apartment3.jpg"
+                 width="800" height="600"
+                 loading="lazy" decoding="async"
+                 alt="Küche mit Insel"
+                 class="object-cover w-full h-full lightbox-img">
+          </picture>
+        </figure>
       </div>
     </section>
-    <section id="availability" class="py-12">
+    <section id="availability" class="py-16 scroll-reveal">
       <div class="max-w-md mx-auto glass bg-white/80 rounded-2xl p-6 shadow">
-        <h2 class="text-xl font-semibold mb-4" data-lang="de">Verfügbarkeit</h2>
-        <h2 class="text-xl font-semibold mb-4" data-lang="it">Disponibilità</h2>
+        <h2 class="text-xl font-semibold mb-4" data-lang="de">
+          Verfügbarkeit
+        </h2>
+        <h2 class="text-xl font-semibold mb-4" data-lang="it">
+          Disponibilità
+        </h2>
         <div class="grid grid-cols-7 text-center text-sm mb-2">
-          <div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div>
+          <div>Mo</div><div>Di</div><div>Mi</div><div>Do</div>
+          <div>Fr</div><div>Sa</div><div>So</div>
         </div>
         <div class="grid grid-cols-7 gap-1 text-sm" id="calendar"></div>
         <p class="mt-4 text-xs" data-lang="de">
-          Grün = frei, Rot = belegt (Beispiel)
+          Grün = verfügbar, Rot = belegt (Beispiel)
         </p>
         <p class="mt-4 text-xs" data-lang="it">
           Verde = libero, Rosso = occupato (esempio)
         </p>
-        <a href="#cta" class="mt-4 inline-block px-5 py-2 rounded-xl bg-indigo-600
-                               text-white">Verfügbarkeit anfragen</a>
-      </div>
-    </section>
-    <section id="map" class="py-12 aurora">
-      <div class="max-w-3xl mx-auto px-4 text-center">
-        <p class="mb-4" data-lang="de">
-          Die Unterkunft liegt nur wenige Schritte vom Hafen entfernt.
-        </p>
-        <p class="mb-4" data-lang="it">
-          L'alloggio è a pochi passi dal porto.
-        </p>
-        <a href="https://maps.google.com" target="_blank"
-           rel="noopener" class="px-5 py-3 rounded-2xl bg-cyan-500 text-white">
-          Route in Google Maps öffnen
+        <a href="#cta"
+           class="mt-4 inline-block px-5 py-2 rounded-xl bg-indigo-600
+                  text-white focus-visible:ring">
+          <span data-lang="de">Verfügbarkeit anfragen</span>
+          <span data-lang="it">Richiedi disponibilità</span>
         </a>
       </div>
     </section>
-    <section id="faq" class="py-12">
+    <section id="map" class="py-16 aurora scroll-reveal">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <p class="mb-4" data-lang="de">
+          Die Unterkunft liegt nahe dem historischen Hafen.
+        </p>
+        <p class="mb-4" data-lang="it">
+          L'alloggio è vicino al porto storico.
+        </p>
+        <img src="../../assets/img/apartment2-blur-800.jpg"
+             width="800" height="600"
+             alt="" aria-label="Kartenplatzhalter"
+             class="mx-auto rounded-2xl mb-4">
+        <a href="https://maps.google.com" target="_blank" rel="noopener"
+           class="px-5 py-3 rounded-2xl bg-cyan-500 text-white
+                  focus-visible:ring">
+          <span data-lang="de">Route in Google Maps öffnen</span>
+          <span data-lang="it">Apri percorso in Google Maps</span>
+        </a>
+      </div>
+    </section>
+    <section id="faq" class="py-16 scroll-reveal">
       <div class="max-w-3xl mx-auto px-4 space-y-4">
         <details class="p-4 border rounded-xl">
-          <summary class="cursor-pointer" data-lang="de">Check‑in Zeiten</summary>
-          <summary class="cursor-pointer" data-lang="it">Orari di check‑in</summary>
-          <p class="mt-2" data-lang="de">Check‑in ab 15:00 Uhr</p>
-          <p class="mt-2" data-lang="it">Check‑in dalle 15:00</p>
+          <summary class="cursor-pointer focus-visible:ring"
+                   data-lang="de">Check‑in / Check‑out</summary>
+          <summary class="cursor-pointer focus-visible:ring"
+                   data-lang="it">Check‑in / Check‑out</summary>
+          <p class="mt-2 text-sm" data-lang="de">
+            Check‑in ab 15:00, Check‑out bis 10:00.
+          </p>
+          <p class="mt-2 text-sm" data-lang="it">
+            Check‑in dalle 15:00, check‑out entro le 10:00.
+          </p>
         </details>
         <details class="p-4 border rounded-xl">
-          <summary class="cursor-pointer" data-lang="de">Haustiere</summary>
-          <summary class="cursor-pointer" data-lang="it">Animali</summary>
-          <p class="mt-2" data-lang="de">Auf Anfrage erlaubt</p>
-          <p class="mt-2" data-lang="it">Consentiti su richiesta</p>
+          <summary class="cursor-pointer focus-visible:ring"
+                   data-lang="de">Haustiere</summary>
+          <summary class="cursor-pointer focus-visible:ring"
+                   data-lang="it">Animali</summary>
+          <p class="mt-2 text-sm" data-lang="de">
+            Auf Anfrage erlaubt.
+          </p>
+          <p class="mt-2 text-sm" data-lang="it">
+            Consentiti su richiesta.
+          </p>
         </details>
       </div>
     </section>
-    <section id="cta" class="py-12 aurora">
-      <div class="max-w-md mx-auto glass bg-white/80 rounded-2xl p-6 text-center shadow">
+    <section id="reviews" class="py-16 aurora scroll-reveal">
+      <h2 class="text-center text-2xl font-semibold mb-6" data-lang="de">
+        Gäste Stimmen
+      </h2>
+      <h2 class="text-center text-2xl font-semibold mb-6" data-lang="it">
+        Recensioni ospiti
+      </h2>
+      <div class="max-w-6xl mx-auto px-4 flex gap-4 overflow-x-auto
+                  snap-x snap-mandatory" aria-label="Reviews">
+        <article class="min-w-[16rem] snap-center glass bg-white/80 rounded-2xl
+                        p-4 shadow flex-shrink-0">
+          <p class="text-yellow-500 mb-1">★★★★★</p>
+          <p class="text-sm mb-2">Anna · 2024</p>
+          <p class="text-sm" data-lang="de">Tolle Wohnung, wir kommen wieder.</p>
+          <p class="text-sm" data-lang="it">
+            Appartamento fantastico, torneremo.
+          </p>
+        </article>
+        <article class="min-w-[16rem] snap-center glass bg-white/80 rounded-2xl
+                        p-4 shadow flex-shrink-0">
+          <p class="text-yellow-500 mb-1">★★★★★</p>
+          <p class="text-sm mb-2">Luca · 2024</p>
+          <p class="text-sm" data-lang="de">Perfekte Lage und Ausstattung.</p>
+          <p class="text-sm" data-lang="it">
+            Posizione e dotazioni perfette.
+          </p>
+        </article>
+        <article class="min-w-[16rem] snap-center glass bg-white/80 rounded-2xl
+                        p-4 shadow flex-shrink-0">
+          <p class="text-yellow-500 mb-1">★★★★☆</p>
+          <p class="text-sm mb-2">Marie · 2023</p>
+          <p class="text-sm" data-lang="de">Sehr sauber und gemütlich.</p>
+          <p class="text-sm" data-lang="it">
+            Molto pulito e accogliente.
+          </p>
+        </article>
+      </div>
+    </section>
+<!-- END PART 2/3 -->
+<!-- BEGIN PART 3/3 -->
+    <section id="cta" class="py-16 scroll-reveal">
+      <div class="max-w-md mx-auto glass bg-white/80 rounded-2xl p-6 text-center
+                  shadow observe-hide">
         <h2 class="text-2xl font-semibold mb-4" data-lang="de">
           Interesse? Jetzt anfragen.
         </h2>
         <h2 class="text-2xl font-semibold mb-4" data-lang="it">
-          Interessato? Contattaci ora.
+          Interessato? Contattaci.
         </h2>
         <div class="flex flex-col gap-4">
           <a href="https://wa.me/123456"
-             class="px-5 py-3 rounded-2xl bg-green-500 text-white">
-            WhatsApp schreiben
+             class="px-5 py-3 rounded-2xl bg-green-500 text-white
+                    focus-visible:ring">
+            <span data-lang="de">WhatsApp schreiben</span>
+            <span data-lang="it">Scrivi su WhatsApp</span>
           </a>
           <a href="mailto:info@example.com"
-             class="px-5 py-3 rounded-2xl bg-indigo-600 text-white">
-            E‑Mail senden
+             class="px-5 py-3 rounded-2xl bg-indigo-600 text-white
+                    focus-visible:ring">
+            <span data-lang="de">E‑Mail senden</span>
+            <span data-lang="it">Invia e‑mail</span>
           </a>
         </div>
         <p class="mt-4 text-xs" data-lang="de">
-          Durch Klick auf WhatsApp stimmen Sie der Datenübermittlung zu.
+          Mit Klick auf WhatsApp stimmen Sie der Datenübermittlung zu.
         </p>
         <p class="mt-4 text-xs" data-lang="it">
           Cliccando WhatsApp acconsenti al trasferimento dei dati.
@@ -260,12 +530,41 @@
     </section>
   </main>
   <footer class="py-6 text-center text-sm">
-    <p class="mb-2"><a href="/legal/impressum.html" class="underline">Impressum</a> ·
-       <a href="/legal/privacy.html" class="underline">Datenschutz</a></p>
+    <p class="mb-2">
+      <a href="/legal/impressum.html" class="underline">Impressum</a> ·
+      <a href="/legal/privacy.html" class="underline">Datenschutz</a>
+    </p>
     <p>&copy; TurboSito</p>
   </footer>
-  <dialog id="lightbox" class="p-0 bg-transparent">
-    <img src="" alt="" id="lightboxImg" class="max-h-screen rounded-xl">
+  <dialog id="lightbox" class="p-0 bg-transparent" aria-modal="true">
+    <div class="relative">
+      <img id="lightboxImg" src="" alt="" class="max-h-screen rounded-xl">
+      <button id="prevImg"
+              class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80
+                     rounded-full p-2 focus-visible:ring">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+             class="w-5 h-5">
+          <path d="M15 18l-6-6 6-6"></path>
+        </svg>
+      </button>
+      <button id="nextImg"
+              class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80
+                     rounded-full p-2 focus-visible:ring">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+             class="w-5 h-5">
+          <path d="M9 6l6 6-6 6"></path>
+        </svg>
+      </button>
+      <button id="closeImg"
+              class="absolute top-2 right-2 bg-white/80 rounded-full p-2
+                     focus-visible:ring">
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
+             class="w-5 h-5">
+          <path d="M6 6l12 12"></path>
+          <path d="M6 18L18 6"></path>
+        </svg>
+      </button>
+    </div>
   </dialog>
   <script>
     const langBtns=document.querySelectorAll('[data-set-lang]')
@@ -281,33 +580,55 @@
     })
     const saved=localStorage.getItem('lang')
     if(saved){
-      document.getElementById('lang'+saved.charAt(0).toUpperCase()+saved.slice(1))
-        .click()
+      document.getElementById('lang'+saved.charAt(0).toUpperCase()+
+        saved.slice(1)).click()
     }
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
+    },{threshold:.1})
+    document.querySelectorAll('.scroll-reveal')
+      .forEach(el=>observer.observe(el))
+    const stickyBar=document.getElementById('stickyBar')
+    const endObs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){stickyBar.classList.add('hide')}
+        else{stickyBar.classList.remove('hide')}
+      })
+    },{threshold:0})
+    endObs.observe(document.querySelector('.observe-hide'))
     const booked=[1,5,12,18,25]
     const cal=document.getElementById('calendar')
     for(let i=1;i<=42;i++){
-      const cell=document.createElement('div')
-      cell.textContent=i>30?i-30:i
-      if(booked.includes(i)){
-        cell.className='p-2 bg-red-400 text-white rounded'
-      }else{
-        cell.className='p-2 bg-green-400 text-white rounded'
-      }
-      cal.appendChild(cell)
+      const c=document.createElement('div')
+      c.textContent=i>30?i-30:i
+      c.className='p-2 rounded '+(booked.includes(i)
+        ?'bg-red-400':'bg-green-400')+' text-white'
+      cal.appendChild(c)
     }
-    const lightbox=document.getElementById('lightbox')
-    const lightboxImg=document.getElementById('lightboxImg')
-    document.querySelectorAll('.lightbox-img').forEach(img=>{
-      img.addEventListener('click',()=>{
-        lightboxImg.src=img.src
-        lightboxImg.alt=img.alt
-        lightbox.showModal()
-      })
+    const imgs=[...document.querySelectorAll('.lightbox-img')]
+    const dialog=document.getElementById('lightbox')
+    const imgEl=document.getElementById('lightboxImg')
+    let idx=0
+    function show(i){
+      idx=(i+imgs.length)%imgs.length
+      imgEl.src=imgs[idx].src
+      imgEl.alt=imgs[idx].alt
+      dialog.showModal()
+    }
+    imgs.forEach((img,i)=>{img.addEventListener('click',()=>show(i))})
+    document.getElementById('prevImg')
+      .addEventListener('click',()=>show(idx-1))
+    document.getElementById('nextImg')
+      .addEventListener('click',()=>show(idx+1))
+    document.getElementById('closeImg')
+      .addEventListener('click',()=>dialog.close())
+    dialog.addEventListener('click',e=>{
+      if(e.target===dialog){dialog.close()}
     })
-    lightbox.addEventListener('click',e=>{
-      if(e.target===lightbox){lightbox.close()}
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape'){dialog.close()}
     })
   </script>
 </body>
 </html>
+<!-- END PART 3/3 -->
