@@ -1,336 +1,319 @@
 <!DOCTYPE html>
-<html lang="de" class="">
-
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title updated to TurboSito brand -->
-    <title>Ferienwohnung Demo – TurboSito</title>
-    <link rel="preload" as="image" href="../../assets/img/apartment-hero-1920.jpg" fetchpriority="high">
-    <meta property="og:image" content="../../assets/img/apartment-hero-1920.jpg">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-    <meta name="description" content="Demo Ferienwohnung: Wohnen nah am Zentrum. Alloggio vicino al centro.">
-    <meta property="og:title" content="Ferienwohnung Demo – Website in 48h">
-    <meta property="og:description" content="Wohnen nah am Zentrum. Alloggio vicino al centro.">
-    <meta property="og:image" content="../../assets/img/apartment-hero.jpg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{URL}}/demos/apartment/">
-    <style>
-        [data-lang] {
-            display: none;
-        }
-
-        :root[data-language="de"] [data-lang="de"] {
-            display: block;
-        }
-
-        :root[data-language="it"] [data-lang="it"] {
-            display: block;
-        }
-
-        /* Scroll reveal animation */
-        /* Adjust scroll reveal values for a subtler fade-in */
-        .scroll-reveal { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
-    </style>
-
-</head>
-
-<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-[#111827] transition-colors duration-300">
-    <header
-        class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
-        <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-            <!-- Logo with page name linking to the landing page -->
-            <a href="../../landing/" class="flex items-center gap-3">
-                <img src="../../assets/logo/turbosito-logo-ts-bars.svg" alt="TurboSito" class="h-7 w-auto">
-                <span class="text-lg font-bold" data-lang="de">Ferienwohnung&nbsp;Demo</span>
-                <span class="text-lg font-bold" data-lang="it">Demo&nbsp;Appartamento</span>
-            </a>
-            <div class="flex items-center space-x-4">
-                <button id="langDeA" class="text-sm font-medium hover:underline" onclick="setLang('de')"
-                    aria-label="Deutsch">DE</button>
-                <button id="langItA" class="text-sm font-medium hover:underline" onclick="setLang('it')"
-                    aria-label="Italiano">IT</button>
-                <button id="themeToggleA" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-                    aria-label="Theme Toggle">
-                    <svg id="themeIconA" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path id="themeSunA" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 3v2m0 14v2m8.66-8.66h-2m-12 0H3m15.364-5.364l-1.414 1.414m-10.95 10.95l-1.414 1.414m12.728 0l1.414 1.414m-12.728-12.728L5.636 4.636M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        <path id="themeMoonA" class="hidden" stroke-linecap="round" stroke-linejoin="round"
-                            stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 7 7 0 0020.354 15.354z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </header>
-    <main>
-        <!-- Hero: increased minimum height for mobile and tablets -->
-        <!-- Increase hero height for mobile to avoid cramped text -->
-        <section class="relative overflow-hidden" style="min-height:90vh;">
-            <picture>
-              <source type="image/webp"
-                      srcset="../../assets/img/apartment-hero-1280.webp 1280w,
-                              ../../assets/img/apartment-hero-1920.webp 1920w"
-                      sizes="100vw">
-              <img src="../../assets/img/apartment-hero-1920.jpg"
-                   srcset="../../assets/img/apartment-hero-1280.jpg 1280w,
-                           ../../assets/img/apartment-hero-1920.jpg 1920w"
-                   sizes="100vw" width="1920" height="1080"
-                   alt="Gemütliches Wohn‑Esszimmer mit Kamin und Pflanzen"
-                   class="absolute inset-0 w-full h-full object-cover">
-            </picture>
-            <!-- Darker overlay to enhance text contrast against the bright apartment interior -->
-            <!-- Lighter overlay improves readability and lets the image shine -->
-            <div class="absolute inset-0 bg-black/50"></div>
-            <div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-24 sm:py-32">
-              <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Wohnen nah am Zentrum.</h1>
-              <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Alloggio vicino al centro.</h1>
-              <p class="text-lg sm:text-xl text-white mb-8" data-lang="de">Gemütliches Apartment für Ihren Urlaub in der Stadt.</p>
-              <p class="text-lg sm:text-xl text-white mb-8" data-lang="it">Accogliente appartamento per la tua vacanza in città.</p>
-            </div>
-          </section>
-          
-        <!-- Highlights / Ausstattung -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Ausstattung</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Dotazioni</h2>
-                <ul class="space-y-2 list-disc list-inside">
-                    <li><span data-lang="de">2&nbsp;Schlafzimmer</span><span data-lang="it">2&nbsp;camere da
-                            letto</span></li>
-                    <li><span data-lang="de">Voll ausgestattete Küche</span><span data-lang="it">Cucina completa</span>
-                    </li>
-                    <li><span data-lang="de">Badezimmer mit Dusche</span><span data-lang="it">Bagno con doccia</span>
-                    </li>
-                    <li><span data-lang="de">Balkon mit Bergblick</span><span data-lang="it">Balcone con vista sulle
-                            montagne</span></li>
-                    <li><span data-lang="de">Parkplatz inklusive</span><span data-lang="it">Parcheggio incluso</span>
-                    </li>
-                    <li><span data-lang="de">Haustiere auf Anfrage</span><span data-lang="it">Animali su
-                            richiesta</span></li>
-                </ul>
-            </div>
-        </section>
-        <!-- Verfügbarkeit Widget Placeholder -->
-        <section class="py-12 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Verfügbarkeit</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Disponibilità</h2>
-                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded shadow">
-                    <div class="grid grid-cols-7 gap-2 text-center text-sm">
-                        <div class="font-semibold" data-lang="de">Mo</div>
-                        <div class="font-semibold" data-lang="de">Di</div>
-                        <div class="font-semibold" data-lang="de">Mi</div>
-                        <div class="font-semibold" data-lang="de">Do</div>
-                        <div class="font-semibold" data-lang="de">Fr</div>
-                        <div class="font-semibold" data-lang="de">Sa</div>
-                        <div class="font-semibold" data-lang="de">So</div>
-                        <div class="font-semibold" data-lang="it">Lu</div>
-                        <div class="font-semibold" data-lang="it">Ma</div>
-                        <div class="font-semibold" data-lang="it">Me</div>
-                        <div class="font-semibold" data-lang="it">Gi</div>
-                        <div class="font-semibold" data-lang="it">Ve</div>
-                        <div class="font-semibold" data-lang="it">Sa</div>
-                        <div class="font-semibold" data-lang="it">Do</div>
-                        <!-- Example days (no logic) -->
-                        <div class="p-2 border rounded bg-green-100 dark:bg-green-900">1</div>
-                        <div class="p-2 border rounded bg-green-100 dark:bg-green-900">2</div>
-                        <div class="p-2 border rounded bg-red-100 dark:bg-red-900">3</div>
-                        <div class="p-2 border rounded bg-green-100 dark:bg-green-900">4</div>
-                        <div class="p-2 border rounded bg-green-100 dark:bg-green-900">5</div>
-                        <div class="p-2 border rounded bg-red-100 dark:bg-red-900">6</div>
-                        <div class="p-2 border rounded bg-green-100 dark:bg-green-900">7</div>
-                    </div>
-                    <p class="mt-4 text-xs text-gray-500" data-lang="de">Grün = verfügbar, Rot = belegt (Beispiel)</p>
-                    <p class="mt-4 text-xs text-gray-500" data-lang="it">Verde = disponibile, Rosso = occupato (esempio)
-                    </p>
-                </div>
-            </div>
-        </section>
-        <!-- Galerie -->
-        <section class="py-12 scroll-reveal">
-            <div class="max-w-screen-lg mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Galerie</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Galleria</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    <img src="../../assets/img/apartment1-1200.jpg"
-     srcset="../../assets/img/apartment1-800.jpg 800w, ../../assets/img/apartment1-1200.jpg 1200w"
-     sizes="(max-width: 640px) 50vw, 33vw"
-     width="1200" height="800" loading="lazy"
-     alt="Helles Wohnzimmer mit Küche"
-     class="w-full h-40 object-cover rounded">
-
-     <img src="../../assets/img/apartment2-1200.jpg"
-     srcset="../../assets/img/apartment2-800.jpg 800w, ../../assets/img/apartment2-1200.jpg 1200w"
-     sizes="(max-width: 640px) 50vw, 33vw"
-     width="1200" height="800" loading="lazy"
-     alt="Helles Wohnzimmer mit Küche"
-     class="w-full h-40 object-cover rounded">
-
-                    <img src="../../assets/img/apartment3.jpg" alt="Küche" class="w-full h-40 object-cover rounded"
-                        loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/apartment4.jpg" alt="Bad" class="w-full h-40 object-cover rounded"
-                        loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/apartment5.jpg" alt="Balkon" class="w-full h-40 object-cover rounded"
-                        loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/apartment6.jpg" alt="Aussicht" class="w-full h-40 object-cover rounded"
-                        loading="lazy" width="600" height="400">
-                </div>
-            </div>
-        </section>
-        <!-- Lage / Anreise -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Lage &amp; Anreise</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Posizione &amp; Arrivo</h2>
-                <p class="mb-4" data-lang="de">Unser Apartment liegt zentral in der Nähe aller Sehenswürdigkeiten. Eine
-                    Bushaltestelle befindet sich nur 100&nbsp;m entfernt.</p>
-                <p class="mb-4" data-lang="it">Il nostro appartamento è situato in posizione centrale vicino a tutte le
-                    attrazioni. Una fermata dell'autobus si trova a soli 100&nbsp;m.</p>
-                <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center rounded">
-                    <span class="text-gray-500" data-lang="de">Map‑Embed‑Platzhalter</span>
-                    <span class="text-gray-500" data-lang="it">Segnaposto mappa</span>
-                </div>
-            </div>
-        </section>
-        <!-- Hausregeln / FAQ -->
-        <section class="py-12 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Hausregeln &amp; FAQ</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Regole della casa &amp; FAQ</h2>
-                <div class="space-y-4">
-                    <div>
-                        <h3 class="font-semibold" data-lang="de">Check‑in und Check‑out?</h3>
-                        <h3 class="font-semibold" data-lang="it">Check‑in e check‑out?</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Check‑in ab 15&nbsp;Uhr,
-                            Check‑out bis 10&nbsp;Uhr.</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Check‑in dalle 15:00,
-                            check‑out entro le 10:00.</p>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold" data-lang="de">Sind Haustiere erlaubt?</h3>
-                        <h3 class="font-semibold" data-lang="it">Animali ammessi?</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Auf Anfrage möglich, bitte
-                            kontaktieren Sie uns.</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Su richiesta, contattaci.</p>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold" data-lang="de">Wie erfolgt die Schlüsselübergabe?</h3>
-                        <h3 class="font-semibold" data-lang="it">Come avviene la consegna delle chiavi?</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Kontaktlos via
-                            Schlüsselkasten, Code senden wir per WhatsApp.</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Autonomo tramite cassetta con
-                            codice inviato su WhatsApp.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Kontakt -->
-        <section class="py-12 text-center bg-gray-50 dark:bg-gray-800">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-4" data-lang="de">Kontakt</h2>
-                <h2 class="text-2xl font-bold mb-4" data-lang="it">Contatto</h2>
-                <p class="mb-4" data-lang="de">Stellen Sie Ihre Anfrage oder buchen Sie direkt via WhatsApp.</p>
-                <p class="mb-4" data-lang="it">Invia la tua richiesta o prenota direttamente via WhatsApp.</p>
-                <a href="https://wa.me/PHONE?text=Ich%20habe%20eine%20Frage%20zum%20Apartment"
-                    class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
-                    target="_blank" rel="noopener" data-lang="de">WhatsApp schreiben</a>
-                <a href="https://wa.me/PHONE?text=Ho%20una%20domanda%20sull'appartamento"
-                    class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
-                    target="_blank" rel="noopener" data-lang="it">Scrivici su WhatsApp</a>
-                <!-- WhatsApp disclaimer -->
-                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
-                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
-            </div>
-        </section>
-    </main>
-    <footer class="bg-gray-100 dark:bg-gray-800 py-6">
-        <div class="max-w-screen-lg mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
-            <div class="flex space-x-4 mb-4 sm:mb-0">
-                <a href="../../legal/impressum.html" class="underline" data-lang="de">Impressum</a>
-                <a href="../../legal/privacy.html" class="underline" data-lang="de">Datenschutz</a>
-                <a href="../../legal/impressum.html" class="underline" data-lang="it">Note legali</a>
-                <a href="../../legal/privacy.html" class="underline" data-lang="it">Privacy</a>
-            </div>
-            <div>
-                <small class="text-gray-500" data-lang="de">&copy; 2025 TurboSito – Demo&nbsp;Ferienwohnung</small>
-                <small class="text-gray-500" data-lang="it">&copy; 2025 TurboSito – Demo&nbsp;Appartamento</small>
-            </div>
-        </div>
-    </footer>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LodgingBusiness",
-      "name": "Demo Ferienwohnung",
-      "description": "Wohnen nah am Zentrum. Alloggio vicino al centro.",
-      "image": "{{URL}}/assets/img/apartment-hero.jpg",
-      "telephone": "PHONE",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "ADDRESS",
-        "addressLocality": "CITY",
-        "addressRegion": "REGION",
-        "addressCountry": "IT",
-        "postalCode": "ZIP"
-      },
-      "amenityFeature": [
-        {"@type": "LocationFeatureSpecification", "name": "2 Schlafzimmer", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Küche", "value": true},
-        {"@type": "LocationFeatureSpecification", "name": "Balkon", "value": true}
-      ],
-      "sameAs": [
-        "SOCIAL_INSTAGRAM",
-        "SOCIAL_FACEBOOK"
-      ]
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="meta_title">Ferienwohnung Demo – TurboSito</title>
+  <meta name="description" content="Gemütliche Ferienwohnung nahe dem Zentrum." data-i18n-attr="content:meta_description">
+  <meta property="og:title" content="Ferienwohnung Demo – TurboSito" data-i18n-attr="content:og_title">
+  <meta property="og:description" content="Gemütliche Ferienwohnung nahe dem Zentrum." data-i18n-attr="content:og_description">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../../assets/img/apartment-hero-1920.jpg">
+  <meta property="og:url" content="{{URL}}/demos/apartment/">
+  <meta property="og:locale" content="de_DE" data-i18n-attr="content:og_locale">
+  <link rel="preload" as="image" href="../../assets/img/apartment-hero-1920.jpg" fetchpriority="high">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <style type="text/tailwindcss">
+    :root{
+      --brand:#4f46e5;
+      --brand-2:#7c3aed;
+      --brand-3:#06b6d4;
+      --bg-1:#0b1220;
+      --text:#0f172a;
+      --radius:14px;
+      --shadow:0 10px 24px rgba(0,0,0,.18);
     }
-    </script>
-    <!-- Script for language/theme toggle -->
-    <script>
-        function setLang(lang) {
-            document.documentElement.dataset.language = lang;
-            localStorage.setItem('lang', lang);
-        }
-        function setTheme(theme) {
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                document.getElementById('themeSunA').classList.add('hidden');
-                document.getElementById('themeMoonA').classList.remove('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.getElementById('themeSunA').classList.remove('hidden');
-                document.getElementById('themeMoonA').classList.add('hidden');
-            }
-            localStorage.setItem('theme', theme);
-        }
-        document.getElementById('themeToggleA').addEventListener('click', function () {
-            const isDark = document.documentElement.classList.contains('dark');
-            setTheme(isDark ? 'light' : 'dark');
+    [data-lang]{display:none;}
+    :root[data-language="de"] [data-lang="de"]{display:block;}
+    :root[data-language="it"] [data-lang="it"]{display:block;}
+    body::before{content:"";@apply fixed inset-0 -z-10; background:radial-gradient(circle at 20% 20%,rgba(99,102,241,.25),transparent 60%),radial-gradient(circle at 80% 80%,rgba(236,72,153,.25),transparent 60%);}
+    .chip{@apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium bg-white/60 border border-indigo-200 backdrop-blur;}
+    .btn-primary{@apply inline-flex items-center justify-center h-11 px-5 rounded-md font-semibold text-white bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] hover:from-[var(--brand-2)] hover:to-[var(--brand)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)];}
+    .btn-secondary{@apply inline-flex items-center justify-center h-11 px-5 rounded-md font-semibold border border-[var(--brand)] text-[var(--brand)] bg-white hover:bg-[var(--brand)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand)];}
+    .ghost-card{@apply relative rounded-lg p-4 bg-white/60 border-2 border-dashed border-indigo-200 backdrop-blur-sm shadow-lg transition-opacity;}
+    .ghost-card::before{content:"";position:absolute;inset:0;background-image:linear-gradient(135deg,rgba(0,0,0,.05) 25%,transparent 25%,transparent 50%,rgba(0,0,0,.05) 50%,rgba(0,0,0,.05) 75%,transparent 75%,transparent);background-size:8px 8px;border-radius:inherit;mix-blend-mode:overlay;pointer-events:none;}
+    .preview-badge{@apply absolute top-1 right-1 text-[10px] tracking-wide bg-indigo-600 text-white px-1 py-0.5 rounded;}
+    .float{animation:float 6s ease-in-out infinite;}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @media (prefers-reduced-motion:reduce){.float{animation:none}}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+    .reveal-visible{opacity:1;transform:none;}
+    #mobile-cta{transition:opacity .3s;}
+  </style>
+</head>
+<body class="font-sans text-gray-800">
+  <a href="#content" class="sr-only focus:not-sr-only" data-i18n="skip_link">Zum Inhalt springen</a>
+  <header id="site-header" class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-200">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+      <a href="../../landing/" class="flex items-center gap-2">
+        <img src="../../assets/logo/turbosito-wordmark-mono.svg" alt="TurboSito" class="h-7 w-auto">
+      </a>
+      <div class="langseg inline-flex rounded-md border overflow-hidden" role="group">
+        <button data-lang-btn="de" aria-pressed="true" class="px-3 py-1 text-sm font-medium bg-indigo-600 text-white" type="button">DE</button>
+        <button data-lang-btn="it" aria-pressed="false" class="px-3 py-1 text-sm font-medium bg-white text-gray-700" type="button">IT</button>
+      </div>
+    </div>
+  </header>
+  <main id="content">
+    <section id="hero" class="relative py-24 overflow-hidden">
+      <img src="../../assets/img/apartment-hero-1920.jpg"
+           srcset="../../assets/img/apartment-hero-1280.jpg 1280w, ../../assets/img/apartment-hero-1920.jpg 1920w"
+           sizes="100vw" width="1920" height="1080" decoding="async" alt="Sonnenbeschienene Ferienwohnung mit Balkon" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/30"></div>
+      <div class="relative max-w-screen-xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6 text-white" data-i18n="hero_h1">Wohnen nah am Zentrum</h1>
+          <p class="mb-6 text-lg text-white/90" data-i18n="hero_p">Gemütliches Apartment für Ihren Urlaub.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5V6.75a3.75 3.75 0 1 0-7.5 0V10.5M4.5 10.5h15v8.25A2.25 2.25 0 0 1 17.25 21h-10.5A2.25 2.25 0 0 1 4.5 18.75V10.5Z"/></svg><span data-i18n="chip_bedrooms">2 Schlafzimmer</span></span>
+            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9.813c0-1.63 0-2.444.327-3.06a3 3 0 0 1 1.233-1.233C5.177 5.193 5.99 5.193 7.62 5.193h8.76c1.63 0 2.444 0 3.06.327a3 3 0 0 1 1.233 1.233c.327.616.327 1.43.327 3.06v4.374c0 1.63 0 2.444-.327 3.06a3 3 0 0 1-1.233 1.233c-.616.327-1.43.327-3.06.327H7.62c-1.63 0-2.444 0-3.06-.327a3 3 0 0 1-1.233-1.233C3 16.631 3 15.817 3 14.187V9.813Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 7v10m8-10v10"/></svg><span data-i18n="chip_balcony">Balkon</span></span>
+            <span class="chip"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l1.5-8.25h16.5l1.5 8.25m-19.5 0h21M4.5 12v8.25h15V12"/></svg><span data-i18n="chip_parking">Parkplatz</span></span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <a href="#contact" class="btn-primary" data-evt="cta_contact" data-i18n="cta_contact">Anfrage senden</a>
+            <a href="#location" class="btn-secondary" data-evt="cta_location" data-i18n="cta_location">Lage ansehen</a>
+          </div>
+        </div>
+        <div class="hidden md:block pointer-events-none" aria-hidden="true">
+          <div class="ghost-card float"><span class="preview-badge" data-i18n="preview_badge">VORSCHAU</span><p class="text-sm font-medium">★★★★★</p><p class="text-xs text-gray-600" data-i18n="ghost_review">„Super Aufenthalt!“</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="amenities" class="py-16 bg-gray-50" data-reveal>
+      <div class="max-w-screen-md mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8" data-i18n="amenities_heading">Ausstattung</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="amenity1">Voll ausgestattete Küche</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="amenity2">Badezimmer mit Dusche</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="amenity3">WLAN &amp; TV</span></li>
+          <li class="flex items-start gap-2"><svg class="w-5 h-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/></svg><span data-i18n="amenity4">Haustiere auf Anfrage</span></li>
+        </ul>
+      </div>
+    </section>
+    <section id="availability" class="py-16" data-reveal>
+      <div class="max-w-screen-md mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8" data-i18n="availability_heading">Verfügbarkeit</h2>
+        <div class="ghost-card mx-auto mb-4" role="img" aria-description="Kalender Vorschau">
+          <span class="preview-badge" data-i18n="preview_badge">VORSCHAU</span>
+          <div class="h-48 bg-gradient-to-br from-green-200 to-red-200 rounded"></div>
+        </div>
+        <p class="text-sm text-gray-600 text-center" data-i18n="availability_hint">Grün = verfügbar, Rot = belegt (Beispiel).</p>
+      </div>
+    </section>
+    <section id="gallery" class="py-16 bg-gray-50" data-reveal>
+      <div class="max-w-screen-md mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8" data-i18n="gallery_heading">Galerie</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <a href="#" class="block overflow-hidden rounded-lg aspect-[3/2]"><img loading="lazy" decoding="async" src="../../assets/img/apartment1-800.jpg" srcset="../../assets/img/apartment1-800.jpg 800w, ../../assets/img/apartment1-1200.jpg 1200w" sizes="(min-width:768px) 50vw,100vw" alt="Wohnzimmer mit Sofa" class="w-full h-full object-cover hover:scale-[1.03] transition-transform"></a>
+          <a href="#" class="block overflow-hidden rounded-lg aspect-[3/2]"><img loading="lazy" decoding="async" src="../../assets/img/apartment2-800.jpg" srcset="../../assets/img/apartment2-800.jpg 800w, ../../assets/img/apartment2-1200.jpg 1200w" sizes="(min-width:768px) 50vw,100vw" alt="Schlafzimmer mit Doppelbett" class="w-full h-full object-cover hover:scale-[1.03] transition-transform"></a>
+        </div>
+      </div>
+    </section>
+    <section id="location" class="py-16" data-reveal>
+      <div class="max-w-screen-md mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8" data-i18n="location_heading">Lage &amp; Anreise</h2>
+        <p class="mb-4" data-i18n="location_copy">Zentrumsnahe Lage, Restaurants und Bahnhof in wenigen Minuten erreichbar.</p>
+        <div class="ghost-card mb-4" role="img" aria-description="Karte Vorschau">
+          <span class="preview-badge" data-i18n="preview_badge">VORSCHAU</span>
+          <div class="aspect-video bg-gray-200 rounded"></div>
+        </div>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn-secondary" data-evt="cta_route" data-i18n="cta_route">Route in Google Maps öffnen</a>
+      </div>
+    </section>
+    <section id="rules" class="py-16 bg-gray-50" data-reveal>
+      <div class="max-w-screen-md mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8" data-i18n="rules_heading">Hausregeln &amp; FAQ</h2>
+        <div class="space-y-4">
+          <details class="p-4 border rounded-lg">
+            <summary class="cursor-pointer flex items-center justify-between"><span data-i18n="rule_q1">Sind Haustiere erlaubt?</span><svg class="w-5 h-5 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a.75.75 0 0 1 .75.75v5.5h5.5a.75.75 0 0 1 0 1.5h-5.5v5.5a.75.75 0 0 1-1.5 0v-5.5h-5.5a.75.75 0 0 1 0-1.5h5.5v-5.5A.75.75 0 0 1 10 3Z" clip-rule="evenodd"/></svg></summary>
+            <p class="mt-2 text-gray-600" data-i18n="rule_a1">Ja, auf Anfrage sind Haustiere willkommen.</p>
+          </details>
+          <details class="p-4 border rounded-lg">
+            <summary class="cursor-pointer flex items-center justify-between"><span data-i18n="rule_q2">Wie erfolgt die Schlüsselübergabe?</span><svg class="w-5 h-5 transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a.75.75 0 0 1 .75.75v5.5h5.5a.75.75 0 0 1 0 1.5h-5.5v5.5a.75.75 0 0 1-1.5 0v-5.5h-5.5a.75.75 0 0 1 0-1.5h5.5v-5.5A.75.75 0 0 1 10 3Z" clip-rule="evenodd"/></svg></summary>
+            <p class="mt-2 text-gray-600" data-i18n="rule_a2">Wir treffen uns vor Ort oder nutzen einen Schlüsselsafe.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="py-16" data-reveal data-hide-sticky="true">
+      <div class="max-w-screen-md mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4" data-i18n="contact_heading">Interesse? Jetzt anfragen.</h2>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-4">
+          <a href="https://wa.me/0000000" class="btn-primary" data-evt="cta_whatsapp" data-i18n="cta_whatsapp">WhatsApp schreiben</a>
+          <a href="mailto:info@example.com" class="btn-secondary" data-evt="cta_email" data-i18n="cta_email">E-Mail senden</a>
+        </div>
+        <p class="text-xs text-gray-600" data-i18n="gdpr_note">Bei Klick auf WhatsApp werden Daten an Dritte übermittelt.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="py-8 bg-gray-100 text-center">
+    <div class="flex justify-center gap-4 mb-2">
+      <a href="../../legal/impressum.html" class="text-sm text-gray-600 hover:text-gray-900" data-i18n="footer_imprint">Impressum</a>
+      <a href="../../legal/privacy.html" class="text-sm text-gray-600 hover:text-gray-900" data-i18n="footer_privacy">Datenschutz</a>
+    </div>
+    <p class="text-sm text-gray-600" data-i18n="footer_copy">© 2025 TurboSito</p>
+  </footer>
+  <div id="mobile-cta" class="fixed bottom-4 left-0 right-0 mx-auto max-w-xs flex gap-3 px-4 opacity-0 pointer-events-none">
+    <a href="#contact" class="btn-primary flex-1" data-evt="cta_contact" data-i18n="cta_contact">Anfrage senden</a>
+    <a href="#location" class="btn-secondary flex-1" data-evt="cta_location" data-i18n="cta_location">Lage ansehen</a>
+  </div>
+  <script>
+    const I18N={
+      de:{
+        meta_title:"Ferienwohnung Demo – TurboSito",
+        meta_description:"Gemütliche Ferienwohnung nahe dem Zentrum.",
+        og_title:"Ferienwohnung Demo – TurboSito",
+        og_description:"Gemütliche Ferienwohnung nahe dem Zentrum.",
+        og_locale:"de_DE",
+        skip_link:"Zum Inhalt springen",
+        hero_h1:"Wohnen <span class='bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] bg-clip-text text-transparent'>nah am Zentrum</span>",
+        hero_p:"Gemütliches Apartment für Ihren Urlaub.",
+        chip_bedrooms:"2 Schlafzimmer",
+        chip_balcony:"Balkon",
+        chip_parking:"Parkplatz",
+        cta_contact:"Anfrage senden",
+        cta_location:"Lage ansehen",
+        preview_badge:"VORSCHAU",
+        ghost_review:"„Super Aufenthalt!“",
+        amenities_heading:"Ausstattung",
+        amenity1:"Voll ausgestattete Küche",
+        amenity2:"Badezimmer mit Dusche",
+        amenity3:"WLAN &amp; TV",
+        amenity4:"Haustiere auf Anfrage",
+        availability_heading:"Verfügbarkeit",
+        availability_hint:"Grün = verfügbar, Rot = belegt (Beispiel).",
+        gallery_heading:"Galerie",
+        location_heading:"Lage & Anreise",
+        location_copy:"Zentrumsnahe Lage, Restaurants und Bahnhof in wenigen Minuten erreichbar.",
+        cta_route:"Route in Google Maps öffnen",
+        rules_heading:"Hausregeln & FAQ",
+        rule_q1:"Sind Haustiere erlaubt?",
+        rule_a1:"Ja, auf Anfrage sind Haustiere willkommen.",
+        rule_q2:"Wie erfolgt die Schlüsselübergabe?",
+        rule_a2:"Wir treffen uns vor Ort oder nutzen einen Schlüsselsafe.",
+        contact_heading:"Interesse? Jetzt anfragen.",
+        cta_whatsapp:"WhatsApp schreiben",
+        cta_email:"E-Mail senden",
+        gdpr_note:"Bei Klick auf WhatsApp werden Daten an Dritte übermittelt.",
+        footer_imprint:"Impressum",
+        footer_privacy:"Datenschutz",
+        footer_copy:"© 2025 TurboSito"
+      },
+      it:{
+        meta_title:"Demo Appartamento – TurboSito",
+        meta_description:"Accogliente appartamento vicino al centro.",
+        og_title:"Demo Appartamento – TurboSito",
+        og_description:"Accogliente appartamento vicino al centro.",
+        og_locale:"it_IT",
+        skip_link:"Salta al contenuto",
+        hero_h1:"Alloggio <span class='bg-gradient-to-r from-[var(--brand)] to-[var(--brand-2)] bg-clip-text text-transparent'>vicino al centro</span>",
+        hero_p:"Appartamento accogliente per la tua vacanza.",
+        chip_bedrooms:"2 camere",
+        chip_balcony:"Balcone",
+        chip_parking:"Parcheggio",
+        cta_contact:"Invia richiesta",
+        cta_location:"Guarda la posizione",
+        preview_badge:"ANTEPRIMA",
+        ghost_review:"«Soggiorno fantastico!»",
+        amenities_heading:"Dotazioni",
+        amenity1:"Cucina completamente attrezzata",
+        amenity2:"Bagno con doccia",
+        amenity3:"Wi‑Fi e TV",
+        amenity4:"Animali su richiesta",
+        availability_heading:"Disponibilità",
+        availability_hint:"Verde = libero, rosso = occupato (esempio).",
+        gallery_heading:"Galleria",
+        location_heading:"Posizione & Arrivo",
+        location_copy:"Vicino al centro, ristoranti e stazione raggiungibili a piedi.",
+        cta_route:"Apri il percorso su Google Maps",
+        rules_heading:"Regole della casa & FAQ",
+        rule_q1:"Gli animali sono ammessi?",
+        rule_a1:"Sì, su richiesta sono benvenuti.",
+        rule_q2:"Come avviene la consegna delle chiavi?",
+        rule_a2:"Ci incontriamo sul posto o usiamo una cassetta di sicurezza.",
+        contact_heading:"Interessato? Contattaci.",
+        cta_whatsapp:"Scrivi su WhatsApp",
+        cta_email:"Invia e-mail",
+        gdpr_note:"Cliccando su WhatsApp i dati vengono trasmessi a terzi.",
+        footer_imprint:"Note legali",
+        footer_privacy:"Privacy",
+        footer_copy:"© 2025 TurboSito"
+      }
+    };
+    const langBtns=document.querySelectorAll('[data-lang-btn]');
+    function applyI18n(lang){
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key=el.dataset.i18n;if(I18N[lang][key]) el.innerHTML=I18N[lang][key];
+      });
+      document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
+        el.dataset.i18nAttr.split('|').forEach(pair=>{
+          const [attr,key]=pair.split(':');
+          if(I18N[lang][key]) el.setAttribute(attr,I18N[lang][key]);
         });
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('lang') || 'de';
-            setLang(savedLang);
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            setTheme(savedTheme);
-        });
-    </script>
-    <!-- Scroll reveal script: reveals sections on scroll -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.scroll-reveal').forEach(el => {
-                observer.observe(el);
-            });
-        });
-    </script>
+      });
+    }
+    function getLang(){return localStorage.getItem('lang')==='it'?'it':'de';}
+    function setLang(lang){
+      lang=lang==='it'?'it':'de';
+      document.documentElement.lang=lang;
+      localStorage.setItem('lang',lang);
+      langBtns.forEach(b=>{
+        const active=b.dataset.langBtn===lang;
+        b.setAttribute('aria-pressed',active);
+        b.classList.toggle('bg-indigo-600',active);
+        b.classList.toggle('text-white',active);
+        b.classList.toggle('bg-white',!active);
+        b.classList.toggle('text-gray-700',!active);
+      });
+      applyI18n(lang);
+    }
+    langBtns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.langBtn)));
+    setLang(getLang());
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');const t=document.querySelector(id);if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}},false));
+    const header=document.getElementById('site-header');
+    window.addEventListener('scroll',()=>{header.classList.toggle('shadow',window.scrollY>0);},{passive:true});
+    const revealObserver=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('reveal-visible');revealObserver.unobserve(en.target);}})},{threshold:0.1});
+    document.querySelectorAll('[data-reveal]').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el);});
+    const hero=document.getElementById('hero');
+    const contact=document.getElementById('contact');
+    const footer=document.querySelector('footer');
+    const mobileCta=document.getElementById('mobile-cta');
+    const ghostCards=document.querySelectorAll('.ghost-card');
+    let heroIn=true,contactIn=false,footerIn=false;
+    function updateMobile(){const show=!heroIn&&!contactIn&&!footerIn;mobileCta.classList.toggle('opacity-100',show);mobileCta.classList.toggle('pointer-events-none',!show);}
+    const io=new IntersectionObserver(entries=>{entries.forEach(en=>{if(en.target===hero){heroIn=en.isIntersecting;ghostCards.forEach(c=>c.classList.toggle('opacity-0',!heroIn));}if(en.target===contact){contactIn=en.isIntersecting;}if(en.target===footer){footerIn=en.isIntersecting;}});updateMobile();});
+    io.observe(hero);io.observe(contact);io.observe(footer);
+    document.querySelectorAll('[data-evt]').forEach(el=>el.addEventListener('click',()=>console.log('evt',el.dataset.evt)));
+    const nodesCount=document.querySelectorAll('[data-i18n],[data-i18n-attr]').length;
+    console.table(Object.keys(I18N).map(l=>({lang:l,keys:Object.keys(I18N[l]).length,nodes:nodesCount})));
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Apartment",
+    "name":"Ferienwohnung Demo",
+    "description":"Gemütliche Ferienwohnung nahe dem Zentrum.",
+    "image":"{{URL}}/assets/img/apartment-hero-1920.jpg",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"Musterstraße 1",
+      "addressLocality":"Bozen",
+      "postalCode":"39100",
+      "addressCountry":"IT"
+    },
+    "geo":{
+      "@type":"GeoCoordinates",
+      "latitude":46.498,
+      "longitude":11.354
+    },
+    "contactPoint":{
+      "@type":"ContactPoint",
+      "contactType":"customer support",
+      "telephone":"+39-000-000000"
+    },
+    "availableLanguage":["de","it"]
+  }
+  </script>
 </body>
-
 </html>
+
