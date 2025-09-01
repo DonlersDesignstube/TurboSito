@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio – TurboSito</title>
+  <meta name="description" content="Selection of recent work and projects.">
+  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html">
+  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html">
+  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html">
+  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+</head>
+<body class="font-sans text-gray-900">
+<header id="site-header" class="bg-white shadow-sm">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <a href="/en/" class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">TurboSito</a>
+    <div class="flex items-center gap-4">
+      <div class="flex gap-2 text-sm" aria-label="Change language">
+        <a id="switch-de" href="/de/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">DE</a>
+        <a id="switch-en" href="/en/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">EN</a>
+        <a id="switch-it" href="/it/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">IT</a>
+      </div>
+      <button id="menu-btn" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav id="main-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-md md:block md:static md:shadow-none" aria-label="Main navigation">
+    <ul class="flex flex-col max-w-6xl mx-auto p-4 gap-2 md:flex-row md:gap-6 md:p-0">
+      <li><a href="/en/" data-page="home" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Home</a></li>
+      <li><a href="/en/about.html" data-page="about" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">About</a></li>
+      <li><a href="/en/services.html" data-page="services" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Services</a></li>
+      <li><a href="/en/portfolio.html" data-page="portfolio" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Portfolio</a></li>
+      <li><a href="/en/contact.html" data-page="contact" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Contact</a></li>
+    </ul>
+  </nav>
+  <script>
+    const btn = document.getElementById('menu-btn')
+    const nav = document.getElementById('main-nav')
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true'
+      btn.setAttribute('aria-expanded', String(!open))
+      nav.classList.toggle('hidden')
+    })
+    const pages = {
+      home: {de: '/de/', en: '/en/', it: '/it/'},
+      about: {de: '/de/ueber-mich.html', en: '/en/about.html', it: '/it/chi-sono.html'},
+      services: {de: '/de/leistungen.html', en: '/en/services.html', it: '/it/servizi.html'},
+      portfolio: {de: '/de/portfolio.html', en: '/en/portfolio.html', it: '/it/portfolio.html'},
+      contact: {de: '/de/kontakt.html', en: '/en/contact.html', it: '/it/contatti.html'}
+    }
+    const path = window.location.pathname.replace(/index\.html$/, '')
+    let key = 'home'
+    for (const [k, v] of Object.entries(pages)) {
+      if (Object.values(v).includes(path)) { key = k; break }
+    }
+    const lang = document.documentElement.lang
+    const current = pages[key]
+    document.getElementById('switch-de').href = current.de
+    document.getElementById('switch-en').href = current.en
+    document.getElementById('switch-it').href = current.it
+    document.getElementById('switch-' + lang).classList.add('font-semibold', 'text-indigo-600')
+    document.querySelectorAll('#main-nav a[data-page]').forEach(a => {
+      if (a.dataset.page === key) {
+        a.setAttribute('aria-current', 'page')
+        a.classList.add('text-indigo-600', 'font-semibold')
+      }
+    })
+  </script>
+</header>
+<main class="max-w-6xl mx-auto px-4 py-20">
+  <section class="mb-12 text-center">
+    <h1 class="text-4xl font-bold mb-4">Portfolio</h1>
+    <p>A selection of recent work and projects.</p>
+  </section>
+  <section class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <article class="shadow rounded-lg overflow-hidden">
+      <picture>
+        <source srcset="/assets/portfolio/p1.webp" type="image/webp">
+        <img src="/assets/portfolio/p1.jpg" alt="Landing page for tech startup" width="600" height="400" loading="lazy" decoding="async" class="w-full h-auto">
+      </picture>
+      <div class="p-4">
+        <h2 class="text-xl font-semibold">Landing page for tech startup</h2>
+        <p class="mb-2 text-sm text-gray-700">Boosted signups by 40%.</p>
+        <a href="/en/cases/startup-landing.html" class="text-indigo-600 hover:underline" aria-label="View details: Landing page for tech startup">View details</a>
+      </div>
+    </article>
+    <article class="shadow rounded-lg overflow-hidden">
+      <picture>
+        <source srcset="/assets/portfolio/p2.webp" type="image/webp">
+        <img src="/assets/portfolio/p2.jpg" alt="Corporate site for consulting firm" width="600" height="400" loading="lazy" decoding="async" class="w-full h-auto">
+      </picture>
+      <div class="p-4">
+        <h2 class="text-xl font-semibold">Corporate site for consulting firm</h2>
+        <p class="mb-2 text-sm text-gray-700">Leads increased by 30%.</p>
+        <a href="/en/cases/consulting-corp-site.html" class="text-indigo-600 hover:underline" aria-label="View details: Corporate site for consulting firm">View details</a>
+      </div>
+    </article>
+    <article class="shadow rounded-lg overflow-hidden">
+      <picture>
+        <source srcset="/assets/portfolio/p3.webp" type="image/webp">
+        <img src="/assets/portfolio/p3.jpg" alt="Online store for fashion brand" width="600" height="400" loading="lazy" decoding="async" class="w-full h-auto">
+      </picture>
+      <div class="p-4">
+        <h2 class="text-xl font-semibold">Online store for fashion brand</h2>
+        <p class="mb-2 text-sm text-gray-700">Revenue doubled in three months.</p>
+        <a href="/en/cases/fashion-shop.html" class="text-indigo-600 hover:underline" aria-label="View details: Online store for fashion brand">View details</a>
+      </div>
+    </article>
+    <article class="shadow rounded-lg overflow-hidden">
+      <picture>
+        <source srcset="/assets/portfolio/p4.webp" type="image/webp">
+        <img src="/assets/portfolio/p4.jpg" alt="Portfolio site for photographer" width="600" height="400" loading="lazy" decoding="async" class="w-full h-auto">
+      </picture>
+      <div class="p-4">
+        <h2 class="text-xl font-semibold">Portfolio site for photographer</h2>
+        <p class="mb-2 text-sm text-gray-700">More bookings through strong online presence.</p>
+        <a href="/en/cases/photographer-portfolio.html" class="text-indigo-600 hover:underline" aria-label="View details: Portfolio site for photographer">View details</a>
+      </div>
+    </article>
+    <article class="shadow rounded-lg overflow-hidden">
+      <picture>
+        <source srcset="/assets/portfolio/p5.webp" type="image/webp">
+        <img src="/assets/portfolio/p5.jpg" alt="Event microsite" width="600" height="400" loading="lazy" decoding="async" class="w-full h-auto">
+      </picture>
+      <div class="p-4">
+        <h2 class="text-xl font-semibold">Event microsite</h2>
+        <p class="mb-2 text-sm text-gray-700">2k registrations in one week.</p>
+        <a href="/en/cases/event-microsite.html" class="text-indigo-600 hover:underline" aria-label="View details: Event microsite">View details</a>
+      </div>
+    </article>
+    <article class="shadow rounded-lg overflow-hidden">
+      <picture>
+        <source srcset="/assets/portfolio/p6.webp" type="image/webp">
+        <img src="/assets/portfolio/p6.jpg" alt="Multilingual hotel site" width="600" height="400" loading="lazy" decoding="async" class="w-full h-auto">
+      </picture>
+      <div class="p-4">
+        <h2 class="text-xl font-semibold">Multilingual hotel site</h2>
+        <p class="mb-2 text-sm text-gray-700">International bookings up 25%.</p>
+        <a href="/en/cases/hotel-multilingual.html" class="text-indigo-600 hover:underline" aria-label="View details: Multilingual hotel site">View details</a>
+      </div>
+    </article>
+  </section>
+</main>
+<footer class="p-4 text-sm text-center">
+  <a href="/en/imprint.html" class="underline">Imprint</a>
+  <span class="mx-2">·</span>
+  <a href="/en/privacy.html" class="underline">Privacy</a>
+</footer>
+</body>
+</html>
