@@ -77,26 +77,26 @@
   <section class="section-lg max-w-3xl mx-auto px-4 py-20">
     <h1 class="font-display text-3xl md:text-4xl font-bold mb-6">Contatti</h1>
     <p class="mb-8">Rispondo entro 24–48&nbsp;ore.</p>
-    <form id="contact-form" name="contact" method="post" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4" action="/it/grazie.html">
+    <form id="contact-form" name="contact" method="post" data-netlify="true" netlify-honeypot="bot-field" class="card max-w-2xl space-y-4" action="/it/grazie.html">
       <input type="hidden" name="form-name" value="contact">
       <div class="hidden" aria-hidden="true"><label>Lascia vuoto<input name="bot-field"></label></div>
       <div>
-        <label for="name" class="block mb-1">Nome</label>
-        <input id="name" name="name" required aria-invalid="false" class="w-full border rounded p-2">
+        <label for="name" class="block text-sm font-medium mb-1">Nome</label>
+        <input id="name" name="name" required aria-invalid="false" class="w-full rounded-lg bg-transparent border border-white/15 focus:outline-none focus:ring-2 focus:ring-[color:rgb(var(--ring))] px-3 py-2">
       </div>
       <div>
-        <label for="email" class="block mb-1">Email</label>
-        <input id="email" name="email" type="email" required aria-invalid="false" class="w-full border rounded p-2">
+        <label for="email" class="block text-sm font-medium mb-1">Email</label>
+        <input id="email" name="email" type="email" required aria-invalid="false" class="w-full rounded-lg bg-transparent border border-white/15 focus:outline-none focus:ring-2 focus:ring-[color:rgb(var(--ring))] px-3 py-2">
       </div>
       <div>
-        <label for="message" class="block mb-1">Messaggio</label>
-        <textarea id="message" name="message" required aria-invalid="false" class="w-full border rounded p-2 h-32"></textarea>
+        <label for="message" class="block text-sm font-medium mb-1">Messaggio</label>
+        <textarea id="message" name="message" required aria-invalid="false" class="w-full rounded-lg bg-transparent border border-white/15 focus:outline-none focus:ring-2 focus:ring-[color:rgb(var(--ring))] px-3 py-2 h-32"></textarea>
       </div>
       <div class="flex items-start gap-2">
-        <input id="consent" name="consent" type="checkbox" required class="mt-1">
-        <label for="consent" class="text-sm">Acconsento al trattamento dei miei dati secondo la <a href="/it/privacy.html" class="underline">privacy</a>.</label>
+        <input id="consent" name="consent" type="checkbox" required class="mt-1 rounded border-white/15">
+        <label for="consent" class="text-sm text-[color:var(--muted)]">Acconsento al trattamento dei miei dati secondo la <a href="/it/privacy.html" class="underline">privacy</a>.</label>
       </div>
-      <button type="submit" class="btn" aria-label="Invia messaggio">Invia messaggio</button>
+      <button type="submit" class="btn mt-3" aria-label="Invia messaggio">Invia messaggio</button>
     </form>
   </section>
 </main>
