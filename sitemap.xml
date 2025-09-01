@@ -1,31 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Main landing page -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>{{URL}}/landing/</loc>
-  </url>
-  <!-- Demo pages -->
-  <url>
-    <loc>{{URL}}/demos/restaurant/</loc>
-  </url>
-  <url>
-    <loc>{{URL}}/demos/barber/</loc>
+    <loc>https://deine-domain.tld/de/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/"/>
   </url>
   <url>
-    <loc>{{URL}}/demos/apartment/</loc>
-  </url>
-  <!-- Legal pages -->
-  <url>
-    <loc>{{URL}}/legal/impressum.html</loc>
-  </url>
-  <url>
-    <loc>{{URL}}/legal/privacy.html</loc>
-  </url>
-  <!-- Payment feedback pages -->
-  <url>
-    <loc>{{URL}}/thanks.html</loc>
+    <loc>https://deine-domain.tld/en/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/"/>
   </url>
   <url>
-    <loc>{{URL}}/cancel.html</loc>
+    <loc>https://deine-domain.tld/it/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/de/ueber-mich.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/ueber-mich.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/chi-sono.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/about.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/ueber-mich.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/chi-sono.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/about.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/it/chi-sono.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/ueber-mich.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/chi-sono.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/about.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/de/leistungen.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/leistungen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/servizi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/services.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/en/services.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/leistungen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/servizi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/services.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/it/servizi.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/leistungen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/servizi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/services.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/de/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/en/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/it/portfolio.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/de/kontakt.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/contatti.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/contatti.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/it/contatti.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/kontakt.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/contatti.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/de/danke.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/danke.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/thanks.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/grazie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/thanks.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/en/thanks.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/danke.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/thanks.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/grazie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/thanks.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/it/grazie.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/danke.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/thanks.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/grazie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/thanks.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/de/impressum.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/note-legali.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/de/datenschutz.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/en/legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/note-legali.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/legal.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/it/note-legali.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/impressum.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/note-legali.html"/>
+  </url>
+  <url>
+    <loc>https://deine-domain.tld/it/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/datenschutz.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/privacy.html"/>
   </url>
 </urlset>
