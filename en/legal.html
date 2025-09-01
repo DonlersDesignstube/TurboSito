@@ -16,7 +16,15 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://deine-domain.tld/assets/img/og-default.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--font-sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", sans-serif}
+  .font-display{font-family:"Outfit", var(--font-sans)}
+  body{font-family:var(--font-sans)}
+</style>
+<link rel="stylesheet" href="/assets/css/theme.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:text-indigo-600 focus:px-3 focus:py-2 focus:rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Skip to content</a>

@@ -16,12 +16,20 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://deine-domain.tld/assets/img/og-default.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--font-sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", sans-serif}
+  .font-display{font-family:"Outfit", var(--font-sans)}
+  body{font-family:var(--font-sans)}
+</style>
+<link rel="stylesheet" href="/assets/css/theme.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
 <header id="site-header" class="p-4" role="banner"></header>
-<main role="main">
-  <section class="max-w-screen-xl mx-auto px-4 py-20 text-center">
+<main id="content" role="main">
+  <section class="section-lg max-w-screen-xl mx-auto px-4 py-20 text-center">
     <h1 class="text-4xl font-bold mb-4">About</h1>
     <p>Learn more about me here.</p>
   </section>
