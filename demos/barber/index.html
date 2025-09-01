@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="de" class="">
+
+<html class="" lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Use TurboSito brand in the page title -->
-    <title>Friseur/Barber&nbsp;Demo – TurboSito</title>
-    <!-- Preload the barber hero image for faster LCP -->
-    <link rel="preload" as="image" href="../../assets/img/barber-hero-1920.jpg" fetchpriority="high">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-    <meta name="description" content="Demo Friseur/Barber: Schnitt, Farbe, Wohlfühlen. Taglio, colore, relax.">
-    <meta property="og:title" content="Friseur&nbsp;Demo – TurboSito">
-    <meta property="og:description" content="Schnitt, Farbe, Wohlfühlen. Taglio, colore, relax.">
-    <meta property="og:image" content="../../assets/img/barber-hero-1920.jpg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{URL}}/demos/barber/">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Use TurboSito brand in the page title -->
+<title>Friseur/Barber Demo – TurboSito</title>
+<!-- Preload the barber hero image for faster LCP -->
+<link as="image" fetchpriority="high" href="../../assets/img/barber-hero-1920.jpg" rel="preload"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+<meta content="Demo Friseur/Barber: Schnitt, Farbe, Wohlfühlen. Taglio, colore, relax." name="description"/>
+<meta content="Friseur Demo – TurboSito" property="og:title"/>
+<meta content="Schnitt, Farbe, Wohlfühlen. Taglio, colore, relax." property="og:description"/>
+<meta content="../../assets/img/barber-hero-1920.jpg" property="og:image"/>
+<meta content="website" property="og:type"/>
+<meta content="{{URL}}/demos/barber/" property="og:url"/>
+<style>
         [data-lang] { display: none; }
         :root[data-language="de"] [data-lang="de"] { display: block; }
         :root[data-language="it"] [data-lang="it"] { display: block; }
@@ -23,176 +24,179 @@
         .scroll-reveal { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
     </style>
-</head>
-<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-[#111827] transition-colors duration-300">
-    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
-        <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
-            <!-- Logo with page name: link back to landing page -->
-            <a href="../../landing/" class="flex items-center gap-3">
-                <img src="../../assets/logo/turbosito-logo-ts-bars.svg" alt="TurboSito" class="h-7 w-auto">
-                <!-- Page name for DE and IT -->
-                <span class="text-lg font-bold" data-lang="de">Friseur&nbsp;Demo</span>
-                <span class="text-lg font-bold" data-lang="it">Demo&nbsp;Barber&nbsp;Shop</span>
-            </a>
-            <div class="flex items-center space-x-4">
-                <button id="langDeB" class="text-sm font-medium hover:underline" onclick="setLang('de')" aria-label="Deutsch">DE</button>
-                <button id="langItB" class="text-sm font-medium hover:underline" onclick="setLang('it')" aria-label="Italiano">IT</button>
-                <button id="themeToggleB" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" aria-label="Theme Toggle">
-                    <svg id="themeIconB" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path id="themeSunB" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v2m0 14v2m8.66-8.66h-2m-12 0H3m15.364-5.364l-1.414 1.414m-10.95 10.95l-1.414 1.414m12.728 0l1.414 1.414m-12.728-12.728L5.636 4.636M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        <path id="themeMoonB" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 118.646 3.646 7 7 0 0020.354 15.354z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </header>
-    <main>
-        <!-- Hero -->
-        <!-- Hero section with more height on mobile for better spacing -->
-        <!-- Increase hero height to allow headings and CTA to breathe on mobile -->
-        <section class="relative overflow-hidden" style="min-height:90vh;">
-            <!-- Responsive barber hero image with WebP and JPEG sources -->
-            <picture>
-                <source type="image/webp" srcset="../../assets/img/barber-hero-1280.webp 1280w, ../../assets/img/barber-hero-1920.webp 1920w" sizes="100vw">
-                <img src="../../assets/img/barber-hero-1920.jpg" srcset="../../assets/img/barber-hero-1280.jpg 1280w, ../../assets/img/barber-hero-1920.jpg 1920w" sizes="100vw" width="1920" height="1080" class="absolute inset-0 w-full h-full object-cover" alt="Historischer Barbershop aus den 1910er Jahren">
-            </picture>
-            <!-- Darker overlay to ensure white text is easily readable -->
-            <!-- Slightly lighter overlay for improved contrast on the vintage photo -->
-            <div class="absolute inset-0 bg-black/50"></div>
-            <div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-24 sm:py-32">
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Schnitt, Farbe, Wohlfühlen.</h1>
-                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Taglio, colore, relax.</h1>
-                <p class="text-lg sm:text-xl text-white mb-8" data-lang="de">Ihr Friseur für moderne Styles und persönliche Beratung.</p>
-                <p class="text-lg sm:text-xl text-white mb-8" data-lang="it">Il tuo barbiere per stile moderni e consulenza personalizzata.</p>
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <a href="https://wa.me/PHONE?text=Ich%20m%C3%B6chte%20einen%20Termin%20buchen" class="px-6 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" target="_blank" rel="noopener" data-lang="de">WhatsApp Termin</a>
-                    <a href="https://wa.me/PHONE?text=Vorrei%20prenotare%20un%20appuntamento" class="px-6 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" target="_blank" rel="noopener" data-lang="it">Prenota su WhatsApp</a>
-                </div>
-                <!-- WhatsApp disclaimer -->
-                <p class="mt-2 text-xs text-white" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
-                <p class="mt-2 text-xs text-white" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
-            </div>
-        </section>
-        <!-- Leistungen / Services -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Leistungen</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Servizi</h2>
-                <ul class="space-y-4">
-                    <li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Damenhaarschnitt</span><span data-lang="de">45&nbsp;€</span><span data-lang="it">Taglio donna</span><span data-lang="it">45&nbsp;€</span></li>
-                    <li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Herrenhaarschnitt</span><span data-lang="de">30&nbsp;€</span><span data-lang="it">Taglio uomo</span><span data-lang="it">30&nbsp;€</span></li>
-                    <li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Bartpflege</span><span data-lang="de">20&nbsp;€</span><span data-lang="it">Cura della barba</span><span data-lang="it">20&nbsp;€</span></li>
-                    <li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Haarfarbe</span><span data-lang="de">ab 50&nbsp;€</span><span data-lang="it">Colore capelli</span><span data-lang="it">da 50&nbsp;€</span></li>
-                    <li class="flex justify-between"><span data-lang="de">Styling</span><span data-lang="de">15&nbsp;€</span><span data-lang="it">Styling</span><span data-lang="it">15&nbsp;€</span></li>
-                </ul>
-            </div>
-        </section>
-        <!-- Galerie -->
-        <section class="py-12 scroll-reveal">
-            <div class="max-w-screen-lg mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Galerie</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Galleria</h2>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    <img src="../../assets/img/barber1.jpg" alt="Vorher Nachher 1" class="w-full h-40 object-cover rounded" loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/barber2.jpg" alt="Vorher Nachher 2" class="w-full h-40 object-cover rounded" loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/barber3.jpg" alt="Vorher Nachher 3" class="w-full h-40 object-cover rounded" loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/barber4.jpg" alt="Salon 1" class="w-full h-40 object-cover rounded" loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/barber5.jpg" alt="Salon 2" class="w-full h-40 object-cover rounded" loading="lazy" width="600" height="400">
-                    <img src="../../assets/img/barber6.jpg" alt="Salon 3" class="w-full h-40 object-cover rounded" loading="lazy" width="600" height="400">
-                </div>
-            </div>
-        </section>
-        <!-- Team -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Unser Team</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Il nostro team</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="bg-white dark:bg-gray-900 rounded shadow p-4 flex flex-col items-center">
-                        <img src="../../assets/img/team1.jpg" alt="Stylistin" class="w-32 h-32 object-cover rounded-full mb-4" loading="lazy" width="256" height="256">
-                        <h3 class="font-semibold" data-lang="de">Anna Muster</h3>
-                        <h3 class="font-semibold" data-lang="it">Anna Muster</h3>
-                        <p class="text-sm text-gray-500" data-lang="de">Master Stylist</p>
-                        <p class="text-sm text-gray-500" data-lang="it">Maestra stilista</p>
-                    </div>
-                    <div class="bg-white dark:bg-gray-900 rounded shadow p-4 flex flex-col items-center">
-                        <img src="../../assets/img/team2.jpg" alt="Barbier" class="w-32 h-32 object-cover rounded-full mb-4" loading="lazy" width="256" height="256">
-                        <h3 class="font-semibold" data-lang="de">Luca Beispiel</h3>
-                        <h3 class="font-semibold" data-lang="it">Luca Beispiel</h3>
-                        <p class="text-sm text-gray-500" data-lang="de">Barber</p>
-                        <p class="text-sm text-gray-500" data-lang="it">Barbiere</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Standort -->
-        <section class="py-12 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">Standort</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">Posizione</h2>
-                <div class="w-full h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center rounded">
-                    <span class="text-gray-500" data-lang="de">Map‑Embed‑Platzhalter</span>
-                    <span class="text-gray-500" data-lang="it">Segnaposto mappa</span>
-                </div>
-            </div>
-        </section>
-        <!-- FAQ -->
-        <section class="py-12 bg-gray-50 dark:bg-gray-800 scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-6" data-lang="de">FAQ</h2>
-                <h2 class="text-2xl font-bold mb-6" data-lang="it">FAQ</h2>
-                <div class="space-y-4">
-                    <div>
-                        <h3 class="font-semibold" data-lang="de">Brauche ich einen Termin?</h3>
-                        <h3 class="font-semibold" data-lang="it">Ho bisogno di un appuntamento?</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Wir empfehlen einen Termin, spontane Besuche sind aber möglich.</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">È consigliato prenotare, ma anche le visite spontanee sono benvenute.</p>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold" data-lang="de">Welche Zahlungsmethoden akzeptiert ihr?</h3>
-                        <h3 class="font-semibold" data-lang="it">Quali metodi di pagamento accettate?</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Bar, EC‑Karte und kontaktlos.</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Contanti, carta e contactless.</p>
-                    </div>
-                    <div>
-                        <h3 class="font-semibold" data-lang="de">Bietet ihr auch Colorationen an?</h3>
-                        <h3 class="font-semibold" data-lang="it">Offrite anche servizi colore?</h3>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Ja, wir beraten dich gerne individuell.</p>
-                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Sì, ti consigliamo in modo personalizzato.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Kontakt / Call to action -->
-        <section class="py-12 text-center scroll-reveal">
-            <div class="max-w-screen-md mx-auto px-4">
-                <h2 class="text-2xl font-bold mb-4" data-lang="de">Kontakt</h2>
-                <h2 class="text-2xl font-bold mb-4" data-lang="it">Contatto</h2>
-                <p class="mb-4" data-lang="de">Vereinbaren Sie Ihren Termin über WhatsApp.</p>
-                <p class="mb-4" data-lang="it">Prenota il tuo appuntamento via WhatsApp.</p>
-                <a href="https://wa.me/PHONE?text=Ich%20m%C3%B6chte%20einen%20Termin%20vereinbaren" class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" target="_blank" rel="noopener" data-lang="de">Termin anfragen</a>
-                <a href="https://wa.me/PHONE?text=Vorrei%20prenotare%20un%20appuntamento" class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" target="_blank" rel="noopener" data-lang="it">Prenota ora</a>
-                <!-- WhatsApp disclaimer -->
-                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
-                <p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
-            </div>
-        </section>
-    </main>
-    <footer class="bg-gray-100 dark:bg-gray-800 py-6">
-        <div class="max-w-screen-lg mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
-            <div class="flex space-x-4 mb-4 sm:mb-0">
-                <a href="../../legal/impressum.html" class="underline" data-lang="de">Impressum</a>
-                <a href="../../legal/privacy.html" class="underline" data-lang="de">Datenschutz</a>
-                <a href="../../legal/impressum.html" class="underline" data-lang="it">Note legali</a>
-                <a href="../../legal/privacy.html" class="underline" data-lang="it">Privacy</a>
-            </div>
-            <div>
-                <small class="text-gray-500" data-lang="de">&copy; 2025 TurboSito – Friseur Demo</small>
-                <small class="text-gray-500" data-lang="it">&copy; 2025 TurboSito – Demo Barber Shop</small>
-            </div>
-        </div>
-    </footer>
-    <script type="application/ld+json">
+<link crossorigin="True" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Outfit:wght@600;800&amp;display=swap" rel="stylesheet"/><style>:root{--font-sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", sans-serif}
+.font-display{font-family:"Outfit", var(--font-sans)}
+body{font-family:var(--font-sans)}
+</style><link href="/assets/css/theme.css" rel="stylesheet"/></head>
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-[#111827] transition-colors duration-300"><a class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded" href="#content">Skip to content</a>
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+<div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+<!-- Logo with page name: link back to landing page -->
+<a class="flex items-center gap-3" href="../../landing/">
+<img alt="TurboSito" class="h-7 w-auto" src="../../assets/logo/turbosito-logo-ts-bars.svg"/>
+<!-- Page name for DE and IT -->
+<span class="text-lg font-bold" data-lang="de">Friseur Demo</span>
+<span class="text-lg font-bold" data-lang="it">Demo Barber Shop</span>
+</a>
+<div class="flex items-center space-x-4">
+<button aria-label="Deutsch" class="text-sm font-medium hover:underline" id="langDeB" onclick="setLang('de')">DE</button>
+<button aria-label="Italiano" class="text-sm font-medium hover:underline" id="langItB" onclick="setLang('it')">IT</button>
+<button aria-label="Theme Toggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800" id="themeToggleB">
+<svg class="h-5 w-5" fill="none" id="themeIconB" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 3v2m0 14v2m8.66-8.66h-2m-12 0H3m15.364-5.364l-1.414 1.414m-10.95 10.95l-1.414 1.414m12.728 0l1.414 1.414m-12.728-12.728L5.636 4.636M21 12a9 9 0 11-18 0 9 9 0 0118 0z" id="themeSunB" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path class="hidden" d="M20.354 15.354A9 9 0 118.646 3.646 7 7 0 0020.354 15.354z" id="themeMoonB" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<main id="content">
+<!-- Hero -->
+<!-- Hero section with more height on mobile for better spacing -->
+<!-- Increase hero height to allow headings and CTA to breathe on mobile -->
+<section class="section-lg relative overflow-hidden" style="min-height:90vh;">
+<!-- Responsive barber hero image with WebP and JPEG sources -->
+<picture>
+<source sizes="100vw" srcset="../../assets/img/barber-hero-1280.webp 1280w, ../../assets/img/barber-hero-1920.webp 1920w" type="image/webp"/>
+<img alt="Historischer Barbershop aus den 1910er Jahren" class="absolute inset-0 w-full h-full object-cover" height="1080" sizes="100vw" src="../../assets/img/barber-hero-1920.jpg" srcset="../../assets/img/barber-hero-1280.jpg 1280w, ../../assets/img/barber-hero-1920.jpg 1920w" width="1920"/>
+</picture>
+<!-- Darker overlay to ensure white text is easily readable -->
+<!-- Slightly lighter overlay for improved contrast on the vintage photo -->
+<div class="absolute inset-0 bg-black/50"></div>
+<div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-24 sm:py-32">
+<h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Schnitt, Farbe, Wohlfühlen.</h1>
+<h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Taglio, colore, relax.</h1>
+<p class="text-lg sm:text-xl text-white mb-8" data-lang="de">Ihr Friseur für moderne Styles und persönliche Beratung.</p>
+<p class="text-lg sm:text-xl text-white mb-8" data-lang="it">Il tuo barbiere per stile moderni e consulenza personalizzata.</p>
+<div class="flex flex-col sm:flex-row items-center gap-4">
+<a class="px-6 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" data-lang="de" href="https://wa.me/PHONE?text=Ich%20m%C3%B6chte%20einen%20Termin%20buchen" rel="noopener" target="_blank">WhatsApp Termin</a>
+<a class="px-6 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" data-lang="it" href="https://wa.me/PHONE?text=Vorrei%20prenotare%20un%20appuntamento" rel="noopener" target="_blank">Prenota su WhatsApp</a>
+</div>
+<!-- WhatsApp disclaimer -->
+<p class="mt-2 text-xs text-white" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
+<p class="mt-2 text-xs text-white" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
+</div>
+</section>
+<!-- Leistungen / Services -->
+<section class="section dark:bg-gray-800 scroll-reveal py-12 bg-gray-50">
+<div class="max-w-screen-md mx-auto px-4">
+<h2 class="text-2xl font-bold mb-6" data-lang="de">Leistungen</h2>
+<h2 class="text-2xl font-bold mb-6" data-lang="it">Servizi</h2>
+<ul class="space-y-4">
+<li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Damenhaarschnitt</span><span data-lang="de">45 €</span><span data-lang="it">Taglio donna</span><span data-lang="it">45 €</span></li>
+<li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Herrenhaarschnitt</span><span data-lang="de">30 €</span><span data-lang="it">Taglio uomo</span><span data-lang="it">30 €</span></li>
+<li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Bartpflege</span><span data-lang="de">20 €</span><span data-lang="it">Cura della barba</span><span data-lang="it">20 €</span></li>
+<li class="flex justify-between border-b border-gray-200 dark:border-gray-700 pb-2"><span data-lang="de">Haarfarbe</span><span data-lang="de">ab 50 €</span><span data-lang="it">Colore capelli</span><span data-lang="it">da 50 €</span></li>
+<li class="flex justify-between"><span data-lang="de">Styling</span><span data-lang="de">15 €</span><span data-lang="it">Styling</span><span data-lang="it">15 €</span></li>
+</ul>
+</div>
+</section>
+<!-- Galerie -->
+<section class="scroll-reveal section py-12">
+<div class="max-w-screen-lg mx-auto px-4">
+<h2 class="text-2xl font-bold mb-6" data-lang="de">Galerie</h2>
+<h2 class="text-2xl font-bold mb-6" data-lang="it">Galleria</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<img alt="Vorher Nachher 1" class="w-full h-40 object-cover rounded" height="400" loading="lazy" src="../../assets/img/barber1.jpg" width="600"/>
+<img alt="Vorher Nachher 2" class="w-full h-40 object-cover rounded" height="400" loading="lazy" src="../../assets/img/barber2.jpg" width="600"/>
+<img alt="Vorher Nachher 3" class="w-full h-40 object-cover rounded" height="400" loading="lazy" src="../../assets/img/barber3.jpg" width="600"/>
+<img alt="Salon 1" class="w-full h-40 object-cover rounded" height="400" loading="lazy" src="../../assets/img/barber4.jpg" width="600"/>
+<img alt="Salon 2" class="w-full h-40 object-cover rounded" height="400" loading="lazy" src="../../assets/img/barber5.jpg" width="600"/>
+<img alt="Salon 3" class="w-full h-40 object-cover rounded" height="400" loading="lazy" src="../../assets/img/barber6.jpg" width="600"/>
+</div>
+</div>
+</section>
+<!-- Team -->
+<section class="section dark:bg-gray-800 scroll-reveal py-12 bg-gray-50">
+<div class="max-w-screen-md mx-auto px-4">
+<h2 class="text-2xl font-bold mb-6" data-lang="de">Unser Team</h2>
+<h2 class="text-2xl font-bold mb-6" data-lang="it">Il nostro team</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-gray-900 rounded shadow p-4 flex flex-col items-center">
+<img alt="Stylistin" class="w-32 h-32 object-cover rounded-full mb-4" height="256" loading="lazy" src="../../assets/img/team1.jpg" width="256"/>
+<h3 class="font-semibold" data-lang="de">Anna Muster</h3>
+<h3 class="font-semibold" data-lang="it">Anna Muster</h3>
+<p class="text-sm text-gray-500" data-lang="de">Master Stylist</p>
+<p class="text-sm text-gray-500" data-lang="it">Maestra stilista</p>
+</div>
+<div class="bg-white dark:bg-gray-900 rounded shadow p-4 flex flex-col items-center">
+<img alt="Barbier" class="w-32 h-32 object-cover rounded-full mb-4" height="256" loading="lazy" src="../../assets/img/team2.jpg" width="256"/>
+<h3 class="font-semibold" data-lang="de">Luca Beispiel</h3>
+<h3 class="font-semibold" data-lang="it">Luca Beispiel</h3>
+<p class="text-sm text-gray-500" data-lang="de">Barber</p>
+<p class="text-sm text-gray-500" data-lang="it">Barbiere</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Standort -->
+<section class="scroll-reveal section py-12">
+<div class="max-w-screen-md mx-auto px-4">
+<h2 class="text-2xl font-bold mb-6" data-lang="de">Standort</h2>
+<h2 class="text-2xl font-bold mb-6" data-lang="it">Posizione</h2>
+<div class="w-full h-64 bg-gray-200 dark:bg-gray-700 flex items-center justify-center rounded">
+<span class="text-gray-500" data-lang="de">Map‑Embed‑Platzhalter</span>
+<span class="text-gray-500" data-lang="it">Segnaposto mappa</span>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="section dark:bg-gray-800 scroll-reveal py-12 bg-gray-50">
+<div class="max-w-screen-md mx-auto px-4">
+<h2 class="text-2xl font-bold mb-6" data-lang="de">FAQ</h2>
+<h2 class="text-2xl font-bold mb-6" data-lang="it">FAQ</h2>
+<div class="space-y-4">
+<div>
+<h3 class="font-semibold" data-lang="de">Brauche ich einen Termin?</h3>
+<h3 class="font-semibold" data-lang="it">Ho bisogno di un appuntamento?</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Wir empfehlen einen Termin, spontane Besuche sind aber möglich.</p>
+<p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">È consigliato prenotare, ma anche le visite spontanee sono benvenute.</p>
+</div>
+<div>
+<h3 class="font-semibold" data-lang="de">Welche Zahlungsmethoden akzeptiert ihr?</h3>
+<h3 class="font-semibold" data-lang="it">Quali metodi di pagamento accettate?</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Bar, EC‑Karte und kontaktlos.</p>
+<p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Contanti, carta e contactless.</p>
+</div>
+<div>
+<h3 class="font-semibold" data-lang="de">Bietet ihr auch Colorationen an?</h3>
+<h3 class="font-semibold" data-lang="it">Offrite anche servizi colore?</h3>
+<p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Ja, wir beraten dich gerne individuell.</p>
+<p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Sì, ti consigliamo in modo personalizzato.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Kontakt / Call to action -->
+<section class="scroll-reveal section py-12 text-center">
+<div class="max-w-screen-md mx-auto px-4">
+<h2 class="text-2xl font-bold mb-4" data-lang="de">Kontakt</h2>
+<h2 class="text-2xl font-bold mb-4" data-lang="it">Contatto</h2>
+<p class="mb-4" data-lang="de">Vereinbaren Sie Ihren Termin über WhatsApp.</p>
+<p class="mb-4" data-lang="it">Prenota il tuo appuntamento via WhatsApp.</p>
+<a class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="de" href="https://wa.me/PHONE?text=Ich%20m%C3%B6chte%20einen%20Termin%20vereinbaren" rel="noopener" target="_blank">Termin anfragen</a>
+<a class="inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="it" href="https://wa.me/PHONE?text=Vorrei%20prenotare%20un%20appuntamento" rel="noopener" target="_blank">Prenota ora</a>
+<!-- WhatsApp disclaimer -->
+<p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="de">Bei Klick werden Daten an WhatsApp/Meta übermittelt.</p>
+<p class="mt-2 text-xs text-gray-600 dark:text-gray-400" data-lang="it">Cliccando, i dati verranno trasmessi a WhatsApp/Meta.</p>
+</div>
+</section>
+</main>
+<footer class="bg-gray-100 dark:bg-gray-800 py-6">
+<div class="max-w-screen-lg mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm">
+<div class="flex space-x-4 mb-4 sm:mb-0">
+<a class="underline" data-lang="de" href="../../legal/impressum.html">Impressum</a>
+<a class="underline" data-lang="de" href="../../legal/privacy.html">Datenschutz</a>
+<a class="underline" data-lang="it" href="../../legal/impressum.html">Note legali</a>
+<a class="underline" data-lang="it" href="../../legal/privacy.html">Privacy</a>
+</div>
+<div>
+<small class="text-gray-500" data-lang="de">© 2025 TurboSito – Friseur Demo</small>
+<small class="text-gray-500" data-lang="it">© 2025 TurboSito – Demo Barber Shop</small>
+</div>
+</div>
+</footer>
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HairSalon",
@@ -218,8 +222,8 @@
       ]
     }
     </script>
-    <!-- Reuse same language/theme script functions for barber page -->
-    <script>
+<!-- Reuse same language/theme script functions for barber page -->
+<script>
         function setLang(lang) {
             document.documentElement.dataset.language = lang;
             localStorage.setItem('lang', lang);
@@ -247,8 +251,8 @@
             setTheme(savedTheme);
         });
     </script>
-    <!-- Scroll reveal script: reveal elements when they enter the viewport -->
-    <script>
+<!-- Scroll reveal script: reveal elements when they enter the viewport -->
+<script>
         document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -263,5 +267,5 @@
             });
         });
     </script>
-</body>
+<script defer="True" src="/assets/js/nav-active.js"></script></body>
 </html>

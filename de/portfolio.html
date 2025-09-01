@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html lang="de" class="scroll-smooth">
+
+<html class="scroll-smooth" lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio – TurboSito</title>
-  <meta name="description" content="Auswahl aktueller Arbeiten und Projekte.">
-  <link rel="canonical" href="https://deine-domain.tld/de/portfolio.html">
-  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html">
-  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html">
-  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html">
-  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/">
-  <meta property="og:title" content="Portfolio – TurboSito">
-  <meta property="og:description" content="Auswahl aktueller Arbeiten und Projekte.">
-  <meta property="og:url" content="https://deine-domain.tld/de/portfolio.html">
-  <meta property="og:locale" content="de_DE">
-  <meta property="og:image" content="https://deine-domain.tld/assets/img/og-default.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Portfolio – TurboSito</title>
+<meta content="Auswahl aktueller Arbeiten und Projekte." name="description"/>
+<link href="https://deine-domain.tld/de/portfolio.html" rel="canonical"/>
+<link href="https://deine-domain.tld/de/portfolio.html" hreflang="de" rel="alternate"/>
+<link href="https://deine-domain.tld/en/portfolio.html" hreflang="en" rel="alternate"/>
+<link href="https://deine-domain.tld/it/portfolio.html" hreflang="it" rel="alternate"/>
+<link href="https://deine-domain.tld/en/" hreflang="x-default" rel="alternate"/>
+<meta content="Portfolio – TurboSito" property="og:title"/>
+<meta content="Auswahl aktueller Arbeiten und Projekte." property="og:description"/>
+<meta content="https://deine-domain.tld/de/portfolio.html" property="og:url"/>
+<meta content="de_DE" property="og:locale"/>
+<meta content="https://deine-domain.tld/assets/img/og-default.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Outfit:wght@600;800&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{--font-sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", sans-serif}
   .font-display{font-family:"Outfit", var(--font-sans)}
   body{font-family:var(--font-sans)}
 </style>
-<link rel="stylesheet" href="/assets/css/theme.css">
+<link href="/assets/css/theme.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
-<body class="font-sans text-gray-900">
-<header id="site-header" class="bg-white shadow-sm">
-  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-    <a href="/de/" class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">TurboSito</a>
-    <div class="flex items-center gap-4">
-      <div class="flex gap-2 text-sm" aria-label="Sprache wechseln">
-        <a id="switch-de" href="/de/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">DE</a>
-        <a id="switch-en" href="/en/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">EN</a>
-        <a id="switch-it" href="/it/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">IT</a>
-      </div>
-      <button id="menu-btn" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-expanded="false" aria-controls="main-nav" aria-label="Menü">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
-  <nav id="main-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-md md:block md:static md:shadow-none" aria-label="Hauptnavigation">
-    <ul class="flex flex-col max-w-6xl mx-auto p-4 gap-2 md:flex-row md:gap-6 md:p-0">
-      <li><a href="/de/" data-page="home" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Start</a></li>
-      <li><a href="/de/ueber-mich.html" data-page="about" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Über mich</a></li>
-      <li><a href="/de/leistungen.html" data-page="services" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Leistungen</a></li>
-      <li><a href="/de/portfolio.html" data-page="portfolio" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Portfolio</a></li>
-      <li><a href="/de/kontakt.html" data-page="contact" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Kontakt</a></li>
-    </ul>
-  </nav>
-  <script>
+<body class="font-sans text-gray-900"><a class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded" href="#content">Skip to content</a>
+<header class="bg-white shadow-sm" id="site-header">
+<div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+<a class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded" href="/de/">TurboSito</a>
+<div class="flex items-center gap-4">
+<div aria-label="Sprache wechseln" class="flex gap-2 text-sm">
+<a class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" href="/de/" id="switch-de">DE</a>
+<a class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" href="/en/" id="switch-en">EN</a>
+<a class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" href="/it/" id="switch-it">IT</a>
+</div>
+<button aria-controls="main-nav" aria-expanded="false" aria-label="Menü" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" id="menu-btn">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16"></path>
+</svg>
+</button>
+</div>
+</div>
+<nav aria-label="Hauptnavigation" class="hidden absolute top-full left-0 w-full bg-white shadow-md md:block md:static md:shadow-none" id="main-nav">
+<ul class="flex flex-col max-w-6xl mx-auto p-4 gap-2 md:flex-row md:gap-6 md:p-0">
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="home" href="/de/">Start</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="about" href="/de/ueber-mich.html">Über mich</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="services" href="/de/leistungen.html">Leistungen</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="portfolio" href="/de/portfolio.html">Portfolio</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="contact" href="/de/kontakt.html">Kontakt</a></li>
+</ul>
+</nav>
+<script>
     const btn = document.getElementById('menu-btn')
     const nav = document.getElementById('main-nav')
     btn.addEventListener('click', () => {
@@ -86,85 +87,85 @@
     })
   </script>
 </header>
-<main id="content" class="max-w-6xl mx-auto px-4 py-20">
-  <section class="section-lg mb-12 text-center">
-    <h1 class="font-display text-3xl md:text-4xl font-bold mb-6">Portfolio</h1>
-    <p>Auswahl aktueller Arbeiten und Projekte.</p>
-  </section>
-  <section class="section grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    <article class="card group">
-      <picture>
-        <source srcset="/assets/portfolio/p1.webp" type="image/webp">
-        <img src="/assets/portfolio/p1.jpg" alt="Landingpage für Tech-Startup" width="600" height="400" loading="lazy" decoding="async" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]">
-      </picture>
-      <h3 class="font-semibold text-lg">Landingpage für Tech-Startup</h3>
-      <p class="text-[color:var(--muted)] text-sm mb-3">40% mehr Anmeldungen nach Launch.</p>
-      <a class="link inline-flex items-center gap-1" href="/de/cases/startup-landing.html">Details ansehen
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-      </a>
-    </article>
-    <article class="card group">
-      <picture>
-        <source srcset="/assets/portfolio/p2.webp" type="image/webp">
-        <img src="/assets/portfolio/p2.jpg" alt="Corporate Website für Beratungsfirma" width="600" height="400" loading="lazy" decoding="async" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]">
-      </picture>
-      <h3 class="font-semibold text-lg">Corporate Website für Beratungsfirma</h3>
-      <p class="text-[color:var(--muted)] text-sm mb-3">Leads um 30% gesteigert.</p>
-      <a class="link inline-flex items-center gap-1" href="/de/cases/consulting-corp-site.html">Details ansehen
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-      </a>
-    </article>
-    <article class="card group">
-      <picture>
-        <source srcset="/assets/portfolio/p3.webp" type="image/webp">
-        <img src="/assets/portfolio/p3.jpg" alt="Online-Shop für Modebrand" width="600" height="400" loading="lazy" decoding="async" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]">
-      </picture>
-      <h3 class="font-semibold text-lg">Online-Shop für Modebrand</h3>
-      <p class="text-[color:var(--muted)] text-sm mb-3">Umsatz verdoppelt in 3 Monaten.</p>
-      <a class="link inline-flex items-center gap-1" href="/de/cases/fashion-shop.html">Details ansehen
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-      </a>
-    </article>
-    <article class="card group">
-      <picture>
-        <source srcset="/assets/portfolio/p4.webp" type="image/webp">
-        <img src="/assets/portfolio/p4.jpg" alt="Portfolio-Site für Fotografin" width="600" height="400" loading="lazy" decoding="async" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]">
-      </picture>
-      <h3 class="font-semibold text-lg">Portfolio-Site für Fotografin</h3>
-      <p class="text-[color:var(--muted)] text-sm mb-3">Mehr Buchungen dank Online-Präsenz.</p>
-      <a class="link inline-flex items-center gap-1" href="/de/cases/photographer-portfolio.html">Details ansehen
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-      </a>
-    </article>
-    <article class="card group">
-      <picture>
-        <source srcset="/assets/portfolio/p5.webp" type="image/webp">
-        <img src="/assets/portfolio/p5.jpg" alt="Event-Microsite" width="600" height="400" loading="lazy" decoding="async" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]">
-      </picture>
-      <h3 class="font-semibold text-lg">Event-Microsite</h3>
-      <p class="text-[color:var(--muted)] text-sm mb-3">2.000 Registrierungen in einer Woche.</p>
-      <a class="link inline-flex items-center gap-1" href="/de/cases/event-microsite.html">Details ansehen
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-      </a>
-    </article>
-    <article class="card group">
-      <picture>
-        <source srcset="/assets/portfolio/p6.webp" type="image/webp">
-        <img src="/assets/portfolio/p6.jpg" alt="Mehrsprachige Hotelseite" width="600" height="400" loading="lazy" decoding="async" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]">
-      </picture>
-      <h3 class="font-semibold text-lg">Mehrsprachige Hotelseite</h3>
-      <p class="text-[color:var(--muted)] text-sm mb-3">Internationale Buchungen um 25% erhöht.</p>
-      <a class="link inline-flex items-center gap-1" href="/de/cases/hotel-multilingual.html">Details ansehen
-        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z"/></svg>
-      </a>
-    </article>
-  </section>
+<main class="max-w-6xl mx-auto px-4 py-20" id="content">
+<section class="section-lg mb-12 text-center">
+<h1 class="font-display text-3xl md:text-4xl font-bold mb-6">Portfolio</h1>
+<p>Auswahl aktueller Arbeiten und Projekte.</p>
+</section>
+<section class="section grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+<article class="card group">
+<picture>
+<source srcset="/assets/portfolio/p1.webp" type="image/webp"/>
+<img alt="Landingpage für Tech-Startup" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]" decoding="async" height="400" loading="lazy" src="/assets/portfolio/p1.jpg" width="600"/>
+</picture>
+<h3 class="font-semibold text-lg">Landingpage für Tech-Startup</h3>
+<p class="text-[color:var(--muted)] text-sm mb-3">40% mehr Anmeldungen nach Launch.</p>
+<a class="link inline-flex items-center gap-1" href="/de/cases/startup-landing.html">Details ansehen
+        <svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z" fill="currentColor"></path></svg>
+</a>
+</article>
+<article class="card group">
+<picture>
+<source srcset="/assets/portfolio/p2.webp" type="image/webp"/>
+<img alt="Corporate Website für Beratungsfirma" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]" decoding="async" height="400" loading="lazy" src="/assets/portfolio/p2.jpg" width="600"/>
+</picture>
+<h3 class="font-semibold text-lg">Corporate Website für Beratungsfirma</h3>
+<p class="text-[color:var(--muted)] text-sm mb-3">Leads um 30% gesteigert.</p>
+<a class="link inline-flex items-center gap-1" href="/de/cases/consulting-corp-site.html">Details ansehen
+        <svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z" fill="currentColor"></path></svg>
+</a>
+</article>
+<article class="card group">
+<picture>
+<source srcset="/assets/portfolio/p3.webp" type="image/webp"/>
+<img alt="Online-Shop für Modebrand" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]" decoding="async" height="400" loading="lazy" src="/assets/portfolio/p3.jpg" width="600"/>
+</picture>
+<h3 class="font-semibold text-lg">Online-Shop für Modebrand</h3>
+<p class="text-[color:var(--muted)] text-sm mb-3">Umsatz verdoppelt in 3 Monaten.</p>
+<a class="link inline-flex items-center gap-1" href="/de/cases/fashion-shop.html">Details ansehen
+        <svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z" fill="currentColor"></path></svg>
+</a>
+</article>
+<article class="card group">
+<picture>
+<source srcset="/assets/portfolio/p4.webp" type="image/webp"/>
+<img alt="Portfolio-Site für Fotografin" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]" decoding="async" height="400" loading="lazy" src="/assets/portfolio/p4.jpg" width="600"/>
+</picture>
+<h3 class="font-semibold text-lg">Portfolio-Site für Fotografin</h3>
+<p class="text-[color:var(--muted)] text-sm mb-3">Mehr Buchungen dank Online-Präsenz.</p>
+<a class="link inline-flex items-center gap-1" href="/de/cases/photographer-portfolio.html">Details ansehen
+        <svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z" fill="currentColor"></path></svg>
+</a>
+</article>
+<article class="card group">
+<picture>
+<source srcset="/assets/portfolio/p5.webp" type="image/webp"/>
+<img alt="Event-Microsite" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]" decoding="async" height="400" loading="lazy" src="/assets/portfolio/p5.jpg" width="600"/>
+</picture>
+<h3 class="font-semibold text-lg">Event-Microsite</h3>
+<p class="text-[color:var(--muted)] text-sm mb-3">2.000 Registrierungen in einer Woche.</p>
+<a class="link inline-flex items-center gap-1" href="/de/cases/event-microsite.html">Details ansehen
+        <svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z" fill="currentColor"></path></svg>
+</a>
+</article>
+<article class="card group">
+<picture>
+<source srcset="/assets/portfolio/p6.webp" type="image/webp"/>
+<img alt="Mehrsprachige Hotelseite" class="w-full h-48 object-cover mb-3 transition-transform duration-200 group-hover:scale-[1.02]" decoding="async" height="400" loading="lazy" src="/assets/portfolio/p6.jpg" width="600"/>
+</picture>
+<h3 class="font-semibold text-lg">Mehrsprachige Hotelseite</h3>
+<p class="text-[color:var(--muted)] text-sm mb-3">Internationale Buchungen um 25% erhöht.</p>
+<a class="link inline-flex items-center gap-1" href="/de/cases/hotel-multilingual.html">Details ansehen
+        <svg aria-hidden="true" height="16" viewbox="0 0 24 24" width="16"><path d="M13 5l7 7-7 7v-4H4v-6h9V5z" fill="currentColor"></path></svg>
+</a>
+</article>
+</section>
 </main>
 <footer class="p-4 text-sm text-center">
-  <a href="/de/impressum.html" class="underline">Impressum</a>
-  <span class="mx-2">·</span>
-  <a href="/de/datenschutz.html" class="underline">Datenschutz</a>
+<a class="underline" href="/de/impressum.html">Impressum</a>
+<span class="mx-2">·</span>
+<a class="underline" href="/de/datenschutz.html">Datenschutz</a>
 </footer>
-  <script src="/assets/js/nav-active.js" defer></script>
+<script defer="" src="/assets/js/nav-active.js"></script>
 </body>
 </html>

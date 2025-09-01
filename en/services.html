@@ -1,58 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+
+<html class="scroll-smooth" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Services – TurboSito</title>
-  <meta name="description" content="Web services that drive results. Rapid delivery focused on your goals.">
-  <link rel="canonical" href="https://deine-domain.tld/en/services.html">
-  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/leistungen.html">
-  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/services.html">
-  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/servizi.html">
-  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/">
-  <meta property="og:title" content="Services – TurboSito">
-  <meta property="og:description" content="Web services that drive results. Rapid delivery focused on your goals.">
-  <meta property="og:url" content="https://deine-domain.tld/en/services.html">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image" content="https://deine-domain.tld/assets/img/og-default.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Services – TurboSito</title>
+<meta content="Web services that drive results. Rapid delivery focused on your goals." name="description"/>
+<link href="https://deine-domain.tld/en/services.html" rel="canonical"/>
+<link href="https://deine-domain.tld/de/leistungen.html" hreflang="de" rel="alternate"/>
+<link href="https://deine-domain.tld/en/services.html" hreflang="en" rel="alternate"/>
+<link href="https://deine-domain.tld/it/servizi.html" hreflang="it" rel="alternate"/>
+<link href="https://deine-domain.tld/en/" hreflang="x-default" rel="alternate"/>
+<meta content="Services – TurboSito" property="og:title"/>
+<meta content="Web services that drive results. Rapid delivery focused on your goals." property="og:description"/>
+<meta content="https://deine-domain.tld/en/services.html" property="og:url"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="https://deine-domain.tld/assets/img/og-default.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Outfit:wght@600;800&amp;display=swap" rel="stylesheet"/>
 <style>
   :root{--font-sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", sans-serif}
   .font-display{font-family:"Outfit", var(--font-sans)}
   body{font-family:var(--font-sans)}
 </style>
-<link rel="stylesheet" href="/assets/css/theme.css">
+<link href="/assets/css/theme.css" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
-<body class="font-sans text-gray-900">
-<header id="site-header" class="bg-white shadow-sm">
-  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-    <a href="/en/" class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">TurboSito</a>
-    <div class="flex items-center gap-4">
-      <div class="flex gap-2 text-sm" aria-label="Change language">
-        <a id="switch-de" href="/de/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">DE</a>
-        <a id="switch-en" href="/en/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">EN</a>
-        <a id="switch-it" href="/it/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">IT</a>
-      </div>
-      <button id="menu-btn" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
-  <nav id="main-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-md md:block md:static md:shadow-none" aria-label="Main navigation">
-    <ul class="flex flex-col max-w-6xl mx-auto p-4 gap-2 md:flex-row md:gap-6 md:p-0">
-      <li><a href="/en/" data-page="home" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Home</a></li>
-      <li><a href="/en/about.html" data-page="about" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">About</a></li>
-      <li><a href="/en/services.html" data-page="services" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Services</a></li>
-      <li><a href="/en/portfolio.html" data-page="portfolio" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Portfolio</a></li>
-      <li><a href="/en/contact.html" data-page="contact" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Contact</a></li>
-    </ul>
-  </nav>
-  <script>
+<body class="font-sans text-gray-900"><a class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded" href="#content">Skip to content</a>
+<header class="bg-white shadow-sm" id="site-header">
+<div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+<a class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded" href="/en/">TurboSito</a>
+<div class="flex items-center gap-4">
+<div aria-label="Change language" class="flex gap-2 text-sm">
+<a class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" href="/de/" id="switch-de">DE</a>
+<a class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" href="/en/" id="switch-en">EN</a>
+<a class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" href="/it/" id="switch-it">IT</a>
+</div>
+<button aria-controls="main-nav" aria-expanded="false" aria-label="Menu" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" id="menu-btn">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16M4 18h16"></path>
+</svg>
+</button>
+</div>
+</div>
+<nav aria-label="Main navigation" class="hidden absolute top-full left-0 w-full bg-white shadow-md md:block md:static md:shadow-none" id="main-nav">
+<ul class="flex flex-col max-w-6xl mx-auto p-4 gap-2 md:flex-row md:gap-6 md:p-0">
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="home" href="/en/">Home</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="about" href="/en/about.html">About</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="services" href="/en/services.html">Services</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="portfolio" href="/en/portfolio.html">Portfolio</a></li>
+<li><a class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" data-page="contact" href="/en/contact.html">Contact</a></li>
+</ul>
+</nav>
+<script>
     const btn = document.getElementById('menu-btn')
     const nav = document.getElementById('main-nav')
     btn.addEventListener('click', () => {
@@ -86,60 +87,60 @@
     })
   </script>
 </header>
-  <main id="content">
-    <section class="section-lg max-w-5xl mx-auto px-4 py-20 text-center">
-      <h1 class="font-display text-3xl md:text-4xl font-bold mb-6">Services</h1>
-      <p class="mb-6">Our services get your project online fast. Every package is built for measurable outcomes.</p>
-      <a href="/en/contact.html" class="btn" aria-label="Free consultation">Free consultation</a>
-    </section>
-    <section class="section max-w-6xl mx-auto px-4 py-12">
-      <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Services</h2>
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <article class="card hover:shadow-xl transition-shadow">
-          <h3 class="font-semibold text-xl mb-2">Lightning-fast landing pages</h3>
-          <p class="text-[color:var(--muted)] mb-3">Start capturing leads within 48 hours.</p>
-          <ul class="space-y-1 text-sm text-[color:var(--muted)] list-disc pl-5">
-            <li>Custom design</li>
-            <li>Responsive layout</li>
-            <li>Basic SEO</li>
-            <li>Contact form</li>
-          </ul>
-          <p class="text-sm text-[color:var(--muted)] mt-3">from €1,200</p>
-          <div class="mt-4"><a class="btn btn-outline" href="/en/contact.html">Request</a></div>
-        </article>
-        <article class="card hover:shadow-xl transition-shadow">
-          <h3 class="font-semibold text-xl mb-2">Multilingual business sites</h3>
-          <p class="text-[color:var(--muted)] mb-3">Reach clients in multiple languages without extra effort.</p>
-          <ul class="space-y-1 text-sm text-[color:var(--muted)] list-disc pl-5">
-            <li>Structured pages</li>
-            <li>Language switcher</li>
-            <li>SEO setup</li>
-            <li>Performance optimization</li>
-            <li>Hosting setup</li>
-          </ul>
-          <p class="text-sm text-[color:var(--muted)] mt-3">from €2,500</p>
-          <div class="mt-4"><a class="btn btn-outline" href="/en/contact.html">Request</a></div>
-        </article>
-        <article class="card hover:shadow-xl transition-shadow">
-          <h3 class="font-semibold text-xl mb-2">Maintenance &amp; optimization</h3>
-          <p class="text-[color:var(--muted)] mb-3">Stay fast and secure after launch.</p>
-          <ul class="space-y-1 text-sm text-[color:var(--muted)] list-disc pl-5">
-            <li>Updates</li>
-            <li>Backups</li>
-            <li>Monitoring</li>
-            <li>Performance tuning</li>
-          </ul>
-          <p class="text-sm text-[color:var(--muted)] mt-3">from €150/mo</p>
-          <div class="mt-4"><a class="btn btn-outline" href="/en/contact.html">Request</a></div>
-        </article>
-      </div>
-    </section>
-  </main>
-  <footer class="p-4 text-sm text-center">
-    <a href="/en/imprint.html" class="underline">Imprint</a>
-    <span class="mx-2">·</span>
-    <a href="/en/privacy.html" class="underline">Privacy</a>
-  </footer>
-  <script src="/assets/js/nav-active.js" defer></script>
+<main id="content">
+<section class="section-lg max-w-5xl mx-auto px-4 py-20 text-center">
+<h1 class="font-display text-3xl md:text-4xl font-bold mb-6">Services</h1>
+<p class="mb-6">Our services get your project online fast. Every package is built for measurable outcomes.</p>
+<a aria-label="Free consultation" class="btn" href="/en/contact.html">Free consultation</a>
+</section>
+<section class="section max-w-6xl mx-auto px-4 py-12">
+<h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Services</h2>
+<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+<article class="card hover:shadow-xl transition-shadow">
+<h3 class="font-semibold text-xl mb-2">Lightning-fast landing pages</h3>
+<p class="text-[color:var(--muted)] mb-3">Start capturing leads within 48 hours.</p>
+<ul class="space-y-1 text-sm text-[color:var(--muted)] list-disc pl-5">
+<li>Custom design</li>
+<li>Responsive layout</li>
+<li>Basic SEO</li>
+<li>Contact form</li>
+</ul>
+<p class="text-sm text-[color:var(--muted)] mt-3">from €1,200</p>
+<div class="mt-4"><a class="btn btn-outline" href="/en/contact.html">Request</a></div>
+</article>
+<article class="card hover:shadow-xl transition-shadow">
+<h3 class="font-semibold text-xl mb-2">Multilingual business sites</h3>
+<p class="text-[color:var(--muted)] mb-3">Reach clients in multiple languages without extra effort.</p>
+<ul class="space-y-1 text-sm text-[color:var(--muted)] list-disc pl-5">
+<li>Structured pages</li>
+<li>Language switcher</li>
+<li>SEO setup</li>
+<li>Performance optimization</li>
+<li>Hosting setup</li>
+</ul>
+<p class="text-sm text-[color:var(--muted)] mt-3">from €2,500</p>
+<div class="mt-4"><a class="btn btn-outline" href="/en/contact.html">Request</a></div>
+</article>
+<article class="card hover:shadow-xl transition-shadow">
+<h3 class="font-semibold text-xl mb-2">Maintenance &amp; optimization</h3>
+<p class="text-[color:var(--muted)] mb-3">Stay fast and secure after launch.</p>
+<ul class="space-y-1 text-sm text-[color:var(--muted)] list-disc pl-5">
+<li>Updates</li>
+<li>Backups</li>
+<li>Monitoring</li>
+<li>Performance tuning</li>
+</ul>
+<p class="text-sm text-[color:var(--muted)] mt-3">from €150/mo</p>
+<div class="mt-4"><a class="btn btn-outline" href="/en/contact.html">Request</a></div>
+</article>
+</div>
+</section>
+</main>
+<footer class="p-4 text-sm text-center">
+<a class="underline" href="/en/imprint.html">Imprint</a>
+<span class="mx-2">·</span>
+<a class="underline" href="/en/privacy.html">Privacy</a>
+</footer>
+<script defer="" src="/assets/js/nav-active.js"></script>
 </body>
 </html>
