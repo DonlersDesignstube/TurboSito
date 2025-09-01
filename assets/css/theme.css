@@ -48,3 +48,8 @@ img{border-radius:.75rem}
 .label{display:block; font-size:.9rem; font-weight:600; margin-bottom:.35rem}
 .help{font-size:.75rem; color:var(--muted); margin-top:.25rem}
 nav a{transition:opacity .15s ease} nav a:hover{opacity:.85}
+
+html[data-theme="light"]{
+  --bg:#ffffff; --card:#f6f7fb; --fg:#0b0f1a; --muted:#4b5563;
+  --accent:0,122,255; --ring:0,122,255;
+}
