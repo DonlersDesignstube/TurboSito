@@ -1,6 +1,6 @@
 /* nav-active.js */
 (() => {
-  const norm = p => p.replace(/\/index\.html$/,'/').replace(/\/+$/,'/') || '/';
+  const norm = p => (p.replace(/\/index\.html$/,'/').replace(/\/+$/,'/') || '/');
   const here = norm(location.pathname);
   document.querySelectorAll('nav a[href]').forEach(a => {
     try {
