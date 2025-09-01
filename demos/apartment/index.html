@@ -49,6 +49,15 @@
     }
     #stickyBar{transition:transform .4s}
     #stickyBar.hide{transform:translateY(100%)}
+    .day{position:relative}
+    .day::after{content:"";position:absolute;top:.25rem;right:.25rem;
+      width:.5rem;height:.5rem;border-radius:9999px}
+    .available{background:#16a34a;color:#fff}
+    .available::after{background:#fff}
+    .booked{background:#f43f5e;color:#fff}
+    .booked::after{background:#1f2937}
+    .maybe{background:#9ca3af;color:#fff}
+    .maybe::after{background:#1f2937}
   </style>
 </head>
 <body class="font-sans text-gray-900 bg-white">
@@ -167,20 +176,17 @@
           </a>
         </div>
       </div>
-      <div class="absolute top-6 right-6 glass bg-white/80 rounded-2xl p-4
-                  shadow text-gray-900 max-w-xs">
+      <div class="absolute top-6 right-6 z-10 glass bg-white/80 rounded-2xl
+                  p-4 shadow text-gray-900 max-w-xs">
         <p class="text-yellow-500 text-lg mb-1">★★★★★</p>
         <p class="text-sm mb-1" data-lang="de">Fantastische Unterkunft!</p>
         <p class="text-sm mb-1" data-lang="it">Alloggio fantastico!</p>
-        <span class="text-xs px-2 py-1 bg-indigo-600 text-white rounded-full"
-              data-lang="de">VORSCHAU</span>
-        <span class="text-xs px-2 py-1 bg-indigo-600 text-white rounded-full"
-              data-lang="it">ANTEPRIMA</span>
       </div>
     </section>
     <div id="stickyBar"
          class="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/90 border-t
-                p-2 flex gap-2">
+                px-2 pt-2 flex gap-2
+                pb-[calc(env(safe-area-inset-bottom)+.5rem)]">
       <a href="#availability"
          class="flex-1 px-4 py-3 rounded-xl bg-indigo-600 text-white text-center
                 focus-visible:ring">
@@ -390,11 +396,11 @@
         <h2 class="text-xl font-semibold mb-4" data-lang="it">
           Disponibilità
         </h2>
-        <div class="grid grid-cols-7 text-center text-sm mb-2">
-          <div>Mo</div><div>Di</div><div>Mi</div><div>Do</div>
-          <div>Fr</div><div>Sa</div><div>So</div>
-        </div>
-        <div class="grid grid-cols-7 gap-1 text-sm" id="calendar"></div>
+        <div id="weekdays"
+             class="grid grid-cols-7 text-center text-sm mb-2"></div>
+        <div id="calendar"
+             class="grid grid-cols-7 gap-1 text-sm"
+             role="grid"></div>
         <p class="mt-4 text-xs" data-lang="de">
           Grün = verfügbar, Rot = belegt (Beispiel)
         </p>
@@ -417,10 +423,15 @@
         <p class="mb-4" data-lang="it">
           L'alloggio è vicino al porto storico.
         </p>
-        <img src="../../assets/img/apartment2-blur-800.jpg"
-             width="800" height="600"
-             alt="" aria-label="Kartenplatzhalter"
-             class="mx-auto rounded-2xl mb-4">
+        <div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-4
+                    bg-gradient-to-br from-indigo-50/40 via-white/30
+                    to-rose-50/40">
+          <img src="../../assets/img/apartment2-blur-800.jpg"
+               width="800" height="600"
+               alt="" aria-label="Kartenplatzhalter"
+               class="absolute inset-0 w-full h-full object-cover
+                      [mask-image:radial-gradient(circle_at_center,white,transparent)]">
+        </div>
         <a href="https://maps.google.com" target="_blank" rel="noopener"
            class="px-5 py-3 rounded-2xl bg-cyan-500 text-white
                   focus-visible:ring">
@@ -499,7 +510,7 @@
 <!-- BEGIN PART 3/3 -->
     <section id="cta" class="py-16 scroll-reveal">
       <div class="max-w-md mx-auto glass bg-white/80 rounded-2xl p-6 text-center
-                  shadow observe-hide">
+                  shadow">
         <h2 class="text-2xl font-semibold mb-4" data-lang="de">
           Interesse? Jetzt anfragen.
         </h2>
@@ -540,16 +551,16 @@
     <div class="relative">
       <img id="lightboxImg" src="" alt="" class="max-h-screen rounded-xl">
       <button id="prevImg"
-              class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80
-                     rounded-full p-2 focus-visible:ring">
+              class="absolute top-1/2 -translate-y-1/2 -left-3 bg-white/80
+                     rounded-full p-2 pointer-events-auto focus-visible:ring">
         <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
              class="w-5 h-5">
           <path d="M15 18l-6-6 6-6"></path>
         </svg>
       </button>
       <button id="nextImg"
-              class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80
-                     rounded-full p-2 focus-visible:ring">
+              class="absolute top-1/2 -translate-y-1/2 -right-3 bg-white/80
+                     rounded-full p-2 pointer-events-auto focus-visible:ring">
         <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"
              class="w-5 h-5">
           <path d="M9 6l6 6-6 6"></path>
@@ -568,20 +579,57 @@
   </dialog>
   <script>
     const langBtns=document.querySelectorAll('[data-set-lang]')
+    const weekRow=document.getElementById('weekdays')
+    const cal=document.getElementById('calendar')
+    const weekdays={de:['Mo','Di','Mi','Do','Fr','Sa','So'],
+                    it:['Lu','Ma','Me','Gi','Ve','Sa','Do']}
+    const booked=[5,12,18,25]
+    const maybe=[7,21]
+    function renderWeekdays(){
+      const lang=document.documentElement.dataset.language||'de'
+      weekRow.innerHTML=weekdays[lang].map(d=>`<div>${d}</div>`).join('')
+    }
+    function buildCalendar(){
+      const lang=document.documentElement.dataset.language||'de'
+      cal.innerHTML=''
+      for(let i=1;i<=35;i++){
+        const day=i<=30?i:''
+        const c=document.createElement('div')
+        c.textContent=day
+        let status='available'
+        if(booked.includes(i)){status='booked'}
+        if(maybe.includes(i)){status='maybe'}
+        c.className=day?'day '+status:'p-2'
+        const label=lang==='de'
+          ?{available:'verfügbar',booked:'belegt',maybe:'blockiert'}
+          :{available:'libero',booked:'occupato',maybe:'bloccato'}
+        if(day){
+          c.setAttribute('aria-label',day+' '+label[status])
+          c.setAttribute('role','gridcell')
+        }
+        cal.appendChild(c)
+      }
+    }
     langBtns.forEach(btn=>{
       btn.addEventListener('click',()=>{
         document.documentElement.dataset.language=btn.dataset.setLang
+        document.documentElement.lang=btn.dataset.setLang
         localStorage.setItem('lang',btn.dataset.setLang)
         langBtns.forEach(b=>b.setAttribute('aria-pressed',b===btn))
         document.title=btn.dataset.setLang==='de'
           ?'Ferienwohnung Demo – TurboSito'
           :'Appartamento Demo – TurboSito'
+        renderWeekdays()
+        buildCalendar()
       })
     })
     const saved=localStorage.getItem('lang')
     if(saved){
       document.getElementById('lang'+saved.charAt(0).toUpperCase()+
         saved.slice(1)).click()
+    }else{
+      renderWeekdays()
+      buildCalendar()
     }
     const observer=new IntersectionObserver(entries=>{
       entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
@@ -594,17 +642,9 @@
         if(e.isIntersecting){stickyBar.classList.add('hide')}
         else{stickyBar.classList.remove('hide')}
       })
-    },{threshold:0})
-    endObs.observe(document.querySelector('.observe-hide'))
-    const booked=[1,5,12,18,25]
-    const cal=document.getElementById('calendar')
-    for(let i=1;i<=42;i++){
-      const c=document.createElement('div')
-      c.textContent=i>30?i-30:i
-      c.className='p-2 rounded '+(booked.includes(i)
-        ?'bg-red-400':'bg-green-400')+' text-white'
-      cal.appendChild(c)
-    }
+    })
+    endObs.observe(document.getElementById('cta'))
+    endObs.observe(document.querySelector('footer'))
     const imgs=[...document.querySelectorAll('.lightbox-img')]
     const dialog=document.getElementById('lightbox')
     const imgEl=document.getElementById('lightboxImg')
@@ -627,6 +667,8 @@
     })
     document.addEventListener('keydown',e=>{
       if(e.key==='Escape'){dialog.close()}
+      if(dialog.open&&e.key==='ArrowRight'){show(idx+1)}
+      if(dialog.open&&e.key==='ArrowLeft'){show(idx-1)}
     })
   </script>
 </body>
