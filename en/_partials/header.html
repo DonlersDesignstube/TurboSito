@@ -4,9 +4,9 @@
       <a href="/TurboSito/en/" class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">TurboSito</a>
       <div class="flex items-center gap-4">
         <nav class="lang-switch" aria-label="Language switch">
-          <a id="switch-de" href="/TurboSito/de/" hreflang="de" data-lang="de" aria-label="Deutsch">DE</a>
-          <a id="switch-en" href="/TurboSito/en/" hreflang="en" data-lang="en" aria-label="English">EN</a>
-          <a id="switch-it" href="/TurboSito/it/" hreflang="it" data-lang="it" aria-label="Italiano">IT</a>
+          <a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a>
+          <a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a>
+          <a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a>
         </nav>
         <button id="theme-toggle" class="btn btn-outline" aria-pressed="false" type="button">Theme</button>
         <button id="menu-btn" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
@@ -48,10 +48,11 @@
     }
     const lang = document.documentElement.lang
     const current = pages[key]
-    document.getElementById('switch-de').href = current.de
-    document.getElementById('switch-en').href = current.en
-    document.getElementById('switch-it').href = current.it
-    document.getElementById('switch-' + lang).classList.add('font-semibold', 'text-indigo-600')
+    document.querySelector('nav.lang-switch a[data-lang="de"]').href = current.de
+    document.querySelector('nav.lang-switch a[data-lang="en"]').href = current.en
+    document.querySelector('nav.lang-switch a[data-lang="it"]').href = current.it
+    document.querySelector('nav.lang-switch a[data-lang="' + lang + '"]')
+      .classList.add('font-semibold', 'text-indigo-600')
     document.querySelectorAll('#main-nav a[data-page]').forEach(a => {
       if (a.dataset.page === key) {
         a.setAttribute('aria-current', 'page')
