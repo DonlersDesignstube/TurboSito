@@ -3,7 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome</title>
+  <title>Willkommen – TurboSito</title>
+  <meta name="description" content="Choose your language">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--font-sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Liberation Sans","Helvetica Neue",sans-serif}
+    .font-display{font-family:"Outfit",var(--font-sans)}
+    body{font-family:var(--font-sans)}
+  </style>
   <link rel="alternate" hreflang="de" href="/TurboSito/de/">
   <link rel="alternate" hreflang="en" href="/TurboSito/en/">
   <link rel="alternate" hreflang="it" href="/TurboSito/it/">
@@ -16,9 +24,10 @@
     <h1 class="text-4xl font-bold mb-6">Choose your language</h1>
     <nav class="flex flex-wrap justify-center gap-4">
       <a class="btn" href="/TurboSito/de/">DE</a>
-      <a class="btn" href="/TurboSito/en/">EN</a>
-      <a class="btn" href="/TurboSito/it/">IT</a>
+      <a class="btn btn-outline" href="/TurboSito/en/">EN</a>
+      <a class="btn btn-outline" href="/TurboSito/it/">IT</a>
     </nav>
   </main>
+  <script src="/TurboSito/assets/js/reveal.js" defer></script>
 </body>
 </html>
