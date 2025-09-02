@@ -1,5 +1,5 @@
 :root{
-  --bg:#0b0f1a; --card:#0f1524; --fg:#e7eaf1; --muted:#a3a9b7;
+  --bg:#0b0f1a; --card:#0f1524; --fg:#f2f5fb; --muted:#c4cada;
   --accent:255,122,24; /* Orange Akzent (RGB) */
   --ring:255,122,24;
 }
@@ -47,6 +47,7 @@ img{border-radius:.75rem}
 .input:focus{outline:none; box-shadow:0 0 0 3px rgba(var(--ring),.4)}
 .label{display:block; font-size:.9rem; font-weight:600; margin-bottom:.35rem}
 .help{font-size:.75rem; color:var(--muted); margin-top:.25rem}
+.text-muted{color:var(--muted)}
 
 html[data-theme="light"]{
   --bg:#ffffff; --card:#f6f7fb; --fg:#0b0f1a; --muted:#4b5563;
