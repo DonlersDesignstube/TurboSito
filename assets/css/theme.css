@@ -71,3 +71,8 @@ nav a:hover{background-size:100% 2px}
   .reveal, .reveal.is-in{transition:none; transform:none; opacity:1}
 }
 .ph{display:none}
+.btn{box-shadow:0 8px 24px rgba(0,0,0,.22)}
+.btn:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(var(--ring),.5)}
+.btn-outline:hover{background:rgba(var(--accent),.1)}
+.btn-lg{padding:1rem 1.25rem; border-radius:1rem; font-weight:700}
+.section-hero-tight{padding-block:7.5rem}
