@@ -3,11 +3,11 @@
     <div class="flex items-center justify-between p-4">
       <a href="/TurboSito/en/" class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">TurboSito</a>
       <div class="flex items-center gap-4">
-        <div class="flex gap-2 text-sm" aria-label="Change language">
-          <a id="switch-de" href="/TurboSito/de/" data-lang="de" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">DE</a>
-          <a id="switch-en" href="/TurboSito/en/" data-lang="en" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">EN</a>
-          <a id="switch-it" href="/TurboSito/it/" data-lang="it" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">IT</a>
-        </div>
+        <nav class="lang-switch" aria-label="Language switch">
+          <a id="switch-de" href="/TurboSito/de/" hreflang="de" data-lang="de" aria-label="Deutsch">DE</a>
+          <a id="switch-en" href="/TurboSito/en/" hreflang="en" data-lang="en" aria-label="English">EN</a>
+          <a id="switch-it" href="/TurboSito/it/" hreflang="it" data-lang="it" aria-label="Italiano">IT</a>
+        </nav>
         <button id="theme-toggle" class="btn btn-outline" aria-pressed="false" type="button">Theme</button>
         <button id="menu-btn" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -33,13 +33,13 @@
       nav.classList.toggle('hidden')
     })
     const pages = {
-      home: {de: '/de/', en: '/en/', it: '/it/'},
-      about: {de: '/de/ueber-mich.html', en: '/en/about.html', it: '/it/chi-sono.html'},
-      services: {de: '/de/leistungen.html', en: '/en/services.html', it: '/it/servizi.html'},
-      portfolio: {de: '/de/portfolio.html', en: '/en/portfolio.html', it: '/it/portfolio.html'},
-      contact: {de: '/de/kontakt.html', en: '/en/contact.html', it: '/it/contatti.html'},
-      imprint: {de: '/de/impressum.html', en: '/en/legal.html', it: '/it/note-legali.html'},
-      privacy: {de: '/de/datenschutz.html', en: '/en/legal.html', it: '/it/privacy.html'}
+      home: {de: '/TurboSito/de/', en: '/TurboSito/en/', it: '/TurboSito/it/'},
+      about: {de: '/TurboSito/de/ueber-mich.html', en: '/TurboSito/en/about.html', it: '/TurboSito/it/chi-sono.html'},
+      services: {de: '/TurboSito/de/leistungen.html', en: '/TurboSito/en/services.html', it: '/TurboSito/it/servizi.html'},
+      portfolio: {de: '/TurboSito/de/portfolio.html', en: '/TurboSito/en/portfolio.html', it: '/TurboSito/it/portfolio.html'},
+      contact: {de: '/TurboSito/de/kontakt.html', en: '/TurboSito/en/contact.html', it: '/TurboSito/it/contatti.html'},
+      imprint: {de: '/TurboSito/de/impressum.html', en: '/TurboSito/en/legal.html', it: '/TurboSito/it/note-legali.html'},
+      privacy: {de: '/TurboSito/de/datenschutz.html', en: '/TurboSito/en/legal.html', it: '/TurboSito/it/privacy.html'}
     }
     const path = window.location.pathname.replace(/index\.html$/, '')
     let key = 'home'
