@@ -20,7 +20,13 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
-  <include src="/en/_partials/header.html"></include>
+  <div class="container" style="display:flex;justify-content:flex-end;padding-top:1rem">
+  <nav class="lang-switch" aria-label="Language switch">
+    <a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a>
+    <a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a>
+    <a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a>
+  </nav>
+</div>
   <main class="container section-lg text-center">
     <h1 class="text-4xl font-bold mb-6">Choose your language</h1>
     <nav class="flex flex-wrap justify-center gap-4">
