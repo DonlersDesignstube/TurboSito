@@ -218,3 +218,14 @@ header{background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:
 @media (min-width:768px){ .section-hero{padding-block:7.5rem;} }
 .mockup-body{opacity:.9;}
 html[data-theme="light"] .mockup{box-shadow:0 20px 40px rgba(0,0,0,.1);}
+.theme-toggle{
+  display:inline-flex; align-items:center; gap:.5rem;
+  border:1px solid var(--border); border-radius:.65rem;
+  padding:.25rem .6rem; font-weight:600; cursor:pointer;
+  background:transparent; color:var(--fg);
+}
+.theme-toggle:hover{ background:rgba(255,255,255,.06) }
+.theme-toggle .icon{ width:1rem; height:1rem; display:inline-block }
+.theme-toggle .sun{ display:none }
+html[data-theme="light"] .theme-toggle .sun{ display:inline-block }
+html[data-theme="light"] .theme-toggle .moon{ display:none }
