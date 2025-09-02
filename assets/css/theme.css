@@ -101,33 +101,6 @@ nav a:hover{background-size:100% 2px}
 @keyframes shimmer{to{background-position:-200% 0}}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--fg)}
-/* --- FAQ Styles --- */
-.faq .card{ border-color: rgba(255,255,255,.12); }
-.faq [data-acc-btn]{
-  display:flex; align-items:center; justify-content:space-between;
-  width:100%; text-align:left; font-weight:700;
-  padding:1rem 1.1rem; border-radius:.75rem;
-  color:var(--fg); background:transparent;
-}
-.faq [data-acc-btn]:hover{ background:rgba(255,255,255,.04); }
-.faq [data-acc-btn]:focus-visible{
-  outline:2px solid rgba(var(--ring),.7); outline-offset:2px;
-}
-.faq [data-acc-btn]::after{
-  content:"+"; font-weight:800; opacity:.7;
-}
-.faq [data-acc-btn][aria-expanded="true"]{ background:rgba(255,255,255,.06); }
-.faq [data-acc-btn][aria-expanded="true"]::after{ content:"–"; }
-.faq [data-acc-btn] + p{ color:var(--muted); padding:0 1.1rem 1rem; }
-/* --- Testimonials --- */
-.avatar{
-  width:2.5rem; height:2.5rem; border-radius:9999px;
-  display:flex; align-items:center; justify-content:center;
-  background:rgba(255,255,255,.14);   /* heller als vorher */
-  color:var(--fg); font-weight:800; letter-spacing:.02em;
-}
-.testimonial-name{ color:var(--fg); font-weight:700; }
-.testimonial-role{ color:var(--muted); font-size:.9rem; }
 
 /* --- Testimonials (kontraststark) --- */
 .testimonial-header{display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem}
@@ -149,3 +122,59 @@ footer a:hover{color:var(--fg)}
   background:rgba(255,255,255,.10); color:var(--fg)
 }
 .lang-switch a:hover{background:rgba(255,255,255,.06)}
+:root{ --border: rgba(255,255,255,.10) }
+html[data-theme="light"]{ --border: rgba(0,0,0,.08) }
+header{ background: color-mix(in oklab, var(--bg) 90%, transparent);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--border); }
+header .container{ display:flex; align-items:center; justify-content:space-between; gap:1rem }
+body.is-scrolled header{ box-shadow: 0 8px 24px rgba(0,0,0,.18) }
+nav.site-nav a{ position:relative; display:inline-block; padding:.55rem .75rem; color:var(--fg) }
+nav.site-nav a::after{
+  content:""; position:absolute; left:.5rem; right:.5rem; bottom:.35rem;
+  height:2px; background: rgb(var(--accent)); transform: scaleX(0);
+  transform-origin: left; transition: transform .18s ease;
+}
+nav.site-nav a:hover::after{ transform: scaleX(1) }
+nav.site-nav a[aria-current="page"]::after{ transform: scaleX(1) }
+
+/* Language switch (falls noch nicht) */
+.lang-switch{ display:flex; gap:.5rem; align-items:center }
+.lang-switch a{ color:var(--fg); opacity:.9; border:1px solid var(--border);
+  padding:.2rem .5rem; border-radius:.5rem; text-decoration:none; font-weight:600 }
+.lang-switch a[aria-current="true"]{ background:rgba(255,255,255,.10) }
+.lang-switch a:hover{ background:rgba(255,255,255,.07) }
+
+/* Safety: entferne globale Tab-Leiste, falls vorhanden */
+.nav-tabs, header::after{ display:none !important }
+:root{ --measure: 68ch }
+main p{ max-width: var(--measure); line-height: 1.65 }
+.section{ padding-block: 3.5rem }
+.section-lg{ padding-block: 6rem }
+h1{ line-height:1.15; margin:.2em 0 .35em }
+h2{ line-height:1.2;  margin:0 0 1rem }
+h3{ line-height:1.25; margin:0 0 .75rem }
+.container > .card{ margin-top:1rem } /* Cards nicht zu dicht */
+.btn{ font-weight:700; border-radius:1rem; }
+.btn + .btn{ margin-left:.5rem }
+.card{ background: color-mix(in oklab, var(--bg) 86%, black 0%);
+       border:1px solid var(--border); border-radius:1rem; }
+.card.hover-lift{ transition: transform .2s ease, box-shadow .2s ease }
+.card.hover-lift:hover{ transform: translateY(-2px); box-shadow:0 10px 30px rgba(0,0,0,.22) }
+
+/* Testimonials */
+.testimonial-header{ display:flex; align-items:center; gap:.75rem; margin-bottom:.75rem }
+.avatar{ width:2.5rem; height:2.5rem; border-radius:9999px; display:flex; align-items:center; justify-content:center;
+         background: rgba(255,255,255,.22); color: var(--fg); font-weight:800 }
+.testimonial-name{ color: var(--fg); font-weight:700 }
+.testimonial-role{ color: var(--muted); font-size:.9rem }
+
+/* FAQ (sichtbar) */
+.faq .card{ border-color: var(--border) }
+.faq [data-acc-btn]{ display:flex; justify-content:space-between; width:100%;
+  padding:1rem 1.1rem; border-radius:.75rem; color:var(--fg); font-weight:700; background:transparent }
+.faq [data-acc-btn]:hover{ background:rgba(255,255,255,.06) }
+.faq [data-acc-btn][aria-expanded="true"]{ background:rgba(255,255,255,.10) }
+.faq [data-acc-btn]::after{ content:"+"; font-weight:800; opacity:.7 }
+.faq [data-acc-btn][aria-expanded="true"]::after{ content:"–" }
+.faq [data-acc-btn] + p{ color:var(--muted); padding:0 1.1rem 1rem }
