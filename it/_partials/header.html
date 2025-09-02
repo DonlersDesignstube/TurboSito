@@ -1,0 +1,62 @@
+<header id="site-header" class="sticky top-0 z-50 bg-[#0b0f1a]/85 backdrop-blur border-b border-white/10">
+  <div class="container">
+    <div class="flex items-center justify-between p-4">
+      <a href="/TurboSito/it/" class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">TurboSito</a>
+      <div class="flex items-center gap-4">
+        <div class="flex gap-2 text-sm" aria-label="Cambia lingua">
+          <a id="switch-de" href="/TurboSito/de/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">DE</a>
+          <a id="switch-en" href="/TurboSito/en/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">EN</a>
+          <a id="switch-it" href="/TurboSito/it/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">IT</a>
+        </div>
+        <button id="theme-toggle" class="btn btn-outline" aria-pressed="false" type="button">Theme</button>
+        <button id="menu-btn" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="main-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-md md:block md:static md:shadow-none" aria-label="Navigazione principale">
+      <ul class="flex flex-col max-w-6xl mx-auto p-4 gap-2 md:flex-row md:gap-6 md:p-0">
+        <li><a href="/TurboSito/it/" data-page="home" class="block text-[var(--fg)] px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Home</a></li>
+        <li><a href="/TurboSito/it/chi-sono.html" data-page="about" class="block text-[var(--fg)] px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Chi sono</a></li>
+        <li><a href="/TurboSito/it/servizi.html" data-page="services" class="block text-[var(--fg)] px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Servizi</a></li>
+        <li><a href="/TurboSito/it/portfolio.html" data-page="portfolio" class="block text-[var(--fg)] px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Portfolio</a></li>
+        <li><a href="/TurboSito/it/contatti.html" data-page="contact" class="block text-[var(--fg)] px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Contatti</a></li>
+      </ul>
+    </nav>
+  </div>
+  <script>
+    const btn = document.getElementById('menu-btn')
+    const nav = document.getElementById('main-nav')
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true'
+      btn.setAttribute('aria-expanded', String(!open))
+      nav.classList.toggle('hidden')
+    })
+    const pages = {
+      home: {de: '/de/', en: '/en/', it: '/it/'},
+      about: {de: '/de/ueber-mich.html', en: '/en/about.html', it: '/it/chi-sono.html'},
+      services: {de: '/de/leistungen.html', en: '/en/services.html', it: '/it/servizi.html'},
+      portfolio: {de: '/de/portfolio.html', en: '/en/portfolio.html', it: '/it/portfolio.html'},
+      contact: {de: '/de/kontakt.html', en: '/en/contact.html', it: '/it/contatti.html'},
+      imprint: {de: '/de/impressum.html', en: '/en/legal.html', it: '/it/note-legali.html'},
+      privacy: {de: '/de/datenschutz.html', en: '/en/legal.html', it: '/it/privacy.html'}
+    }
+    const path = window.location.pathname.replace(/index\.html$/, '')
+    let key = 'home'
+    for (const [k, v] of Object.entries(pages)) {
+      if (Object.values(v).includes(path)) { key = k; break }
+    }
+    const lang = document.documentElement.lang
+    const current = pages[key]
+    document.getElementById('switch-de').href = current.de
+    document.getElementById('switch-en').href = current.en
+    document.getElementById('switch-it').href = current.it
+    document.getElementById('switch-' + lang).classList.add('font-semibold', 'text-indigo-600')
+    document.querySelectorAll('#main-nav a[data-page]').forEach(a => {
+      if (a.dataset.page === key) {
+        a.setAttribute('aria-current', 'page')
+        a.classList.add('text-indigo-600', 'font-semibold')
+      }
+    })
+  </script>
+</header>
