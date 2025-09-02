@@ -2,6 +2,7 @@
 <html lang="de">
 
 <head>
+<<<<<<< Updated upstream
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TurboSito – Website in 48h</title>
@@ -410,6 +411,31 @@
 }
 
 
+=======
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the project title to the TurboSito brand -->
+    <title>TurboSito – Website in 48h</title>
+    <!-- Preload the largest hero image for a fast LCP; use the high‑priority flag -->
+    <link rel="preload" as="image" href="../assets/img/landing-hero-1920.jpg" fetchpriority="high">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <meta name="description" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
+    <!-- Open Graph tags aligned with the TurboSito brand -->
+    <meta property="og:title" content="TurboSito – Website in 48h">
+    <meta property="og:description" content="Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.">
+    <meta property="og:image" content="../assets/img/landing-hero-1920.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{URL}}/landing/">
+    <!-- Favicon for TurboSito brand -->
+    <link rel="icon" type="image/svg+xml" href="../assets/logo/turbosito-favicon-ts.svg">
+    <style>
+        [data-lang] { display: none; }
+        :root[data-language="de"] [data-lang="de"] { display: block; }
+        :root[data-language="it"] [data-lang="it"] { display: block; }
+        /* Scroll reveal animation: sections start offscreen and fade in as they scroll into view */
+        .scroll-reveal { opacity: 0; transform: translateY(2rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+>>>>>>> Stashed changes
     </style>
 
     <!-- JSON-LD (Organization) -->
@@ -439,6 +465,7 @@
 </style>
 <link rel="stylesheet" href="/TurboSito/assets/css/theme.css">
 </head>
+<<<<<<< Updated upstream
 
 <body class="font-sans text-gray-800 bg-white">
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
@@ -451,6 +478,19 @@
             <div class="hidden sm:flex items-center gap-2 text-sm font-semibold">
                 <span data-lang="de">Website&nbsp;in&nbsp;48h</span>
                 <span data-lang="it">Sito&nbsp;in&nbsp;48h</span>
+=======
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-[#111827] transition-colors duration-300">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
+            <!-- Logo linking back to the home/landing page -->
+            <a href="/" class="flex items-center gap-3">
+                <img src="../assets/logo/turbosito-logo-ts-bars.svg" alt="TurboSito" class="h-7 w-auto">
+            </a>
+            <div class="flex items-center space-x-2">
+                <span class="text-lg font-bold" data-lang="de">Website&nbsp;in&nbsp;48h</span>
+                <span class="text-lg font-bold" data-lang="it">Sito&nbsp;in&nbsp;48h</span>
+>>>>>>> Stashed changes
             </div>
             <div class="langseg">
                 <button id="langDe" aria-pressed="true">DE</button>
@@ -459,6 +499,7 @@
 
         </div>
     </header>
+<<<<<<< Updated upstream
 
     <main id="content">
         <!-- HERO -->
@@ -583,6 +624,29 @@
                     
 
 
+=======
+    <main>
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden" style="min-height:75vh;">
+            <!-- Responsive hero image using the <picture> element with WebP fallbacks -->
+            <picture>
+                <source type="image/webp" srcset="../assets/img/landing-hero-1280.webp 1280w, ../assets/img/landing-hero-1920.webp 1920w" sizes="100vw">
+                <img src="../assets/img/landing-hero-1920.jpg" srcset="../assets/img/landing-hero-1280.jpg 1280w, ../assets/img/landing-hero-1920.jpg 1920w" sizes="100vw" width="1920" height="1080" class="absolute inset-0 w-full h-full object-cover" alt="Laptop und Telefon">
+            </picture>
+            <div class="absolute inset-0 bg-black/90"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-16 sm:py-20">
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Website in 48 Stunden. Fixpreis. Mehr Anfragen – ohne Telefonat.</h1>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Sito web in 48 ore. Prezzo fisso. Più richieste – senza telefonate.</h1>
+                <p class="text-lg sm:text-xl text-white mb-8 max-w-screen-md" data-lang="de">Lass dir deine professionelle Website ohne langwierige Abstimmungen erstellen. Wir liefern in 48&nbsp;Stunden.</p>
+                <p class="text-lg sm:text-xl text-white mb-8 max-w-screen-md" data-lang="it">Ottieni il tuo sito professionale senza lunghe chiamate. Consegniamo in 48&nbsp;ore.</p>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <!-- Primary call‑to‑action uses TurboSito orange -->
+                    <a href="#intake" class="px-8 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" data-lang="de">Jetzt starten</a>
+                    <a href="#intake" class="px-8 py-3 bg-orange-500 text-white font-semibold rounded transition-colors duration-300 hover:bg-orange-600" data-lang="it">Inizia ora</a>
+                    <!-- Secondary call‑to‑action uses outlined orange style -->
+                    <a href="#pricing" class="px-8 py-3 border border-orange-500 text-orange-500 font-semibold rounded transition-colors duration-300 hover:bg-orange-500 hover:text-white" data-lang="de">Preise ansehen</a>
+                    <a href="#pricing" class="px-8 py-3 border border-orange-500 text-orange-500 font-semibold rounded transition-colors duration-300 hover:bg-orange-500 hover:text-white" data-lang="it">Guarda i prezzi</a>
+>>>>>>> Stashed changes
                 </div>
             </div>
 
@@ -594,6 +658,7 @@
 
 
         </section>
+<<<<<<< Updated upstream
 
 
 
@@ -608,6 +673,16 @@
                         <div
                             class="w-11 h-11 rounded-full bg-indigo-600 text-white flex items-center justify-center text-lg font-bold mb-4">
                             1</div>
+=======
+        <!-- Ablauf / Process -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800 scroll-reveal" id="process">
+            <div class="max-w-screen-lg mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-8" data-lang="de">So funktioniert’s</h2>
+                <h2 class="text-3xl font-bold mb-8" data-lang="it">Come funziona</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                    <div class="p-6 bg-white dark:bg-gray-900 rounded shadow flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center text-xl font-bold mb-4">1</div>
+>>>>>>> Stashed changes
                         <h3 class="font-semibold mb-2" data-lang="de">Intake ausfüllen</h3>
                         <h3 class="font-semibold mb-2" data-lang="it">Compila il modulo</h3>
                         <p class="text-sm text-gray-600" data-lang="de">Sag uns, was du brauchst: Branche, Inhalte,
@@ -615,11 +690,16 @@
                         <p class="text-sm text-gray-600" data-lang="it">Dicci di cosa hai bisogno: settore, contenuti,
                             colori, obiettivi.</p>
                     </div>
+<<<<<<< Updated upstream
 
                     <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
                         <div
                             class="w-11 h-11 rounded-full bg-indigo-600 text-white flex items-center justify-center text-lg font-bold mb-4">
                             2</div>
+=======
+                    <div class="p-6 bg-white dark:bg-gray-900 rounded shadow flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center text-xl font-bold mb-4">2</div>
+>>>>>>> Stashed changes
                         <h3 class="font-semibold mb-2" data-lang="de">48h&nbsp;Umsetzung</h3>
                         <h3 class="font-semibold mb-2" data-lang="it">Realizzazione in 48h</h3>
                         <p class="text-sm text-gray-600" data-lang="de">Mobile, Performance, SEO &amp; Local-Search
@@ -627,12 +707,18 @@
                         <p class="text-sm text-gray-600" data-lang="it">Mobile, performance, SEO & ricerca locale
                             inclusi.</p>
                     </div>
+<<<<<<< Updated upstream
 
                     <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
                         <div
                             class="w-11 h-11 rounded-full bg-indigo-600 text-white flex items-center justify-center text-lg font-bold mb-4">
                             3</div>
                         <h3 class="font-semibold mb-2" data-lang="de">Go-Live &amp; Wachstum</h3>
+=======
+                    <div class="p-6 bg-white dark:bg-gray-900 rounded shadow flex flex-col items-center">
+                        <div class="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center text-xl font-bold mb-4">3</div>
+                        <h3 class="font-semibold mb-2" data-lang="de">Go‑Live &amp; Wachstum</h3>
+>>>>>>> Stashed changes
                         <h3 class="font-semibold mb-2" data-lang="it">Messa online &amp; crescita</h3>
                         <p class="text-sm text-gray-600" data-lang="de">Freigabe, Veröffentlichung – mehr qualifizierte
                             Anfragen.</p>
@@ -642,9 +728,14 @@
                 </div>
             </div>
         </section>
+<<<<<<< Updated upstream
 
         <!-- PRICING -->
         <section id="pricing" class="py-14 sm:py-16 scroll-reveal">
+=======
+        <!-- Pricing -->
+        <section class="py-16 scroll-reveal" id="pricing">
+>>>>>>> Stashed changes
             <div class="max-w-screen-lg mx-auto px-4 text-center">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-8" data-lang="de">Pakete &amp; Preise</h2>
                 <h2 class="text-2xl sm:text-3xl font-bold mb-8" data-lang="it">Pacchetti &amp; prezzi</h2>
@@ -664,12 +755,17 @@
                             <li data-lang="de">Go-Live in 48h</li>
                             <li data-lang="it">Online in 48h</li>
                         </ul>
+<<<<<<< Updated upstream
                         <a href="#intake"
                             class="mt-auto px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition"
                             data-lang="de">Buchen</a>
                         <a href="#intake"
                             class="mt-auto px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition"
                             data-lang="it">Prenota</a>
+=======
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="de">Buchen</a>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="it">Prenota</a>
+>>>>>>> Stashed changes
                     </div>
 
                     <div
@@ -691,12 +787,17 @@
                             <li data-lang="de">SEO-Optimierung</li>
                             <li data-lang="it">Ottimizzazione SEO</li>
                         </ul>
+<<<<<<< Updated upstream
                         <a href="#intake"
                             class="mt-auto px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition"
                             data-lang="de">Buchen</a>
                         <a href="#intake"
                             class="mt-auto px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition"
                             data-lang="it">Prenota</a>
+=======
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="de">Buchen</a>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="it">Prenota</a>
+>>>>>>> Stashed changes
                     </div>
 
                     <div class="p-6 bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col">
@@ -713,6 +814,7 @@
                             <li data-lang="de">Individuelles Design</li>
                             <li data-lang="it">Design su misura</li>
                         </ul>
+<<<<<<< Updated upstream
                         <a href="#intake"
                             class="mt-auto px-4 py-2 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 transition"
                             data-lang="de">Buchen</a>
@@ -731,6 +833,18 @@
 
         <!-- EXAMPLES -->
         <section id="examples" class="py-14 sm:py-16 bg-gray-50 scroll-reveal">
+=======
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="de">Buchen</a>
+                        <a href="#intake" class="mt-auto px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="it">Prenota</a>
+                    </div>
+                </div>
+                <p class="mt-8 text-sm text-gray-600 dark:text-gray-400" data-lang="de">Retainer für Wartung &amp; Support zwischen €59–€149&nbsp;/ Monat.</p>
+                <p class="mt-8 text-sm text-gray-600 dark:text-gray-400" data-lang="it">Manutenzione &amp; supporto tra €59–€149&nbsp;/ mese.</p>
+            </div>
+        </section>
+        <!-- Social Proof / Beispiele -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800 scroll-reveal" id="examples">
+>>>>>>> Stashed changes
             <div class="max-w-screen-lg mx-auto px-4 text-center">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-8" data-lang="de">Beispiele</h2>
                 <h2 class="text-2xl sm:text-3xl font-bold mb-8" data-lang="it">Esempi</h2>
@@ -799,6 +913,7 @@
                 <p class="mt-6 text-sm text-gray-600" data-lang="it">Clicca su un esempio per vedere la demo live.</p>
             </div>
         </section>
+<<<<<<< Updated upstream
 
         <!-- FAQ -->
         <div class="space-y-3">
@@ -1070,6 +1185,65 @@
                     <a href="STRIPE_PAYMENT_LINK"
                         class="px-7 py-3 rounded-lg font-semibold text-indigo-700 border border-indigo-300/70 bg-white/90 backdrop-blur hover:bg-white transition"
                         data-lang="it">Versa l'acconto</a>
+=======
+        <!-- FAQs -->
+        <section class="py-16 scroll-reveal" id="faq">
+            <div class="max-w-screen-lg mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-lang="de">Häufige Fragen</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center" data-lang="it">Domande frequenti</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Was beinhaltet die Lieferung?</h3>
+                        <h3 class="font-semibold" data-lang="it">Cosa include la consegna?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Eine fertige Website, optimiert für Mobilgeräte und SEO.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Un sito web completo, ottimizzato per mobile e SEO.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Wie viele Änderungsrunden sind inklusive?</h3>
+                        <h3 class="font-semibold" data-lang="it">Quanti cicli di modifica sono inclusi?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Je nach Paket 1–3 Runden.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">A seconda del pacchetto 1–3 revisioni.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Muss ich Hosting/Domain bereitstellen?</h3>
+                        <h3 class="font-semibold" data-lang="it">Devo fornire hosting/dominio?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Gern helfen wir bei der Einrichtung von Domain &amp; Hosting (z.&nbsp;B. Netlify).</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Ti aiutiamo a configurare dominio e hosting (es. Netlify).</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Wann ist die Bezahlung fällig?</h3>
+                        <h3 class="font-semibold" data-lang="it">Quando si paga?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">40 % Anzahlung bei Auftrag, Rest bei Übergabe.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">40 % di acconto all'ordine, saldo alla consegna.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Sind mehrsprachige Seiten möglich?</h3>
+                        <h3 class="font-semibold" data-lang="it">È possibile avere il sito multilingue?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Ja, ab dem Standard‑Paket unterstützen wir DE/IT oder EN.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Sì, dal pacchetto Standard supportiamo DE/IT o EN.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold" data-lang="de">Wie läuft das rechtlich mit DSGVO?</h3>
+                        <h3 class="font-semibold" data-lang="it">Come gestite la privacy e il GDPR?</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="de">Wir stellen Impressum &amp; Datenschutzvorlagen bereit, Cookies nur bei externen Ressourcen.</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400" data-lang="it">Forniamo modelli di Impressum e privacy, cookie solo quando servono risorse esterne.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section / Intake -->
+        <section class="py-16 bg-gray-50 dark:bg-gray-800 scroll-reveal" id="intake">
+            <div class="max-w-screen-md mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-4" data-lang="de">Bereit für deine Website?</h2>
+                <h2 class="text-3xl font-bold mb-4" data-lang="it">Pronto per il tuo sito?</h2>
+                <p class="mb-6" data-lang="de">Fülle unser kurzes Intake‑Formular aus und leiste eine Anzahlung – der Rest wird erledigt!</p>
+                <p class="mb-6" data-lang="it">Compila il nostro breve modulo e versa un acconto – al resto pensiamo noi!</p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="INTAKE_FORM_URL" class="px-8 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="de">Intake starten</a>
+                    <a href="INTAKE_FORM_URL" class="px-8 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="it">Avvia il modulo</a>
+                    <a href="STRIPE_PAYMENT_LINK" class="px-8 py-3 border border-orange-500 text-orange-500 font-semibold rounded hover:bg-orange-500 hover:text-white" data-lang="de">Anzahlung leisten</a>
+                    <a href="STRIPE_PAYMENT_LINK" class="px-8 py-3 border border-orange-500 text-orange-500 font-semibold rounded hover:bg-orange-500 hover:text-white" data-lang="it">Versa l'acconto</a>
+>>>>>>> Stashed changes
                 </div>
 
                 <p class="mt-3 text-xs text-gray-500">Hinweis: Bei Klick auf Stripe/WhatsApp werden Daten an Dritte
@@ -1104,7 +1278,14 @@
                 <a href="../legal/impressum.html" class="underline" data-lang="it">Note legali</a>
                 <a href="../legal/privacy.html" class="underline" data-lang="it">Privacy</a>
             </div>
+<<<<<<< Updated upstream
             <small class="text-gray-500">&copy; 2025 TurboSito</small>
+=======
+            <div>
+                <small class="text-gray-500" data-lang="de">&copy; 2025 TurboSito</small>
+                <small class="text-gray-500" data-lang="it">&copy; 2025 TurboSito</small>
+            </div>
+>>>>>>> Stashed changes
         </div>
     </footer>
 
@@ -1219,9 +1400,28 @@
         }); // <— DOMContentLoaded schließen
 
     </script>
+<<<<<<< Updated upstream
 
   <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
   <script src="/TurboSito/assets/js/reveal.js" defer></script>
+=======
+    <!-- Scroll reveal script: reveals sections when they enter the viewport -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+>>>>>>> Stashed changes
 </body>
 
 </html>

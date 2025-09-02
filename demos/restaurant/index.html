@@ -21,13 +21,20 @@
         :root[data-language="de"] [data-lang="de"] { display: block; }
         :root[data-language="it"] [data-lang="it"] { display: block; }
         /* Scroll reveal animation */
+<<<<<<< Updated upstream
         /* Use a gentler scroll reveal for smoother section appearance */
         .scroll-reveal { opacity: 0; transform: translateY(1rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+=======
+        .scroll-reveal { opacity: 0; transform: translateY(2rem); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+>>>>>>> Stashed changes
         .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-[#111827] transition-colors duration-300">
+<<<<<<< Updated upstream
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
+=======
+>>>>>>> Stashed changes
     <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b border-gray-200 dark:border-gray-700">
         <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4">
             <!-- Logo with page name: link back to landing page -->
@@ -53,6 +60,7 @@
     </header>
     <main id="content">
         <!-- Hero Section -->
+<<<<<<< Updated upstream
         <!-- Hero section: give more breathing room on mobile devices -->
         <!-- Taller hero for improved mobile spacing -->
         <section class="relative overflow-hidden" style="min-height:90vh;">
@@ -65,6 +73,16 @@
             <!-- Use a lighter overlay for readability while keeping the photo visible -->
             <div class="absolute inset-0 bg-black/50"></div>
             <div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-24 sm:py-32">
+=======
+        <section class="relative overflow-hidden" style="min-height:75vh;">
+            <!-- Responsive restaurant hero image using <picture> with WebP and JPEG sources -->
+            <picture>
+                <source type="image/webp" srcset="../../assets/img/restaurant-hero-1280.webp 1280w, ../../assets/img/restaurant-hero-1920.webp 1920w" sizes="100vw">
+                <img src="../../assets/img/restaurant-hero-1920.jpg" srcset="../../assets/img/restaurant-hero-1280.jpg 1280w, ../../assets/img/restaurant-hero-1920.jpg 1920w" sizes="100vw" width="1920" height="1080" class="absolute inset-0 w-full h-full object-cover" alt="Restaurant Hero">
+            </picture>
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 py-16 sm:py-20">
+>>>>>>> Stashed changes
                 <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="de">Frische Küche. Schnelle Reservierung.</h1>
                 <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4" data-lang="it">Cucina fresca. Prenota in un attimo.</h1>
                 <p class="text-lg sm:text-xl text-white mb-8" data-lang="de">Genießen Sie regionale Spezialitäten und reservieren Sie bequem per WhatsApp.</p>
@@ -281,7 +299,10 @@
             });
         });
     </script>
+<<<<<<< Updated upstream
   <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
   <script src="/TurboSito/assets/js/reveal.js" defer></script>
+=======
+>>>>>>> Stashed changes
 </body>
 </html>
