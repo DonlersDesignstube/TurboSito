@@ -23,12 +23,35 @@
   <main class="container section-lg text-center">
     <h1 class="text-4xl font-bold mb-6">Choose your language</h1>
     <nav class="flex flex-wrap justify-center gap-4">
-      <a class="btn" href="/TurboSito/de/">DE</a>
-      <a class="btn btn-outline" href="/TurboSito/en/">EN</a>
-      <a class="btn btn-outline" href="/TurboSito/it/">IT</a>
+      <a class="btn" href="/TurboSito/de/" data-lang="de">DE</a>
+      <a class="btn btn-outline" href="/TurboSito/en/" data-lang="en">EN</a>
+      <a class="btn btn-outline" href="/TurboSito/it/" data-lang="it">IT</a>
     </nav>
   </main>
+    <script src="/TurboSito/assets/js/lang-switch.js" defer></script>
     <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
   <script src="/TurboSito/assets/js/reveal.js" defer></script>
+  <script>
+(() => {
+  const BASE='/' + 'TurboSito';
+  const KEY='site-lang';
+  const saved = localStorage.getItem(KEY);
+  const go = (code) => { location.replace(`${BASE}/${code}/`); };
+  document.querySelectorAll('a[data-lang]').forEach(a => {
+    a.addEventListener('click', () => localStorage.setItem(KEY, a.dataset.lang));
+  });
+  if (!saved) {
+    const pick = (nav) => {
+      const m = { de:'de', 'de-at':'de','de-de':'de','de-ch':'de',
+                  en:'en','en-us':'en','en-gb':'en',
+                  it:'it','it-it':'it' };
+      const n = (nav || 'en').toLowerCase();
+      return m[n] || m[n.split('-')[0]] || 'en';
+    };
+    const code = pick((navigator.languages && navigator.languages[0]) || navigator.language);
+    go(code);
+  }
+})();
+  </script>
 </body>
 </html>
