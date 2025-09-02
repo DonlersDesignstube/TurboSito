@@ -119,3 +119,12 @@ footer a:hover{color:var(--fg)}
 .faq [data-acc-btn][aria-expanded="true"]{ background:rgba(255,255,255,.06); }
 .faq [data-acc-btn][aria-expanded="true"]::after{ content:"–"; }
 .faq [data-acc-btn] + p{ color:var(--muted); padding:0 1.1rem 1rem; }
+/* --- Testimonials --- */
+.avatar{
+  width:2.5rem; height:2.5rem; border-radius:9999px;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(255,255,255,.14);   /* heller als vorher */
+  color:var(--fg); font-weight:800; letter-spacing:.02em;
+}
+.testimonial-name{ color:var(--fg); font-weight:700; }
+.testimonial-role{ color:var(--muted); font-size:.9rem; }
