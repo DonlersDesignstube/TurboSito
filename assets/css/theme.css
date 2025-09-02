@@ -174,3 +174,13 @@ nav.site-nav a[aria-current="page"]::after{ transform: scaleX(1) }
 
 /* Safety: entferne globale Tab-Leiste, falls vorhanden */
 .nav-tabs, header::after{ display:none !important }
+:root{ --measure: 68ch }
+main p{ max-width: var(--measure); line-height: 1.65 }
+.section{ padding-block: 3.5rem }
+.section-lg{ padding-block: 6rem }
+h1{ line-height:1.15; margin:.2em 0 .35em }
+h2{ line-height:1.2;  margin:0 0 1rem }
+h3{ line-height:1.25; margin:0 0 .75rem }
+.container > .card{ margin-top:1rem } /* Cards nicht zu dicht */
+.btn{ font-weight:700; border-radius:1rem; }
+.btn + .btn{ margin-left:.5rem }
