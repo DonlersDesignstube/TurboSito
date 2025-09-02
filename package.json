@@ -1,0 +1,13 @@
+{
+  "name": "turbosito",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
+  "devDependencies": {
+    "fast-glob": "^3.3.2",
+    "fs-extra": "^11.2.0",
+    "posthtml": "^0.16.6",
+    "posthtml-include": "^2.0.1"
+  }
+}
