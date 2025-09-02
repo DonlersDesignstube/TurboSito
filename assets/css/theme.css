@@ -213,3 +213,8 @@ h1,h2,h3{color:var(--fg);}
 /* Footer-Links lesbar im Light */
 footer a{color:var(--muted);} footer a:hover{color:var(--fg);}
 header{background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}nav.site-nav a{position:relative;display:inline-block;padding:.55rem .75rem;color:var(--fg);}nav.site-nav a::after{content:"";position:absolute;left:.5rem;right:.5rem;bottom:.35rem;height:2px;background:rgb(var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .18s;}nav.site-nav a:hover::after,nav.site-nav a[aria-current="page"]::after{transform:scaleX(1);} .lang-switch a{border:1px solid var(--border);padding:.2rem .5rem;border-radius:.5rem;}
+.text-gradient{background:linear-gradient(90deg, rgb(var(--accent)) 0%, #f5b679 100%); -webkit-background-clip:text; color:transparent;}
+.section-hero{padding-block:6rem;}
+@media (min-width:768px){ .section-hero{padding-block:7.5rem;} }
+.mockup-body{opacity:.9;}
+html[data-theme="light"] .mockup{box-shadow:0 20px 40px rgba(0,0,0,.1);}
