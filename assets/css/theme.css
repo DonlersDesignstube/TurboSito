@@ -178,3 +178,37 @@ h3{ line-height:1.25; margin:0 0 .75rem }
 .faq [data-acc-btn]::after{ content:"+"; font-weight:800; opacity:.7 }
 .faq [data-acc-btn][aria-expanded="true"]::after{ content:"–" }
 .faq [data-acc-btn] + p{ color:var(--muted); padding:0 1.1rem 1rem }
+/* --- Light mode tokens --- */
+html[data-theme="light"]{
+  --bg:#f7f9fc;
+  --card:#ffffff;
+  --fg:#0b0f1a;
+  --muted:#465066;
+  --border:rgba(0,0,0,.08);
+}
+/* Cards & borders */
+.card{background:var(--card); border:1px solid var(--border); border-radius:1rem;}
+html[data-theme="light"] .card{box-shadow:0 8px 24px rgba(0,0,0,.06);}
+
+/* Skeleton (nicht schneeweiß im Light) */
+.skeleton{
+  background:linear-gradient(110deg,#e8eef7 8%,#f2f6fc 18%,#e8eef7 33%);
+  background-size:200% 100%; animation:shimmer 1.2s linear infinite;
+}
+
+/* Mockup: dezenter Chrom + innerer Rand in Light */
+.mockup{background:linear-gradient(180deg,rgba(0,0,0,.03),transparent);}
+.mockup::after{content:"";position:absolute;inset:0;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);}
+.mockup-chrome .dot{background:rgba(0,0,0,.15);}
+
+/* Trust-Logo-Pills im Light */
+html[data-theme="light"] .logo-pill{height:2.5rem;border-radius:1.25rem;background:linear-gradient(180deg,#eef3fb,#e5ecf7);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);}
+html[data-theme="light"] .logo-pill::after{background:rgba(0,0,0,.15);}
+
+/* Überschriften immer sichtbar */
+h1,h2,h3{color:var(--fg);}
+
+/* Footer-Links lesbar im Light */
+footer a{color:var(--muted);} footer a:hover{color:var(--fg);}
