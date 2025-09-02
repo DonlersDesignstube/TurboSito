@@ -71,3 +71,4 @@ nav a:hover{background-size:100% 2px}
 @media (prefers-reduced-motion: reduce){
   .reveal, .reveal.is-in{transition:none; transform:none; opacity:1}
 }
+.ph{display:none}
