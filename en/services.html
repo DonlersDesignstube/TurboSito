@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services – TurboSito</title>
+  <meta name="description" content="Web services that drive results. Rapid delivery focused on your goals.">
+  <link rel="canonical" href="https://deine-domain.tld/en/services.html">
+  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/leistungen.html">
+  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/services.html">
+  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/servizi.html">
+  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/">
+  <meta property="og:title" content="Services – TurboSito">
+  <meta property="og:description" content="Web services that drive results. Rapid delivery focused on your goals.">
+  <meta property="og:url" content="https://deine-domain.tld/en/services.html">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://deine-domain.tld/assets/img/og-default.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--font-sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", sans-serif}
+  .font-display{font-family:"Outfit", var(--font-sans)}
+  body{font-family:var(--font-sans)}
+</style>
+<link rel="stylesheet" href="/TurboSito/assets/css/theme.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+</head>
+<body class="font-sans text-gray-900">
+  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
+<header id="site-header" class="bg-white shadow-sm">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <a href="/TurboSito/en/" class="text-xl font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">TurboSito</a>
+    <div class="flex items-center gap-4">
+      <div class="flex gap-2 text-sm" aria-label="Change language">
+        <a id="switch-de" href="/TurboSito/de/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">DE</a>
+        <a id="switch-en" href="/TurboSito/en/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">EN</a>
+        <a id="switch-it" href="/TurboSito/it/" class="px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">IT</a>
+      </div>
+      <button id="menu-btn" class="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <nav id="main-nav" class="hidden absolute top-full left-0 w-full bg-white shadow-md md:block md:static md:shadow-none" aria-label="Main navigation">
+    <ul class="flex flex-col max-w-6xl mx-auto p-4 gap-2 md:flex-row md:gap-6 md:p-0">
+      <li><a href="/TurboSito/en/" data-page="home" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Home</a></li>
+      <li><a href="/TurboSito/en/about.html" data-page="about" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">About</a></li>
+      <li><a href="/TurboSito/en/services.html" data-page="services" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Services</a></li>
+      <li><a href="/TurboSito/en/portfolio.html" data-page="portfolio" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Portfolio</a></li>
+      <li><a href="/TurboSito/en/contact.html" data-page="contact" class="block px-2 py-1 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500">Contact</a></li>
+    </ul>
+  </nav>
+  <script>
+    const btn = document.getElementById('menu-btn')
+    const nav = document.getElementById('main-nav')
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true'
+      btn.setAttribute('aria-expanded', String(!open))
+      nav.classList.toggle('hidden')
+    })
+    const pages = {
+      home: {de: '/de/', en: '/en/', it: '/it/'},
+      about: {de: '/de/ueber-mich.html', en: '/en/about.html', it: '/it/chi-sono.html'},
+      services: {de: '/de/leistungen.html', en: '/en/services.html', it: '/it/servizi.html'},
+      portfolio: {de: '/de/portfolio.html', en: '/en/portfolio.html', it: '/it/portfolio.html'},
+      contact: {de: '/de/kontakt.html', en: '/en/contact.html', it: '/it/contatti.html'}
+    }
+    const path = window.location.pathname.replace(/index\.html$/, '')
+    let key = 'home'
+    for (const [k, v] of Object.entries(pages)) {
+      if (Object.values(v).includes(path)) { key = k; break }
+    }
+    const lang = document.documentElement.lang
+    const current = pages[key]
+    document.getElementById('switch-de').href = current.de
+    document.getElementById('switch-en').href = current.en
+    document.getElementById('switch-it').href = current.it
+    document.getElementById('switch-' + lang).classList.add('font-semibold', 'text-indigo-600')
+    document.querySelectorAll('#main-nav a[data-page]').forEach(a => {
+      if (a.dataset.page === key) {
+        a.setAttribute('aria-current', 'page')
+        a.classList.add('text-indigo-600', 'font-semibold')
+      }
+    })
+  </script>
+</header>
+  <main id="content">
+    <section class="section-lg max-w-5xl mx-auto px-4 py-20 text-center">
+      <h1 class="font-display text-3xl md:text-4xl font-bold mb-6">Services</h1>
+      <p class="mb-6">Our services get your project online fast. Every package is built for measurable outcomes.</p>
+      <a href="/TurboSito/en/contact.html" class="btn" aria-label="Free consultation">Free consultation</a>
+    </section>
+    <section class="section max-w-6xl mx-auto px-4 py-12">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Services</h2>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <article class="card hover-lift">
+          <h3 class="font-semibold text-xl mb-2">Lightning-fast landing pages</h3>
+          <p class="text-[var(--muted)] mb-3">Start capturing leads within 48 hours.</p>
+          <ul class="space-y-1 text-sm text-[var(--muted)] list-disc pl-5">
+            <li>Custom design</li>
+            <li>Responsive layout</li>
+            <li>Basic SEO</li>
+            <li>Contact form</li>
+          </ul>
+          <p class="text-sm text-[var(--muted)] mt-3">from €1,200</p>
+          <div class="mt-4"><a class="btn btn-outline" href="/TurboSito/en/contact.html">Request</a></div>
+        </article>
+        <article class="card hover-lift">
+          <h3 class="font-semibold text-xl mb-2">Multilingual business sites</h3>
+          <p class="text-[var(--muted)] mb-3">Reach clients in multiple languages without extra effort.</p>
+          <ul class="space-y-1 text-sm text-[var(--muted)] list-disc pl-5">
+            <li>Structured pages</li>
+            <li>Language switcher</li>
+            <li>SEO setup</li>
+            <li>Performance optimization</li>
+            <li>Hosting setup</li>
+          </ul>
+          <p class="text-sm text-[var(--muted)] mt-3">from €2,500</p>
+          <div class="mt-4"><a class="btn btn-outline" href="/TurboSito/en/contact.html">Request</a></div>
+        </article>
+        <article class="card hover-lift">
+          <h3 class="font-semibold text-xl mb-2">Maintenance &amp; optimization</h3>
+          <p class="text-[var(--muted)] mb-3">Stay fast and secure after launch.</p>
+          <ul class="space-y-1 text-sm text-[var(--muted)] list-disc pl-5">
+            <li>Updates</li>
+            <li>Backups</li>
+            <li>Monitoring</li>
+            <li>Performance tuning</li>
+          </ul>
+          <p class="text-sm text-[var(--muted)] mt-3">from €150/mo</p>
+          <div class="mt-4"><a class="btn btn-outline" href="/TurboSito/en/contact.html">Request</a></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="p-4 text-sm text-center">
+    <a href="/TurboSito/en/imprint.html" class="underline">Imprint</a>
+    <span class="mx-2">·</span>
+    <a href="/TurboSito/en/privacy.html" class="underline">Privacy</a>
+  </footer>
+  <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
+  <script src="/TurboSito/assets/js/reveal.js" defer></script>
+  <script src="/TurboSito/assets/js/nav-active.js" defer></script>
+</body>
+</html>

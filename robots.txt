@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-
-# Point crawlers to the sitemap
-Sitemap: {{URL}}/sitemap.xml
+Sitemap: https://deine-domain.tld/sitemap.xml
