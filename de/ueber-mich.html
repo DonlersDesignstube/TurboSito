@@ -30,9 +30,42 @@
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
 <header id="site-header" class="p-4" role="banner"></header>
 <main id="content" role="main">
-  <section class="section-lg max-w-screen-xl mx-auto px-4 py-20 text-center">
-    <h1 class="font-display text-3xl md:text-4xl font-bold mb-6">Über mich</h1>
-    <p>Hier erfahren Sie mehr über mich.</p>
+  <section class="section-lg relative overflow-hidden">
+    <div class="container grid gap-10 md:grid-cols-12 items-center">
+      <div class="md:col-span-6 space-y-6">
+        <h1 class="font-display text-4xl md:text-5xl font-extrabold mb-6">Über mich</h1>
+        <p class="text-[var(--muted)] max-w-xl">Hier erfahren Sie mehr über mich.</p>
+      </div>
+      <div class="md:col-span-6">
+        <div class="ratio card mockup">
+          <div class="mockup-chrome"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <div class="mockup-body text-muted text-sm"><!-- [[ABOUT_IMG_ALT_DE]] --><span data-key="ABOUT_IMG_ALT_DE" class="ph"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="font-display text-3xl md:text-4xl font-bold mb-6">Kompetenzen</h2>
+      <ul class="flex flex-wrap gap-2">
+        <li><span class="badge">HTML</span></li>
+        <li><span class="badge">CSS</span></li>
+        <li><span class="badge">JS</span></li>
+        <li><span class="badge">Tailwind</span></li>
+        <li><span class="badge">SEO</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container card flex items-center justify-between gap-4 flex-col md:flex-row hover-lift">
+      <p class="text-muted m-0"><!-- [[ABOUT_CALLOUT_DE]] --><span data-key="ABOUT_CALLOUT_DE" class="ph"></span></p>
+      <div class="flex gap-3">
+        <a class="btn btn-lg" href="/TurboSito/de/kontakt.html">Kontakt</a>
+        <a class="btn btn-outline btn-lg" href="/TurboSito/de/portfolio.html">Portfolio</a>
+      </div>
+    </div>
   </section>
 </main>
 <footer class="p-4 text-sm text-center" role="contentinfo">
