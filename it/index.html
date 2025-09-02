@@ -60,20 +60,23 @@
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
   <header id="site-header" class="p-4" role="banner"></header>
   <main id="content" role="main">
-    <section class="section-lg relative overflow-hidden text-center">
+    <section class="relative overflow-hidden section-lg">
       <div aria-hidden="true" class="orb -top-40 -left-40"></div>
-      <div aria-hidden="true" class="pointer-events-none absolute -top-32 -left-32 w-[40rem] h-[40rem] rounded-full" style="background:radial-gradient(closest-side, rgba(var(--accent),.25), transparent 70%)"></div>
-      <div class="container">
-        <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight"><span class="text-gradient">Sito web in 48 ore</span></h1>
-        <p class="mt-4 text-lg hero-subtitle text-[color:var(--muted)] max-w-2xl mx-auto">Prezzo fisso. Più richieste – senza telefonate.</p>
-        <div class="mt-8 flex flex-wrap gap-3 justify-center">
-          <a class="btn" href="/it/contatti.html">Contattaci</a>
-          <a class="btn btn-outline" href="/it/portfolio.html">Guarda il portfolio</a>
+      <div class="container grid gap-10 md:grid-cols-12 items-center">
+        <div class="md:col-span-6 space-y-6">
+          <div class="kicker badge inline-block">[[BADGE_IT]]</div>
+          <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight"><span class="text-gradient">Sito web in 48 ore</span></h1>
+          <p class="mt-4 text-lg hero-subtitle text-[color:var(--muted)] max-w-xl">Prezzo fisso. Più richieste – senza telefonate.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn" href="/it/contatti.html">Contattaci</a>
+            <a class="btn btn-outline" href="/it/portfolio.html">Guarda il portfolio</a>
+          </div>
         </div>
-        <picture class="block mt-10">
-          <source srcset="/assets/img/landing-hero-1920.webp" type="image/webp">
-          <img src="/assets/img/landing-hero-1920.jpg" alt="Team che lavora su un sito moderno" width="1920" height="1280" loading="lazy" decoding="async" class="w-full h-auto rounded-xl">
-        </picture>
+        <div class="md:col-span-6">
+          <div class="ratio card flex items-center justify-center text-center">
+            <span class="text-sm text-[color:var(--muted)]">[[MOCKUP_ALT_IT]]</span>
+          </div>
+        </div>
       </div>
     </section>
   </main>
