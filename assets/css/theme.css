@@ -101,3 +101,21 @@ nav a:hover{background-size:100% 2px}
 @keyframes shimmer{to{background-position:-200% 0}}
 footer a{color:var(--muted)}
 footer a:hover{color:var(--fg)}
+/* --- FAQ Styles --- */
+.faq .card{ border-color: rgba(255,255,255,.12); }
+.faq [data-acc-btn]{
+  display:flex; align-items:center; justify-content:space-between;
+  width:100%; text-align:left; font-weight:700;
+  padding:1rem 1.1rem; border-radius:.75rem;
+  color:var(--fg); background:transparent;
+}
+.faq [data-acc-btn]:hover{ background:rgba(255,255,255,.04); }
+.faq [data-acc-btn]:focus-visible{
+  outline:2px solid rgba(var(--ring),.7); outline-offset:2px;
+}
+.faq [data-acc-btn]::after{
+  content:"+"; font-weight:800; opacity:.7;
+}
+.faq [data-acc-btn][aria-expanded="true"]{ background:rgba(255,255,255,.06); }
+.faq [data-acc-btn][aria-expanded="true"]::after{ content:"–"; }
+.faq [data-acc-btn] + p{ color:var(--muted); padding:0 1.1rem 1rem; }
