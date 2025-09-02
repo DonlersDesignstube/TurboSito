@@ -68,7 +68,7 @@ nav a:hover{background-size:100% 2px}
 .reveal{opacity:0; transform:translateY(8px); transition:opacity .35s ease, transform .35s ease}
 .reveal.is-in{opacity:1; transform:none}
 @media (prefers-reduced-motion: reduce){
-  .reveal, .reveal.is-in{transition:none; transform:none; opacity:1}
+  .reveal,.reveal.is-in{transition:none; transform:none; opacity:1}
 }
 .ph{display:none}
 .btn{box-shadow:0 8px 24px rgba(0,0,0,.22)}
