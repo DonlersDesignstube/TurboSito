@@ -68,19 +68,38 @@
           <div class="kicker badge inline-block"></div>
           <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight"><span class="text-gradient">Website in 48 Stunden</span></h1>
           <p class="mt-4 text-lg hero-subtitle text-[var(--fg)]">Fixpreis. Mehr Anfragen – ohne Telefonat.</p>
-          <div class="cta-hero mt-10">
-            <a class="btn only-mobile" href="#quick-start">Jetzt starten</a>
+          <div class="cta-hero">
+            <a class="btn" href="#quick-start">Kontakt aufnehmen</a>
             <a class="btn btn-outline" href="/TurboSito/de/portfolio.html">Portfolio ansehen</a>
           </div>
         </div>
         <div class="md:col-span-6 mt-10 md:mt-0">
-          <div class="ratio card mockup">
-            <div class="mockup-chrome">
-              <span class="dot" aria-hidden="true"></span>
-              <span class="dot" aria-hidden="true"></span>
-              <span class="dot" aria-hidden="true"></span>
-            </div>
-            <div class="mockup-body text-muted text-sm"></div>
+          <div class="hero-card">
+            <form id="quick-start">
+              <h3 class="font-semibold text-lg">Projekt in 2&nbsp;Minuten starten</h3>
+              <p>Kurzinfo reicht – Details klären wir später.</p>
+
+              <label for="name">Name</label>
+              <input id="name" name="name" autocomplete="name" required>
+
+              <label for="email">E-Mail</label>
+              <input id="email" type="email" name="email" autocomplete="email" required>
+
+              <label for="url">Website (optional)</label>
+              <input id="url" type="url" name="url" placeholder="https://…">
+
+              <label for="ziel">Ziel</label>
+              <select id="ziel" name="ziel">
+                <option>Mehr Anfragen</option>
+                <option>Neuer Auftritt</option>
+                <option>Schnell live gehen</option>
+              </select>
+
+              <div class="actions">
+                <button class="btn" type="submit">Anfrage senden</button>
+                <a class="btn btn-outline" href="/TurboSito/de/kontakt.html">Kontakt</a>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -351,6 +370,7 @@
   </div>
 </footer>
   <script src="/TurboSito/assets/js/reveal.js" defer></script>
+  <script src="/TurboSito/assets/js/hero-form.js" defer></script>
   <script src="/TurboSito/assets/js/faq.js" defer></script>
   <script src="/TurboSito/assets/js/nav-active.js" defer></script>
   <script src="/TurboSito/assets/js/lang-switch.js" defer></script>

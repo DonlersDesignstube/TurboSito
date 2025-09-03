@@ -302,3 +302,22 @@ html[data-theme="light"] .logo-row img{color:#1e2a3d;opacity:.8}
 @media (min-width:768px){ .only-mobile{display:none!important} }
 /* Kleine Abstände innerhalb der CTA-Gruppe */
 .cta-hero{display:flex;gap:.75rem;flex-wrap:wrap}
+/* Hero CTA group */
+.cta-hero{display:flex;gap:.75rem;flex-wrap:wrap}
+#quick-start{scroll-margin-top:90px}
+
+/* Quick-Start Card */
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:1rem;
+  padding:1rem 1.25rem;box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.hero-card h3{margin:0 0 .25rem}
+.hero-card p{margin:0 0 .75rem;color:var(--muted)}
+.hero-card label{display:block;font-size:.85rem;color:var(--muted);margin:.5rem 0 .25rem}
+.hero-card input,.hero-card select{
+  width:100%;border:1px solid var(--border);border-radius:.65rem;
+  padding:.55rem .7rem;background:transparent;color:var(--fg)
+}
+.hero-card .actions{display:flex;gap:.5rem;margin-top:.9rem}
+.hero-card .btn{flex:1}
+
+/* Light-Boost */
+html[data-theme="light"] .hero-card{box-shadow:0 16px 40px rgba(0,0,0,.08)}
