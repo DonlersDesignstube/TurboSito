@@ -577,3 +577,9 @@ body.is-scrolled header{
 .case-card{ position:relative; overflow:hidden }
 .case-card .stretched-link{ position:absolute; inset:0; z-index:5; text-indent:-9999px; overflow:hidden; }
 .case-cta{ margin-top:.75rem }
+/* Case unification */
+.breadcrumbs{font:500 var(--fz-sm)/1.3 inherit;color:var(--muted);margin:0 0 12px}
+.breadcrumbs a{color:inherit;text-decoration:none;border-bottom:1px solid var(--border)}
+.case-hero{border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);width:100%;height:auto}
+.kpi{display:grid;gap:.35rem;padding:16px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--border)}
+.kpi big{font-size:clamp(26px,2.2vw,32px);font-weight:800}
