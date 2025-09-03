@@ -493,17 +493,19 @@ body.is-scrolled header{
 
 }
 
-/* Hero-CTAs (mobil aufräumen) */
 @media (max-width:768px){
-  .cta-hero a.btn-contact{ display:none }
-  .cta-hero a.btn-primary{ display:none }
-}
+  /* Hero-CTAs bereinigen */
+  .cta-hero [data-cta="contact"],
+  .cta-hero [data-cta="primary"]{ display:none !important; }
+  .cta-hero [data-cta="portfolio"]{ flex:1; }
 
-/* Micro-Form sichtbar auf Mobil */
-.micro-start{ display:flex; gap:.5rem; margin-top:.75rem }
-.micro-start input{
-  flex:1; border:1px solid var(--border); border-radius:.65rem;
-  padding:.55rem .7rem; background:transparent; color:var(--fg)
+  /* Micro-Form sichtbar lassen */
+  .micro-start{ display:flex; gap:.5rem; margin-top:.75rem }
+  .micro-start input{
+    flex:1; border:1px solid var(--border); border-radius:.65rem;
+    padding:.55rem .7rem; background:transparent; color:var(--fg);
+  }
+  .micro-start .btn{ height:2.75rem }
 }
-.micro-start .btn{ height:2.75rem }
+/* Desktop: Micro-Form ausblenden */
 @media (min-width:769px){ .micro-start{ display:none } }

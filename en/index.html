@@ -68,10 +68,18 @@
           <div class="kicker badge inline-block"></div>
           <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight"><span class="text-gradient">Website in 48 hours</span></h1>
           <p class="mt-4 text-lg hero-subtitle text-[var(--fg)]">Fixed price. More inquiries – no calls.</p>
-          <div class="mt-10 flex flex-wrap gap-4 items-center">
-            <a class="btn btn-lg" href="/TurboSito/en/contact.html">Contact us</a>
-            <a class="btn btn-outline btn-lg" href="/TurboSito/en/portfolio.html">View portfolio</a>
+          <div class="cta-hero">
+            <a class="btn btn-contact" data-cta="contact" href="#quick-start">Contact us</a>
+            <a class="btn btn-primary" data-cta="primary" href="#quick-start" data-open-form>Start project</a>
+            <a class="btn btn-outline" data-cta="portfolio" href="/TurboSito/en/portfolio.html">View portfolio</a>
           </div>
+          <form id="micro-start" class="micro-start" novalidate>
+            <label class="sr-only" for="micro-email">Email</label>
+            <input id="micro-email" name="email" type="email"
+                   placeholder="Enter email" inputmode="email"
+                   autocomplete="email" required>
+            <button class="btn" type="submit">Let's go</button>
+          </form>
         </div>
         <div class="md:col-span-6 mt-10 md:mt-0">
           <div class="ratio card mockup">
@@ -192,5 +200,6 @@
   <script src="/TurboSito/assets/js/scroll-header.js" defer></script>
   <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
   <script src="/TurboSito/assets/js/mobile-nav.js" defer></script>
+  <script src="/TurboSito/assets/js/sticky-cta.js" defer></script>
 </body>
 </html>
