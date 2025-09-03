@@ -124,19 +124,6 @@ footer a:hover{color:var(--fg)}
 .lang-switch a:hover{background:rgba(255,255,255,.06)}
 :root{ --border: rgba(255,255,255,.10) }
 html[data-theme="light"]{ --border: rgba(0,0,0,.08) }
-header{ background: color-mix(in oklab, var(--bg) 90%, transparent);
-        backdrop-filter: blur(8px);
-        border-bottom: 1px solid var(--border); }
-header .container{ display:flex; align-items:center; justify-content:space-between; gap:1rem }
-body.is-scrolled header{ box-shadow: 0 8px 24px rgba(0,0,0,.18) }
-nav.site-nav a{ position:relative; display:inline-block; padding:.55rem .75rem; color:var(--fg) }
-nav.site-nav a::after{
-  content:""; position:absolute; left:.5rem; right:.5rem; bottom:.35rem;
-  height:2px; background: rgb(var(--accent)); transform: scaleX(0);
-  transform-origin: left; transition: transform .18s ease;
-}
-nav.site-nav a:hover::after{ transform: scaleX(1) }
-nav.site-nav a[aria-current="page"]::after{ transform: scaleX(1) }
 
 /* Language switch (falls noch nicht) */
 .lang-switch{ display:flex; gap:.5rem; align-items:center }
@@ -212,7 +199,6 @@ h1,h2,h3{color:var(--fg);}
 
 /* Footer-Links lesbar im Light */
 footer a{color:var(--muted);} footer a:hover{color:var(--fg);}
-header{background:color-mix(in oklab,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}nav.site-nav a{position:relative;display:inline-block;padding:.55rem .75rem;color:var(--fg);}nav.site-nav a::after{content:"";position:absolute;left:.5rem;right:.5rem;bottom:.35rem;height:2px;background:rgb(var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .18s;}nav.site-nav a:hover::after,nav.site-nav a[aria-current="page"]::after{transform:scaleX(1);} .lang-switch a{border:1px solid var(--border);padding:.2rem .5rem;border-radius:.5rem;}
 .text-gradient{background:linear-gradient(90deg, rgb(var(--accent)) 0%, #f5b679 100%); -webkit-background-clip:text; color:transparent;}
 .section-hero{padding-block:6rem;}
 @media (min-width:768px){ .section-hero{padding-block:7.5rem;} }
@@ -338,3 +324,58 @@ html[data-theme="light"] .hero-card{box-shadow:0 16px 40px rgba(0,0,0,.08)}
 .consent{display:flex;gap:.5rem;align-items:flex-start;margin-top:.5rem}
 .consent input{margin-top:.15rem}
 #quick-start{scroll-margin-top:90px}
+
+/* ---------- Sticky Header + Polish ---------- */
+header{
+  position: sticky; top: 0; z-index: 60;
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+header .container{ display:flex; align-items:center; justify-content:space-between; gap:12px }
+
+/* Nav-Links: Größe, Hover, Active */
+nav.site-nav a{
+  position:relative; display:inline-flex; align-items:center;
+  padding:.7rem .9rem; border-radius:.55rem; color:var(--fg);
+}
+nav.site-nav a:hover{ background: rgba(255,255,255,.06) }
+nav.site-nav a[aria-current="page"]{
+  background: rgba(255,255,255,.10);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+/* Shadow/Elevation beim Scroll */
+body.is-scrolled header{
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+  border-bottom-color: color-mix(in oklab, var(--border) 70%, transparent);
+}
+
+/* ---------- Consent Checkbox Fix ---------- */
+/* Ältere Regel könnte alle Inputs in .hero-card auf width:100% setzen.
+   Hier überschreiben wir gezielt die Checkbox. */
+.hero-card input[type="checkbox"]{
+  width:auto; inline-size:auto; height:1.05rem; aspect-ratio:1/1;
+  accent-color: rgb(var(--accent));
+  border: 1px solid var(--border);
+}
+.consent{ display:flex; gap:.55rem; align-items:flex-start; margin-top:.5rem }
+.consent input{ margin-top:.2rem } /* nur kleiner vertikaler Versatz */
+
+ /* Fokusring für Textfelder/Select (falls noch nicht vorhanden) */
+.input:focus{
+  outline: 2px solid rgba(var(--ring, 255 149 0), .55);
+  outline-offset: 2px; border-color: rgba(var(--ring, 255 149 0), .35);
+}
+
+/* Optional: Field-Hervorhebung beim Fokus */
+.field:focus-within{ filter: drop-shadow(0 2px 12px rgba(0,0,0,.12)) }
+
+/* Leichtes Compacting der Formfelder */
+.field{ margin:.6rem 0 }
+.hero-card .actions{ gap:.55rem; margin-top:.9rem }
+.btn, .btn-outline, .cta-hero .btn, .cta-hero .btn-outline{ height:2.75rem }
+
+@media (max-width: 768px){
+  nav.site-nav{ display:none } /* mobile-nav übernimmt */
+}
