@@ -483,26 +483,3 @@ body.is-scrolled header{
 }
 .micro-start .btn{ height:2.75rem }
 @media (max-width:768px){ .micro-start{ display:flex } }
-/* Sticky CTA nur mobil */
-.sticky-cta{ display:none }
-@media (max-width:768px){
-  .sticky-cta{
-    position:fixed; left:0; right:0; bottom:calc(8px + env(safe-area-inset-bottom));
-    z-index:55; display:flex; justify-content:center; pointer-events:none;
-  }
-  .sticky-cta .btn{
-    pointer-events:auto; min-width:78%; height:2.9rem; border-radius:.9rem;
-    box-shadow:0 14px 28px rgba(0,0,0,.28);
-  }
-  /* sanftes Ein-/Ausblenden */
-  .sticky-cta{ opacity:0; transform:translateY(8px); transition:opacity .18s, transform .18s }
-  .sticky-cta.is-visible{ opacity:1; transform:translateY(0) }
-
-  /* Hero-CTAs aufräumen: Projekt-starten-Button dort ausblenden */
-  .cta-hero a.btn-primary{ display:none }
-  /* Kontakt mobil ausblenden (bleibt im Menü) – falls noch nicht */
-  .cta-hero a.btn-contact{ display:none }
-}
-
-/* micro form deaktivieren */
-#micro-start{ display:none !important }
