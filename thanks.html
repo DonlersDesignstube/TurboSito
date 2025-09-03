@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danke / Grazie</title>
     <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--font-sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Liberation Sans", "Helvetica Neue", sans-serif}
+  .font-display{font-family:"Outfit", var(--font-sans)}
+  body{font-family:var(--font-sans)}
+</style>
+<link rel="stylesheet" href="/TurboSito/assets/css/theme.css">
 </head>
 <body class="font-sans text-gray-800 bg-white dark:bg-[#111827] transition-colors">
+  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
     <div class="min-h-screen flex items-center justify-center p-6">
         <div class="max-w-md text-center">
             <h1 class="text-3xl font-bold mb-4" data-lang="de">Vielen Dank!</h1>
             <h1 class="text-3xl font-bold mb-4" data-lang="it">Grazie!</h1>
             <p class="mb-4" data-lang="de">Ihre Anzahlung war erfolgreich. Wir starten sofort mit dem Design und melden uns mit den nächsten Schritten per E‑Mail.</p>
             <p class="mb-4" data-lang="it">Il tuo acconto è stato ricevuto. Iniziamo subito la progettazione e ti contatteremo via e‑mail per i prossimi passi.</p>
-            <a href="/landing/" class="mt-4 inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="de">Zurück zur Startseite</a>
-            <a href="/landing/" class="mt-4 inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="it">Torna alla home</a>
+            <a href="/TurboSito/landing/" class="mt-4 inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="de">Zurück zur Startseite</a>
+            <a href="/TurboSito/landing/" class="mt-4 inline-block px-6 py-3 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600" data-lang="it">Torna alla home</a>
         </div>
     </div>
     <script>
@@ -26,5 +35,10 @@
             });
         });
     </script>
+  <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
+  <script src="/TurboSito/assets/js/lang-switch.js" defer></script>
+  <script src="/TurboSito/assets/js/reveal.js" defer></script>
+  <script src="/TurboSito/assets/js/faq.js" defer></script>
+  <script src="/TurboSito/assets/js/scroll-header.js" defer></script>
 </body>
 </html>
