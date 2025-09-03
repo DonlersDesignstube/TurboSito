@@ -1,7 +1,7 @@
 (() => {
   const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
-  // Sticky Element einfügen, falls nicht vorhanden
+  // Sticky Element (falls fehlt) injizieren
   let bar = document.querySelector('.sticky-cta');
   if (!bar) {
     bar = document.createElement('div');
@@ -13,7 +13,7 @@
   const show = () => bar.classList.add('is-visible');
   const hide = () => bar.classList.remove('is-visible');
 
-  // Ausblenden wenn Formular sichtbar
+  // Großes Formular / Karte im View? → ausblenden
   const form = document.querySelector('#quick-start')?.closest('.hero-card') || document.querySelector('#quick-start');
   let io;
   if ('IntersectionObserver' in window && form) {
@@ -24,26 +24,32 @@
     io.observe(form);
   }
 
-  // Menü-offen? (Overlay/Panel vorhanden → class .open), dann CTA ausblenden
+  // Mobile-Menü offen? → ausblenden
   const menu = document.getElementById('mobile-menu');
   const tickMenu = () => {
     const open = menu?.classList.contains('open');
     if (open) hide(); else if (isMobile()) show();
   };
-  menu?.addEventListener('transitionend', tickMenu);
   document.addEventListener('click', e => {
     if (e.target.closest('[data-nav-toggle],[data-nav-close]')) setTimeout(tickMenu, 50);
   });
 
-  // Scroll-Heuristik: ab 160px einblenden (wenn nicht durch IO/menü versteckt)
-  let lastY = window.scrollY;
+  // Eingabe-Fokus (Micro-Form + großes Formular) → ausblenden (Keyboard)
+  const isFormField = (el) => el && (el.tagName === 'INPUT' || el.tagName === 'SELECT' || el.tagName === 'TEXTAREA');
+  document.addEventListener('focusin', (e) => {
+    if (isFormField(e.target) && (e.target.closest('#micro-start') || e.target.closest('#quick-start'))) hide();
+  });
+  document.addEventListener('focusout', () => {
+    if (isMobile() && !menu?.classList.contains('open')) show();
+  });
+
+  // Scroll-Heuristik: ab 160px einblenden (wenn nichts anderes greift)
   const onScroll = () => {
     if (!isMobile()) return hide();
-    const y = window.scrollY;
-    if (y > 160 && !menu?.classList.contains('open')) show(); else hide();
-    lastY = y;
+    if (!form) return show();
+    if (window.scrollY > 160 && !menu?.classList.contains('open')) show();
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
-  onScroll(); // initial
+  onScroll(); // init
 })();
