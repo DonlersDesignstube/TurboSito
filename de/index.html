@@ -75,31 +75,69 @@
         </div>
         <div class="md:col-span-6 mt-10 md:mt-0">
           <div class="hero-card">
-            <form id="quick-start">
-              <h3 class="font-semibold text-lg">Projekt in 2&nbsp;Minuten starten</h3>
-              <p>Kurzinfo reicht – Details klären wir später.</p>
+            <form id="quick-start" novalidate>
+  <h3 class="font-semibold text-lg">Projekt in 2&nbsp;Minuten starten</h3>
+  <p class="meta">Kurzinfo reicht – Details klären wir später. Antwort meist am selben Tag.</p>
 
-              <label for="name">Name</label>
-              <input id="name" name="name" autocomplete="name" required>
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" name="name" class="input" autocomplete="name" required>
+  </div>
 
-              <label for="email">E-Mail</label>
-              <input id="email" type="email" name="email" autocomplete="email" required>
+  <div class="field">
+    <label for="email">E-Mail</label>
+    <input id="email" name="email" class="input" type="email" inputmode="email" autocomplete="email" required>
+  </div>
 
-              <label for="url">Website (optional)</label>
-              <input id="url" type="url" name="url" placeholder="https://…">
+  <div class="field">
+    <label for="url">Website (optional)</label>
+    <input id="url" name="url" class="input" type="url" placeholder="https://…" inputmode="url" autocomplete="url">
+  </div>
 
-              <label for="ziel">Ziel</label>
-              <select id="ziel" name="ziel">
-                <option>Mehr Anfragen</option>
-                <option>Neuer Auftritt</option>
-                <option>Schnell live gehen</option>
-              </select>
+  <div class="row">
+    <div class="field">
+      <label for="ziel">Ziel</label>
+      <select id="ziel" name="ziel" class="input">
+        <option>Mehr Anfragen</option>
+        <option>Neuer Auftritt</option>
+        <option>Schnell live gehen</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="typ">Projekt-Typ</label>
+      <select id="typ" name="typ" class="input">
+        <option>Landingpage</option>
+        <option>Corporate Site</option>
+        <option>Shop/Produkt</option>
+      </select>
+    </div>
+  </div>
 
-              <div class="actions">
-                <button class="btn" type="submit">Anfrage senden</button>
-                <a class="btn btn-outline" href="/TurboSito/de/kontakt.html">Kontakt</a>
-              </div>
-            </form>
+  <div class="field">
+    <label for="note">Kurzbeschreibung (optional)</label>
+    <input id="note" name="note" class="input" maxlength="140" placeholder="1 Satz reicht.">
+    <div class="help" id="charHelp">Noch 140 Zeichen</div>
+  </div>
+
+  <!-- Honeypot + Tracking (versteckt) -->
+  <input type="text" name="company" id="company" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;">
+  <input type="hidden" name="lang" id="lang">
+  <input type="hidden" name="source" id="source">
+  <input type="hidden" name="theme" id="theme">
+  <input type="hidden" name="utm" id="utm">
+
+  <label class="consent">
+    <input type="checkbox" id="ok" required>
+    <span>Ich stimme der Verarbeitung meiner Angaben gemäß <a href="/TurboSito/de/datenschutz.html">Datenschutz</a> zu.</span>
+  </label>
+
+  <div class="actions">
+    <button class="btn" type="submit" id="qs-submit">Anfrage senden</button>
+    <a class="btn btn-outline" href="/TurboSito/de/kontakt.html">Kontakt</a>
+  </div>
+
+  <div class="help" aria-live="polite" id="qs-msg"></div>
+</form>
           </div>
         </div>
       </div>

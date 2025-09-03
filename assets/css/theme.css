@@ -321,3 +321,20 @@ html[data-theme="light"] .logo-row img{color:#1e2a3d;opacity:.8}
 
 /* Light-Boost */
 html[data-theme="light"] .hero-card{box-shadow:0 16px 40px rgba(0,0,0,.08)}
+:root{ --ring: 255 149 0 } /* Accent-Ring (Dark/Light ok) */
+.input{width:100%;border:1px solid var(--border);border-radius:.65rem;padding:.6rem .75rem;background:transparent;color:var(--fg)}
+.input:focus{outline:2px solid rgba(var(--ring),.55);outline-offset:2px;border-color:rgba(var(--ring),.4)}
+.field{margin:.7rem 0}
+.field label{display:block;font-size:.85rem;color:var(--muted);margin:0 0 .25rem}
+.hero-card{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1rem 1.25rem;box-shadow:0 14px 36px rgba(0,0,0,.18)}
+.hero-card h3{margin:0 0 .25rem}
+.hero-card p.meta{margin:0 0 .75rem;color:var(--muted);font-size:.95rem}
+.hero-card .row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+@media(max-width:900px){ .hero-card .row{grid-template-columns:1fr} }
+.hero-card .actions{display:flex;gap:.6rem;margin-top:1rem}
+.btn, .btn-outline{height:2.75rem;padding:0 1rem;display:inline-flex;align-items:center;justify-content:center}
+.cta-hero .btn, .cta-hero .btn-outline{height:2.75rem}
+.help{font-size:.85rem;color:var(--muted);margin-top:.35rem}
+.consent{display:flex;gap:.5rem;align-items:flex-start;margin-top:.5rem}
+.consent input{margin-top:.15rem}
+#quick-start{scroll-margin-top:90px}
