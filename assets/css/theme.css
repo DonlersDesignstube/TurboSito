@@ -476,10 +476,34 @@ body.is-scrolled header{
   .hero-toggle .btn{ width:100%; height:2.75rem }
 }
 
-.micro-start{ display:none; gap:.5rem; margin-top:.75rem }
+/* Sticky CTA nur mobil */
+.sticky-cta{ display:none }
+@media (max-width:768px){
+  .sticky-cta{
+    position:fixed; left:0; right:0; bottom:calc(8px + env(safe-area-inset-bottom));
+    z-index:55; display:flex; justify-content:center; pointer-events:none;
+  }
+  .sticky-cta .btn{
+    pointer-events:auto; min-width:78%; height:2.9rem; border-radius:.9rem;
+    box-shadow:0 14px 28px rgba(0,0,0,.28);
+  }
+  /* sanftes Ein-/Ausblenden */
+  .sticky-cta{ opacity:0; transform:translateY(8px); transition:opacity .18s, transform .18s }
+  .sticky-cta.is-visible{ opacity:1; transform:translateY(0) }
+
+}
+
+/* Hero-CTAs (mobil aufräumen) */
+@media (max-width:768px){
+  .cta-hero a.btn-contact{ display:none }
+  .cta-hero a.btn-primary{ display:none }
+}
+
+/* Micro-Form sichtbar auf Mobil */
+.micro-start{ display:flex; gap:.5rem; margin-top:.75rem }
 .micro-start input{
   flex:1; border:1px solid var(--border); border-radius:.65rem;
   padding:.55rem .7rem; background:transparent; color:var(--fg)
 }
 .micro-start .btn{ height:2.75rem }
-@media (max-width:768px){ .micro-start{ display:flex } }
+@media (min-width:769px){ .micro-start{ display:none } }

@@ -34,20 +34,19 @@
 })();
 
 (() => {
+  const card  = document.querySelector('.hero-card');
+  const big   = document.getElementById('quick-start');
   const micro = document.getElementById('micro-start');
-  const card = document.querySelector('.hero-card');
-  const form = document.getElementById('quick-start');
-  if (!micro || !card || !form) return;
 
-  micro.addEventListener('submit', (e) => {
+  // Micro -> großes Formular
+  micro?.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = micro.querySelector('#micro-email').value.trim();
+    const email = micro.querySelector('#micro-email')?.value?.trim();
     if (!email) return;
-    card.classList.remove('is-collapsed');
-    const bigEmail = form.querySelector('#email');
+    card?.classList.remove('is-collapsed');
+    const bigEmail = big?.querySelector('#email');
     if (bigEmail) bigEmail.value = email;
-    form.querySelector('#name')?.focus();
-    setTimeout(() =>
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    big?.querySelector('#name')?.focus();
+    setTimeout(() => big?.scrollIntoView({behavior:'smooth', block:'start'}), 50);
   });
 })();
