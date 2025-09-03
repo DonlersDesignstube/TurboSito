@@ -475,3 +475,11 @@ body.is-scrolled header{
   .hero-toggle{ display:flex; margin-top:.75rem }
   .hero-toggle .btn{ width:100%; height:2.75rem }
 }
+
+.micro-start{ display:none; gap:.5rem; margin-top:.75rem }
+.micro-start input{
+  flex:1; border:1px solid var(--border); border-radius:.65rem;
+  padding:.55rem .7rem; background:transparent; color:var(--fg)
+}
+.micro-start .btn{ height:2.75rem }
+@media (max-width:768px){ .micro-start{ display:flex } }
