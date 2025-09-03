@@ -293,3 +293,12 @@ html[data-theme="light"] .theme-toggle .moon{display:none}
 .logo-row img:hover{opacity:1}
 .logo-row img{color:#e7eefc}
 html[data-theme="light"] .logo-row img{color:#1e2a3d;opacity:.8}
+.kpi-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1rem 1.25rem}
+.kpi dt{font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.kpi dd{font-size:1.75rem;font-weight:800;line-height:1.1;color:var(--fg)}
+@media (max-width:768px){ .kpi-strip{grid-template-columns:1fr} }
+.only-mobile{display:inline-flex}
+@media (min-width:768px){ .only-mobile{display:none!important} }
+/* Kleine Abstände innerhalb der CTA-Gruppe */
+.cta-hero{display:flex;gap:.75rem;flex-wrap:wrap}
