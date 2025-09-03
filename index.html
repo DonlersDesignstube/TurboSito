@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Willkommen – TurboSito</title>
+  <meta name="description" content="Choose your language">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--font-sans:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Liberation Sans","Helvetica Neue",sans-serif}
+    .font-display{font-family:"Outfit",var(--font-sans)}
+    body{font-family:var(--font-sans)}
+  </style>
+  <link rel="alternate" hreflang="de" href="/TurboSito/de/">
+  <link rel="alternate" hreflang="en" href="/TurboSito/en/">
+  <link rel="alternate" hreflang="it" href="/TurboSito/it/">
+  <link rel="alternate" hreflang="x-default" href="/TurboSito/en/">
+  <link rel="stylesheet" href="/TurboSito/assets/css/theme.css">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+</head>
+<body class="font-sans text-gray-900">
+  <div class="container" style="display:flex;justify-content:flex-end;padding-top:1rem">
+  <nav class="lang-switch" aria-label="Language switch">
+    <a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a>
+    <a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a>
+    <a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a>
+  </nav>
+</div>
+  <main class="container section-lg text-center">
+    <h1 class="text-4xl font-bold mb-6">Choose your language</h1>
+    <nav class="flex flex-wrap justify-center gap-4">
+      <a class="btn" href="/TurboSito/de/" data-lang="de">DE</a>
+      <a class="btn btn-outline" href="/TurboSito/en/" data-lang="en">EN</a>
+      <a class="btn btn-outline" href="/TurboSito/it/" data-lang="it">IT</a>
+    </nav>
+  </main>
+    <script src="/TurboSito/assets/js/lang-switch.js" defer></script>
+    <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
+  <script src="/TurboSito/assets/js/reveal.js" defer></script>
+  <script>
+(() => {
+  const BASE='/' + 'TurboSito';
+  const KEY='site-lang';
+  const saved = localStorage.getItem(KEY);
+  const go = (code) => { location.replace(`${BASE}/${code}/`); };
+  document.querySelectorAll('a[data-lang]').forEach(a => {
+    a.addEventListener('click', () => localStorage.setItem(KEY, a.dataset.lang));
+  });
+  if (!saved) {
+    const pick = (nav) => {
+      const m = { de:'de', 'de-at':'de','de-de':'de','de-ch':'de',
+                  en:'en','en-us':'en','en-gb':'en',
+                  it:'it','it-it':'it' };
+      const n = (nav || 'en').toLowerCase();
+      return m[n] || m[n.split('-')[0]] || 'en';
+    };
+    const code = pick((navigator.languages && navigator.languages[0]) || navigator.language);
+    go(code);
+  }
+})();
+  </script>
+  <script src="/TurboSito/assets/js/faq.js" defer></script>
+  <script src="/TurboSito/assets/js/scroll-header.js" defer></script>
+</body>
+</html>

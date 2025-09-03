@@ -180,3 +180,6 @@ Die Seiten sind bewusst schlank aufgebaut.  Um die Core Web Vitals einzuhalten
 ---
 
 *Diese Dokumentation fasst alle nötigen Schritte zusammen, um in 48 Stunden eine branchenspezifische Website zu liefern.  Die Performance‑Ziele orientieren sich an den Core Web Vitals von Google, bei denen eine LCP unter 2,5 s und ein CLS unter 0,1 als gut gelten【857787954025474†L171-L176】【52268135763575†L139-L144】.  Bitte ersetze die Platzhalter im Code, überprüfe die rechtlichen Anforderungen und teste alle Funktionen vor dem Launch.*
+## Build
+- Entwicklung: `npm i` → `npm run build` → Ausgabe in /dist
+- Pages Source: GitHub Actions (Settings → Pages → Source: GitHub Actions)
