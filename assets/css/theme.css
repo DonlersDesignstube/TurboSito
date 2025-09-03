@@ -573,3 +573,7 @@ body.is-scrolled header{
   .gallery{ grid-template-columns: 1fr; }
   .gallery .span-6, .gallery .span-12{ grid-column: 1 / -1; }
 }
+/* Clickable cards */
+.case-card{ position:relative; overflow:hidden }
+.case-card .stretched-link{ position:absolute; inset:0; z-index:5; text-indent:-9999px; overflow:hidden; }
+.case-cta{ margin-top:.75rem }
