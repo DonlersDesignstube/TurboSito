@@ -288,3 +288,8 @@ header .container{display:flex;align-items:center;justify-content:space-between;
 .theme-toggle .sun{display:none}
 html[data-theme="light"] .theme-toggle .sun{display:inline-block}
 html[data-theme="light"] .theme-toggle .moon{display:none}
+.logo-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;align-items:center}
+.logo-row img{height:26px;width:auto;display:block;opacity:.9;transition:opacity .2s ease}
+.logo-row img:hover{opacity:1}
+.logo-row img{color:#e7eefc}
+html[data-theme="light"] .logo-row img{color:#1e2a3d;opacity:.8}
