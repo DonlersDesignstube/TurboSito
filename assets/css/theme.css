@@ -298,3 +298,7 @@ html[data-theme="light"] .logo-row img{color:#1e2a3d;opacity:.8}
 .kpi dt{font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
 .kpi dd{font-size:1.75rem;font-weight:800;line-height:1.1;color:var(--fg)}
 @media (max-width:768px){ .kpi-strip{grid-template-columns:1fr} }
+.only-mobile{display:inline-flex}
+@media (min-width:768px){ .only-mobile{display:none!important} }
+/* Kleine Abstände innerhalb der CTA-Gruppe */
+.cta-hero{display:flex;gap:.75rem;flex-wrap:wrap}
