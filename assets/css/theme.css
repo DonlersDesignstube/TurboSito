@@ -509,3 +509,11 @@ body.is-scrolled header{
 }
 /* Desktop: Micro-Form ausblenden */
 @media (min-width:769px){ .micro-start{ display:none } }
+@media (max-width:768px){
+  /* Oberen Projekt-Start-Button im Hero sicher ausblenden (mehrere Fallback-Selektoren) */
+  .cta-hero .btn-primary,
+  .cta-hero [data-cta="primary"],
+  .cta-hero [data-open-form]{
+    display: none !important;
+  }
+}
