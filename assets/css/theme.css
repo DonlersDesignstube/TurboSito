@@ -583,3 +583,10 @@ body.is-scrolled header{
 .case-hero{border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--border);width:100%;height:auto}
 .kpi{display:grid;gap:.35rem;padding:16px;border-radius:12px;background:var(--bg-soft);border:1px solid var(--border)}
 .kpi big{font-size:clamp(26px,2.2vw,32px);font-weight:800}
+.badge{display:inline-flex;align-items:center;font:600 12px/1 var(--font);padding:.35rem .6rem;border:1px solid var(--border);border-radius:999px;background:var(--bg-soft);color:var(--muted)}
+.badge-demo{border-color:var(--accent);color:var(--accent)}
+.demo-hero{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 20px}
+.demo-grid{display:grid;gap:clamp(10px,2.2vw,16px);grid-template-columns:1fr}
+@media (min-width:900px){.demo-grid{grid-template-columns:repeat(3,1fr)}}
+.demo-card{border:1px solid var(--border);border-radius:16px;padding:16px;background:var(--bg);box-shadow:var(--shadow-sm)}
+.demo-cta{margin:24px 0;border:1px solid var(--border);border-radius:16px;padding:16px;background:var(--bg-soft);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
