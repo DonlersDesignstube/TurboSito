@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <rect width="900" height="900" fill="#0f1320"/>
+  <rect x="250" y="120" rx="28" ry="28" width="400" height="660" fill="#10182b" stroke="#27314a" stroke-width="2"/>
+  <rect x="280" y="170" rx="8" ry="8" width="340" height="24" fill="#1f2840"/>
+  <rect x="280" y="210" rx="8" ry="8" width="300" height="16" fill="#1a2236" opacity=".8"/>
+  <rect x="280" y="250" rx="12" ry="12" width="220" height="40" fill="#2563eb"/>
+  <rect x="280" y="310" rx="10" ry="10" width="320" height="220" fill="#0f1320" stroke="#27314a"/>
+  <rect x="280" y="540" rx="10" ry="10" width="320" height="160" fill="#0f1320" stroke="#27314a"/>
+  <text x="180" y="820" font-family="Inter, system-ui" font-size="26" fill="#9fb0d8">Mockup – Mobile-Ansicht (Demo)</text>
+</svg>
