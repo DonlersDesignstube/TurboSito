@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SaaS-Landing (Demo) – TurboSito</title>
-  <meta name="description" content="Demo einer SaaS-Landingpage – kein Kundenprojekt.">
+  <meta name="description" content="Demo – kein Kundenprojekt. Vorschau auf Stil & Prozess.">
   <link rel="canonical" href="https://deine-domain.tld/de/demos/saas-landing.html">
   <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/demos/saas-landing.html">
   <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/demos/saas-landing.html">
   <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/demos/saas-landing.html">
   <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/">
   <meta property="og:title" content="SaaS-Landing (Demo) – TurboSito">
-  <meta property="og:description" content="Demo einer SaaS-Landingpage – kein Kundenprojekt.">
+  <meta property="og:description" content="Demo – kein Kundenprojekt. Vorschau auf Stil & Prozess.">
   <meta property="og:url" content="https://deine-domain.tld/de/demos/saas-landing.html">
   <meta property="og:locale" content="de_DE">
   <meta property="og:image" content="https://deine-domain.tld/assets/img/og-default.jpg">
@@ -25,8 +25,16 @@
   </style>
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css">
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"SaaS-Landing (Demo)",
+    "isPartOf":"Portfolio Demo"
+  }
+  </script>
 </head>
-<body class="font-sans text-gray-900">
+<body class="font-sans text-gray-900 demo-page">
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
 <header id="site-header"><div class="container"><div class="header-left"><a class="brand" href="/TurboSito/de/">TurboSito</a><nav class="site-nav"><a href="/TurboSito/de/">Start</a><a href="/TurboSito/de/ueber-mich.html">Über mich</a><a href="/TurboSito/de/leistungen.html">Leistungen</a><a href="/TurboSito/de/portfolio.html">Portfolio</a><a href="/TurboSito/de/kontakt.html">Kontakt</a></nav></div><div class="header-right"><nav class="lang-switch" aria-label="Sprache"><a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a><a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a><a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a></nav><button class="theme-toggle" data-theme-toggle aria-label="Theme umschalten" aria-pressed="false"><span class="icon sun" aria-hidden="true">☀️</span><span class="icon moon" aria-hidden="true">🌙</span><span>Theme</span></button><button class="hamburger" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü"><span aria-hidden="true"></span></button></div></div></header>
 <main id="content" class="section"><div class="container">
@@ -59,9 +67,9 @@
     </div>
     <div class="demo-card">
       <h3>Mini-Formular</h3>
-      <form onsubmit="return false" style="display:flex;gap:8px;flex-wrap:wrap">
+      <form class="demo-mini-form" style="display:flex;gap:8px;flex-wrap:wrap">
         <input type="email" placeholder="E-Mail" required class="input" style="min-width:220px">
-        <button class="btn">Los geht’s</button>
+        <button class="btn" type="submit">Los geht’s</button>
       </form>
     </div>
   </div>
@@ -93,5 +101,17 @@
   <script src="/TurboSito/assets/js/scroll-header.js" defer></script>
   <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
   <script src="/TurboSito/assets/js/mobile-nav.js" defer></script>
+  <script>
+  document.querySelectorAll('.demo-mini-form').forEach(f=>{
+    f.addEventListener('submit',e=>{
+      e.preventDefault();
+      const email=f.querySelector('input[type=email]').value.trim();
+      if(email){
+        localStorage.setItem('lead_email', email);
+        location.href='/TurboSito/de/kontakt.html';
+      }
+    });
+  });
+  </script>
 </body>
 </html>

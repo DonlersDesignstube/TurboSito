@@ -56,6 +56,15 @@
         </div>
         <button type="submit" class="btn btn-lg mt-3" aria-label="Nachricht senden">Anfrage senden</button>
       </form>
+      <script>
+      (()=>{
+        const e=localStorage.getItem('lead_email');
+        if(e){
+          const f=document.getElementById('email');
+          if(f){f.value=e;}
+        }
+      })();
+      </script>
     </div>
   </section>
 </main>
