@@ -39,39 +39,16 @@
 <header id="site-header"><div class="container"><div class="header-left"><a class="brand" href="/TurboSito/de/">TurboSito</a><nav class="site-nav"><a href="/TurboSito/de/">Start</a><a href="/TurboSito/de/ueber-mich.html">Über mich</a><a href="/TurboSito/de/leistungen.html">Leistungen</a><a href="/TurboSito/de/portfolio.html" aria-current="page" class="text-indigo-600 font-semibold">Portfolio</a><a href="/TurboSito/de/kontakt.html">Kontakt</a></nav></div><div class="header-right"><nav class="lang-switch" aria-label="Sprache"><a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a><a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a><a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a></nav><button class="theme-toggle" data-theme-toggle aria-label="Theme umschalten" aria-pressed="false"><span class="icon sun" aria-hidden="true">☀️</span><span class="icon moon" aria-hidden="true">🌙</span><span>Theme</span></button><button class="hamburger" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü"><span aria-hidden="true"></span></button></div></div></header>
 <main id="content" class="section"><div class="container">
   <nav class="breadcrumbs"><a href="/TurboSito/de/portfolio.html">Portfolio</a> · <span>Case Study</span></nav>
-  <span class="badge badge-demo">Demo</span>
-  <h1>SaaS-Landing (Demo)</h1>
-  <p class="muted">Dies ist eine Demo – kein Kundenprojekt. Zeigt Stil, Struktur und Geschwindigkeit.</p>
-  <div class="demo-hero">
-    <a class="btn" href="/TurboSito/de/#quick-start">Projekt starten</a>
-    <a class="btn btn-outline" href="/TurboSito/de/kontakt.html">Kontakt</a>
-  </div>
+  <section class="cs-hero">
+    <p class="cs-eyebrow">Case Study · Demo</p>
+    <h1>Landingpage für Tech-Startup</h1>
+    <p class="cs-sub">Von 0 auf Launch in 48h – klare Struktur, schnelle Performance, messbare Conversion-Signale.</p>
+    <p class="cs-note">Hinweis: Demo-Case für Stil & Vorgehen – kein Kundenprojekt.</p>
+  </section>
   <div class="demo-grid">
     <div class="demo-card"><h3>Klarer Aufbau</h3><p>Above-the-fold, prägnante Benefits, eindeutige CTAs.</p></div>
     <div class="demo-card"><h3>Performance</h3><p>Statischer Export, sauberes Markup, lazy Inhalte.</p></div>
     <div class="demo-card"><h3>Conversion-ready</h3><p>Formular, Social-Proof, Scroll-CTAs vorbereitet.</p></div>
-  </div>
-  <h2>Komponenten</h2>
-  <div class="demo-grid">
-    <div class="demo-card">
-      <h3>Buttons</h3>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a class="btn">Primary</a>
-        <a class="btn btn-outline">Outline</a>
-        <a class="btn btn-ghost">Ghost</a>
-      </div>
-    </div>
-    <div class="demo-card">
-      <h3>Karte</h3>
-      <p class="muted">Beispielkarte mit Schatten, Radius und Tokenfarben.</p>
-    </div>
-    <div class="demo-card">
-      <h3>Mini-Formular</h3>
-      <form class="demo-mini-form" style="display:flex;gap:8px;flex-wrap:wrap">
-        <input type="email" placeholder="E-Mail" required class="input" style="min-width:220px">
-        <button class="btn" type="submit">Los geht’s</button>
-      </form>
-    </div>
   </div>
   <div class="demo-cta">
     <div>
@@ -101,17 +78,5 @@
   <script src="/TurboSito/assets/js/scroll-header.js" defer></script>
   <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
   <script src="/TurboSito/assets/js/mobile-nav.js" defer></script>
-  <script>
-  document.querySelectorAll('.demo-mini-form').forEach(f=>{
-    f.addEventListener('submit',e=>{
-      e.preventDefault();
-      const email=f.querySelector('input[type=email]').value.trim();
-      if(email){
-        localStorage.setItem('lead_email', email);
-        location.href='/TurboSito/de/kontakt.html';
-      }
-    });
-  });
-  </script>
 </body>
 </html>
