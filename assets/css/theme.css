@@ -590,3 +590,6 @@ body.is-scrolled header{
 @media (min-width:900px){.demo-grid{grid-template-columns:repeat(3,1fr)}}
 .demo-card{border:1px solid var(--border);border-radius:16px;padding:16px;background:var(--bg);box-shadow:var(--shadow-sm)}
 .demo-cta{margin:24px 0;border:1px solid var(--border);border-radius:16px;padding:16px;background:var(--bg-soft);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.demo-page main{scroll-margin-top:80px}
+.section .container{max-width:980px;margin:0 auto}
+.muted{color:var(--muted)}

@@ -1,5 +1,5 @@
 (() => {
-  const THRESHOLD = 140; // erst ab diesem Scrollwert anzeigen
+  const THRESHOLD = 0.35; // Anteil der Seite, ab dem eingeblendet wird
   const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
   // Sticky-Leiste einfügen (falls nicht vorhanden)
@@ -42,7 +42,8 @@
     if (menuOpen()) return hide();
     if (formInView) return hide();
 
-    const scrolled = window.scrollY >= THRESHOLD;
+    const maxY = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = (maxY > 0) && (window.scrollY / maxY) >= THRESHOLD;
     if (scrolled) show(); else hide();
   };
 
