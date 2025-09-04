@@ -2,6 +2,7 @@
   --bg:#0b0f1a; --card:#111a2b; --fg:#f6f8fd; --muted:#cbd3e4;
   --accent:255,122,24; /* Orange Akzent (RGB) */
   --ring:255,122,24;
+  --panel:var(--card); --panel-border:var(--border); --chip-bg:var(--bg-soft);
 }
 html{color-scheme:dark}
 body{background:var(--bg); color:var(--fg);}
@@ -593,3 +594,32 @@ body.is-scrolled header{
 .demo-page main{scroll-margin-top:80px}
 .section .container{max-width:980px;margin:0 auto}
 .muted{color:var(--muted)}
+/* Case Study */
+.cs-hero{max-width:900px;margin:0 auto 2.5rem;padding-top:1rem}
+.cs-eyebrow{font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7}
+.cs-sub{font-size:1.2rem;opacity:.9;margin:.5rem 0}
+.cs-note{font-size:.95rem;opacity:.7}
+
+.cs-kpis{display:grid;gap:1rem;grid-template-columns:repeat(3,minmax(0,1fr));margin:2rem auto;max-width:1000px}
+.kpi{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:1.1rem}
+.kpi-num{font-size:1.6rem;font-weight:800}
+.kpi-label{opacity:.8}
+
+.cs-pae{display:grid;gap:1rem;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1000px;margin:2rem auto}
+.cs-pae article{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:1rem 1.2rem}
+
+.cs-gallery{display:grid;gap:1rem;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1100px;margin:2rem auto}
+.cs-gallery figure{background:var(--panel);border:1px solid var(--panel-border);border-radius:14px;padding:.75rem}
+.cs-gallery img{width:100%;height:auto;border-radius:10px}
+.cs-gallery figcaption{font-size:.9rem;opacity:.8;margin-top:.4rem}
+
+.cs-process,.cs-stack,.cs-cta{max-width:900px;margin:2.5rem auto}
+.cs-process ol{display:grid;gap:.6rem;padding-left:1.25rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:.75rem 0}
+.tags li{background:var(--chip-bg);border:1px solid var(--panel-border);border-radius:999px;padding:.35rem .7rem;font-size:.9rem}
+
+.cs-cta .btn-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.75rem}
+
+@media (max-width:980px){
+  .cs-kpis,.cs-pae,.cs-gallery{grid-template-columns:1fr}
+}
