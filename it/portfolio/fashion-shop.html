@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <script src="/TurboSito/assets/js/theme.js" defer></script>
 </head>
 <body class="font-sans text-gray-900">
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Vai al contenuto</a>
@@ -37,36 +38,41 @@
           <a href="/TurboSito/it/portfolio/fashion-shop.html" data-lang="it" hreflang="it">IT</a>
         </nav>
         <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menù"><span aria-hidden="true"></span></button>
+        <button class="theme-toggle" data-theme-toggle aria-label="Cambia tema" aria-pressed="false">
+          <span class="icon sun" aria-hidden="true">☀️</span>
+          <span class="icon moon" aria-hidden="true">🌙</span>
+          <span>Theme</span>
+        </button>
       </div>
     </div>
   </header>
   <main id="content" class="max-w-3xl mx-auto px-4 py-12">
-    <nav aria-label="Breadcrumb" class="mb-4"><a href="../portfolio.html" class="text-sm">← Portfolio</a></nav>
+    <nav aria-label="Breadcrumb" class="mb-4"><a href="../portfolio.html" class="text-sm text-gray-400 hover:text-orange-400">← Portfolio</a></nav>
     <header class="mb-8">
       <h1 id="case-title" class="text-3xl font-bold mb-2">Fashion Shop (Demo)</h1>
       <p id="case-summary" class="text-lg mb-1">Caso demo – focus chiaro sullo shop.</p>
       <p class="text-sm text-gray-600">Caso demo</p>
     </header>
     <section class="grid gap-4 md:grid-cols-3 mb-8">
-      <div class="p-4 border rounded text-center"><strong id="kpi-1">48h</strong><br><span class="text-sm">tempo di lancio</span></div>
-      <div class="p-4 border rounded text-center"><strong id="kpi-2">≤1.1s LCP</strong><br><span class="text-sm">mobile demo</span></div>
-      <div class="p-4 border rounded text-center"><strong id="kpi-3">Checkout mirato</strong><br><span class="text-sm">percorso chiaro</span></div>
+      <div class="highlight-box"><strong id="kpi-1">48h</strong><span class="text-sm">tempo di lancio</span></div>
+      <div class="highlight-box"><strong id="kpi-2">≤1.1s LCP</strong><span class="text-sm">mobile demo</span></div>
+      <div class="highlight-box"><strong id="kpi-3">Checkout mirato</strong><span class="text-sm">percorso chiaro</span></div>
     </section>
     <section class="mb-6">
-      <h2 class="text-2xl font-semibold mb-2">Sfida</h2>
+      <h2 class="mt-6 mb-2 text-lg font-semibold">Sfida</h2>
       <p>Startup moda voleva uno shop semplice che vendesse.</p>
     </section>
     <section class="mb-6">
-      <h2 class="text-2xl font-semibold mb-2">Approccio</h2>
+      <h2 class="mt-6 mb-2 text-lg font-semibold">Approccio</h2>
       <p>Catalogo minimale, schede prodotto chiare e caricamento veloce.</p>
     </section>
     <section class="mb-6">
-      <h2 class="text-2xl font-semibold mb-2">Risultato</h2>
+      <h2 class="mt-6 mb-2 text-lg font-semibold">Risultato</h2>
       <p>I clienti trovano rapidamente i prodotti e completano l'acquisto.</p>
     </section>
     <section class="mb-6">
-      <h2 class="text-2xl font-semibold mb-2">Processo in 48h</h2>
-      <ol class="list-decimal pl-5 space-y-1">
+      <h2 class="mt-6 mb-2 text-lg font-semibold">Processo in 48h</h2>
+      <ol class="list-decimal pl-6 space-y-1">
         <li>Briefing e obiettivi</li>
         <li>Wireframe</li>
         <li>Bozza copy</li>
@@ -75,7 +81,7 @@
       </ol>
       <div id="stack-tags" class="mt-4 flex flex-wrap gap-2"></div>
     </section>
-    <section class="mt-8 flex flex-wrap gap-4">
+    <section class="flex justify-center gap-4 mt-8">
       <a class="btn btn-primary" href="/TurboSito/it/contatto.html">Avvia progetto</a>
       <a class="btn btn-outline" href="../portfolio.html">Altri esempi</a>
     </section>
@@ -94,7 +100,7 @@
         document.getElementById('kpi-1').textContent=item.kpis[0];
         document.getElementById('kpi-2').textContent=item.kpis[1];
         document.getElementById('kpi-3').textContent=item.kpis[2];
-        document.getElementById('stack-tags').innerHTML=item.tags.map(t=>`<span class="tag">${t}</span>`).join(' ');
+        document.getElementById('stack-tags').innerHTML=item.tags.map(t=>`<span class="tag-pill">${t}</span>`).join(' ');
         const ld=[{
           "@context":"https://schema.org",
           "@type":"CreativeWork",

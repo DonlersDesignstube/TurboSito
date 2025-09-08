@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <script src="/TurboSito/assets/js/theme.js" defer></script>
   <script defer src="/TurboSito/assets/js/portfolio.js"></script>
 </head>
 <body class="font-sans text-gray-900">
@@ -38,6 +39,11 @@
           <a href="/TurboSito/it/portfolio.html" data-lang="it" hreflang="it">IT</a>
         </nav>
         <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span aria-hidden="true"></span></button>
+        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
+          <span class="icon sun" aria-hidden="true">☀️</span>
+          <span class="icon moon" aria-hidden="true">🌙</span>
+          <span>Theme</span>
+        </button>
       </div>
     </div>
   </header>
@@ -49,24 +55,24 @@
     <div aria-live="polite" class="sr-only" id="live-status"></div>
     <section>
       <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist">
-        <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded">All</button>
-        <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">Landing pages</button>
-        <button data-type="corporate" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">Corporate</button>
-        <button data-type="shop" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">Shop</button>
-        <button data-type="app" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">App/Tool</button>
+        <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded dark:border-gray-700">All</button>
+        <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Landing pages</button>
+        <button data-type="corporate" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Corporate</button>
+        <button data-type="shop" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Shop</button>
+        <button data-type="app" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">App/Tool</button>
       </nav>
-      <div class="flex justify-end mb-4">
-        <div class="relative">
-          <button id="sort-button" class="px-2 py-1 border rounded" aria-haspopup="listbox" aria-expanded="false">New → Old</button>
-          <ul id="sort-menu" class="absolute right-0 mt-1 border bg-white rounded shadow-md hidden" role="listbox" tabindex="-1">
-            <li data-sort="new" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer">New → Old</li>
-            <li data-sort="impact" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer">Highest impact</li>
-            <li data-sort="speed" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer">Fastest build</li>
+      <div class="mb-4">
+        <div class="relative inline-block">
+          <button id="sort-button" class="px-2 py-1 border rounded dark:border-gray-700" aria-haspopup="listbox" aria-expanded="false">New → Old</button>
+          <ul id="sort-menu" class="absolute left-0 mt-1 border bg-white dark:bg-gray-800 rounded shadow-md hidden" role="listbox" tabindex="-1">
+            <li data-sort="new" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">New → Old</li>
+            <li data-sort="impact" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Highest impact</li>
+            <li data-sort="speed" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Fastest build</li>
           </ul>
         </div>
       </div>
       <div id="portfolio-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list"></div>
-      <div id="empty-state" class="hidden text-center p-4 border rounded">
+      <div id="empty-state" class="text-center p-4 border rounded" hidden>
         <p>No projects found.</p>
         <button id="reset-filters" class="btn btn-primary mt-2">Reset filters</button>
       </div>

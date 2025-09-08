@@ -79,6 +79,10 @@
     if(btn){
       const current=document.querySelector(`#sort-menu [data-sort="${state.sort}"]`);
       if(current) btn.textContent=current.textContent;
+      document.querySelectorAll('#sort-menu [data-sort]').forEach(opt=>{
+        const sel=opt.getAttribute('data-sort')===state.sort;
+        opt.setAttribute('aria-selected', sel);
+      });
     }
   }
 
@@ -107,7 +111,7 @@
     container.innerHTML='';
     for(let i=0;i<n;i++){
       const article=document.createElement('article');
-      article.className='case-card border p-4 rounded skeleton';
+      article.className='case-card border p-4 rounded skeleton dark:border-gray-700';
       container.appendChild(article);
     }
   }
@@ -126,15 +130,19 @@
     empty.hidden=true;
     visibleItems.forEach(item=>{
       const article=document.createElement('article');
-      article.className='case-card border p-4 rounded focus-within:ring outline-none';
+      article.className='case-card border p-4 rounded focus-within:ring outline-none hover-lift bg-white dark:bg-gray-800 dark:border-gray-700';
       article.setAttribute('role','listitem');
       article.setAttribute('aria-label',item.title);
       article.innerHTML=`
-        <div class="ph-media mb-3" role="img" aria-label="Placeholder"></div>
+        <div class="ph-media mb-3 rounded" role="img" aria-label="Placeholder"></div>
         <span class="badge mb-2">Demo</span>
         <h3 class="font-semibold mb-1">${item.title}</h3>
-        <ul class="flex flex-wrap gap-1 text-sm mb-2">${item.tags.slice(0,3).map(t=>`<li class="tag">${t}</li>`).join('')}</ul>
-        <p class="text-sm mb-3">⏱ ${item.kpis[0]} • ⚡ ${item.kpis[1]} • ✅ ${item.kpis[2]}</p>
+        <ul class="flex flex-wrap gap-1 text-sm mb-2">${item.tags.slice(0,3).map(t=>`<li class="tag-pill">${t}</li>`).join('')}</ul>
+        <p class="kpi-row text-sm mb-3 flex flex-wrap gap-3">
+          <span class="flex items-center gap-1"><span aria-hidden="true">⏱</span>${item.kpis[0]}</span>
+          <span class="flex items-center gap-1"><span aria-hidden="true">⚡</span>${item.kpis[1]}</span>
+          <span class="flex items-center gap-1"><span aria-hidden="true">✅</span>${item.kpis[2]}</span>
+        </p>
         <div class="flex flex-wrap gap-3">
           <a class="btn btn-primary" aria-label="${t.view}: ${item.title}" href="${item.caseUrl}">${t.view}</a>
           <a class="link" aria-label="${t.demo}: ${item.title}" href="${item.demoUrl}" target="_blank" rel="noopener">${t.demo}</a>
