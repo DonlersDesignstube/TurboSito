@@ -1,50 +1,88 @@
-(function () {
+(() => {
   const CACHE = new Map();
+  let injected = false;
+  const once = (fn) => { let ran=false; return (...a)=>{ if(ran) return; ran=true; return fn(...a);} };
+
+  const langRe = /^\/(de|en|it)\b/;
+  const norm = (p) => p.replace(/\/index\.html$/,'/').replace(/\/+$/,'/');
 
   function langPrefix() {
-    // Pfad beginnt z.B. mit /de/ | /en/ | /it/ -> liefere "de" etc., sonst ""
-    const m = location.pathname.match(/^\/(de|en|it)\b/);
-    return m ? `/${m[1]}` : "";
+    const m = location.pathname.match(langRe);
+    return m ? `/${m[1]}` : '';
   }
 
   function resolvePartialPath(rel) {
-    // Partials liegen global unter /partials/*.html
-    const lp = langPrefix(); // für korrekte relative Links in <a href="...">
-    return `${lp || ""}/partials/${rel}`.replace(/\/{2,}/g, "/");
+    // Partials liegen unter /partials/ (nicht sprachspezifisch)
+    return `${langPrefix()}/partials/${rel}`.replace(/\/{2,}/g,'/');
   }
 
-  async function fetchPartial(url) {
+  function fetchWithTimeout(url, { timeout = 6000 } = {}) {
+    const ctrl = new AbortController();
+    const id = setTimeout(() => ctrl.abort(), timeout);
+    return fetch(url, { signal: ctrl.signal, credentials: 'same-origin' })
+      .finally(() => clearTimeout(id));
+  }
+
+  async function fetchPartial(url, retries = 1) {
     if (CACHE.has(url)) return CACHE.get(url);
-    const p = fetch(url, { credentials: "same-origin" })
-      .then(r => (r.ok ? r.text() : Promise.reject(new Error(`HTTP ${r.status}`))))
-      .catch(() => `<!-- partial "${url}" failed to load -->`);
+    const p = (async () => {
+      try {
+        const r = await fetchWithTimeout(url);
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return await r.text();
+      } catch (e) {
+        if (retries > 0) return fetchPartial(url, retries - 1);
+        console.warn('[partials] failed:', url, e);
+        return `<!-- partial "${url}" failed -->`;
+      }
+    })();
     CACHE.set(url, p);
     return p;
   }
 
   async function injectPartials(root = document) {
-    const nodes = [...root.querySelectorAll("[data-include]")];
+    if (injected) return; // idempotent
+    const nodes = [...root.querySelectorAll('[data-include]')];
     for (const el of nodes) {
-      const file = el.getAttribute("data-include");
-      const url = resolvePartialPath(file);
-      const html = await fetchPartial(url);
-      el.outerHTML = html;
+      const file = el.getAttribute('data-include');
+      const html = await fetchPartial(resolvePartialPath(file));
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = html;
+      el.replaceWith(...wrapper.childNodes);
     }
-    // Nach Injection: Theme-Toggle + Nav aktivieren
+    injected = true;
     if (window.initThemeToggle) window.initThemeToggle();
-    markActiveNav();
-    document.dispatchEvent(new CustomEvent("partials:ready"));
-  }
 
-  function markActiveNav() {
-    const path = location.pathname.replace(/\/index\.html$/, "/");
+    const cur = norm(location.pathname);
     document.querySelectorAll('a[data-nav]').forEach(a => {
-      const target = a.getAttribute('href').replace(/\/index\.html$/, "/");
-      a.classList.toggle('is-active', target === path);
-      a.setAttribute('aria-current', target === path ? 'page' : null);
+      const target = norm(a.getAttribute('href') || '/');
+      const langed = target.match(langRe) ? target : (langPrefix() + target);
+      const isActive = norm(langed) === cur;
+      a.classList.toggle('is-active', isActive);
+      a.setAttribute('aria-current', isActive ? 'page' : null);
     });
+
+    const main = document.querySelector('main');
+    if (main && !main.id) main.id = 'main';
+    const skip = document.querySelector('a[href="#main"]');
+    if (skip) skip.removeAttribute('hidden');
+
+    focusHash();
+    document.dispatchEvent(new CustomEvent('partials:ready'));
   }
 
-  // Public
-  window.Partials = { injectPartials };
+  function focusHash() {
+    if (!location.hash) return;
+    const target = document.getElementById(location.hash.slice(1));
+    if (target) target.setAttribute('tabindex', '-1'), target.focus();
+  }
+  window.addEventListener('hashchange', focusHash, { passive: true });
+
+  window.Partials = {
+    injectPartials,
+    ready: () => new Promise(r => {
+      if (injected) return r();
+      document.addEventListener('partials:ready', once(r), { once: true });
+    })
+  };
 })();

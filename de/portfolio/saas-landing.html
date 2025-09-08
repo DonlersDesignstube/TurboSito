@@ -20,9 +20,8 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
-  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Zum Inhalt springen</a>
   <div data-include="header.html"></div>
-  <main id="content" class="max-w-3xl mx-auto px-4 py-12">
+  <main id="main" class="max-w-3xl mx-auto px-4 py-12">
     <nav aria-label="Brotkrumen" class="mb-4"><a href="../portfolio.html" class="text-sm text-gray-400 hover:text-orange-400">← Portfolio</a></nav>
     <header class="mb-8">
       <h1 id="case-title" class="text-3xl font-bold mb-2">SaaS-Landing (Demo)</h1>
@@ -62,7 +61,7 @@
       <a class="btn btn-outline" href="../portfolio.html">Weitere Beispiele</a>
     </section>
     <script id="ld-json" type="application/ld+json"></script>
-    <script>
+    <script type="module">
     (async()=>{
       const slug='saas-landing';
       const lang=document.documentElement.lang;
@@ -106,13 +105,15 @@
   <script src="/assets/js/partials.js" defer></script>
   <script src="/assets/js/theme.js" defer></script>
   <script type="module">
-    document.addEventListener("partials:ready", () => {
-      if (window.Portfolio && Portfolio.init) Portfolio.init();
-    });
-    if (!document.querySelector("[data-include]")) {
-      if (window.Portfolio && Portfolio.init) Portfolio.init();
+  import { init as portfolioInit } from '/assets/js/portfolio.js';
+  (async () => {
+    if (window.Partials?.injectPartials) {
+      window.Partials.injectPartials();
+      await window.Partials.ready();
     }
-    window.Partials && Partials.injectPartials();
-  </script>
+    if (window.initThemeToggle) window.initThemeToggle();
+    if (typeof portfolioInit === 'function') portfolioInit();
+  })();
+</script>
 </body>
 </html>
