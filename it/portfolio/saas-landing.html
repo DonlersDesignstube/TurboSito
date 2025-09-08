@@ -18,34 +18,10 @@
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-  <script src="/TurboSito/assets/js/theme.js" defer></script>
 </head>
 <body class="font-sans text-gray-900">
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Vai al contenuto</a>
-  <header id="site-header">
-    <div class="container flex items-center justify-between gap-4">
-      <nav class="site-nav">
-        <a class="brand" href="/TurboSito/it/">TurboSito</a>
-        <a href="/TurboSito/it/chi-sono.html">Chi sono</a>
-        <a href="/TurboSito/it/servizi.html">Servizi</a>
-        <a href="/TurboSito/it/portfolio.html">Portfolio</a>
-        <a href="/TurboSito/it/contatto.html">Contatto</a>
-      </nav>
-      <div class="header-right flex items-center gap-2">
-        <nav class="lang-switch" aria-label="Lingue">
-          <a href="/TurboSito/de/portfolio/saas-landing.html" data-lang="de" hreflang="de">DE</a>
-          <a href="/TurboSito/en/portfolio/saas-landing.html" data-lang="en" hreflang="en">EN</a>
-          <a href="/TurboSito/it/portfolio/saas-landing.html" data-lang="it" hreflang="it">IT</a>
-        </nav>
-        <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menù"><span aria-hidden="true"></span></button>
-        <button class="theme-toggle" data-theme-toggle aria-label="Cambia tema" aria-pressed="false">
-          <span class="icon sun" aria-hidden="true">☀️</span>
-          <span class="icon moon" aria-hidden="true">🌙</span>
-          <span>Theme</span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <div data-include="header.html"></div>
   <main id="content" class="max-w-3xl mx-auto px-4 py-12">
     <nav aria-label="Breadcrumb" class="mb-4"><a href="../portfolio.html" class="text-sm text-gray-400 hover:text-orange-400">← Portfolio</a></nav>
     <header class="mb-8">
@@ -125,6 +101,18 @@
     })();
     </script>
   </main>
-  <footer class="text-center py-10 text-sm"><p>&copy; TurboSito</p></footer>
+  <div data-include="footer.html"></div>
+
+  <script src="/assets/js/partials.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+  <script type="module">
+    document.addEventListener("partials:ready", () => {
+      if (window.Portfolio && Portfolio.init) Portfolio.init();
+    });
+    if (!document.querySelector("[data-include]")) {
+      if (window.Portfolio && Portfolio.init) Portfolio.init();
+    }
+    window.Partials && Partials.injectPartials();
+  </script>
 </body>
 </html>

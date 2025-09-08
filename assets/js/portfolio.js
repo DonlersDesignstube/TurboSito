@@ -48,6 +48,7 @@
 
   function showError(){
     const container=document.getElementById('portfolio-grid');
+    if(!container) return;
     container.innerHTML=`<div class="p-4 border rounded text-center">${t.none}. <button id="retry" class="btn btn-primary mt-2">Retry</button></div>`;
     document.getElementById('retry').addEventListener('click',()=>{renderSkeletons(state.visible);loadData(lang);});
   }
@@ -108,6 +109,7 @@
 
   function renderSkeletons(n){
     const container=document.getElementById('portfolio-grid');
+    if(!container) return;
     container.innerHTML='';
     for(let i=0;i<n;i++){
       const article=document.createElement('article');
@@ -119,6 +121,7 @@
   function render(){
     const container=document.getElementById('portfolio-grid');
     const empty=document.getElementById('empty-state');
+    if(!container || !empty) return;
     const items=applyFilters(state.items);
     const visibleItems=items.slice(0,state.visible);
     container.innerHTML='';
@@ -150,6 +153,7 @@
       container.appendChild(article);
     });
     const more=document.getElementById('load-more');
+    if(!more) return;
     more.hidden=items.length<=state.visible;
     more.textContent=t.load;
     announceCount(visibleItems.length);
@@ -224,6 +228,7 @@
 
   function initLoadMore(){
     const more=document.getElementById('load-more');
+    if(!more) return;
     more.addEventListener('click',()=>{state.visible+=3;render();});
     if(!prefersReduced){
       const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){state.visible+=3;render();}})});
@@ -231,7 +236,7 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded',()=>{
+  function init(){
     applyReducedMotion();
     renderSkeletons(state.visible);
     loadData(lang);
@@ -241,5 +246,7 @@
     initLoadMore();
     const reset=document.getElementById('reset-filters');
     if(reset) reset.addEventListener('click',()=>{state.type='all';state.sort='new';updateURL();updateControls();render();});
-  });
+  }
+
+  window.Portfolio = { init };
 })();
