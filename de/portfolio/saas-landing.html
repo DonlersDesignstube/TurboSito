@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SaaS-Landing – TurboSito</title>
+  <meta name="description" content="Demo-Case: SaaS-Landingpage."/>
+  <link rel="canonical" href="https://deine-domain.tld/de/portfolio/saas-landing.html"/>
+  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio/saas-landing.html"/>
+  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio/saas-landing.html"/>
+  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio/saas-landing.html"/>
+  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio/saas-landing.html"/>
+  <meta property="og:title" content="SaaS-Landing – TurboSito"/>
+  <meta property="og:description" content="Demo-Case: Stil, Struktur, Speed."/>
+  <meta property="og:url" content="https://deine-domain.tld/de/portfolio/saas-landing.html"/>
+  <meta property="og:locale" content="de_DE"/>
+  <meta name="twitter:card" content="summary"/>
+  <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
+  <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+</head>
+<body class="font-sans text-gray-900">
+  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Zum Inhalt springen</a>
+  <header id="site-header">
+    <div class="container flex items-center justify-between gap-4">
+      <nav class="site-nav">
+        <a class="brand" href="/TurboSito/de/">TurboSito</a>
+        <a href="/TurboSito/de/ueber-mich.html">Über mich</a>
+        <a href="/TurboSito/de/leistungen.html">Leistungen</a>
+        <a href="/TurboSito/de/portfolio.html">Portfolio</a>
+        <a href="/TurboSito/de/kontakt.html">Kontakt</a>
+      </nav>
+      <div class="header-right flex items-center gap-2">
+        <nav class="lang-switch" aria-label="Sprachen">
+          <a href="/TurboSito/de/portfolio/saas-landing.html" data-lang="de" hreflang="de">DE</a>
+          <a href="/TurboSito/en/portfolio/saas-landing.html" data-lang="en" hreflang="en">EN</a>
+          <a href="/TurboSito/it/portfolio/saas-landing.html" data-lang="it" hreflang="it">IT</a>
+        </nav>
+        <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü"><span aria-hidden="true"></span></button>
+      </div>
+    </div>
+  </header>
+  <main id="content" class="max-w-3xl mx-auto px-4 py-12">
+    <nav aria-label="Brotkrumen" class="mb-4"><a href="../portfolio.html" class="text-sm">← Portfolio</a></nav>
+    <header class="mb-8">
+      <h1 id="case-title" class="text-3xl font-bold mb-2">SaaS-Landing (Demo)</h1>
+      <p id="case-summary" class="text-lg mb-1">Demo-Case – Stil, Struktur, Speed.</p>
+      <p class="text-sm text-gray-600">Demo-Case</p>
+    </header>
+    <section class="grid gap-4 md:grid-cols-3 mb-8">
+      <div class="p-4 border rounded text-center"><strong id="kpi-1">48h</strong><br><span class="text-sm">Umsetzungszeit</span></div>
+      <div class="p-4 border rounded text-center"><strong id="kpi-2">≤1.1s LCP</strong><br><span class="text-sm">mobil, Demo</span></div>
+      <div class="p-4 border rounded text-center"><strong id="kpi-3">Klare CTAs</strong><br><span class="text-sm">fokussiert</span></div>
+    </section>
+    <section class="mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Ausgangslage</h2>
+      <p>Kleines SaaS brauchte eine klare Botschaft für erste Signups.</p>
+    </section>
+    <section class="mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Ansatz</h2>
+      <p>Schlanke Struktur, Tailwind-Styling und Mobile-First-Blöcke.</p>
+    </section>
+    <section class="mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Ergebnis</h2>
+      <p>Demo lädt schnell, betont den Wert und führt zur CTA.</p>
+    </section>
+    <section class="mb-6">
+      <h2 class="text-2xl font-semibold mb-2">Vorgehen in 48h</h2>
+      <ol class="list-decimal pl-5 space-y-1">
+        <li>Briefing & Ziele</li>
+        <li>Wireframe</li>
+        <li>Copy-Entwurf</li>
+        <li>Build & QA</li>
+        <li>Launch</li>
+      </ol>
+      <div id="stack-tags" class="mt-4 flex flex-wrap gap-2"></div>
+    </section>
+    <section class="mt-8 flex flex-wrap gap-4">
+      <a class="btn btn-primary" href="/TurboSito/de/kontakt.html">Projekt starten</a>
+      <a class="btn btn-outline" href="../portfolio.html">Weitere Beispiele</a>
+    </section>
+    <script id="ld-json" type="application/ld+json"></script>
+    <script>
+    (async()=>{
+      const slug='saas-landing';
+      const lang=document.documentElement.lang;
+      try{
+        const res=await fetch(`/TurboSito/assets/data/portfolio.${lang}.json`);
+        const data=await res.json();
+        const item=data.items.find(i=>i.slug===slug);
+        if(!item){location.href='../portfolio.html?missing=1';return;}
+        document.getElementById('case-title').textContent=item.title;
+        document.getElementById('case-summary').textContent=item.summary;
+        document.getElementById('kpi-1').textContent=item.kpis[0];
+        document.getElementById('kpi-2').textContent=item.kpis[1];
+        document.getElementById('kpi-3').textContent=item.kpis[2];
+        document.getElementById('stack-tags').innerHTML=item.tags.map(t=>`<span class="tag">${t}</span>`).join(' ');
+        const ld=[{
+          "@context":"https://schema.org",
+          "@type":"CreativeWork",
+          "name":item.title,
+          "about":item.summary,
+          "inLanguage":lang,
+          "timeRequired":"PT"+item.timeToLaunchHours+"H",
+          "author":{"@type":"Person","name":"TurboSito"},
+          "offers":{"@type":"Offer","priceCurrency":"EUR","price":"0"},
+          "keywords":item.tags.join(',')
+        },{
+          "@context":"https://schema.org",
+          "@type":"BreadcrumbList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Home","item":"/TurboSito/"+lang+"/"},
+            {"@type":"ListItem","position":2,"name":"Portfolio","item":"/TurboSito/"+lang+"/portfolio.html"},
+            {"@type":"ListItem","position":3,"name":item.title,"item":location.pathname}
+          ]
+        }];
+        document.getElementById('ld-json').textContent=JSON.stringify(ld);
+      }catch(e){location.href='../portfolio.html?missing=1';}
+    })();
+    </script>
+  </main>
+  <footer class="text-center py-10 text-sm"><p>&copy; TurboSito</p></footer>
+</body>
+</html>

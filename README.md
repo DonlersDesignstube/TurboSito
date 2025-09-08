@@ -183,3 +183,56 @@ Die Seiten sind bewusst schlank aufgebaut.  Um die Core Web Vitals einzuhalten
 ## Build
 - Entwicklung: `npm i` → `npm run build` → Ausgabe in /dist
 - Pages Source: GitHub Actions (Settings → Pages → Source: GitHub Actions)
+
+## Portfolio & Case Studies
+
+Die Übersichtsseite lädt ihre Karten aus sprachspezifischen JSON-Dateien unter `assets/data/portfolio.{lang}.json`.  Um einen neuen Case anzulegen:
+
+1. Datensatz in allen drei JSONs ergänzen (`slug`, `title`, `type`, `kpis`, `impactScore`, `timeToLaunchHours`, `summary`, `demoUrl`, `caseUrl`, `highlights`, `tags`).
+2. Detailseite unter `/{lang}/portfolio/{slug}.html` anlegen und `slug` im Inline-Script setzen.
+3. In den HTML-`<head>`-Bereich die passenden `link rel="alternate"`-Tags für alle Sprachversionen aufnehmen.
+4. `demoUrl` zeigt auf eine eigenständige Demo, `caseUrl` auf die jeweilige Detailseite.
+
+Die Portfolio-Seite unterstützt Filter (Type) und Sortierung über URL-Parameter (`?type=landing&sort=impact`).  Weitere Cases werden per „Mehr laden“-Button progressiv eingeblendet.
+
+### Test-Checkliste
+
+- Tabs und Sortierung per Tastatur bedienbar
+- `aria-label` je Karte/CTA vorhanden
+- Farben haben ausreichenden Kontrast
+- JSON-LD validiert (`<script type="application/ld+json">` in jeder Case-Detailseite)
+- `npm run build` läuft ohne Fehler
+
+
+## Portfolio-Daten & Erweiterung
+
+Die Portfolio-Übersicht liest ihre Einträge aus sprachspezifischen JSON-Dateien unter `assets/data/portfolio.{lang}.json`. Ein Datensatz besitzt folgende Felder:
+
+```json
+{
+  "slug": "saas-landing",
+  "title": "SaaS-Landing (Demo)",
+  "type": "landing",
+  "kpis": ["48h","≤1.1s LCP","Klare CTAs"],
+  "impactScore": 9,
+  "timeToLaunchHours": 48,
+  "summary": "Demo-Case – Stil, Struktur, Speed.",
+  "demoUrl": "/demos/saas/",
+  "caseUrl": "/portfolio/saas-landing.html",
+  "tags": ["Tailwind","Static Export","A11y-Ready"]
+}
+```
+
+**Neuen Case anlegen**
+1. Datensatz in allen Sprach-JSONs ergänzen (Slug identisch, Texte lokalisiert).
+2. Case-Template in `de/en/it/portfolio/{slug}.html` kopieren und Inhalte anpassen.
+3. hreflang-Links und Language-Switches verknüpfen.
+
+**Mehr laden**
+Die Übersicht lädt in Batches von drei Cards. Beim Scrollen auf den Button werden weitere Einträge automatisch gerendert (sofern `prefers-reduced-motion` nicht aktiv ist).
+
+### QA-Checkliste
+- Tabs und Sortierung sind vollständig mit der Tastatur bedienbar.
+- Live-Region kündigt die Anzahl sichtbarer Projekte an.
+- URL-Parameter `type`/`sort` werden auf gültige Werte normalisiert.
+- Case-Seiten liefern JSON-LD (`CreativeWork` + `BreadcrumbList`) und korrekte `hreflang`-Links.
