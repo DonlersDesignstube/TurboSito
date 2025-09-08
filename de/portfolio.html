@@ -18,36 +18,10 @@
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-  <script src="/TurboSito/assets/js/theme.js" defer></script>
-  <script defer src="/TurboSito/assets/js/portfolio.js"></script>
 </head>
 <body class="font-sans text-gray-900">
-  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Zum Inhalt springen</a>
-  <header id="site-header">
-    <div class="container flex items-center justify-between gap-4">
-      <nav class="site-nav">
-        <a class="brand" href="/TurboSito/de/">TurboSito</a>
-        <a href="/TurboSito/de/ueber-mich.html">Über mich</a>
-        <a href="/TurboSito/de/leistungen.html">Leistungen</a>
-        <a href="/TurboSito/de/portfolio.html">Portfolio</a>
-        <a href="/TurboSito/de/kontakt.html">Kontakt</a>
-      </nav>
-      <div class="header-right flex items-center gap-2">
-        <nav class="lang-switch" aria-label="Sprachen">
-          <a href="/TurboSito/de/portfolio.html" data-lang="de" hreflang="de">DE</a>
-          <a href="/TurboSito/en/portfolio.html" data-lang="en" hreflang="en">EN</a>
-          <a href="/TurboSito/it/portfolio.html" data-lang="it" hreflang="it">IT</a>
-        </nav>
-        <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü"><span aria-hidden="true"></span></button>
-        <button class="theme-toggle" data-theme-toggle aria-label="Theme umschalten" aria-pressed="false">
-          <span class="icon sun" aria-hidden="true">☀️</span>
-          <span class="icon moon" aria-hidden="true">🌙</span>
-          <span>Theme</span>
-        </button>
-      </div>
-    </div>
-  </header>
-  <main id="content" class="max-w-6xl mx-auto px-4 py-12">
+  <div data-include="header.html"></div>
+  <main id="main" class="max-w-6xl mx-auto px-4 py-12">
     <section class="text-center mb-10">
       <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
       <p>Ehrliche Vorschau auf unseren Prozess.</p>
@@ -81,8 +55,20 @@
       </div>
     </section>
   </main>
-  <footer class="text-center py-10 text-sm">
-    <p>&copy; TurboSito</p>
-  </footer>
+  <div data-include="footer.html"></div>
+
+  <script src="/assets/js/partials.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+  <script type="module">
+  import { init as portfolioInit } from '/assets/js/portfolio.js';
+  (async () => {
+    if (window.Partials?.injectPartials) {
+      window.Partials.injectPartials();
+      await window.Partials.ready();
+    }
+    if (window.initThemeToggle) window.initThemeToggle();
+    if (typeof portfolioInit === 'function') portfolioInit();
+  })();
+</script>
 </body>
 </html>
