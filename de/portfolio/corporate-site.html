@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Corporate-Site – TurboSito</title>
   <meta name="description" content="Demo-Case: Corporate-Website."/>
+  <meta name="base-path" content="/TurboSito">
   <link rel="canonical" href="https://deine-domain.tld/de/portfolio/corporate-site.html"/>
   <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio/corporate-site.html"/>
   <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio/corporate-site.html"/>
@@ -20,7 +21,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
-  <div data-include="header.html"></div>
+  <div data-include="../../partials/header.html"></div>
   <main id="main" class="max-w-3xl mx-auto px-4 py-12">
     <nav aria-label="Brotkrumen" class="mb-4"><a href="../portfolio.html" class="text-sm text-gray-400 hover:text-orange-400">← Portfolio</a></nav>
     <header class="mb-8">
@@ -38,82 +39,50 @@
       <p>Beratungsfirma wollte eine schlanke Seite, die Vertrauen schafft.</p>
     </section>
     <section class="mb-6">
-      <h2 class="mt-6 mb-2 text-lg font-semibold">Ansatz</h2>
-      <p>Klare Leistungen, einfache Navigation und statischer Export.</p>
+      <h2 class="mt-6 mb-2 text-lg font-semibold">Umsetzung</h2>
+      <p>Klare Struktur, wenige Farben. Schnelle Ladezeiten dank Tailwind und minimalem JS.</p>
     </section>
     <section class="mb-6">
       <h2 class="mt-6 mb-2 text-lg font-semibold">Ergebnis</h2>
-      <p>Besucher finden Infos schnell und nehmen Kontakt auf.</p>
+      <p>Die Seite vermittelt Seriosität und ist leicht zu pflegen.</p>
     </section>
-    <section class="mb-6">
-      <h2 class="mt-6 mb-2 text-lg font-semibold">Vorgehen in 48h</h2>
-      <ol class="list-decimal pl-6 space-y-1">
-        <li>Briefing & Ziele</li>
-        <li>Wireframe</li>
-        <li>Copy-Entwurf</li>
-        <li>Build & QA</li>
-        <li>Launch</li>
-      </ol>
-      <div id="stack-tags" class="mt-4 flex flex-wrap gap-2"></div>
-    </section>
-    <section class="flex justify-center gap-4 mt-8">
-      <a class="btn btn-primary" href="/TurboSito/de/kontakt.html">Projekt starten</a>
-      <a class="btn btn-outline" href="../portfolio.html">Weitere Beispiele</a>
-    </section>
-    <script id="ld-json" type="application/ld+json"></script>
-    <script type="module">
-    (async()=>{
-      const slug='corporate-site';
-      const lang=document.documentElement.lang;
+    <script>
+    (async () => {
       try{
-        const res=await fetch(`/TurboSito/assets/data/portfolio.${lang}.json`);
-        const data=await res.json();
-        const item=data.items.find(i=>i.slug===slug);
-        if(!item){location.href='../portfolio.html?missing=1';return;}
-        document.getElementById('case-title').textContent=item.title;
-        document.getElementById('case-summary').textContent=item.summary;
-        document.getElementById('kpi-1').textContent=item.kpis[0];
-        document.getElementById('kpi-2').textContent=item.kpis[1];
-        document.getElementById('kpi-3').textContent=item.kpis[2];
-        document.getElementById('stack-tags').innerHTML=item.tags.map(t=>`<span class="tag-pill">${t}</span>`).join(' ');
-        const ld=[{
-          "@context":"https://schema.org",
-          "@type":"CreativeWork",
-          "name":item.title,
-          "about":item.summary,
-          "inLanguage":lang,
-          "timeRequired":"PT"+item.timeToLaunchHours+"H",
-          "author":{"@type":"Person","name":"TurboSito"},
-          "offers":{"@type":"Offer","priceCurrency":"EUR","price":"0"},
-          "keywords":item.tags.join(',')
-        },{
-          "@context":"https://schema.org",
-          "@type":"BreadcrumbList",
-          "itemListElement":[
-            {"@type":"ListItem","position":1,"name":"Home","item":"/TurboSito/"+lang+"/"},
-            {"@type":"ListItem","position":2,"name":"Portfolio","item":"/TurboSito/"+lang+"/portfolio.html"},
-            {"@type":"ListItem","position":3,"name":item.title,"item":location.pathname}
-          ]
-        }];
+        const { dataPath, langPrefix, withBase } = await import('../../assets/js/path.portfolio.js');
+        const lang = (langPrefix().slice(1) || 'de');
+        const resp = await fetch(dataPath(`portfolio.${lang}.json`), { credentials: 'same-origin' });
+        const data = await resp.json();
+        const item = data.find(x => x.slug === 'corporate-site');
+        if(!item) return;
+        document.getElementById('case-title').textContent = item.title;
+        document.getElementById('case-summary').textContent = item.summary;
+        ['kpi-1','kpi-2','kpi-3'].forEach((id,i)=>{document.getElementById(id).textContent = item.kpi[i];});
+        const link = document.getElementById('live-link');
+        if(link) link.href = withBase(item.demoUrl);
+        const ld = {"@context":"https://schema.org","@type":"Article","headline":item.title,"description":item.summary,"inLanguage":lang,"mainEntityOfPage":withBase(location.pathname)};
         document.getElementById('ld-json').textContent=JSON.stringify(ld);
       }catch(e){location.href='../portfolio.html?missing=1';}
     })();
     </script>
   </main>
-  <div data-include="footer.html"></div>
+  <div data-include="../../partials/footer.html"></div>
 
-  <script src="/assets/js/partials.js" defer></script>
-  <script src="/assets/js/theme.js" defer></script>
   <script type="module">
-  import { init as portfolioInit } from '/assets/js/portfolio.js';
-  (async () => {
-    if (window.Partials?.injectPartials) {
-      window.Partials.injectPartials();
-      await window.Partials.ready();
-    }
-    if (window.initThemeToggle) window.initThemeToggle();
-    if (typeof portfolioInit === 'function') portfolioInit();
-  })();
-</script>
+  import { resolvePartialSafe } from '../../assets/js/path.portfolio.js';
+  import '../../assets/js/partials.js';
+  import { init as portfolioInit } from '../../assets/js/portfolio.js';
+  import '../../assets/js/theme.js';
+  import '../../assets/js/seo.js';
+
+  // Custom-Resolver nur für Portfolio-Seiten aktivieren
+  if (window.Partials) window.Partials.__resolve = resolvePartialSafe;
+
+  window.Partials?.injectPartials();
+  await window.Partials?.ready?.();
+
+  window.initThemeToggle && window.initThemeToggle();
+  portfolioInit && portfolioInit();
+  </script>
 </body>
 </html>

@@ -8,8 +8,8 @@
       "impactScore": 9,
       "timeToLaunchHours": 48,
       "summary": "Caso demo – stile, struttura, velocità.",
-      "demoUrl": "/TurboSito/de/demos/saas-landing.html",
-      "caseUrl": "/TurboSito/it/portfolio/saas-landing.html",
+      "demoUrl": "/de/demos/saas-landing.html",
+      "caseUrl": "/it/portfolio/saas-landing.html",
       "highlights": ["Value proposition chiara", "CTA above-the-fold", "Mobile-first"],
       "tags": ["Tailwind", "Static Export", "A11y-Ready"]
     },
@@ -21,8 +21,8 @@
       "impactScore": 8,
       "timeToLaunchHours": 48,
       "summary": "Caso demo – fiducia e struttura.",
-      "demoUrl": "/TurboSito/de/demos/corporate-site.html",
-      "caseUrl": "/TurboSito/it/portfolio/corporate-site.html",
+      "demoUrl": "/de/demos/corporate-site.html",
+      "caseUrl": "/it/portfolio/corporate-site.html",
       "highlights": ["Servizi focalizzati", "Navigazione snella", "Responsive"],
       "tags": ["Tailwind", "Static Export", "SEO-Ready"]
     },
@@ -34,8 +34,8 @@
       "impactScore": 7,
       "timeToLaunchHours": 48,
       "summary": "Negozio demo – pulito e rapido.",
-      "demoUrl": "/TurboSito/de/demos/fashion-shop.html",
-      "caseUrl": "/TurboSito/it/portfolio/fashion-shop.html",
+      "demoUrl": "/de/demos/fashion-shop.html",
+      "caseUrl": "/it/portfolio/fashion-shop.html",
       "highlights": ["Grid semplice", "Carrello rapido", "Mobile-first"],
       "tags": ["Tailwind", "Static Export", "Snipcart"]
     }
