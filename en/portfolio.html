@@ -42,7 +42,7 @@
           <ul id="sort-menu" class="absolute left-0 mt-1 border bg-white dark:bg-gray-800 rounded shadow-md hidden" role="listbox" tabindex="-1">
             <li data-sort="new" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">New → Old</li>
             <li data-sort="impact" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Highest impact</li>
-            <li data-sort="speed" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Fastest build</li>
+            <li data-sort="speed" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Fastest delivery</li>
           </ul>
         </div>
       </div>
@@ -61,6 +61,7 @@
   <script type="module">
   import { resolvePartialSafe } from '../assets/js/path.portfolio.js';
   import '../assets/js/partials.js';
+  import { rewriteInternalLinks } from '../assets/js/partials.js';
   import { init as portfolioInit } from '../assets/js/portfolio.js';
   import '../assets/js/theme.js';
   import '../assets/js/seo.js';
@@ -70,6 +71,9 @@
 
   window.Partials?.injectPartials();
   await window.Partials?.ready?.();
+
+  // Nach dem Inject: Links korrigieren + Theme + Page-Init
+  rewriteInternalLinks(document);
   window.initThemeToggle && window.initThemeToggle();
   portfolioInit && portfolioInit();
   </script>

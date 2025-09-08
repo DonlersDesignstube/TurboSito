@@ -39,64 +39,28 @@
       <p>Beratungsfirma wollte eine schlanke Seite, die Vertrauen schafft.</p>
     </section>
     <section class="mb-6">
-      <h2 class="mt-6 mb-2 text-lg font-semibold">Ansatz</h2>
-      <p>Klare Leistungen, einfache Navigation und statischer Export.</p>
+      <h2 class="mt-6 mb-2 text-lg font-semibold">Umsetzung</h2>
+      <p>Klare Struktur, wenige Farben. Schnelle Ladezeiten dank Tailwind und minimalem JS.</p>
     </section>
     <section class="mb-6">
       <h2 class="mt-6 mb-2 text-lg font-semibold">Ergebnis</h2>
-      <p>Besucher finden Infos schnell und nehmen Kontakt auf.</p>
+      <p>Die Seite vermittelt Seriosität und ist leicht zu pflegen.</p>
     </section>
-    <section class="mb-6">
-      <h2 class="mt-6 mb-2 text-lg font-semibold">Vorgehen in 48h</h2>
-      <ol class="list-decimal pl-6 space-y-1">
-        <li>Briefing & Ziele</li>
-        <li>Wireframe</li>
-        <li>Copy-Entwurf</li>
-        <li>Build & QA</li>
-        <li>Launch</li>
-      </ol>
-      <div id="stack-tags" class="mt-4 flex flex-wrap gap-2"></div>
-    </section>
-    <section class="flex justify-center gap-4 mt-8">
-      <a class="btn btn-primary" href="../kontakt.html">Projekt starten</a>
-      <a class="btn btn-outline" href="../portfolio.html">Weitere Beispiele</a>
-    </section>
-  <script id="ld-json" type="application/ld+json"></script>
-  <script type="module">
-    import { dataPath, withBase } from '../../assets/js/path.portfolio.js';
-    (async()=>{
-      const slug='corporate-site';
-      const lang=document.documentElement.lang;
+    <script>
+    (async () => {
       try{
-        const res=await fetch(dataPath(`portfolio.${lang}.json`));
-        const data=await res.json();
-        const item=data.items.find(i=>i.slug===slug);
-        if(!item){location.href='../portfolio.html?missing=1';return;}
-        document.getElementById('case-title').textContent=item.title;
-        document.getElementById('case-summary').textContent=item.summary;
-        document.getElementById('kpi-1').textContent=item.kpis[0];
-        document.getElementById('kpi-2').textContent=item.kpis[1];
-        document.getElementById('kpi-3').textContent=item.kpis[2];
-        document.getElementById('stack-tags').innerHTML=item.tags.map(t=>`<span class="tag-pill">${t}</span>`).join(' ');
-        const ld=[{
-          "@context":"https://schema.org",
-          "@type":"CreativeWork",
-          "name":item.title,
-          "about":item.summary,
-          "inLanguage":lang,
-          "timeRequired":"PT"+item.timeToLaunchHours+"H",
-          "author":{"@type":"Person","name":"TurboSito"},
-          "offers":{"@type":"Offer","priceCurrency":"EUR","price":"0"},
-          "keywords":item.tags.join(',')
-        },{
-          "@context":"https://schema.org",
-          "@type":"BreadcrumbList",
-          "itemListElement":[
-            {"@type":"ListItem","position":1,"name":"Home","item":withBase('/'+lang+'/')},
-            {"@type":"ListItem","position":2,"name":"Portfolio","item":withBase('/'+lang+'/portfolio.html')},
-            {"@type":"ListItem","position":3,"name":item.title,"item":location.pathname}
-          ]
-        }];
+        const { dataPath, langPrefix, withBase } = await import('../../assets/js/path.portfolio.js');
+        const lang = (langPrefix().slice(1) || 'de');
+        const resp = await fetch(dataPath(`portfolio.${lang}.json`), { credentials: 'same-origin' });
+        const data = await resp.json();
+        const item = data.find(x => x.slug === 'corporate-site');
+        if(!item) return;
+        document.getElementById('case-title').textContent = item.title;
+        document.getElementById('case-summary').textContent = item.summary;
+        ['kpi-1','kpi-2','kpi-3'].forEach((id,i)=>{document.getElementById(id).textContent = item.kpi[i];});
+        const link = document.getElementById('live-link');
+        if(link) link.href = withBase(item.demoUrl);
+        const ld = {"@context":"https://schema.org","@type":"Article","headline":item.title,"description":item.summary,"inLanguage":lang,"mainEntityOfPage":withBase(location.pathname)};
         document.getElementById('ld-json').textContent=JSON.stringify(ld);
       }catch(e){location.href='../portfolio.html?missing=1';}
     })();
@@ -107,6 +71,7 @@
   <script type="module">
   import { resolvePartialSafe } from '../../assets/js/path.portfolio.js';
   import '../../assets/js/partials.js';
+import { rewriteInternalLinks } from '../../assets/js/partials.js';
   import { init as portfolioInit } from '../../assets/js/portfolio.js';
   import '../../assets/js/theme.js';
   import '../../assets/js/seo.js';
@@ -116,6 +81,9 @@
 
   window.Partials?.injectPartials();
   await window.Partials?.ready?.();
+
+  // Nach dem Inject: Links korrigieren + Theme + Page-Init
+  rewriteInternalLinks(document);
   window.initThemeToggle && window.initThemeToggle();
   portfolioInit && portfolioInit();
   </script>

@@ -1,3 +1,37 @@
+import { basePath, langPrefix as sharedLangPrefix, withBase } from './path.shared.js';
+
+function isInternal(url) {
+  try { const u = new URL(url, location.origin); return u.origin === location.origin; }
+  catch { return /^\/(?!\/)/.test(url); }
+}
+
+function localizePath(p) {
+  const hasLang = /^\/(de|en|it)\b/.test(p);
+  const needsHtml = /\/$/.test(p);
+  let path = p;
+  if (!hasLang) path = sharedLangPrefix() + (p.startsWith('/') ? p : '/' + p);
+  if (needsHtml) path += 'index.html';
+  return path;
+}
+
+export function rewriteInternalLinks(root = document) {
+  const sel = [
+    'a[href^="/"]', 'link[rel="alternate"][href^="/"]', 'link[rel="canonical"][href^="/"]',
+    'img[src^="/"]', 'script[src^="/"]'
+  ].join(',');
+
+  root.querySelectorAll(sel).forEach(el => {
+    const attr = el.hasAttribute('href') ? 'href' : 'src';
+    const raw = el.getAttribute(attr);
+    if (!raw || !isInternal(raw)) return;
+
+    let path = raw;
+    path = localizePath(path);
+    const fixed = withBase(path);
+    el.setAttribute(attr, fixed);
+  });
+}
+
 (() => {
   const CACHE = new Map();
   let injected = false;
@@ -13,6 +47,7 @@
 
   function resolvePartialPath(rel) {
     // Partials liegen unter /partials/ (nicht sprachspezifisch)
+    if (/^\.\.?(?:\/).*/.test(rel)) return rel;
     return `${langPrefix()}/partials/${rel}`.replace(/\/{2,}/g,'/');
   }
 
@@ -45,7 +80,6 @@
     const nodes = [...root.querySelectorAll('[data-include]')];
     for (const el of nodes) {
       const file = el.getAttribute('data-include');
-      // Wenn ein Custom-Resolver vorhanden ist, den zuerst nutzen.
       let url = (window.Partials && window.Partials.__resolve)
         ? await window.Partials.__resolve(file)
         : resolvePartialPath(file);
@@ -55,6 +89,7 @@
       el.replaceWith(...wrapper.childNodes);
     }
     injected = true;
+    rewriteInternalLinks(document);
     if (window.initThemeToggle) window.initThemeToggle();
 
     const cur = norm(location.pathname);
