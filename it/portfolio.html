@@ -4,14 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio – TurboSito</title>
-  <meta name="description" content="Demo case – rapidi e chiari."/>
+  <meta name="description" content="Demo case – veloce e chiaro."/>
+  <meta name="base-path" content="/TurboSito">
   <link rel="canonical" href="https://deine-domain.tld/it/portfolio.html"/>
   <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
   <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
   <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
   <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
   <meta property="og:title" content="Portfolio – TurboSito"/>
-  <meta property="og:description" content="Demo case – rapidi e chiari."/>
+  <meta property="og:description" content="Demo case – veloce e chiaro."/>
   <meta property="og:url" content="https://deine-domain.tld/it/portfolio.html"/>
   <meta property="og:locale" content="it_IT"/>
   <meta name="twitter:card" content="summary"/>
@@ -20,7 +21,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
-  <div data-include="header.html"></div>
+  <div data-include="../partials/header.html"></div>
   <main id="main" class="max-w-6xl mx-auto px-4 py-12">
     <section class="text-center mb-10">
       <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
@@ -29,17 +30,17 @@
     <div aria-live="polite" class="sr-only" id="live-status"></div>
     <section>
       <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist">
-        <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded dark:border-gray-700">Tutte</button>
-        <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Landing page</button>
+        <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded dark:border-gray-700">Tutti</button>
+        <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Landing</button>
         <button data-type="corporate" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Corporate</button>
         <button data-type="shop" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Shop</button>
         <button data-type="app" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">App/Tool</button>
       </nav>
       <div class="mb-4">
         <div class="relative inline-block">
-          <button id="sort-button" class="px-2 py-1 border rounded dark:border-gray-700" aria-haspopup="listbox" aria-expanded="false">Nuovo → Vecchio</button>
+          <button id="sort-button" class="px-2 py-1 border rounded dark:border-gray-700" aria-haspopup="listbox" aria-expanded="false">Nuovi → Vecchi</button>
           <ul id="sort-menu" class="absolute left-0 mt-1 border bg-white dark:bg-gray-800 rounded shadow-md hidden" role="listbox" tabindex="-1">
-            <li data-sort="new" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Nuovo → Vecchio</li>
+            <li data-sort="new" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Nuovi → Vecchi</li>
             <li data-sort="impact" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Impatto maggiore</li>
             <li data-sort="speed" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Più veloce</li>
           </ul>
@@ -48,27 +49,33 @@
       <div id="portfolio-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list"></div>
       <div id="empty-state" class="text-center p-4 border rounded" hidden>
         <p>Nessun progetto trovato.</p>
-        <button id="reset-filters" class="btn btn-primary mt-2">Reimposta filtri</button>
+        <button id="reset-filters" class="btn btn-primary mt-2">Reset filtri</button>
       </div>
       <div class="text-center mt-6">
         <button id="load-more" class="px-4 py-2 border rounded"></button>
       </div>
     </section>
   </main>
-  <div data-include="footer.html"></div>
+  <div data-include="../partials/footer.html"></div>
 
-  <script src="/assets/js/partials.js" defer></script>
-  <script src="/assets/js/theme.js" defer></script>
   <script type="module">
-  import { init as portfolioInit } from '/assets/js/portfolio.js';
-  (async () => {
-    if (window.Partials?.injectPartials) {
-      window.Partials.injectPartials();
-      await window.Partials.ready();
-    }
-    if (window.initThemeToggle) window.initThemeToggle();
-    if (typeof portfolioInit === 'function') portfolioInit();
-  })();
-</script>
+  import { resolvePartialSafe } from '../assets/js/path.portfolio.js';
+  import '../assets/js/partials.js';
+  import { rewriteInternalLinks } from '../assets/js/partials.js';
+  import { init as portfolioInit } from '../assets/js/portfolio.js';
+  import '../assets/js/theme.js';
+  import '../assets/js/seo.js';
+
+  // Custom-Resolver nur für Portfolio-Seiten aktivieren
+  if (window.Partials) window.Partials.__resolve = resolvePartialSafe;
+
+  window.Partials?.injectPartials();
+  await window.Partials?.ready?.();
+
+  // Nach dem Inject: Links korrigieren + Theme + Page-Init
+  rewriteInternalLinks(document);
+  window.initThemeToggle && window.initThemeToggle();
+  portfolioInit && portfolioInit();
+  </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fashion Shop – TurboSito</title>
   <meta name="description" content="Demo case: fashion shop."/>
+  <meta name="base-path" content="/TurboSito">
   <link rel="canonical" href="https://deine-domain.tld/en/portfolio/fashion-shop.html"/>
   <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio/fashion-shop.html"/>
   <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio/fashion-shop.html"/>
@@ -20,7 +21,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
-  <div data-include="header.html"></div>
+  <div data-include="../../partials/header.html"></div>
   <main id="main" class="max-w-3xl mx-auto px-4 py-12">
     <nav aria-label="Breadcrumb" class="mb-4"><a href="../portfolio.html" class="text-sm text-gray-400 hover:text-orange-400">← Portfolio</a></nav>
     <header class="mb-8">
@@ -57,16 +58,17 @@
       <div id="stack-tags" class="mt-4 flex flex-wrap gap-2"></div>
     </section>
     <section class="flex justify-center gap-4 mt-8">
-      <a class="btn btn-primary" href="/TurboSito/en/contact.html">Start project</a>
+      <a class="btn btn-primary" href="../contact.html">Start project</a>
       <a class="btn btn-outline" href="../portfolio.html">More examples</a>
     </section>
     <script id="ld-json" type="application/ld+json"></script>
     <script type="module">
+    import { dataPath, withBase } from '../../assets/js/path.portfolio.js';
     (async()=>{
       const slug='fashion-shop';
       const lang=document.documentElement.lang;
       try{
-        const res=await fetch(`/TurboSito/assets/data/portfolio.${lang}.json`);
+        const res=await fetch(dataPath(`portfolio.${lang}.json`));
         const data=await res.json();
         const item=data.items.find(i=>i.slug===slug);
         if(!item){location.href='../portfolio.html?missing=1';return;}
@@ -90,8 +92,8 @@
           "@context":"https://schema.org",
           "@type":"BreadcrumbList",
           "itemListElement":[
-            {"@type":"ListItem","position":1,"name":"Home","item":"/TurboSito/"+lang+"/"},
-            {"@type":"ListItem","position":2,"name":"Portfolio","item":"/TurboSito/"+lang+"/portfolio.html"},
+            {"@type":"ListItem","position":1,"name":"Home","item":withBase('/'+lang+'/')},
+            {"@type":"ListItem","position":2,"name":"Portfolio","item":withBase('/'+lang+'/portfolio.html')},
             {"@type":"ListItem","position":3,"name":item.title,"item":location.pathname}
           ]
         }];
@@ -100,20 +102,26 @@
     })();
     </script>
   </main>
-  <div data-include="footer.html"></div>
+  <div data-include="../../partials/footer.html"></div>
 
-  <script src="/assets/js/partials.js" defer></script>
-  <script src="/assets/js/theme.js" defer></script>
   <script type="module">
-  import { init as portfolioInit } from '/assets/js/portfolio.js';
-  (async () => {
-    if (window.Partials?.injectPartials) {
-      window.Partials.injectPartials();
-      await window.Partials.ready();
-    }
-    if (window.initThemeToggle) window.initThemeToggle();
-    if (typeof portfolioInit === 'function') portfolioInit();
-  })();
-</script>
+  import { resolvePartialSafe } from '../../assets/js/path.portfolio.js';
+  import '../../assets/js/partials.js';
+import { rewriteInternalLinks } from '../../assets/js/partials.js';
+  import { init as portfolioInit } from '../../assets/js/portfolio.js';
+  import '../../assets/js/theme.js';
+  import '../../assets/js/seo.js';
+
+  // Custom-Resolver nur für Portfolio-Seiten aktivieren
+  if (window.Partials) window.Partials.__resolve = resolvePartialSafe;
+
+  window.Partials?.injectPartials();
+  await window.Partials?.ready?.();
+
+  // Nach dem Inject: Links korrigieren + Theme + Page-Init
+  rewriteInternalLinks(document);
+  window.initThemeToggle && window.initThemeToggle();
+  portfolioInit && portfolioInit();
+  </script>
 </body>
 </html>
