@@ -183,3 +183,23 @@ Die Seiten sind bewusst schlank aufgebaut.  Um die Core Web Vitals einzuhalten
 ## Build
 - Entwicklung: `npm i` → `npm run build` → Ausgabe in /dist
 - Pages Source: GitHub Actions (Settings → Pages → Source: GitHub Actions)
+
+## Portfolio & Case Studies
+
+Die Übersichtsseite lädt ihre Karten aus sprachspezifischen JSON-Dateien unter `assets/data/portfolio.{lang}.json`.  Um einen neuen Case anzulegen:
+
+1. Datensatz in allen drei JSONs ergänzen (`slug`, `title`, `type`, `kpis`, `impactScore`, `timeToLaunchHours`, `summary`, `demoUrl`, `caseUrl`, `highlights`, `tags`).
+2. Detailseite unter `/{lang}/portfolio/{slug}.html` anlegen und `slug` im Inline-Script setzen.
+3. In den HTML-`<head>`-Bereich die passenden `link rel="alternate"`-Tags für alle Sprachversionen aufnehmen.
+4. `demoUrl` zeigt auf eine eigenständige Demo, `caseUrl` auf die jeweilige Detailseite.
+
+Die Portfolio-Seite unterstützt Filter (Type) und Sortierung über URL-Parameter (`?type=landing&sort=impact`).  Weitere Cases werden per „Mehr laden“-Button progressiv eingeblendet.
+
+### Test-Checkliste
+
+- Tabs und Sortierung per Tastatur bedienbar
+- `aria-label` je Karte/CTA vorhanden
+- Farben haben ausreichenden Kontrast
+- JSON-LD validiert (`<script type="application/ld+json">` in jeder Case-Detailseite)
+- `npm run build` läuft ohne Fehler
+

@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "slug": "saas-landing",
+      "title": "SaaS Landing (Demo)",
+      "type": "landing",
+      "kpis": ["48h", "≤1.1s LCP", "Clear CTAs"],
+      "impactScore": 9,
+      "timeToLaunchHours": 48,
+      "summary": "Demo case – style, structure, speed.",
+      "demoUrl": "/TurboSito/de/demos/saas-landing.html",
+      "caseUrl": "/TurboSito/en/portfolio/saas-landing.html",
+      "highlights": ["Value proposition clear", "Above-the-fold CTA", "Mobile-first"],
+      "tags": ["Tailwind", "Static Export", "A11y-Ready"]
+    },
+    {
+      "slug": "corporate-site",
+      "title": "Corporate Site (Demo)",
+      "type": "corporate",
+      "kpis": ["48h", "≤1.1s LCP", "Trusted feel"],
+      "impactScore": 8,
+      "timeToLaunchHours": 48,
+      "summary": "Demo case – trust and structure.",
+      "demoUrl": "/TurboSito/de/demos/corporate-site.html",
+      "caseUrl": "/TurboSito/en/portfolio/corporate-site.html",
+      "highlights": ["Focused services", "Lean navigation", "Responsive"],
+      "tags": ["Tailwind", "Static Export", "SEO-Ready"]
+    },
+    {
+      "slug": "fashion-shop",
+      "title": "Fashion Shop (Demo)",
+      "type": "shop",
+      "kpis": ["48h", "≤1.1s LCP", "Fast checkout"],
+      "impactScore": 7,
+      "timeToLaunchHours": 48,
+      "summary": "Demo store – clean and quick.",
+      "demoUrl": "/TurboSito/de/demos/fashion-shop.html",
+      "caseUrl": "/TurboSito/en/portfolio/fashion-shop.html",
+      "highlights": ["Simple grid", "Quick cart", "Mobile-first"],
+      "tags": ["Tailwind", "Static Export", "Snipcart"]
+    }
+  ]
+}

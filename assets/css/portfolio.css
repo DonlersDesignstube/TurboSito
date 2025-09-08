@@ -1,0 +1,4 @@
+.ph-media{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#e5e7eb,#d1d5db);}
+.badge{display:inline-block;background:#e5e7eb;color:#374151;font-size:.75rem;padding:0.125rem 0.5rem;border-radius:0.25rem;}
+.tag{display:inline-block;background:#f3f4f6;color:#374151;font-size:.75rem;padding:0.125rem 0.5rem;border-radius:9999px;}
+.case-card:focus-within{outline:2px solid #000;outline-offset:2px;}
