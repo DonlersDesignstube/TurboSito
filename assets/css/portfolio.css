@@ -1,4 +1,11 @@
 .ph-media{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#e5e7eb,#d1d5db);}
 .badge{display:inline-block;background:#e5e7eb;color:#374151;font-size:.75rem;padding:0.125rem 0.5rem;border-radius:0.25rem;}
 .tag{display:inline-block;background:#f3f4f6;color:#374151;font-size:.75rem;padding:0.125rem 0.5rem;border-radius:9999px;}
+.case-card{content-visibility:auto;contain-intrinsic-size:200px;}
 .case-card:focus-within{outline:2px solid #000;outline-offset:2px;}
+.skeleton{background:linear-gradient(90deg,#e5e7eb,#f3f4f6,#e5e7eb);background-size:200% 100%;animation:sk 1.2s infinite linear;}
+@keyframes sk{0%{background-position:200% 0}to{background-position:-200% 0}}
+:focus-visible{outline:2px solid #000;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}

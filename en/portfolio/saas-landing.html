@@ -32,9 +32,9 @@
       </nav>
       <div class="header-right flex items-center gap-2">
         <nav class="lang-switch" aria-label="Language switch">
-          <a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a>
-          <a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a>
-          <a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a>
+          <a href="/TurboSito/de/portfolio/saas-landing.html" data-lang="de" hreflang="de">DE</a>
+          <a href="/TurboSito/en/portfolio/saas-landing.html" data-lang="en" hreflang="en">EN</a>
+          <a href="/TurboSito/it/portfolio/saas-landing.html" data-lang="it" hreflang="it">IT</a>
         </nav>
         <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span aria-hidden="true"></span></button>
       </div>
@@ -84,18 +84,38 @@
     (async()=>{
       const slug='saas-landing';
       const lang=document.documentElement.lang;
-      const res=await fetch(`/TurboSito/assets/data/portfolio.${lang}.json`);
-      const data=await res.json();
-      const item=data.items.find(i=>i.slug===slug);
-      if(!item) return;
-      document.getElementById('case-title').textContent=item.title;
-      document.getElementById('case-summary').textContent=item.summary;
-      document.getElementById('kpi-1').textContent=item.kpis[0];
-      document.getElementById('kpi-2').textContent=item.kpis[1];
-      document.getElementById('kpi-3').textContent=item.kpis[2];
-      document.getElementById('stack-tags').innerHTML=item.tags.map(t=>`<span class="tag">${t}</span>`).join(' ');
-      const ld={"@context":"https://schema.org","@type":"CreativeWork","name":item.title,"about":item.summary,"inLanguage":lang,"timeRequired":"PT"+item.timeToLaunchHours+"H","author":{"@type":"Person","name":"TurboSito"},"offers":{"@type":"Offer","priceCurrency":"EUR","price":"0"},"keywords":item.tags.join(',')};
-      document.getElementById('ld-json').textContent=JSON.stringify(ld);
+      try{
+        const res=await fetch(`/TurboSito/assets/data/portfolio.${lang}.json`);
+        const data=await res.json();
+        const item=data.items.find(i=>i.slug===slug);
+        if(!item){location.href='../portfolio.html?missing=1';return;}
+        document.getElementById('case-title').textContent=item.title;
+        document.getElementById('case-summary').textContent=item.summary;
+        document.getElementById('kpi-1').textContent=item.kpis[0];
+        document.getElementById('kpi-2').textContent=item.kpis[1];
+        document.getElementById('kpi-3').textContent=item.kpis[2];
+        document.getElementById('stack-tags').innerHTML=item.tags.map(t=>`<span class="tag">${t}</span>`).join(' ');
+        const ld=[{
+          "@context":"https://schema.org",
+          "@type":"CreativeWork",
+          "name":item.title,
+          "about":item.summary,
+          "inLanguage":lang,
+          "timeRequired":"PT"+item.timeToLaunchHours+"H",
+          "author":{"@type":"Person","name":"TurboSito"},
+          "offers":{"@type":"Offer","priceCurrency":"EUR","price":"0"},
+          "keywords":item.tags.join(',')
+        },{
+          "@context":"https://schema.org",
+          "@type":"BreadcrumbList",
+          "itemListElement":[
+            {"@type":"ListItem","position":1,"name":"Home","item":"/TurboSito/"+lang+"/"},
+            {"@type":"ListItem","position":2,"name":"Portfolio","item":"/TurboSito/"+lang+"/portfolio.html"},
+            {"@type":"ListItem","position":3,"name":item.title,"item":location.pathname}
+          ]
+        }];
+        document.getElementById('ld-json').textContent=JSON.stringify(ld);
+      }catch(e){location.href='../portfolio.html?missing=1';}
     })();
     </script>
   </main>

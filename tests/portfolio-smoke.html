@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Portfolio Smoke Test</title>
+  <link rel="stylesheet" href="../assets/css/portfolio.css">
+  <script defer src="../assets/js/portfolio.js"></script>
+  <script id="dataset" type="application/json">{"items":[{"slug":"test","title":"Test Case","type":"landing","kpis":["48h","≤1.1s","CTA"],"impactScore":5,"timeToLaunchHours":48,"summary":"Short","demoUrl":"#","caseUrl":"#","tags":["Test"]}]}</script>
+</head>
+<body>
+  <main class="p-4">
+    <div id="live-status" class="sr-only" aria-live="polite"></div>
+    <nav role="tablist" class="mb-2"><button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0">All</button></nav>
+    <div class="flex justify-end mb-2"><div class="relative"><button id="sort-button" aria-haspopup="listbox" aria-expanded="false">New → Old</button><ul id="sort-menu" class="hidden" role="listbox" tabindex="-1"><li data-sort="new" role="option" tabindex="-1">New → Old</li></ul></div></div>
+    <div id="portfolio-grid" role="list"></div>
+    <div id="empty-state" class="hidden"><p>No projects</p><button id="reset-filters">Reset</button></div>
+    <button id="load-more" class="mt-4"></button>
+  </main>
+  <script>
+    window.fetch = ()=>Promise.resolve({json:()=>JSON.parse(document.getElementById('dataset').textContent)});
+  </script>
+</body>
+</html>

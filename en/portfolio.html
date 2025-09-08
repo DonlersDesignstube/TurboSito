@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio – TurboSito</title>
-  <meta name="description" content="Demo case studies – fast and clear."/>
+  <meta name="description" content="Demo cases – fast and clear."/>
   <link rel="canonical" href="https://deine-domain.tld/en/portfolio.html"/>
   <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
   <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
   <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
   <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
   <meta property="og:title" content="Portfolio – TurboSito"/>
-  <meta property="og:description" content="Demo case studies – fast and clear."/>
+  <meta property="og:description" content="Demo cases – fast and clear."/>
   <meta property="og:url" content="https://deine-domain.tld/en/portfolio.html"/>
   <meta property="og:locale" content="en_US"/>
   <meta name="twitter:card" content="summary"/>
@@ -32,10 +32,10 @@
         <a href="/TurboSito/en/contact.html">Contact</a>
       </nav>
       <div class="header-right flex items-center gap-2">
-        <nav class="lang-switch" aria-label="Language switch">
-          <a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a>
-          <a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a>
-          <a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a>
+        <nav class="lang-switch" aria-label="Languages">
+          <a href="/TurboSito/de/portfolio.html" data-lang="de" hreflang="de">DE</a>
+          <a href="/TurboSito/en/portfolio.html" data-lang="en" hreflang="en">EN</a>
+          <a href="/TurboSito/it/portfolio.html" data-lang="it" hreflang="it">IT</a>
         </nav>
         <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span aria-hidden="true"></span></button>
       </div>
@@ -44,27 +44,32 @@
   <main id="content" class="max-w-6xl mx-auto px-4 py-12">
     <section class="text-center mb-10">
       <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
-      <p>Honest previews of our process.</p>
+      <p>Honest preview of our process.</p>
     </section>
+    <div aria-live="polite" class="sr-only" id="live-status"></div>
     <section>
       <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist">
-        <button data-type="all" aria-pressed="true" class="px-3 py-1 border rounded">All</button>
-        <button data-type="landing" aria-pressed="false" class="px-3 py-1 border rounded">Landingpages</button>
-        <button data-type="corporate" aria-pressed="false" class="px-3 py-1 border rounded">Corporate</button>
-        <button data-type="shop" aria-pressed="false" class="px-3 py-1 border rounded">Shop</button>
-        <button data-type="app" aria-pressed="false" class="px-3 py-1 border rounded">App/Tool</button>
+        <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded">All</button>
+        <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">Landing pages</button>
+        <button data-type="corporate" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">Corporate</button>
+        <button data-type="shop" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">Shop</button>
+        <button data-type="app" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded">App/Tool</button>
       </nav>
       <div class="flex justify-end mb-4">
-        <label class="flex items-center gap-2">
-          <span class="sr-only">Sort by</span>
-          <select id="sort" class="border rounded px-2 py-1">
-            <option value="new">Newest</option>
-            <option value="impact">Highest impact</option>
-            <option value="speed">Fastest launch</option>
-          </select>
-        </label>
+        <div class="relative">
+          <button id="sort-button" class="px-2 py-1 border rounded" aria-haspopup="listbox" aria-expanded="false">New → Old</button>
+          <ul id="sort-menu" class="absolute right-0 mt-1 border bg-white rounded shadow-md hidden" role="listbox" tabindex="-1">
+            <li data-sort="new" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer">New → Old</li>
+            <li data-sort="impact" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer">Highest impact</li>
+            <li data-sort="speed" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer">Fastest build</li>
+          </ul>
+        </div>
       </div>
       <div id="portfolio-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list"></div>
+      <div id="empty-state" class="hidden text-center p-4 border rounded">
+        <p>No projects found.</p>
+        <button id="reset-filters" class="btn btn-primary mt-2">Reset filters</button>
+      </div>
       <div class="text-center mt-6">
         <button id="load-more" class="px-4 py-2 border rounded"></button>
       </div>
