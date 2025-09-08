@@ -149,8 +149,8 @@ function card(item){
         <span class="flex items-center gap-1"><span aria-hidden="true">⚡</span>${(item.kpis?.[1]||'≤1.1s LCP')}</span>
         <span class="flex items-center gap-1"><span aria-hidden="true">✅</span>${(item.kpis?.[2]||'Klare CTAs')}</span>
       </p>
-      <div class="flex flex-wrap gap-3">
-        <a class="btn btn-primary" data-cta="case" data-slug="${item.slug}" aria-label="${t.view}: ${item.title}" href="${caseUrl}">${t.view}</a>
+      <div class="actions flex flex-wrap gap-3 mt-auto">
+      <a class="btn btn-primary" data-cta="case" data-slug="${item.slug}" aria-label="${t.view}: ${item.title}" href="${caseUrl}">${t.view}</a>
         <a class="link" data-cta="demo" data-slug="${item.slug}" aria-label="${t.demo}: ${item.title}" href="${demoUrl}" target="_blank" rel="noopener">${t.demo}</a>
       </div>
     </article>`;

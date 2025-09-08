@@ -22,3 +22,71 @@ html[data-theme="dark"] [role="tab"]{border-color:#374151}
   *{transition:none!important;animation:none!important}
   .hover-lift:hover{transform:none;box-shadow:none}
 }
+/* === Filterleiste ======================================================== */
+.filters-bar{
+  display:flex; align-items:center; gap:.75rem;
+  justify-content:space-between; margin-bottom:1.25rem;
+  flex-wrap:wrap;
+}
+.tabs{ display:flex; gap:.5rem; flex-wrap:wrap; }
+.tab{
+  padding:.4rem .7rem; border:1px solid var(--border, rgba(255,255,255,.15));
+  border-radius:.5rem; background:transparent; font-weight:600;
+}
+.tab[aria-selected="true"]{
+  background:var(--accent, #f59e0b); color:#111; border-color:transparent;
+  box-shadow:0 1px 0 rgba(0,0,0,.06), 0 0 0 2px color-mix(in oklab, var(--accent), transparent 70%);
+}
+
+/* Sort rechts, Dropdown hübsch */
+.sort{ position:relative; margin-left:auto; }
+.sort-btn{
+  padding:.45rem .75rem; border:1px solid var(--border, rgba(255,255,255,.15));
+  border-radius:.6rem; background:var(--surface-2, rgba(255,255,255,.04));
+}
+.sort-menu{
+  position:absolute; right:0; top:calc(100% + .35rem);
+  min-width:12rem; background:var(--surface, #fff);
+  color:inherit; border:1px solid var(--border, rgba(0,0,0,.1));
+  border-radius:.6rem; box-shadow:0 10px 25px rgba(0,0,0,.15); z-index:20;
+}
+.menu-item{ padding:.55rem .75rem; cursor:pointer; }
+.menu-item[aria-selected="true"]{ font-weight:700; }
+
+/* === Karten ============================================================= */
+.case-card{ display:flex; flex-direction:column; height:100%; }
+.ph-media{
+  aspect-ratio:16/9; border-radius:.5rem; margin-bottom:.75rem;
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.05));
+  opacity:.9;
+}
+.badge{ display:inline-block; font-size:.75rem; padding:.15rem .45rem;
+  border-radius:.5rem; background:var(--surface-2, rgba(255,255,255,.06)); }
+.tag-pill{ padding:.15rem .45rem; border-radius:999px; background:var(--surface-2, rgba(255,255,255,.06)); }
+.kpi-row{ opacity:.85; }
+
+/* CTAs an den Kartenboden drücken */
+.case-card .actions{ margin-top:auto; }
+
+/* Hover-Lift moderat und RM-sicher */
+.hover-lift{ transition:transform .2s ease, box-shadow .2s ease; }
+@media (hover:hover){
+  .hover-lift:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.18); }
+}
+@media (prefers-reduced-motion: reduce){
+  .hover-lift{ transition:none; }
+}
+
+/* === Skeletons ========================================================== */
+.skeleton{ position:relative; overflow:hidden; background:var(--surface-2, rgba(255,255,255,.06)); }
+.skeleton::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  transform:translateX(-100%); animation:sk 1.2s infinite;
+}
+@keyframes sk{ to{ transform:translateX(100%);} }
+
+/* === Light-Theme Kleinigkeiten ========================================= */
+html[data-theme="light"] .tab{ border-color:rgba(0,0,0,.12); }
+html[data-theme="light"] .sort-btn{ background:#fff; }
+html[data-theme="light"] .ph-media{ background:linear-gradient(180deg,#f3f4f6,#e5e7eb); }
