@@ -25,7 +25,7 @@ function normalizeOnce(raw) {
 
 export function rewriteInternalLinks(root = document) {
   if (__linksDone) return;
-  hydrateNavRoutes(root);
+  hydrateNavRoutes(root); // 1) routes zuerst (data-route → sprachbewusste URLs)
 
   const sel = [
     'a[href^="/"]:not([data-route])',
@@ -37,18 +37,30 @@ export function rewriteInternalLinks(root = document) {
 
   root.querySelectorAll(sel).forEach(el => {
     const attr = el.hasAttribute('href') ? 'href' : 'src';
-    const raw = el.getAttribute(attr);
+    const raw  = el.getAttribute(attr);
     if (!isInternalUrl(raw)) return;
 
+    // Bereits korrekt? -> Wenn schon Repo- + Sprach-Prefix vorhanden, nicht erneut anfassen
     const alreadyBase = raw.startsWith(basePath() + '/');
     const alreadyLang = /^\/(de|en|it)\b/.test(raw.replace(basePath(), ''));
     if (alreadyBase && alreadyLang) return;
 
-    el.setAttribute(attr, normalizeOnce(raw));
+    // Query + Hash erhalten
+    const u = new URL(raw, location.origin);
+    const normalizedPath = normalizeOnce(u.pathname);
+    let finalUrl = normalizedPath + u.search + u.hash;
+
+    // Canonical/Alternate als absolute URLs ausgeben (SEO best practice)
+    const isHeadLink = el.tagName === 'LINK' && (el.rel === 'canonical' || el.rel === 'alternate');
+    if (isHeadLink) {
+      finalUrl = new URL(finalUrl, location.origin).toString();
+    }
+
+    el.setAttribute(attr, finalUrl);
     el.setAttribute('data-rewritten', '1');
   });
 
-  __linksDone = true;
+  __linksDone = true; // 2) Flag setzen
 }
 
 function markActiveNav() {
@@ -137,8 +149,7 @@ function markActiveNav() {
 })();
 
 // Nach dem Partial-Inject:
-async function afterInject() {
+document.addEventListener('partials:ready', () => {
   rewriteInternalLinks(document);
   markActiveNav();
-}
-document.addEventListener('partials:ready', afterInject, { once: true });
+}, { once: true });
