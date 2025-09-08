@@ -4,75 +4,125 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio – TurboSito</title>
-  <meta name="description" content="Demo-Cases – schnell und klar."/>
-  <meta name="base-path" content="/TurboSito">
-  <link rel="canonical" href="https://deine-domain.tld/de/portfolio.html"/>
-  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
-  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
-  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
-  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
-  <meta property="og:title" content="Portfolio – TurboSito"/>
-  <meta property="og:description" content="Demo-Cases – schnell und klar."/>
-  <meta property="og:url" content="https://deine-domain.tld/de/portfolio.html"/>
-  <meta property="og:locale" content="de_DE"/>
-  <meta name="twitter:card" content="summary"/>
-  <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
-  <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
+  <meta name="description" content="Demo-Cases – schnell und klar.">
+
+  <!-- Statische SEO wie bei Leistungen (später gern mit seo.js dynamisieren) -->
+  <link rel="canonical" href="https://deine-domain.tld/de/portfolio.html">
+  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html">
+  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html">
+  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html">
+  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/">
+
+  <meta property="og:title" content="Portfolio – TurboSito">
+  <meta property="og:description" content="Demo-Cases – schnell und klar.">
+  <meta property="og:url" content="https://deine-domain.tld/de/portfolio.html">
+  <meta property="og:locale" content="de_DE">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="stylesheet" href="/TurboSito/assets/css/theme.css">
+  <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"><!-- falls vorhanden -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
+
 <body class="font-sans text-gray-900">
-  <div data-include="../partials/header.html"></div>
-  <main id="main" class="max-w-6xl mx-auto px-4 py-12">
-    <section class="text-center mb-10">
-      <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
-      <p>Ehrliche Vorschau auf unseren Prozess.</p>
-    </section>
-    <div aria-live="polite" class="sr-only" id="live-status"></div>
-    <section>
-      <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist">
-        <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded dark:border-gray-700">Alle</button>
-        <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Landingpages</button>
-        <button data-type="corporate" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Corporate</button>
-        <button data-type="shop" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Shop</button>
-        <button data-type="app" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">App/Tool</button>
-      </nav>
-      <div class="mb-4">
-        <div class="relative inline-block">
-          <button id="sort-button" class="px-2 py-1 border rounded dark:border-gray-700" aria-haspopup="listbox" aria-expanded="false">Neu → Alt</button>
-          <ul id="sort-menu" class="absolute left-0 mt-1 border bg-white dark:bg-gray-800 rounded shadow-md hidden" role="listbox" tabindex="-1">
-            <li data-sort="new" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Neu → Alt</li>
-            <li data-sort="impact" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Höchste Wirkung</li>
-            <li data-sort="speed" role="option" tabindex="-1" class="px-3 py-1 cursor-pointer" aria-selected="false">Schnellste Umsetzung</li>
+  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
+
+  <!-- Header 1:1 wie bei Leistungen -->
+  <header id="site-header">
+    <div class="container">
+      <div class="header-left">
+        <a class="brand" href="/TurboSito/de/">TurboSito</a>
+        <nav class="site-nav">
+          <a href="/TurboSito/de/">Start</a>
+          <a href="/TurboSito/de/ueber-mich.html">Über mich</a>
+          <a href="/TurboSito/de/leistungen.html">Leistungen</a>
+          <a href="/TurboSito/de/portfolio.html">Portfolio</a>
+          <a href="/TurboSito/de/kontakt.html">Kontakt</a>
+        </nav>
+      </div>
+      <div class="header-right">
+        <nav class="lang-switch" aria-label="Sprache">
+          <a href="/TurboSito/de/" data-lang="de" hreflang="de">DE</a>
+          <a href="/TurboSito/en/" data-lang="en" hreflang="en">EN</a>
+          <a href="/TurboSito/it/" data-lang="it" hreflang="it">IT</a>
+        </nav>
+        <button class="theme-toggle" data-theme-toggle aria-label="Theme umschalten" aria-pressed="false">
+          <span class="icon sun" aria-hidden="true">☀️</span>
+          <span class="icon moon" aria-hidden="true">🌙</span>
+          <span>Theme</span>
+        </button>
+        <button class="hamburger" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menü">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="content" class="section">
+    <div class="container">
+      <h1 class="font-display text-3xl md:text-4xl font-bold mb-8 text-center">Portfolio</h1>
+      <p class="text-center text-[var(--muted)] mb-6">Ehrliche Vorschau auf unseren Prozess.</p>
+
+      <!-- Filter & Sort identisch gestylt -->
+      <div class="flex flex-wrap gap-2 items-center justify-center mb-6">
+        <nav class="tabs" role="tablist" aria-orientation="horizontal">
+          <button class="tab" role="tab" data-type="all" aria-selected="true">Alle</button>
+          <button class="tab" role="tab" data-type="landing" aria-selected="false">Landingpages</button>
+          <button class="tab" role="tab" data-type="corporate" aria-selected="false">Corporate</button>
+          <button class="tab" role="tab" data-type="shop" aria-selected="false">Shop</button>
+          <button class="tab" role="tab" data-type="app" aria-selected="false">App/Tool</button>
+        </nav>
+        <div class="ml-auto"></div>
+        <div class="relative">
+          <button id="sort-button" class="btn btn-outline" aria-haspopup="listbox" aria-expanded="false">Neu → Alt</button>
+          <ul id="sort-menu" class="menu hidden" role="listbox" tabindex="-1">
+            <li data-sort="new" role="option" class="menu-item" aria-selected="true">Neu → Alt</li>
+            <li data-sort="impact" role="option" class="menu-item">Höchste Wirkung</li>
+            <li data-sort="speed" role="option" class="menu-item">Schnellste Umsetzung</li>
           </ul>
         </div>
       </div>
-      <div id="portfolio-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list"></div>
-      <div id="empty-state" class="text-center p-4 border rounded" hidden>
+
+      <!-- Live-Region & Grid -->
+      <div aria-live="polite" class="sr-only" id="live-status"></div>
+      <div id="portfolio-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" role="list" aria-busy="true"></div>
+
+      <div id="empty-state" class="text-center p-4 border rounded mt-6" hidden>
         <p>Keine Projekte gefunden.</p>
         <button id="reset-filters" class="btn btn-primary mt-2">Filter zurücksetzen</button>
       </div>
-      <div class="text-center mt-6">
-        <button id="load-more" class="px-4 py-2 border rounded"></button>
+
+      <div class="text-center mt-8">
+        <button id="load-more" class="btn btn-outline">Mehr laden</button>
       </div>
-    </section>
+    </div>
   </main>
-  <div data-include="../partials/footer.html"></div>
 
+  <!-- Footer 1:1 wie bei Leistungen -->
+  <footer class="border-t border-white/10">
+    <div class="container section text-center text-sm">
+      <p>Kontakt: <a href="mailto:info@deine-domain.tld" class="underline focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">info@deine-domain.tld</a></p>
+      <p class="mt-2">
+        <a href="/TurboSito/de/impressum.html" class="underline focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">Impressum</a>
+        <span class="mx-2">·</span>
+        <a href="/TurboSito/de/datenschutz.html" class="underline focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded">Datenschutz</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- gleiche Script-Liste wie Leistungen + Portfolio-Init -->
+  <script src="/TurboSito/assets/js/reveal.js" defer></script>
+  <script src="/TurboSito/assets/js/faq.js" defer></script>
+  <script src="/TurboSito/assets/js/nav-active.js" defer></script>
+  <script src="/TurboSito/assets/js/lang-switch.js" defer></script>
+  <script src="/TurboSito/assets/js/scroll-header.js" defer></script>
+  <script src="/TurboSito/assets/js/theme-toggle.js" defer></script>
+  <script src="/TurboSito/assets/js/mobile-nav.js" defer></script>
+
+  <!-- Portfolio-Renderer als ES-Modul; kein Partials-Loader mehr nötig -->
   <script type="module">
-  import { resolvePartialSafe } from '../assets/js/path.portfolio.js';
-  import '../assets/js/partials.js';
-  import { init as portfolioInit } from '../assets/js/portfolio.js';
-  import '../assets/js/theme.js';
-  import '../assets/js/seo.js';
-
-  // Custom-Resolver nur für Portfolio-Seiten aktivieren
-  if (window.Partials) window.Partials.__resolve = resolvePartialSafe;
-
-  window.Partials?.injectPartials();
-  await window.Partials?.ready?.();
-
-  window.initThemeToggle && window.initThemeToggle();
-  portfolioInit && portfolioInit();
+    import { init as portfolioInit } from '/TurboSito/assets/js/portfolio.js';
+    portfolioInit(); // idempotent
   </script>
 </body>
 </html>
