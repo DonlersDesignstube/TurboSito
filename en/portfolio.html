@@ -4,46 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio – TurboSito</title>
-  <meta name="description" content="Honest preview of style, structure and speed. Your project could look like this."/>
+  <meta name="description" content="Demo cases – fast and clear."/>
+  <link rel="canonical" href="https://deine-domain.tld/en/portfolio.html"/>
+  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
+  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
+  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
+  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
+  <meta property="og:title" content="Portfolio – TurboSito"/>
+  <meta property="og:description" content="Demo cases – fast and clear."/>
+  <meta property="og:url" content="https://deine-domain.tld/en/portfolio.html"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta name="twitter:card" content="summary"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-  <script src="/TurboSito/assets/js/theme.js" defer></script>
 </head>
 <body class="font-sans text-gray-900">
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Skip to content</a>
-  <header id="site-header">
-    <div class="container flex items-center justify-between gap-4">
-      <nav class="site-nav">
-        <a class="brand" href="/TurboSito/en/">TurboSito</a>
-        <a href="/TurboSito/en/about.html">About</a>
-        <a href="/TurboSito/en/services.html">Services</a>
-        <a href="/TurboSito/en/portfolio.html">Portfolio</a>
-        <a href="/TurboSito/en/contact.html">Contact</a>
-      </nav>
-      <div class="header-right flex items-center gap-2">
-        <nav class="lang-switch" aria-label="Languages">
-          <a href="/TurboSito/de/portfolio.html" data-lang="de" hreflang="de">DE</a>
-          <a href="/TurboSito/en/portfolio.html" data-lang="en" hreflang="en">EN</a>
-          <a href="/TurboSito/it/portfolio.html" data-lang="it" hreflang="it">IT</a>
-        </nav>
-        <button class="hamburger md:hidden" data-nav-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu"><span aria-hidden="true"></span></button>
-        <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme" aria-pressed="false">
-          <span class="icon sun" aria-hidden="true">☀️</span>
-          <span class="icon moon" aria-hidden="true">🌙</span>
-          <span>Theme</span>
-        </button>
-      </div>
-    </div>
-  </header>
+  <div data-include="header.html"></div>
   <main id="content" class="max-w-6xl mx-auto px-4 py-12">
     <section class="text-center mb-10">
       <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
-      <p>See how your project could look – fast, performant, measurable.</p>
+      <p>Honest preview of our process.</p>
     </section>
     <div aria-live="polite" class="sr-only" id="live-status"></div>
     <section>
-      <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist" aria-orientation="horizontal">
+      <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist">
         <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded dark:border-gray-700">All</button>
         <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Landing pages</button>
         <button data-type="corporate" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Corporate</button>
@@ -62,28 +48,27 @@
       </div>
       <div id="portfolio-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list"></div>
       <div id="empty-state" class="text-center p-4 border rounded" hidden>
-        <p>No matches. Adjust filter or sort.</p>
-        <button id="reset-filters" class="btn btn-primary mt-2" aria-label="Reset filters and show all projects">Reset filters</button>
+        <p>No projects found.</p>
+        <button id="reset-filters" class="btn btn-primary mt-2">Reset filters</button>
       </div>
       <div class="text-center mt-6">
         <button id="load-more" class="px-4 py-2 border rounded"></button>
       </div>
     </section>
   </main>
-  <footer class="text-center py-10 text-sm">
-    <p>&copy; TurboSito</p>
-  </footer>
+  <div data-include="footer.html"></div>
+
+  <script src="/assets/js/partials.js" defer></script>
+  <script src="/assets/js/theme.js" defer></script>
+  <script src="/assets/js/portfolio.js" defer></script>
   <script type="module">
-    import { injectItemListJSONLD, setCanonicalAndHreflang, setOpenGraphFallback } from '/TurboSito/assets/js/seo.js';
-    import { getCurrentLang, getBaseUrl, getOverviewItems, getLangPathMap, getMeta } from '/TurboSito/assets/js/portfolio.js';
-    const lang = getCurrentLang();
-    const baseUrl = getBaseUrl();
-    const path = location.pathname.replace(/^\/TurboSito/, '');
-    setCanonicalAndHreflang({ baseUrl, langMap: getLangPathMap(path), currentLang: lang, path });
-    setOpenGraphFallback(getMeta('overview'));
-    document.addEventListener('portfolio:items-ready', () => {
-      injectItemListJSONLD({ items: getOverviewItems(), lang, baseUrl, pagePath: path });
+    document.addEventListener("partials:ready", () => {
+      if (window.Portfolio && Portfolio.init) Portfolio.init();
     });
+    if (!document.querySelector("[data-include]")) {
+      if (window.Portfolio && Portfolio.init) Portfolio.init();
+    }
+    window.Partials && Partials.injectPartials();
   </script>
 </body>
 </html>
