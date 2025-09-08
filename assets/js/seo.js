@@ -1,3 +1,6 @@
+import { asset } from './path.portfolio.js';
+import { normalizeInternalHref } from './path.shared.js';
+
 export function injectItemListJSONLD({ items, lang, baseUrl, pagePath }) {
   try {
     const list = {
@@ -17,25 +20,34 @@ export function injectItemListJSONLD({ items, lang, baseUrl, pagePath }) {
   } catch {}
 }
 
-export function setCanonicalAndHreflang({ baseUrl, langMap, currentLang, path }) {
-  // Canonical
-  const linkC = document.createElement('link');
-  linkC.rel = 'canonical';
-  linkC.href = `${baseUrl}${path}`;
-  document.head.appendChild(linkC);
-  // hreflang
-  Object.entries(langMap).forEach(([code, href]) => {
-    const l = document.createElement('link');
-    l.rel = 'alternate';
-    l.hreflang = code;
-    l.href = `${baseUrl}${href}`;
-    document.head.appendChild(l);
-  });
+export function setCanonical(path){
+  const link = document.createElement('link');
+  link.rel = 'canonical';
+  link.href = normalizeInternalHref(path, { absoluteForHead:true });
+  document.head.appendChild(link);
+}
+
+export function setAlternate(path, lang){
+  const link = document.createElement('link');
+  link.rel = 'alternate';
+  link.hreflang = lang;
+  link.href = normalizeInternalHref(path, { absoluteForHead:true });
+  document.head.appendChild(link);
+}
+
+export function setCanonicalAndHreflang({ langMap, currentLang, path }) {
+  setCanonical(path);
+  Object.entries(langMap).forEach(([code, href]) => setAlternate(href, code));
   const xd = document.createElement('link');
   xd.rel = 'alternate';
   xd.hreflang = 'x-default';
-  xd.href = `${baseUrl}${langMap[currentLang]}`;
+  xd.href = normalizeInternalHref(langMap[currentLang], { absoluteForHead:true });
   document.head.appendChild(xd);
+}
+
+export async function fetchSiteMeta(lang){
+  const res = await fetch(asset(`assets/data/site.meta.${lang}.json`));
+  return await res.json();
 }
 
 export function setOpenGraphFallback(meta) {
