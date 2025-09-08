@@ -1,54 +1,75 @@
-import { basePath, langPrefix as sharedLangPrefix, withBase } from './path.shared.js';
+import { basePath, langPrefix, withBase, resolveLocalized, stripBaseAndLang } from './path.shared.js';
 
-function isInternal(url) {
-  try { const u = new URL(url, location.origin); return u.origin === location.origin; }
-  catch { return /^\/(?!\/)/.test(url); }
+let __linksDone = false;
+
+function hydrateNavRoutes(root = document) {
+  const lang = (langPrefix().slice(1) || 'de');
+  root.querySelectorAll('a[data-route]').forEach(a => {
+    const key = a.getAttribute('data-route');
+    const url = resolveLocalized(key, lang);
+    if (url) a.setAttribute('href', url);
+  });
 }
 
-function localizePath(p) {
-  const hasLang = /^\/(de|en|it)\b/.test(p);
-  const needsHtml = /\/$/.test(p);
-  let path = p;
-  if (!hasLang) path = sharedLangPrefix() + (p.startsWith('/') ? p : '/' + p);
-  if (needsHtml) path += 'index.html';
-  return path;
+function isInternalUrl(u) {
+  if (!u || u.startsWith('#') || u.startsWith('mailto:') || u.startsWith('tel:') || /^https?:\/\//.test(u)) return false;
+  return u.startsWith('/');
+}
+
+function normalizeOnce(raw) {
+  let p = stripBaseAndLang(raw);
+  if (p.endsWith('/')) p += 'index.html';
+  const lang = langPrefix();
+  return withBase(`${lang}/${p}`.replace(/\/{2,}/g, '/'));
 }
 
 export function rewriteInternalLinks(root = document) {
+  if (__linksDone) return;
+  hydrateNavRoutes(root);
+
   const sel = [
-    'a[href^="/"]', 'link[rel="alternate"][href^="/"]', 'link[rel="canonical"][href^="/"]',
-    'img[src^="/"]', 'script[src^="/"]'
+    'a[href^="/"]:not([data-route])',
+    'link[rel="alternate"][href^="/"]',
+    'link[rel="canonical"][href^="/"]',
+    'img[src^="/"]',
+    'script[src^="/"]'
   ].join(',');
 
   root.querySelectorAll(sel).forEach(el => {
     const attr = el.hasAttribute('href') ? 'href' : 'src';
     const raw = el.getAttribute(attr);
-    if (!raw || !isInternal(raw)) return;
+    if (!isInternalUrl(raw)) return;
 
-    let path = raw;
-    path = localizePath(path);
-    const fixed = withBase(path);
-    el.setAttribute(attr, fixed);
+    const alreadyBase = raw.startsWith(basePath() + '/');
+    const alreadyLang = /^\/(de|en|it)\b/.test(raw.replace(basePath(), ''));
+    if (alreadyBase && alreadyLang) return;
+
+    el.setAttribute(attr, normalizeOnce(raw));
+    el.setAttribute('data-rewritten', '1');
+  });
+
+  __linksDone = true;
+}
+
+function markActiveNav() {
+  const norm = p => p.replace(/\/index\.html$/, '/').replace(/\/+$/, '/');
+  const cur = norm(location.pathname);
+  document.querySelectorAll('a[data-nav]').forEach(a => {
+    const target = norm(a.getAttribute('href') || '/');
+    const isActive = target === cur;
+    a.classList.toggle('is-active', isActive);
+    a.setAttribute('aria-current', isActive ? 'page' : null);
   });
 }
 
 (() => {
   const CACHE = new Map();
   let injected = false;
-  const once = (fn) => { let ran=false; return (...a)=>{ if(ran) return; ran=true; return fn(...a);} };
-
-  const langRe = /^\/(de|en|it)\b/;
-  const norm = (p) => p.replace(/\/index\.html$/,'/').replace(/\/+$/,'/');
-
-  function langPrefix() {
-    const m = location.pathname.match(langRe);
-    return m ? `/${m[1]}` : '';
-  }
+  const once = (fn) => { let ran = false; return (...a) => { if (ran) return; ran = true; return fn(...a); }; };
 
   function resolvePartialPath(rel) {
-    // Partials liegen unter /partials/ (nicht sprachspezifisch)
-    if (/^\.\.?(?:\/).*/.test(rel)) return rel;
-    return `${langPrefix()}/partials/${rel}`.replace(/\/{2,}/g,'/');
+    if (/^\.\.?\//.test(rel)) return rel;
+    return `${langPrefix()}/partials/${rel}`.replace(/\/{2,}/g, '/');
   }
 
   function fetchWithTimeout(url, { timeout = 6000 } = {}) {
@@ -76,7 +97,7 @@ export function rewriteInternalLinks(root = document) {
   }
 
   async function injectPartials(root = document) {
-    if (injected) return; // idempotent
+    if (injected) return;
     const nodes = [...root.querySelectorAll('[data-include]')];
     for (const el of nodes) {
       const file = el.getAttribute('data-include');
@@ -89,17 +110,6 @@ export function rewriteInternalLinks(root = document) {
       el.replaceWith(...wrapper.childNodes);
     }
     injected = true;
-    rewriteInternalLinks(document);
-    if (window.initThemeToggle) window.initThemeToggle();
-
-    const cur = norm(location.pathname);
-    document.querySelectorAll('a[data-nav]').forEach(a => {
-      const target = norm(a.getAttribute('href') || '/');
-      const langed = target.match(langRe) ? target : (langPrefix() + target);
-      const isActive = norm(langed) === cur;
-      a.classList.toggle('is-active', isActive);
-      a.setAttribute('aria-current', isActive ? 'page' : null);
-    });
 
     const main = document.querySelector('main');
     if (main && !main.id) main.id = 'main';
@@ -125,3 +135,10 @@ export function rewriteInternalLinks(root = document) {
     })
   };
 })();
+
+// Nach dem Partial-Inject:
+async function afterInject() {
+  rewriteInternalLinks(document);
+  markActiveNav();
+}
+document.addEventListener('partials:ready', afterInject, { once: true });

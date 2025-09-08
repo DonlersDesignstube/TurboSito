@@ -71,7 +71,6 @@
   <script type="module">
   import { resolvePartialSafe } from '../../assets/js/path.portfolio.js';
   import '../../assets/js/partials.js';
-import { rewriteInternalLinks } from '../../assets/js/partials.js';
   import { init as portfolioInit } from '../../assets/js/portfolio.js';
   import '../../assets/js/theme.js';
   import '../../assets/js/seo.js';
@@ -82,8 +81,6 @@ import { rewriteInternalLinks } from '../../assets/js/partials.js';
   window.Partials?.injectPartials();
   await window.Partials?.ready?.();
 
-  // Nach dem Inject: Links korrigieren + Theme + Page-Init
-  rewriteInternalLinks(document);
   window.initThemeToggle && window.initThemeToggle();
   portfolioInit && portfolioInit();
   </script>
