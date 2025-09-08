@@ -4,22 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio – TurboSito</title>
-  <meta name="description" content="Demo case – rapidi e chiari."/>
-  <link rel="canonical" href="https://deine-domain.tld/it/portfolio.html"/>
-  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
-  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
-  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio.html"/>
-  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio.html"/>
-  <meta property="og:title" content="Portfolio – TurboSito"/>
-  <meta property="og:description" content="Demo case – rapidi e chiari."/>
-  <meta property="og:url" content="https://deine-domain.tld/it/portfolio.html"/>
-  <meta property="og:locale" content="it_IT"/>
-  <meta name="twitter:card" content="summary"/>
+  <meta name="description" content="Anteprima onesta di stile, struttura e velocità. Così potrebbe essere il tuo progetto."/>
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
   <script src="/TurboSito/assets/js/theme.js" defer></script>
-  <script defer src="/TurboSito/assets/js/portfolio.js"></script>
 </head>
 <body class="font-sans text-gray-900">
   <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-white text-black px-3 py-2 rounded">Vai al contenuto</a>
@@ -50,11 +39,11 @@
   <main id="content" class="max-w-6xl mx-auto px-4 py-12">
     <section class="text-center mb-10">
       <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
-      <p>Anteprima onesta del nostro processo.</p>
+      <p>Così potrebbe essere il tuo progetto – veloce, performante, misurabile.</p>
     </section>
     <div aria-live="polite" class="sr-only" id="live-status"></div>
     <section>
-      <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist">
+      <nav class="flex flex-wrap gap-2 justify-center mb-4" role="tablist" aria-orientation="horizontal">
         <button data-type="all" role="tab" aria-controls="portfolio-grid" aria-selected="true" tabindex="0" class="px-3 py-1 border rounded dark:border-gray-700">Tutte</button>
         <button data-type="landing" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Landing page</button>
         <button data-type="corporate" role="tab" aria-controls="portfolio-grid" aria-selected="false" tabindex="-1" class="px-3 py-1 border rounded dark:border-gray-700">Corporate</button>
@@ -73,8 +62,8 @@
       </div>
       <div id="portfolio-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" role="list"></div>
       <div id="empty-state" class="text-center p-4 border rounded" hidden>
-        <p>Nessun progetto trovato.</p>
-        <button id="reset-filters" class="btn btn-primary mt-2">Reimposta filtri</button>
+        <p>Nessun risultato. Modifica filtri o ordinamento.</p>
+        <button id="reset-filters" class="btn btn-primary mt-2" aria-label="Reimposta filtri e mostra tutti i progetti">Reimposta filtri</button>
       </div>
       <div class="text-center mt-6">
         <button id="load-more" class="px-4 py-2 border rounded"></button>
@@ -84,5 +73,17 @@
   <footer class="text-center py-10 text-sm">
     <p>&copy; TurboSito</p>
   </footer>
+  <script type="module">
+    import { injectItemListJSONLD, setCanonicalAndHreflang, setOpenGraphFallback } from '/TurboSito/assets/js/seo.js';
+    import { getCurrentLang, getBaseUrl, getOverviewItems, getLangPathMap, getMeta } from '/TurboSito/assets/js/portfolio.js';
+    const lang = getCurrentLang();
+    const baseUrl = getBaseUrl();
+    const path = location.pathname.replace(/^\/TurboSito/, '');
+    setCanonicalAndHreflang({ baseUrl, langMap: getLangPathMap(path), currentLang: lang, path });
+    setOpenGraphFallback(getMeta('overview'));
+    document.addEventListener('portfolio:items-ready', () => {
+      injectItemListJSONLD({ items: getOverviewItems(), lang, baseUrl, pagePath: path });
+    });
+  </script>
 </body>
 </html>

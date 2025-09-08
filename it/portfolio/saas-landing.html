@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Landing SaaS – TurboSito</title>
   <meta name="description" content="Caso demo: landing SaaS."/>
-  <link rel="canonical" href="https://deine-domain.tld/it/portfolio/saas-landing.html"/>
-  <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio/saas-landing.html"/>
-  <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio/saas-landing.html"/>
-  <link rel="alternate" hreflang="it" href="https://deine-domain.tld/it/portfolio/saas-landing.html"/>
-  <link rel="alternate" hreflang="x-default" href="https://deine-domain.tld/en/portfolio/saas-landing.html"/>
-  <meta property="og:title" content="Landing SaaS – TurboSito"/>
-  <meta property="og:description" content="Caso demo: stile, struttura, velocità."/>
-  <meta property="og:url" content="https://deine-domain.tld/it/portfolio/saas-landing.html"/>
-  <meta property="og:locale" content="it_IT"/>
-  <meta name="twitter:card" content="summary"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/theme.css"/>
   <link rel="stylesheet" href="/TurboSito/assets/css/portfolio.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
@@ -94,7 +84,15 @@
         const res=await fetch(`/TurboSito/assets/data/portfolio.${lang}.json`);
         const data=await res.json();
         const item=data.items.find(i=>i.slug===slug);
-        if(!item){location.href='../portfolio.html?missing=1';return;}
+        if(!item){
+          const msg=document.createElement('p');
+          msg.textContent='Case non trovato, torna al portfolio';
+          msg.className='sr-only';
+          msg.setAttribute('aria-live','assertive');
+          document.body.appendChild(msg);
+          location.href='../portfolio.html?missing=1';
+          return;
+        }
         document.getElementById('case-title').textContent=item.title;
         document.getElementById('case-summary').textContent=item.summary;
         document.getElementById('kpi-1').textContent=item.kpis[0];
@@ -121,10 +119,24 @@
           ]
         }];
         document.getElementById('ld-json').textContent=JSON.stringify(ld);
-      }catch(e){location.href='../portfolio.html?missing=1';}
+      }catch(e){
+        const msg=document.createElement('p');
+        msg.textContent='Case non trovato, torna al portfolio';
+        msg.className='sr-only';
+        msg.setAttribute('aria-live','assertive');
+        document.body.appendChild(msg);
+        location.href='../portfolio.html?missing=1';
+      }
     })();
     </script>
   </main>
   <footer class="text-center py-10 text-sm"><p>&copy; TurboSito</p></footer>
+  <script type="module">
+    import { setCanonicalAndHreflang, setOpenGraphFallback } from '/TurboSito/assets/js/seo.js';
+    import { getCurrentLang, getBaseUrl, getLangPathMap, getMeta } from '/TurboSito/assets/js/portfolio.js';
+    const path = location.pathname.replace(/^\/TurboSito/, '');
+    setCanonicalAndHreflang({ baseUrl: getBaseUrl(), langMap: getLangPathMap(path), currentLang: getCurrentLang(), path });
+    setOpenGraphFallback(getMeta('case'));
+  </script>
 </body>
 </html>
