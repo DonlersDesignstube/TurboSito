@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfolio – TurboSito</title>
   <meta name="description" content="Demo-Cases – schnell und klar."/>
+  <meta name="base-path" content="/TurboSito">
   <link rel="canonical" href="https://deine-domain.tld/de/portfolio.html"/>
   <link rel="alternate" hreflang="de" href="https://deine-domain.tld/de/portfolio.html"/>
   <link rel="alternate" hreflang="en" href="https://deine-domain.tld/en/portfolio.html"/>
@@ -20,7 +21,7 @@
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 </head>
 <body class="font-sans text-gray-900">
-  <div data-include="header.html"></div>
+  <div data-include="../partials/header.html"></div>
   <main id="main" class="max-w-6xl mx-auto px-4 py-12">
     <section class="text-center mb-10">
       <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
@@ -55,20 +56,21 @@
       </div>
     </section>
   </main>
-  <div data-include="footer.html"></div>
+  <div data-include="../partials/footer.html"></div>
 
-  <script src="/assets/js/partials.js" defer></script>
-  <script src="/assets/js/theme.js" defer></script>
   <script type="module">
-  import { init as portfolioInit } from '/assets/js/portfolio.js';
-  (async () => {
-    if (window.Partials?.injectPartials) {
-      window.Partials.injectPartials();
-      await window.Partials.ready();
-    }
-    if (window.initThemeToggle) window.initThemeToggle();
-    if (typeof portfolioInit === 'function') portfolioInit();
-  })();
-</script>
+  import { partial } from '../assets/js/path.portfolio.js';
+  import '../assets/js/partials.js';
+  import { init as portfolioInit } from '../assets/js/portfolio.js';
+  import '../assets/js/theme.js';
+  import '../assets/js/seo.js';
+
+  window.Partials && (window.Partials.__resolve = partial);
+
+  window.Partials?.injectPartials();
+  await window.Partials?.ready?.();
+  window.initThemeToggle && window.initThemeToggle();
+  portfolioInit && portfolioInit();
+  </script>
 </body>
 </html>

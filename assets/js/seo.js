@@ -1,3 +1,5 @@
+import { asset } from './path.portfolio.js';
+
 export function injectItemListJSONLD({ items, lang, baseUrl, pagePath }) {
   try {
     const list = {
@@ -21,21 +23,26 @@ export function setCanonicalAndHreflang({ baseUrl, langMap, currentLang, path })
   // Canonical
   const linkC = document.createElement('link');
   linkC.rel = 'canonical';
-  linkC.href = `${baseUrl}${path}`;
+  linkC.href = (baseUrl + path).replace(/\/{2,}/g,'/');
   document.head.appendChild(linkC);
   // hreflang
   Object.entries(langMap).forEach(([code, href]) => {
     const l = document.createElement('link');
     l.rel = 'alternate';
     l.hreflang = code;
-    l.href = `${baseUrl}${href}`;
+    l.href = (baseUrl + href).replace(/\/{2,}/g,'/');
     document.head.appendChild(l);
   });
   const xd = document.createElement('link');
   xd.rel = 'alternate';
   xd.hreflang = 'x-default';
-  xd.href = `${baseUrl}${langMap[currentLang]}`;
+  xd.href = (baseUrl + langMap[currentLang]).replace(/\/{2,}/g,'/');
   document.head.appendChild(xd);
+}
+
+export async function fetchSiteMeta(lang){
+  const res = await fetch(asset(`assets/data/site.meta.${lang}.json`));
+  return await res.json();
 }
 
 export function setOpenGraphFallback(meta) {

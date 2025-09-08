@@ -13,7 +13,8 @@
  * @property {string[]} [highlights]
  */
 /** @typedef {{items: PortfolioItem[]}} LocalizedDataset */
-const lang = document.documentElement.lang || 'en';
+import { dataPath, langPrefix, withBase } from './path.portfolio.js';
+const lang = (langPrefix().slice(1) || 'de');
 const labels = {
   en: {view:'View case study', demo:'Open demo', load:'Load more', none:'No projects', reset:'Reset filters'},
   de: {view:'Case Study ansehen', demo:'Demo öffnen', load:'Mehr laden', none:'Keine Projekte', reset:'Filter zurücksetzen'},
@@ -35,7 +36,8 @@ function validateItem(item){
 
 async function loadData(language){
   try{
-    const res = await fetch(`/TurboSito/assets/data/portfolio.${language}.json`,{cache:'force-cache'});
+    const file = `portfolio.${language}.json`;
+    const res = await fetch(dataPath(file),{cache:'force-cache', credentials:'same-origin'});
     const json = /** @type {LocalizedDataset} */(await res.json());
     state.items = json.items.filter(validateItem);
     announceCount(applyFilters(state.items).length);
@@ -146,8 +148,8 @@ function render(){
         <span class="flex items-center gap-1"><span aria-hidden="true">✅</span>${item.kpis[2]}</span>
       </p>
       <div class="flex flex-wrap gap-3">
-        <a class="btn btn-primary" aria-label="${t.view}: ${item.title}" href="${item.caseUrl}">${t.view}</a>
-        <a class="link" aria-label="${t.demo}: ${item.title}" href="${item.demoUrl}" target="_blank" rel="noopener">${t.demo}</a>
+        <a class="btn btn-primary" aria-label="${t.view}: ${item.title}" href="${withBase(item.caseUrl)}">${t.view}</a>
+        <a class="link" aria-label="${t.demo}: ${item.title}" href="${withBase(item.demoUrl)}" target="_blank" rel="noopener">${t.demo}</a>
       </div>`;
     container.appendChild(article);
   });
