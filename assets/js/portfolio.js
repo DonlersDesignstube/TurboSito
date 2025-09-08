@@ -13,7 +13,7 @@
  * @property {string[]} [highlights]
  */
 /** @typedef {{items: PortfolioItem[]}} LocalizedDataset */
-import { dataPath, langPrefix, withBase } from './path.portfolio.js';
+import { dataPath, langPrefix, withBase, basePath } from './path.portfolio.js';
 const lang = (langPrefix().slice(1) || 'de');
 const labels = {
   en: {view:'View case study', demo:'Open demo', load:'Load more', none:'No projects', reset:'Reset filters'},
@@ -241,6 +241,7 @@ let _booted = false;
 export function init(){
   if (_booted) return;
   _booted = true;
+  /* DEBUG */ console.debug('[portfolio] base', basePath?.(), 'lang', langPrefix?.());
   const list = document.getElementById("portfolio-grid");
   if (list) list.setAttribute("aria-busy","true");
   

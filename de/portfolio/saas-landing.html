@@ -105,13 +105,14 @@
   <div data-include="../../partials/footer.html"></div>
 
   <script type="module">
-  import { partial } from '../../assets/js/path.portfolio.js';
+  import { resolvePartialSafe } from '../../assets/js/path.portfolio.js';
   import '../../assets/js/partials.js';
   import { init as portfolioInit } from '../../assets/js/portfolio.js';
   import '../../assets/js/theme.js';
   import '../../assets/js/seo.js';
 
-  window.Partials && (window.Partials.__resolve = partial);
+  // Custom-Resolver nur für Portfolio-Seiten aktivieren
+  if (window.Partials) window.Partials.__resolve = resolvePartialSafe;
 
   window.Partials?.injectPartials();
   await window.Partials?.ready?.();
