@@ -45,7 +45,11 @@
     const nodes = [...root.querySelectorAll('[data-include]')];
     for (const el of nodes) {
       const file = el.getAttribute('data-include');
-      const html = await fetchPartial(resolvePartialPath(file));
+      // Wenn ein Custom-Resolver vorhanden ist, den zuerst nutzen.
+      let url = (window.Partials && window.Partials.__resolve)
+        ? await window.Partials.__resolve(file)
+        : resolvePartialPath(file);
+      const html = await fetchPartial(url);
       const wrapper = document.createElement('div');
       wrapper.innerHTML = html;
       el.replaceWith(...wrapper.childNodes);
