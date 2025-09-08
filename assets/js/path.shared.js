@@ -13,11 +13,43 @@ export const withBase = (p='') => (basePath() + '/' + String(p).replace(/^\/+/, 
 
 export function stripBaseAndLang(p){
   const b = basePath();
-  const l = langPrefix();           // "/de" | "/en" | "/it" | "/de"(default)
   return String(p)
     .replace(new RegExp(`^${b}`), '')
     .replace(/^\/(de|en|it)(?=\/)/, '')
     .replace(/\/{2,}/g,'/');
+}
+
+export function ensureFile(path){
+  return path.endsWith('/') ? (path + 'index.html') : path;
+}
+
+export function collapseRepeats(path){
+  const b = basePath().replace(/^\//,'');            // "TurboSito"
+  return path
+    .replace(new RegExp(`/(?:${b}/)+`, 'g'), `/${b}/`)
+    .replace(/\/(?:(de|en|it)\/)+/g, (m, g1) => `/${g1}/`)
+    .replace(/\/{2,}/g,'/');
+}
+
+/**
+ * Normiert *jede* interne URL:
+ * - akzeptiert absolute, root-absolute und relative Eingaben
+ * - erhält query/hash
+ * - gibt root-absolute (oder absolute für canonical/alternate) zurück
+ */
+export function normalizeInternalHref(raw, { absoluteForHead=false } = {}){
+  const u = new URL(raw, location.href);                 // relative → absolute
+  if (u.origin !== location.origin) return raw;          // extern: nicht anfassen
+
+  let p = stripBaseAndLang(u.pathname);
+  p = ensureFile(p);
+  const lang = langPrefix();                              // "/de" | "/en" | "/it"
+  p = collapseRepeats(`${lang}/${p}`);                    // genau *eine* Sprache
+  let finalPath = withBase(p);                            // Repo-Präfix genau *einmal*
+  finalPath = collapseRepeats(finalPath);                 // doppelte Segmente abbauen
+
+  const finalUrl = finalPath + u.search + u.hash;
+  return absoluteForHead ? new URL(finalUrl, location.origin).toString() : finalUrl;
 }
 
 const ROUTES = {

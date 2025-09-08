@@ -1,66 +1,49 @@
-import { basePath, langPrefix, withBase, resolveLocalized, stripBaseAndLang } from './path.shared.js';
+import { normalizeInternalHref, langPrefix } from './path.shared.js';
 
 let __linksDone = false;
 
-function hydrateNavRoutes(root = document) {
+function hydrateNavRoutes(root=document){
   const lang = (langPrefix().slice(1) || 'de');
-  root.querySelectorAll('a[data-route]').forEach(a => {
+  const routes = {
+    de: { home:'/', about:'/ueber-mich/', services:'/leistungen/', portfolio:'/portfolio.html', contact:'/kontakt/' },
+    en: { home:'/', about:'/about.html', services:'/services.html', portfolio:'/portfolio.html', contact:'/contact.html' },
+    it: { home:'/', about:'/chi-sono.html', services:'/servizi.html', portfolio:'/portfolio.html', contact:'/contatti.html' }
+  }[lang] || {};
+  root.querySelectorAll('a[data-route]').forEach(a=>{
     const key = a.getAttribute('data-route');
-    const url = resolveLocalized(key, lang);
-    if (url) a.setAttribute('href', url);
+    let target = routes[key] || a.getAttribute('href') || '/';
+    if (target.endsWith('/')) target += 'index.html';
+    a.setAttribute('href', normalizeInternalHref(target));
   });
 }
 
-function isInternalUrl(u) {
-  if (!u || u.startsWith('#') || u.startsWith('mailto:') || u.startsWith('tel:') || /^https?:\/\//.test(u)) return false;
-  return u.startsWith('/');
-}
-
-function normalizeOnce(raw) {
-  let p = stripBaseAndLang(raw);
-  if (p.endsWith('/')) p += 'index.html';
-  const lang = langPrefix();
-  return withBase(`${lang}/${p}`.replace(/\/{2,}/g, '/'));
-}
-
-export function rewriteInternalLinks(root = document) {
+export function rewriteInternalLinks(root=document){
   if (__linksDone) return;
-  hydrateNavRoutes(root); // 1) routes zuerst (data-route → sprachbewusste URLs)
 
+  // 1) Zuerst routes hydratisieren (setzt korrekte Hrefs)
+  hydrateNavRoutes(root);
+
+  // 2) Dann *alle* internen Links normalisieren – auch relative!
   const sel = [
-    'a[href^="/"]:not([data-route])',
-    'link[rel="alternate"][href^="/"]',
-    'link[rel="canonical"][href^="/"]',
-    'img[src^="/"]',
-    'script[src^="/"]'
+    'a[href]:not([href^="http"]):not([href^="mailto:"]):not([href^="tel:"])',
+    'link[rel="alternate"][href]',
+    'link[rel="canonical"][href]',
+    'img[src]:not([src^="http"])',
+    'script[src]:not([src^="http"])'
   ].join(',');
 
-  root.querySelectorAll(sel).forEach(el => {
+  root.querySelectorAll(sel).forEach(el=>{
     const attr = el.hasAttribute('href') ? 'href' : 'src';
     const raw  = el.getAttribute(attr);
-    if (!isInternalUrl(raw)) return;
+    if (!raw || raw.startsWith('#')) return;
 
-    // Bereits korrekt? -> Wenn schon Repo- + Sprach-Prefix vorhanden, nicht erneut anfassen
-    const alreadyBase = raw.startsWith(basePath() + '/');
-    const alreadyLang = /^\/(de|en|it)\b/.test(raw.replace(basePath(), ''));
-    if (alreadyBase && alreadyLang) return;
+    const isHead = el.tagName === 'LINK' && (el.rel === 'canonical' || el.rel === 'alternate');
+    const final = normalizeInternalHref(raw, { absoluteForHead: isHead });
 
-    // Query + Hash erhalten
-    const u = new URL(raw, location.origin);
-    const normalizedPath = normalizeOnce(u.pathname);
-    let finalUrl = normalizedPath + u.search + u.hash;
-
-    // Canonical/Alternate als absolute URLs ausgeben (SEO best practice)
-    const isHeadLink = el.tagName === 'LINK' && (el.rel === 'canonical' || el.rel === 'alternate');
-    if (isHeadLink) {
-      finalUrl = new URL(finalUrl, location.origin).toString();
-    }
-
-    el.setAttribute(attr, finalUrl);
-    el.setAttribute('data-rewritten', '1');
+    if (final !== raw) el.setAttribute(attr, final);
   });
 
-  __linksDone = true; // 2) Flag setzen
+  __linksDone = true;
 }
 
 function markActiveNav() {

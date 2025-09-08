@@ -13,7 +13,8 @@
  * @property {string[]} [highlights]
  */
 /** @typedef {{items: PortfolioItem[]}} LocalizedDataset */
-import { dataPath, langPrefix, withBase, basePath } from './path.portfolio.js';
+import { dataPath, langPrefix, basePath } from './path.portfolio.js';
+import { normalizeInternalHref } from './path.shared.js';
 const lang = (langPrefix().slice(1) || 'de');
 const labels = {
   en: {view:'View case study', demo:'Open demo', load:'Load more', none:'No projects', reset:'Reset filters'},
@@ -147,10 +148,10 @@ function render(){
         <span class="flex items-center gap-1"><span aria-hidden="true">⚡</span>${item.kpis[1]}</span>
         <span class="flex items-center gap-1"><span aria-hidden="true">✅</span>${item.kpis[2]}</span>
       </p>
-      <div class="flex flex-wrap gap-3">
-        <a class="btn btn-primary" aria-label="${t.view}: ${item.title}" href="${withBase(item.caseUrl)}">${t.view}</a>
-        <a class="link" aria-label="${t.demo}: ${item.title}" href="${withBase(item.demoUrl)}" target="_blank" rel="noopener">${t.demo}</a>
-      </div>`;
+        <div class="flex flex-wrap gap-3">
+          <a class="btn btn-primary" aria-label="${t.view}: ${item.title}" href="${normalizeInternalHref(item.caseUrl)}">${t.view}</a>
+          <a class="link" aria-label="${t.demo}: ${item.title}" href="${normalizeInternalHref(item.demoUrl)}" target="_blank" rel="noopener">${t.demo}</a>
+        </div>`;
     container.appendChild(article);
   });
   const more=document.getElementById('load-more');
