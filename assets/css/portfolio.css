@@ -112,3 +112,137 @@ html[data-theme="light"] .ph-media{ background:linear-gradient(180deg,#f3f4f6,#e
 }
 #sort-menu .menu-item{ padding:.55rem .75rem; cursor:pointer }
 #sort-menu .menu-item[aria-selected="true"]{ font-weight:700 }
+
+/* =========================
+   Portfolio – Kontrast-Fixes
+   ========================= */
+
+/* Karten verwenden konsistente Vorder-/Hintergründe */
+.case-card{
+  background:var(--card-bg);
+  color:var(--card-fg);
+  border-color:var(--card-border);
+  display:flex; flex-direction:column; /* CTAs an Kartenboden */
+}
+.case-card h3{ color:var(--card-fg-strong) }
+
+/* Platzhalter / Media */
+.ph-media{
+  aspect-ratio:16/9; border-radius:.5rem; margin-bottom:.75rem;
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.06));
+  opacity:.95;
+}
+
+/* Chips & Badges gut lesbar */
+.badge{
+  display:inline-block; font-size:.75rem; padding:.15rem .45rem;
+  border-radius:.5rem; background:var(--badge-bg); color:var(--badge-fg);
+}
+.tag-pill{
+  padding:.15rem .45rem; border-radius:999px;
+  background:var(--pill-bg); color:var(--pill-fg); border:1px solid var(--pill-border);
+}
+
+/* KPI-Reihe */
+.kpi-row{ color:var(--kpi-fg) }
+
+/* Link auf dunkler Karte */
+.case-card .link{
+  color:var(--link-on-card); text-underline-offset:2px;
+}
+.case-card .link:hover{ text-decoration:underline }
+
+/* Tabs: aktive deutlich sichtbar (nutzt schon aria-selected) */
+[role="tab"]{
+  padding:.4rem .7rem; border:1px solid var(--tab-border, rgba(255,255,255,.15));
+  border-radius:.5rem; background:var(--tab-bg, transparent); font-weight:600;
+}
+[role="tab"][aria-selected="true"]{
+  background:var(--accent, #f59e0b); color:#111; border-color:transparent;
+  box-shadow:0 0 0 2px color-mix(in oklab,var(--accent,#f59e0b),transparent 75%);
+}
+[role="tab"]:focus-visible{ outline:2px solid color-mix(in oklab,var(--accent,#f59e0b),#000 30%); outline-offset:2px }
+
+/* Sort-Menü hohe Lesbarkeit */
+#sort-button{
+  padding:.45rem .75rem; border:1px solid var(--border, rgba(255,255,255,.15));
+  border-radius:.6rem; background:var(--surface-2);
+}
+#sort-menu{
+  position:absolute; right:0; top:calc(100% + .35rem); min-width:12rem; z-index:20;
+  background:var(--menu-bg); color:var(--menu-fg);
+  border:1px solid var(--menu-border); border-radius:.6rem;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+#sort-menu .menu-item{ padding:.55rem .75rem; cursor:pointer }
+#sort-menu .menu-item[aria-selected="true"]{ font-weight:700 }
+
+/* Hover-Lift dezent & RM-sicher */
+.hover-lift{ transition:transform .2s ease, box-shadow .2s ease }
+@media (hover:hover){
+  .hover-lift:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.18) }
+}
+@media (prefers-reduced-motion: reduce){
+  .hover-lift{ transition:none }
+}
+
+/* ---------- Theme-Token (Dark/Light) ---------- */
+:root{ --accent:#ff9d1e } /* dein Orange */
+
+html[data-theme="dark"]{
+  --surface:#0a0f1a;
+  --surface-2:#0b1220;
+  --border:rgba(255,255,255,.12);
+
+  /* Karten bewusst dunkel in beiden Themes */
+  --card-bg:#0f172a;        /* slate-900 */
+  --card-border:#243041;    /* slate-800 */
+  --card-fg:#e5e7eb;        /* slate-200 */
+  --card-fg-strong:#f8fafc; /* slate-50 */
+
+  --badge-bg:#1f2937;       /* slate-800 */
+  --badge-fg:#e5e7eb;
+
+  --pill-bg:#223247;        /* custom dunkel */
+  --pill-border:#2f3e55;
+  --pill-fg:#f1f5f9;
+
+  --kpi-fg:#dbeafe;         /* sky-200 */
+  --link-on-card:#93c5fd;   /* sky-300 */
+
+  --menu-bg:#0f172a;        /* Sort-Menü */
+  --menu-fg:#e5e7eb;
+  --menu-border:#243041;
+
+  --tab-border:rgba(255,255,255,.15);
+  --tab-bg:transparent;
+}
+
+html[data-theme="light"]{
+  --surface:#f7f9fc;
+  --surface-2:#ffffff;
+  --border:rgba(2,6,23,.12);
+
+  /* Dunkle Karten beibehalten, Kontrast hoch */
+  --card-bg:#0f172a;
+  --card-border:#d0d5dd33;
+  --card-fg:#f1f5f9;
+  --card-fg-strong:#ffffff;
+
+  --badge-bg:#0b1220;
+  --badge-fg:#e5e7eb;
+
+  --pill-bg:#1c2534;
+  --pill-border:#2b3a50;
+  --pill-fg:#f8fafc;
+
+  --kpi-fg:#e2e8f0;
+  --link-on-card:#60a5fa;   /* sky-400 */
+
+  --menu-bg:#ffffff;
+  --menu-fg:#0f172a;
+  --menu-border:#e2e8f0;
+
+  --tab-border:rgba(2,6,23,.12);
+  --tab-bg:transparent;
+}
