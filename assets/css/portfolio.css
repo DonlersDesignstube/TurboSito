@@ -309,3 +309,34 @@ html[data-theme="light"]{
    .case-card .link{ color:var(--link-on-card) }
    .kpi-row{ color:var(--kpi-fg) }
    
+   /* ====== CTA: Primär-Button auf Karten erzwingen (blau) ====== */
+.case-card .btn-primary{
+  background:#2563eb;        /* blue-600 */
+  color:#fff !important;
+  border-color:#1e40af;       /* blue-800 */
+  opacity:1;                  /* falls irgendwas dimmt */
+  filter:none;
+}
+.case-card .btn-primary:hover{ background:#1d4ed8 }    /* blue-700 */
+.case-card .btn-primary:focus-visible{
+  outline:2px solid #93c5fd;  /* sky-300 */
+  outline-offset:2px;
+}
+
+/* ====== Sort-Button – Textfarbe & Hintergrund klar lesbar ====== */
+html[data-theme="light"] #sort-button{
+  background:#ffffff;
+  color:#0f172a;              /* sehr dunkles Grau/Blau */
+  border-color:rgba(2,6,23,.12);
+}
+html[data-theme="dark"] #sort-button{
+  background:var(--surface-2, #111a2b);
+  color:#e6edf3;              /* helles Grau/Weiß */
+  border-color:var(--border, rgba(255,255,255,.14));
+}
+#sort-button:hover{ box-shadow:0 0 0 2px rgba(0,0,0,.05) inset }
+html[data-theme="dark"] #sort-button:hover{ box-shadow:0 0 0 2px rgba(255,255,255,.08) inset }
+
+/* Menü-Items auch im Dark gut lesbar */
+#sort-menu{ color:inherit }
+#sort-menu .menu-item{ color:inherit }
