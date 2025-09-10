@@ -358,3 +358,32 @@ html[data-theme="dark"] [role="tab"]:hover{
 
 /* Aktiver Tab bleibt orange, Text dunkel für Kontrast */
 [role="tab"][aria-selected="true"]{ color:#111 }
+
+/* ===== Dark: Sort-Button deutlich sichtbar machen ===== */
+html[data-theme="dark"] #sort-button{
+  background:#0f172a;           /* etwas heller als Page-Hintergrund */
+  color:#e6edf3;                /* fast Weiß */
+  border-color:#334155;         /* slate-600 */
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.08),     /* dezente helle Kontur */
+    0 8px 22px rgba(0,0,0,.40);          /* Lift */
+}
+html[data-theme="dark"] #sort-button:hover{
+  background:#111f33;           /* leicht aufgehellt */
+  border-color:#475569;         /* slate-500 */
+}
+html[data-theme="dark"] #sort-button:focus-visible{
+  outline:2px solid #60a5fa;    /* sky-400 */
+  outline-offset:2px;
+}
+
+/* ===== Dark: Sort-Menü lesbar & abgehoben ===== */
+html[data-theme="dark"] #sort-menu{
+  background:#0f172a;
+  color:#e6edf3;
+  border:1px solid #334155;
+  box-shadow:0 14px 28px rgba(0,0,0,.45);
+}
+html[data-theme="dark"] #sort-menu .menu-item[aria-selected="true"]{
+  background:#111f33;
+}
