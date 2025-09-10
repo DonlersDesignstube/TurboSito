@@ -258,7 +258,7 @@ html[data-theme="light"]{
      --border:rgba(255,255,255,.14);
    
      /* Karte bewusst etwas heller + klarere Kanten */
-     --card-bg:#101827;        /* ~slate-900 */
+     --card-bg:#1a263d;        /* ~slate-900 */
      --card-border:#293244;    /* heller als zuvor */
      --card-fg:#e6edf3;        /* Text auf Karte */
      --card-fg-strong:#ffffff; /* starke Headlines */
