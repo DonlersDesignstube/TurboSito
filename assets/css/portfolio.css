@@ -246,3 +246,66 @@ html[data-theme="light"]{
   --tab-border:rgba(2,6,23,.12);
   --tab-bg:transparent;
 }
+/* ===============================
+   Dark Theme – Kontrast-Finetune
+   =============================== */
+   :root{ --accent:#ff9d1e } /* bleibt dein Orange */
+
+   /* dunkle Grundfarben mit mehr Kontrast */
+   html[data-theme="dark"]{
+     --surface:#0b1020;        /* Seitenhintergrund */
+     --surface-2:#111a2b;      /* UI-Flächen/Buttons auf dunklem */
+     --border:rgba(255,255,255,.14);
+   
+     /* Karte bewusst etwas heller + klarere Kanten */
+     --card-bg:#101827;        /* ~slate-900 */
+     --card-border:#293244;    /* heller als zuvor */
+     --card-fg:#e6edf3;        /* Text auf Karte */
+     --card-fg-strong:#ffffff; /* starke Headlines */
+   
+     /* Badges/Tags besser abgesetzt */
+     --badge-bg:#1a2335;
+     --badge-fg:#eaf2ff;
+   
+     --pill-bg:#182335;
+     --pill-border:#2c3a52;
+     --pill-fg:#e6edf3;
+   
+     /* KPI & Links auf Karte */
+     --kpi-fg:#cbd5e1;
+     --link-on-card:#93c5fd;
+   
+     /* Sort-Menü/Popover */
+     --menu-bg:#101827;
+     --menu-fg:#e6edf3;
+     --menu-border:#2a364a;
+   
+     --tab-border:rgba(255,255,255,.14);
+   }
+   
+   /* Sort-Button im Dark deutlicher */
+   #sort-button{
+     background:var(--surface-2);
+     color:var(--card-fg);
+     border-color:var(--border);
+   }
+   #sort-button:hover{
+     box-shadow:0 0 0 2px rgba(255,255,255,.08) inset;
+   }
+   
+   /* CTA auf Karte nicht „gedimmt“, immer orange mit gutem Kontrast */
+   .case-card .btn-primary{
+     background:var(--accent,#ff9d1e);
+     color:#111 !important;
+     border-color:color-mix(in oklab,var(--accent,#ff9d1e),#000 25%);
+   }
+   .case-card .btn-primary:hover{ filter:brightness(1.05) }
+   .case-card .btn-primary:focus-visible{
+     outline:2px solid color-mix(in oklab,var(--accent,#ff9d1e),#000 35%);
+     outline-offset:2px;
+   }
+   
+   /* Links und KPI-Reihe auf der Karte besser lesbar */
+   .case-card .link{ color:var(--link-on-card) }
+   .kpi-row{ color:var(--kpi-fg) }
+   
