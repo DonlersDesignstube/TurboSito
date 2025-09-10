@@ -340,3 +340,21 @@ html[data-theme="dark"] #sort-button:hover{ box-shadow:0 0 0 2px rgba(255,255,25
 /* Menü-Items auch im Dark gut lesbar */
 #sort-menu{ color:inherit }
 #sort-menu .menu-item{ color:inherit }
+/* Filter-Status: gut lesbar in beiden Themes */
+#filter-summary{ color:var(--summary-fg, currentColor) }
+html[data-theme="dark"]  #filter-summary{ color:#cbd5e1 }   /* slate-300 */
+html[data-theme="light"] #filter-summary{ color:#475569 }   /* slate-600 */
+
+/* Tabs (nicht aktiv) im Dark-Theme zu dunkel -> aufhellen */
+html[data-theme="dark"] [role="tab"]{
+  background:#111a2b;           /* surface-2 */
+  color:#e6edf3;                /* helles Grau/Weiß */
+  border-color:#2a364a;         /* sichtbarere Kante */
+}
+html[data-theme="dark"] [role="tab"]:hover{
+  background:#16233a;
+  border-color:#3b4a63;
+}
+
+/* Aktiver Tab bleibt orange, Text dunkel für Kontrast */
+[role="tab"][aria-selected="true"]{ color:#111 }
