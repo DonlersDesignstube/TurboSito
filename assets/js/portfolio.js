@@ -28,6 +28,11 @@ const labels = {
         count: n => n===1 ? '1 progetto visibile' : `${n} progetti visibili` }
 };
 const t = labels[lang] || labels.en;
+const sortLabels = {
+  de: { new: 'Neu → Alt', impact: 'Höchste Wirkung', speed: 'Schnellste Umsetzung' },
+  en: { new: 'Newest first', impact: 'Highest impact',  speed: 'Fastest delivery'   },
+  it: { new: 'Nuovo → Vecchio', impact: 'Impatto più alto', speed: 'Più veloce'     }
+}[lang] || { new:'New', impact:'Impact', speed:'Speed' };
 
 // ————— State & Flags —————
 const live = document.getElementById('live-status');
@@ -58,21 +63,31 @@ function normalizeState(){
 }
 
 function updateControls(){
+  // Aktiven Filter-Tab markieren (sichtbar & a11y)
   document.querySelectorAll('[data-type]').forEach(btn=>{
     const active = btn.getAttribute('data-type') === state.type;
     btn.setAttribute('aria-selected', String(active));
     btn.tabIndex = active ? 0 : -1;
   });
+
+  // Sort-Label am Button aktualisieren
   const btn = document.getElementById('sort-button');
-  if (btn) {
-    const current = document.querySelector(`#sort-menu [data-sort="${state.sort}"]`);
-    if (current) btn.textContent = current.textContent || btn.textContent;
-    document.querySelectorAll('#sort-menu [data-sort]').forEach(opt=>{
-      const sel = opt.getAttribute('data-sort') === state.sort;
-      opt.setAttribute('aria-selected', String(sel));
-    });
+  if (btn) btn.textContent = sortLabels[state.sort] || btn.textContent;
+
+  // Menu-Optionen markieren
+  document.querySelectorAll('#sort-menu [data-sort]').forEach(opt=>{
+    const sel = opt.getAttribute('data-sort') === state.sort;
+    opt.setAttribute('aria-selected', String(sel));
+  });
+
+  // Sichtbarer Status (falls vorhanden)
+  const summary = document.getElementById('filter-summary');
+  if (summary) {
+    const typeMap = { all:'Alle', landing:'Landingpages', corporate:'Corporate', shop:'Shop', app:'App/Tool' };
+    summary.textContent = `Gefiltert: ${typeMap[state.type] || 'Alle'} • Sortiert: ${sortLabels[state.sort]}`;
   }
 }
+
 
 function hydrateFromURL(){
   const params = new URLSearchParams(location.search);
@@ -219,49 +234,63 @@ function initSort(){
   if (!button || !menu) return;
 
   const options = Array.from(menu.querySelectorAll('[data-sort]'));
-  const close = ()=>{
-    menu.classList.add('hidden');
-    button.setAttribute('aria-expanded','false');
-    button.focus();
-  };
-
-  button.addEventListener('click', ()=>{
-    const open = button.getAttribute('aria-expanded') === 'true';
-    if (open) return close();
+  const openMenu = ()=>{
     menu.classList.remove('hidden');
     button.setAttribute('aria-expanded','true');
-    options[0]?.focus();
+  };
+  const closeMenu = ()=>{
+    menu.classList.add('hidden');
+    button.setAttribute('aria-expanded','false');
+  };
+
+  // Button toggelt
+  button.addEventListener('click', ()=>{
+    const open = button.getAttribute('aria-expanded') === 'true';
+    open ? closeMenu() : openMenu();
+    if (!open) options[0]?.focus();
   });
 
-  button.addEventListener('keydown', e=>{
-    if (e.key === 'ArrowDown'){
-      e.preventDefault();
-      menu.classList.remove('hidden');
-      button.setAttribute('aria-expanded','true');
-      options[0]?.focus();
-    }
+  // Klick auf eine Option → sortieren
+  options.forEach(li=>{
+    li.addEventListener('click', ()=>{
+      state.sort = li.dataset.sort;
+      state.page = 1;
+      updateControls();
+      render();
+      closeMenu();
+      button.focus();
+    });
   });
 
+  // Tastatursteuerung im Menu
   menu.addEventListener('keydown', e=>{
     const idx = options.indexOf(document.activeElement);
     if (e.key === 'ArrowDown'){ e.preventDefault(); options[(idx+1)%options.length]?.focus(); }
     if (e.key === 'ArrowUp')  { e.preventDefault(); options[(idx-1+options.length)%options.length]?.focus(); }
     if (e.key === 'Home')     { e.preventDefault(); options[0]?.focus(); }
     if (e.key === 'End')      { e.preventDefault(); options[options.length-1]?.focus(); }
-    if (e.key === 'Escape')   { e.preventDefault(); close(); }
-    if (e.key === 'Tab')      { e.preventDefault(); } // focus im Menu halten
+    if (e.key === 'Escape')   { e.preventDefault(); closeMenu(); button.focus(); }
     if (e.key === 'Enter' || e.key === ' '){
       e.preventDefault();
-      const sel = /** @type {HTMLElement} */(document.activeElement)?.getAttribute('data-sort');
+      const sel = document.activeElement?.getAttribute('data-sort');
       if (sel){
         state.sort = sel;
-        close();
-        updateURL();
+        state.page = 1;
         updateControls();
         render();
+        closeMenu(); button.focus();
       }
     }
+    if (e.key === 'Tab'){ e.preventDefault(); } // Fokus im Menu halten
   });
+
+  // Außerhalb klicken → schließen
+  document.addEventListener('click', (ev)=>{
+    if (!menu.contains(ev.target) && !button.contains(ev.target)) closeMenu();
+  });
+
+  // Initialer Button-Text
+  updateControls();
 }
 
 function initLoadMore(){
